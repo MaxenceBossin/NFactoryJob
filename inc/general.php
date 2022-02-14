@@ -43,6 +43,7 @@ add_action( 'after_setup_theme', 'nfactoryjob_setup' );
  */
 function nfactoryjob_scripts() {
 	wp_enqueue_style( 'nfactoryjob-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style('fontawesome-css', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 	wp_style_add_data( 'nfactoryjob-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'nfactoryjob-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );

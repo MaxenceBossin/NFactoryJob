@@ -1,50 +1,18 @@
-#header{
-    background-color: #D3B68D;
-    nav{
-        display: flex;
-        flex-flow: row;
-        justify-content: space-between;
-        padding: 3rem 0;
-        img{
-            width: 20%;
-        }
-        div{
-
-            display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-            
-            ul{
-                display: flex;
-                flex-flow: row;
-                justify-content: space-between;               
-                .connexion{
-                    background-color: #F2EDDF;
-                    color :#D2B285;
-                    transition: .6s;
-                }
-                .connexion:hover{
-                    background-color: #FBFAF7;
-                }
-                .pannier{
-                    background-color: #037A00;
-                    color: #FBFAF7;
-                    transition: .6s;
-                    .cardreBlanc{
-                        background-color: #FBFAF7;
-                        color: black;                        
-                    }
-                }.pannier:hover{
-                    background-color: #049200;
-                }
-                span{
-                    padding: 0 .5rem;
-                }
-                li, .pannier, .connexion{
-                    padding: 1rem;
-                    border-radius: 0.25rem;
-                }
-            }
-        }        
-    }
+header{
+    display: flex;
+    font-family: 'Quicksand', sans-serif;
+}
+header ul li a{color: black;}
+header ul li i{color: rgb(12, 100, 166);}
+header nav ul{
+    display: flex;
+    gap: 1.2rem;
+}
+header #cree{
+    background-color: rgb(12, 100, 166);
+    border-radius: 5%;
+    padding : 1rem;
+}
+header #cree a{
+    color: white;
 }
