@@ -1,0 +1,15 @@
+@mixin centreAll{
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+@mixin centreElement{
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+@mixin imgCover{
+    object-fit: cover;
+    background-repeat: no-repeat;
+}

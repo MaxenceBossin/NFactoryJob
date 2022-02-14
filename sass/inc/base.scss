@@ -1,0 +1,62 @@
+@import "variable";
+@import "responsive";
+@import url('https://fonts.googleapis.com/css2?family=Enriqueta:wght@500&family=Roboto:wght@300;400;700&display=swap');
+.clear:before, .clear:after {content: ' ';display: table}
+.clear:after { clear : both }
+.clear {*zoom: 1;}
+
+body {
+    background-color: #FBFAF7;
+    overflow-x: hidden;
+    font-size: 1rem;
+    font-family: 'Arvo', serif;    
+}
+
+/*BALISE DE BASE*/
+ul, ol, li, nav {
+    list-style: none;
+}
+img{
+    
+    vertical-align: bottom;
+}
+a {
+    text-decoration: none;
+}
+em{
+    font-style: normal;
+}
+strong{
+    font-style: normal;
+    font-size: 3em;
+}
+textarea{
+    resize: none;
+}
+/*reset de toute les fonts, on augmente la taille avec des em*/
+
+/*CLASS*/
+
+.uppercase{
+    text-transform: uppercase;
+}
+.capitalize{
+    text-transform: capitalize;
+}
+.bold{
+    font-weight: bold;
+}
+.shadow{
+    -webkit-box-shadow: 1.25vw 1.25vw 1.25vw -0.625vw lightgray;
+    -moz-box-shadow:    1.25vw 1.25vw 0.625vw -0.625vw lightgray;
+    box-shadow:         1.25vw 1.25vw 0.625vw -0.625vw lightgray;
+}
+.shadow-image{
+    filter: drop-shadow(0.1rem 0.1rem 0.1rem black);
+}
+.cover{
+    background-size: cover;
+}
+.none{
+    visibility: hidden;
+}

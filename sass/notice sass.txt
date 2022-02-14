@@ -1,0 +1,21 @@
+Installation sur un pc de sass :
+1) dl le dossiers sur : https://github.com/sass/dart-sass/releases/tag/1.43.4
+2) l'extraire (le mettre dans programme file par exemple)
+3) ajouter le chemin d'acces sur le path
+  Modifier les variables d'environements/variables d'environements.../path(situé dans varialbe systeme)/nouveau--> ajouter le chemin d'acces dans le path
+
+le fichier 'style.scss' est le fichier où va ecrire le css
+la commande :
+sass style.scss ../style.css --watch
+permet de transformer directement le scss en css
+
+liste des dossiers :
+    contenu_page  -> chaque page ou section dans un fichier sass
+
+    header_footer -> le header et le footer
+
+    inc           ->
+                        base.css   -> reset du css
+                        fonction   -> ensemble des mixins dans sass
+                        responsive -> permert de moduler la taille en pixel à partir de laquelle on veut que le responsive fonctionne
+                        varaible   -> ensemble des varibles utilisé

@@ -1,0 +1,13 @@
+#video{
+    width: 100%;
+    background-color: #F4F3ED;
+    .wrap{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        h2{
+            font-family: Enriqueta;
+            padding-bottom: 2rem;
+        }
+    }
+}
