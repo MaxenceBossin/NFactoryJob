@@ -3,7 +3,10 @@ header{
         display: flex;
         justify-content: space-between;
         font-family: 'Quicksand', sans-serif;
-        padding: 2rem;
+        padding-top: 1.6rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         #spantitre{
             color: $mainColor;
         }
@@ -16,6 +19,9 @@ header{
             .desktop{
                 @include breakpoints(tablette){
                     display: none;
+                }
+                .log{
+                    @include hoverUnderline($mainColor);
                 }
             }
             .mobile{

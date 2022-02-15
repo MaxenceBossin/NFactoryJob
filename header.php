@@ -25,8 +25,8 @@
 		<h1><span id="spantitre">N</span>Factory<span id="spantitre">Job</span></h1>
 		<nav>
 			<ul>
-				<li class="desktop"><a href=""><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
-				<li class="desktop"><a href=""><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
+				<li class="desktop"><a href="" class="log"><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
+				<li class="desktop"><a href="" class="log"><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
 				<li class="desktop"><a href="" class="create">Créer un CV</a></li>
 				<li class="burger"><i class="fa-solid fa-bars"></i></li>
 				<li class="mobile"><a href=""><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>

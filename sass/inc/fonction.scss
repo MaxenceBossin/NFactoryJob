@@ -32,3 +32,9 @@
         background-color: $backgroundcolor;
     }
 }
+@mixin hoverUnderline($color){
+    transition: .6s;
+    &:hover{
+        border-bottom: 1px solid $color;
+    }
+}

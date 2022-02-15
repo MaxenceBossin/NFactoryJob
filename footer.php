@@ -13,7 +13,7 @@
 <footer id="colophon" class="site-footer">
 	<div class="wrap_footer">
 		<div class="site-info">
-			<div>
+			<div id="contact">
 				<h2>Nous contacter</h2>
 				<p>Coordonnées</p>
 			</div>

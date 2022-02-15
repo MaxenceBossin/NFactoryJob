@@ -1,16 +1,20 @@
 footer{
     background-color: rgb(226,226,226);
     font-family: 'Quicksand', sans-serif;
-    #spantitre{
-        color: rgb(12, 100, 166);
+    #contact{
+        padding-top: 1.6rem;
     }
     #maps{
         display: flex;
         justify-content: flex-end;
-        margin-top: -35px;
+        margin-top: -41px;
     }
     #footertitre{
         display: flex;
         justify-content: center;
+        margin-top: -25px;
+    }
+    #spantitre{
+        color: rgb(12, 100, 166);
     }
 }
