@@ -1,12 +1,16 @@
 class Module{
-    constructor(moduleID, moduleName, moduleElement) {
+    constructor(moduleID, moduleName) {
         this.moduleID = moduleID;
         this.moduleName = moduleName;
-        this.moduleElement = moduleElement;
+        this.section = null;
     }
-    
-    getModuleElement(){
-        return this.moduleElement;
+
+    setSection(section){
+        this.section = section;
+    }
+
+    getSection(){
+        return this.section;
     }
 
     getModuleID(){

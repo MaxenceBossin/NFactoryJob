@@ -7,18 +7,20 @@ const btn_onglet_general = $('#onglet_editor #btn-onglet-general');
 const btn_onglet_module = $('#onglet_editor #btn-onglet-module');
 
 let modules_el = [];
+let sections_el = [];
 let selected_module = null;
+let LAST_MODULE_ID = 1;
+let LAST_SECTION_NUM = 1;
+let selected_section = null;
+
+// Todo
+// pouvoir mettre 1,2,3,4 modules max (par ligne)
+// créer automatiquement les sections et répartir les modules dans les bonnes sections selon la taille de chaque module
+// section => nowrap
 
 $( document ).ready(function() {
     open_onglet();
     place_add_module();
-});
-
-$('.module').on('click', function(){
-    const module = get_module_by_element($(this));
-    if(module !== null){
-        select_module(module);
-    }
 });
 
 btn_onglet_general.on('click', function(){

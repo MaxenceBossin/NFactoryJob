@@ -18,13 +18,13 @@ function on_form_submit(formName, form, data, secondary_infos){
     if(formName === 'editor_add_cv_module'){
         editor_add_cv_module(form, data, secondary_infos);
     }
+    else if(formName === 'module_data_form'){
+        module_data_form(form, data);
+    }
 }
 
-function form_error(form, field, error){
-    const span_error = form.find('span#error-' + field);
-    if(span_error !== null){
-        span_error.text(error);
-    }
+function module_data_form(form, data){
+    console.log(data.largeur);
 }
 
 function editor_add_cv_module(form, data, secondary_infos){
@@ -37,7 +37,15 @@ function editor_add_cv_module(form, data, secondary_infos){
         return;
     }
     secondary_infos[0].remove();
-    selected_module = create_module(data.type_module);
+    select_module(create_module(LAST_MODULE_ID, data.type_module));
+    LAST_MODULE_ID++;
     place_add_module();
     open_onglet('module');
+}
+
+function form_error(form, field, error){
+    const span_error = form.find('span#error-' + field);
+    if(span_error !== null){
+        span_error.text(error);
+    }
 }

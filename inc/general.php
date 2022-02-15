@@ -55,7 +55,8 @@ function nfactoryjob_scripts() {
     wp_enqueue_script( 'ajax-events', get_template_directory_uri() . '/js/ajax-events.js', array(), _S_VERSION, true );
 
     if(is_page_template('template-editor.php')){
-        wp_enqueue_script( 'module', get_template_directory_uri() . '/js/editor/Module.js', array(), _S_VERSION, true );
+        wp_enqueue_script( 'module-class', get_template_directory_uri() . '/js/editor/Module.js', array(), _S_VERSION, true );
+        wp_enqueue_script( 'section-class', get_template_directory_uri() . '/js/editor/Section.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-functions', get_template_directory_uri() . '/js/editor/editor-funcs.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-basics', get_template_directory_uri() . '/js/editor/editor-basics.js', array(), _S_VERSION, true );
     }

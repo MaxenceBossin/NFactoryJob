@@ -33,11 +33,14 @@ function get_form(formName){
 }
 
 // Attention: 'values' est un array (utile pour les select)
-function create_input(name, form = null, type = "text", values = [], placeholder = "", specific_ID = ""){
+function create_input(name, showName = '', form = null, type = "text", values = [], placeholder = "", specific_ID = ""){
 
+    if(showName.length === 0){
+        showName = name;
+    }
     let input;
     if(type === "slider"){
-        input = $('<input type="slider" min="0" max="100" />');
+        input = $('<input type="range" min="0" max="100" />');
         if(values.length > 0){
             input.attr('value', parseFloat(values[0]));
         }
@@ -47,6 +50,7 @@ function create_input(name, form = null, type = "text", values = [], placeholder
             input.attr('min', min);
             input.attr('max', max);
         }
+        input.addClass('slider');
     }
     else if(type === "textarea"){
         input = $('<textarea></textarea>');
@@ -84,7 +88,7 @@ function create_input(name, form = null, type = "text", values = [], placeholder
     }
 
     if(form != null){
-        const label = $('<label for="'+name+'"></label>');
+        const label = $('<label for="'+name+'">'+showName+'</label>');
         form.append(label);
         const span_error = $('<span id="error-'+name+'" class="error"></span>');
         form.append(label);
