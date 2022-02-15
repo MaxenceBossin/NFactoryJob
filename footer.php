@@ -26,14 +26,6 @@
 		</div><!-- .site-info -->
 	</div>
 </footer><!-- #colophon -->
-	<div class="site-info">
-		<div>
-			<h2>Nous contacter</h2>
-			<p>Coordonnées</p>
-		</div>
-		<h1>NFactoryJob</h1>
-	</div><!-- .site-info -->
-</footer><!-- #colophon -->
 <?php wp_footer(); ?>
 </body>
 </html>
