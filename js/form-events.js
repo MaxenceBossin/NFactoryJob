@@ -16,10 +16,28 @@
 function on_form_submit(formName, form, data, secondary_infos){
 
     if(formName === 'editor_add_cv_module'){
-        editor_add_cv_module(secondary_infos);
+        editor_add_cv_module(form, data, secondary_infos);
     }
 }
 
-function editor_add_cv_module(secondary_infos){
-    secondary_infos[0].empty();
+function form_error(form, field, error){
+    const span_error = form.find('span#error-' + field);
+    if(span_error !== null){
+        span_error.text(error);
+    }
+}
+
+function editor_add_cv_module(form, data, secondary_infos){
+    if(data.type_module.length === 0){
+        form_error(form, 'type_module', 'Veuillez sélectionner un module');
+        return;
+    }
+    if(secondary_infos.length === 0){
+        form_error(form, 'type_module', 'Une erreur s\'est produite');
+        return;
+    }
+    secondary_infos[0].remove();
+    selected_module = create_module(data.type_module);
+    place_add_module();
+    open_onglet('module');
 }

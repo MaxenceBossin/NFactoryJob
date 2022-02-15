@@ -76,10 +76,18 @@
     border-radius: 5px;
     border: 2px solid transparent;
     transition: all .35s;
+    padding: 1rem;
+    min-width: 45%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     &:hover{
       border: 2px solid #5e80c9;
     }
+    .module-title{
+      font-weight: 300;
+    }
+  }
+  .module.selected{
+    border: 2px solid #5e80c9;
   }
   .module.add{
     position: relative;
@@ -126,5 +134,8 @@
   }
   select, input:not([type=submit]){
     color: #484848;
+  }
+  .error{
+    color: red;
   }
 }

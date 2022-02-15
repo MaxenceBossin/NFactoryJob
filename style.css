@@ -209,9 +209,17 @@ textarea {
   border-radius: 5px;
   border: 2px solid transparent;
   transition: all 0.35s;
+  padding: 1rem;
+  min-width: 45%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 #cv .wrap_cv .modules .module:hover {
+  border: 2px solid #5e80c9;
+}
+#cv .wrap_cv .modules .module .module-title {
+  font-weight: 300;
+}
+#cv .wrap_cv .modules .module.selected {
   border: 2px solid #5e80c9;
 }
 #cv .wrap_cv .modules .module.add {
@@ -259,6 +267,9 @@ textarea {
 }
 #cv form select, #cv form input:not([type=submit]) {
   color: #484848;
+}
+#cv form .error {
+  color: red;
 }
 
 #header {

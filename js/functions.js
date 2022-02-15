@@ -28,6 +28,10 @@ function create_form(formName){
     return form;
 }
 
+function get_form(formName){
+    return $('#' + formName);
+}
+
 // Attention: 'values' est un array (utile pour les select)
 function create_input(name, form = null, type = "text", values = [], placeholder = "", specific_ID = ""){
 
