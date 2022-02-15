@@ -145,8 +145,37 @@ textarea {
   z-index: 10;
   transition: all 0.4s;
 }
-#onglet_editor .content {
+#onglet_editor .onglets_parts {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  text-align: center;
   padding: 3rem 1rem 1rem 1rem;
+}
+#onglet_editor .onglets_parts button {
+  width: 50%;
+  padding: 1rem 0.5rem 1rem 0.5rem;
+  border: none;
+  transition: all 0.45s;
+}
+#onglet_editor .onglets_parts button:not(.selected):not(.disabled) {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  cursor: pointer;
+}
+#onglet_editor .onglets_parts button:not(.selected):not(.disabled):hover {
+  opacity: 0.7;
+}
+#onglet_editor .onglets_parts button.selected {
+  background-color: #5e80c9;
+  color: white;
+}
+#onglet_editor .onglets_parts button.disabled {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+}
+#onglet_editor .content {
+  padding: 1rem;
 }
 #onglet_editor .attached {
   position: relative;
@@ -183,7 +212,7 @@ textarea {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 #cv .wrap_cv .modules .module:hover {
-  border: 2px solid blue;
+  border: 2px solid #5e80c9;
 }
 #cv .wrap_cv .modules .module.add {
   position: relative;
@@ -198,6 +227,38 @@ textarea {
   transform: translate(-50%, -50%);
   font-size: 2rem;
   color: #adb3c2;
+}
+
+#cv form {
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  gap: 0.5rem;
+  transition: all 0.35s;
+}
+#cv form input[type=submit] {
+  cursor: pointer;
+  transition: all 0.25s;
+}
+#cv form input[type=submit]:hover {
+  opacity: 0.7;
+  color: white;
+  background-color: #5e80c9;
+}
+#cv form input, #cv form select {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  background-color: #d0d4dc;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem;
+  width: 95%;
+}
+#cv form select, #cv form input:not([type=submit]) {
+  color: #484848;
 }
 
 #header {

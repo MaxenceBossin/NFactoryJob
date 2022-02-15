@@ -12,7 +12,14 @@
  */
 
 // Quand un formulaire est submit
-function on_form_submit(formName, data){
-    console.log('submit ' + formName);
-    console.log(data);
+// => envoi de requêtes ajax très facilement avec ajax('nomRequete', 'fichier.php', data);
+function on_form_submit(formName, form, data, secondary_infos){
+
+    if(formName === 'editor_add_cv_module'){
+        editor_add_cv_module(secondary_infos);
+    }
+}
+
+function editor_add_cv_module(secondary_infos){
+    secondary_infos[0].empty();
 }

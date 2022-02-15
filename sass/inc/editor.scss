@@ -12,8 +12,37 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 10;
   transition: all .4s;
-  .content{
+  .onglets_parts {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    text-align: center;
     padding: 3rem 1rem 1rem 1rem;
+    button {
+      width: 50%;
+      padding: 1rem .5rem 1rem .5rem;
+      border: none;
+      transition: all .45s;
+    }
+    button:not(.selected):not(.disabled){
+      background-color: rgba(0,0,0,.4);
+      color: white;
+      cursor: pointer;
+      &:hover{
+        opacity: .7;
+      }
+    }
+    button.selected{
+      background-color: #5e80c9;
+      color: white;
+    }
+    button.disabled{
+      background-color: rgba(0,0,0,.1);
+      color: white;
+    }
+  }
+  .content{
+    padding: 1rem;
   }
   .attached{
     position: relative;
@@ -49,7 +78,7 @@
     transition: all .35s;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     &:hover{
-      border: 2px solid blue;
+      border: 2px solid #5e80c9;
     }
   }
   .module.add{
@@ -65,5 +94,37 @@
       font-size: 2rem;
       color: #adb3c2;
     }
+  }
+}
+
+#cv form{
+  padding: .5rem;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  gap: .5rem;
+  transition: all .35s;
+  input[type=submit]{
+    cursor: pointer;
+    transition: all .25s;
+    &:hover{
+      opacity: .7;
+      color: white;
+      background-color: #5e80c9;
+    }
+  }
+  input, select{
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background-color: #d0d4dc;
+    border: none;
+    border-radius: 5px;
+    padding: .5rem;
+    width: 95%;
+  }
+  select, input:not([type=submit]){
+    color: #484848;
   }
 }

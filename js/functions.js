@@ -71,12 +71,12 @@ function create_input(name, form = null, type = "text", values = [], placeholder
         input.attr('placeholder', placeholder);
     }
 
-    input.name('name', name);
+    input.attr('name', name);
     if(specific_ID.length > 0){
-        input.name('id', specific_ID);
+        input.attr('id', specific_ID);
     }
     else{
-        input.name('id', name);
+        input.attr('id', name);
     }
 
     if(form != null){
@@ -91,20 +91,24 @@ function create_input(name, form = null, type = "text", values = [], placeholder
     return input;
 }
 
-function build_form(form, submitValue = 'Valider'){
+function build_form(form, submitValue = 'Valider', secondary_infos = []){
     const submit = $('<input type="submit" value="'+submitValue+'" />');
     form.append(submit);
-    form.on('submit', function(e){
-        e.preventDefault();
+    form.attr('style', 'opacity: 0;');
+    form.animate({
+        "opacity": "1"
+    }, 300);
+    form.on('submit', function(_e){
+        _e.preventDefault();
         let data = {};
-        $(this).find('input, select').each(function(){
+        $(this).find('input:not([type=submit]), select').each(function(){
             const _id = $(this).attr('id');
-            data[_id] = $(this).value;
+            data[_id] = $(this).val();
         });
         $(this).find('textarea').each(function(){
             const _id = $(this).attr('id');
             data[_id] = $(this).text();
         });
-        on_form_submit($(this).attr('id'), data);
+        on_form_submit($(this).attr('id'), $(this), data, secondary_infos);
     });
 }
