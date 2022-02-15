@@ -124,6 +124,82 @@ textarea {
   margin-inline: auto;
 }
 
+.wrap_cv {
+  width: min(1200px, 100%);
+  margin-inline: auto;
+}
+
+/* editor  */
+#cv .wrap_cv {
+  padding: 1rem;
+}
+
+#onglet_editor {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 35vw;
+  height: 100vh;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  z-index: 10;
+  transition: all 0.4s;
+}
+#onglet_editor .content {
+  padding: 3rem 1rem 1rem 1rem;
+}
+#onglet_editor .attached {
+  position: relative;
+}
+#onglet_editor .attached #btn-onglet {
+  position: absolute;
+  top: 50px;
+  left: -55px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+#onglet_editor .attached #btn-onglet:hover {
+  opacity: 0.7;
+}
+#onglet_editor .attached #btn-onglet i {
+  font-size: 2rem;
+  padding: 0.5rem;
+  color: #5e80c9;
+}
+
+#cv .wrap_cv .modules {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+}
+#cv .wrap_cv .modules .module {
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  transition: all 0.35s;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#cv .wrap_cv .modules .module:hover {
+  border: 2px solid blue;
+}
+#cv .wrap_cv .modules .module.add {
+  position: relative;
+  width: 45%;
+  height: 200px;
+}
+#cv .wrap_cv .modules .module.add i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: #adb3c2;
+}
+
 #header {
   background-color: #D3B68D;
 }
