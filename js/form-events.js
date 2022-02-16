@@ -36,9 +36,19 @@ function module_formation_form(form, data){
         if(!_data['formation'].hasOwnProperty(data.formation)){
             _data['formation'][data.formation] = [];
         }
-        console.log(_data);
         _module.updateData(_data);
-        $('<div class="module-item"><p class="module-item-head-title">'+data.formation+'</p></div>').insertBefore(form);
+        $('<div data-info="'+data.formation+'" class="module-item"><p class="module-item-head-title">'+data.formation+'</p></div>').insertBefore(form);
+        const desc = $('<span class="add-item pad-1">+ Ajouter une description</span>').on('click', function(){
+            const _form = create_form('module_item_add_competence_desc');
+            create_input('description', 'Description', _form, 'text', []);
+            build_form(_form, 'Ajouter', []);
+            _form.insertBefore($(this));
+            $(this).remove();
+        });
+        desc.insertAfter(form);
+        form.fadeOut('fast', function(){
+            form.remove();
+        });
     }
 }
 
@@ -52,9 +62,11 @@ function module_competence_form(form, data){
         if(_data['competence'][data.competence] === undefined){
             _data['competence'][data.competence] = [];
         }
-        console.log(_data);
         _module.updateData(_data);
-        $('<div class="module-item"><p class="module-item-head-title">'+data.competence+'</p></div>').insertBefore(form);
+        _module.refresh();
+        form.fadeOut('fast', function(){
+            form.remove();
+        });
     }
 }
 

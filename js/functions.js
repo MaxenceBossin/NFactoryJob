@@ -157,7 +157,7 @@ function build_form(form, submitValue = 'Valider', secondary_infos = [], add_can
     }, 300);
 
     if(add_cancel_option){
-        const cancel_btn = $('<button data-form="'+form.attr('id')+'" class="btn red">Annuler</button>');
+        const cancel_btn = $('<span data-form="'+form.attr('id')+'" class="btn red">Annuler</span>');
         cancel_btn.on('click', function(){
             const associated_form = $(this).attr('data-form');
             $('#' + associated_form).fadeOut('slow', function(){

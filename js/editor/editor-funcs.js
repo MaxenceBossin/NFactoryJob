@@ -203,7 +203,7 @@ function create_section(maxModules, _num = -1){
     return _section;
 }
 
-function create_module(moduleID, moduleName){
+function create_module(moduleID, moduleName, _width = 50){
     const module = $('<div id="module-'+moduleID+'" class="module"></div>').on('click', function() {
         const _module = get_module_by_ID(get_module_element_id($(this)));
         if (_module !== null) {
@@ -227,7 +227,9 @@ function create_module(moduleID, moduleName){
     }
     _section.addModule(_module);
     _module.setSection(_section);
-    configure_module(_module);
+    _module.setWidth(_width);
+    module.attr('data-width', _width);
+    _module.refresh();
     return _module;
 }
 
@@ -241,17 +243,17 @@ function close_save_notif(){
     }, 1000);
 }
 
-function editor_request_save(){
-    if(save_request != null){
+function editor_request_save() {
+    if (save_request != null) {
         clearTimeout(save_request);
     }
     save_en_cours = true;
-    save_request = setTimeout(function(){
-        save_request = setTimeout(function(){
+    save_request = setTimeout(function () {
+        save_request = setTimeout(function () {
             save_notif.css("bottom", "10px");
             save_notif_text.empty();
             save_notif_text.text('Sauvegarde en cours ...');
-            save_request = setTimeout(function(){
+            save_request = setTimeout(function () {
                 save_notif_text.text('Sauvegarde effectuée');
                 const i = $('<i class="fa-solid fa-check"></i>');
                 save_notif_text.append(i);

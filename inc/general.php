@@ -64,7 +64,6 @@ function nfactoryjob_scripts() {
         wp_enqueue_script( 'section-class', get_template_directory_uri() . '/js/editor/Section.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-functions', get_template_directory_uri() . '/js/editor/editor-funcs.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-onglet-content', get_template_directory_uri() . '/js/editor/editor-onglet-content.js', array(), _S_VERSION, true );
-        wp_enqueue_script( 'editor-module-content', get_template_directory_uri() . '/js/editor/editor-module-content.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-basics', get_template_directory_uri() . '/js/editor/editor-basics.js', array(), _S_VERSION, true );
     }
 }
