@@ -25,6 +25,7 @@ function on_form_submit(formName, form, data, secondary_infos){
 
 function module_data_form(form, data){
     console.log(data.largeur);
+    editor_request_save();
 }
 
 function editor_add_cv_module(form, data, secondary_infos){
@@ -40,7 +41,7 @@ function editor_add_cv_module(form, data, secondary_infos){
     select_module(create_module(LAST_MODULE_ID, data.type_module));
     LAST_MODULE_ID++;
     place_add_module();
-    open_onglet('module');
+    editor_request_save();
 }
 
 function form_error(form, field, error){

@@ -1,5 +1,7 @@
 
 let onglet_opened = false;
+let save_request = null;
+let save_en_cours = false;
 
 function open_onglet(ongletName = 'module'){
     onglet.css("right", "0vw");
@@ -16,8 +18,6 @@ function open_onglet(ongletName = 'module'){
     }
 
     if(get_selected_menu_onglet() !== ongletName){
-        content_general.empty();
-        content_module.empty();
         if(ongletName === 'general'){
             if(!btn_onglet_general.hasClass('selected')){ btn_onglet_general.addClass('selected'); }
             if(btn_onglet_module.hasClass('selected')){ btn_onglet_module.removeClass('selected'); }
@@ -49,20 +49,10 @@ function refresh_onglets_menu(){
     }
 
     if(btn_onglet_module.hasClass("selected")){
-        content_module.empty();
-        if(selected_module !== null){
-            content_module.append('<h1>'+selected_module.getModuleName()+'</h1>');
-            let items = selected_module.getSection().countModules();
-            if(items < 1){
-                items = 1;
-            }
-            const maxWidth = 100 / items;
-            const largeur_input = create_input('largeur', 'Largeur du module', null, 'slider', [maxWidth, 20, 100]);
-            largeur_input.on('input', function(){
-                $('#module-' + selected_module.getModuleID()).css("width", parseInt($(this).val()) + '%');
-            });
-            content_module.append(largeur_input);
-        }
+        refresh_module_content();
+    }
+    else{
+        refresh_general_content();
     }
 }
 
@@ -109,7 +99,6 @@ function select_module(module_el){
         $('#module-' + module_el.getModuleID()).addClass("selected");
     }
     selected_module = module_el;
-    open_onglet('module');
 }
 
 function is_onglet_opened(){
@@ -142,7 +131,7 @@ function place_add_module(){
         _section.getDOMElement().append(add_module);
     }
 
-    const add_section = $('<section id="add-section" class="module-section"><div class="module add"><h1 class="add-block-title">Ajouter une section</h1><i class="fa-solid fa-plus"></i></div></section>');
+    const add_section = $('<section id="add-section" class="module-section"><span class="section-title">Section '+LAST_SECTION_NUM+'</span><div class="module add"><h1 class="add-block-title">Ajouter une section</h1><i class="fa-solid fa-plus"></i></div></section>');
     add_section.on('click', function(){
 
     });
@@ -203,7 +192,7 @@ function create_section(maxModules, _num = -1){
         _num = LAST_SECTION_NUM;
     }
 
-    const sectionElement = $('<section class="module-section"></section>');
+    const sectionElement = $('<section class="module-section"><span class="section-title">Section '+_num+'</span></section>');
     modules.append(sectionElement);
     let _section = new Section(_num, maxModules, sectionElement);
     if(_num + 1 > LAST_SECTION_NUM){
@@ -219,6 +208,8 @@ function create_module(moduleID, moduleName){
         const _module = get_module_by_ID(get_module_element_id($(this)));
         if (_module !== null) {
             select_module(_module);
+            console.log('open onglet module');
+            open_onglet('module');
         }
     });
     const module_title = $('<h1 class="module-title">'+moduleName+'</h1>');
@@ -237,5 +228,45 @@ function create_module(moduleID, moduleName){
     }
     _section.addModule(_module);
     _module.setSection(_section);
+    configure_module(_module);
     return _module;
+}
+
+function configure_module(module, width = 50){
+    const module_element = $('#module-' + module.getModuleID());
+    module.setWidth(width);
+    module_element.attr('data-width', width);
+}
+
+function close_save_notif(){
+    if(save_request != null){
+        clearTimeout(save_request);
+    }
+
+    save_request = setTimeout(function(){
+        save_notif.css("bottom", "-100px");
+    }, 1000);
+}
+
+function editor_request_save(){
+    if(save_request != null){
+        clearTimeout(save_request);
+    }
+    save_en_cours = true;
+    save_request = setTimeout(function(){
+        save_request = setTimeout(function(){
+            save_notif.css("bottom", "10px");
+            save_notif_text.empty();
+            save_notif_text.text('Sauvegarde en cours ...');
+            save_request = setTimeout(function(){
+                save_notif_text.text('Sauvegarde effectuée');
+                const i = $('<i class="fa-solid fa-check"></i>');
+                save_notif_text.append(i);
+                i.fadeOut('fast');
+                i.fadeIn('fast');
+                save_en_cours = false;
+                close_save_notif();
+            }, 1000);
+        }, 500);
+    }, 1000);
 }

@@ -9,6 +9,8 @@ get_header();
         </div>
     </div>
 
+    <div id="save-notif"><p></p></div>
+
     <div id="onglet_editor">
         <div class="attached">
             <div id="btn-onglet"><i></i></div>

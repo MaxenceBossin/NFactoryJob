@@ -33,22 +33,30 @@ function get_form(formName){
 }
 
 // Attention: 'values' est un array (utile pour les select)
-function create_input(name, showName = '', form = null, type = "text", values = [], placeholder = "", specific_ID = ""){
+function create_input(name, showName = '', parent = null, type = "text", values = [], placeholder = "", specific_ID = ""){
 
     if(showName.length === 0){
         showName = name;
     }
     let input;
     if(type === "slider"){
-        input = $('<input type="range" min="0" max="100" />');
+        input = $('<input type="range" min="0" max="100" />').on('input', function(){
+            let _name = $(this).attr('name');
+            let _type = $(this).attr('data-type');
+            $('#slider-span-' + _name).text(parseInt($(this).val()) + '' + _type);
+        });
         if(values.length > 0){
-            input.attr('value', parseFloat(values[0]));
+            let _value = parseFloat(values[0]);
+            input.attr('value', _value);
         }
         if(values.length >= 3){
             const min = parseFloat(values[1]);
             const max = parseFloat(values[2]);
             input.attr('min', min);
             input.attr('max', max);
+        }
+        if(values.length >= 4){
+            input.attr('data-type', values[3]);
         }
         input.addClass('slider');
     }
@@ -87,13 +95,33 @@ function create_input(name, showName = '', form = null, type = "text", values = 
         input.attr('id', name);
     }
 
-    if(form != null){
+    if(parent != null){
         const label = $('<label for="'+name+'">'+showName+'</label>');
-        form.append(label);
+        parent.append(label);
         const span_error = $('<span id="error-'+name+'" class="error"></span>');
-        form.append(label);
-        form.append(input);
-        form.append(span_error);
+        parent.append(label);
+        parent.append(input);
+
+        if(type === "slider"){
+            let _sliderSpanNam = 'slider-span-';
+            if(specific_ID.length > 0){
+                _sliderSpanNam += specific_ID;
+            }
+            else{
+                _sliderSpanNam += name;
+            }
+            let _value = 0;
+            if(values.length > 0){
+                _value = parseInt(values[0]);
+            }
+            let _type = '';
+            if(values.length >= 4){
+                _type = values[3];
+            }
+            parent.append($('<span id="'+_sliderSpanNam+'">'+_value+_type+'</span>'));
+        }
+
+        parent.append(span_error);
     }
 
     return input;

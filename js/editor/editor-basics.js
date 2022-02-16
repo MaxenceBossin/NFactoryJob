@@ -5,6 +5,8 @@ const btn_i = $('#btn-onglet i');
 const modules = $('#cv .modules');
 const btn_onglet_general = $('#onglet_editor #btn-onglet-general');
 const btn_onglet_module = $('#onglet_editor #btn-onglet-module');
+const save_notif = $('#save-notif');
+const save_notif_text = $('#save-notif p');
 
 let modules_el = [];
 let sections_el = [];
@@ -14,12 +16,10 @@ let LAST_SECTION_NUM = 1;
 let selected_section = null;
 
 // Todo
-// pouvoir mettre 1,2,3,4 modules max (par ligne)
-// créer automatiquement les sections et répartir les modules dans les bonnes sections selon la taille de chaque module
-// section => nowrap
 
 $( document ).ready(function() {
     open_onglet();
+    close_save_notif();
     place_add_module();
 });
 

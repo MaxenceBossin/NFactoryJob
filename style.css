@@ -179,6 +179,14 @@ textarea {
 #onglet_editor .content {
   padding: 1rem;
 }
+#onglet_editor .content .content-module, #onglet_editor .content .content-general {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  align-items: center;
+  align-content: center;
+  width: 100%;
+}
 #onglet_editor .attached {
   position: relative;
 }
@@ -204,12 +212,22 @@ textarea {
 #cv .wrap_cv .modules {
   display: flex;
   flex-flow: column nowrap;
-  gap: 0.5rem;
+  gap: 1.5rem;
 }
-#cv .wrap_cv .modules .module-section {
+#cv .wrap_cv .modules section.module-section {
+  position: relative;
   display: flex;
   flex-flow: row nowrap;
   gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+}
+#cv .wrap_cv .modules section.module-section .section-title {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  color: rgba(0, 0, 0, 0.5);
 }
 #cv .wrap_cv .modules .module {
   background-color: white;
@@ -232,6 +250,9 @@ textarea {
 #cv .wrap_cv .modules .module:not(.add) {
   cursor: pointer;
 }
+#cv .wrap_cv .modules .module.add:not(.generated) {
+  cursor: pointer;
+}
 #cv .wrap_cv .modules .module.add {
   position: relative;
   width: 45%;
@@ -245,7 +266,7 @@ textarea {
   font-weight: 300;
   transform: translate(-50%, -50%);
   font-size: 1.6rem;
-  color: #adb3c2;
+  color: #8b909b;
 }
 #cv .wrap_cv .modules .module.add i {
   position: absolute;
@@ -257,7 +278,11 @@ textarea {
   color: #adb3c2;
 }
 
-#cv form {
+#onglet_editor .content input {
+  width: 90%;
+}
+
+#cv form, #onglet_editor .content {
   padding: 0.5rem;
   width: 100%;
   display: flex;
@@ -268,16 +293,16 @@ textarea {
   gap: 0.5rem;
   transition: all 0.35s;
 }
-#cv form input[type=submit] {
+#cv form input[type=submit], #onglet_editor .content input[type=submit] {
   cursor: pointer;
   transition: all 0.25s;
 }
-#cv form input[type=submit]:hover {
+#cv form input[type=submit]:hover, #onglet_editor .content input[type=submit]:hover {
   opacity: 0.7;
   color: white;
   background-color: #5e80c9;
 }
-#cv form input, #cv form select {
+#cv form input:not([type=range]), #cv form select, #onglet_editor .content input:not([type=range]), #onglet_editor .content select {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   background-color: #d0d4dc;
   border: none;
@@ -285,11 +310,33 @@ textarea {
   padding: 0.5rem;
   width: 95%;
 }
-#cv form select, #cv form input:not([type=submit]) {
+#cv form select, #cv form input:not([type=submit]), #onglet_editor .content select, #onglet_editor .content input:not([type=submit]) {
   color: #484848;
 }
-#cv form .error {
+#cv form .error, #onglet_editor .content .error {
   color: red;
+}
+
+#save-notif {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.5s;
+  padding: 0.8rem;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+}
+#save-notif i {
+  padding-left: 0.5rem;
+  color: #5e80c9;
 }
 
 /**
