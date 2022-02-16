@@ -147,7 +147,20 @@ function generate_add_cv_module(parent){
         $(this).remove();
         const form = create_form('editor_add_cv_module');
 
-        let items = ['Compétences', 'Formations', 'Module personnalisé'];
+        // Nom du module - Est-il unique
+        let items = [
+            ['Compétences', true],
+            ['Contact', true],
+            ['Expériences personnelles', true],
+            ['Expériences professionnelles', true],
+            ['Formations', true],
+            ['Icône (inactif)', true],
+            ['Informations', true],
+            ['Langues', true],
+            ['Loisirs', true],
+            ['Module personnalisé', false],
+            ['Photo de profil (inactif)', false]
+        ];
         let fItems = [];
         let found = false;
         items.forEach(function(item){
@@ -157,8 +170,8 @@ function generate_add_cv_module(parent){
                     found = true;
                 }
             });
-            if(!found || item === 'Module personnalisé'){
-                fItems.push(item);
+            if(!found || !item[1]){
+                fItems.push(item[0]);
             }
         });
 
@@ -211,9 +224,7 @@ function create_module(moduleID, moduleName, _width = 50){
             refresh_onglets_menu();
         }
     });
-    const module_title = $('<h1 class="module-title">'+moduleName+'</h1>');
 
-    module.append(module_title);
     let _module = new Module(moduleID, moduleName);
     modules_el.push(_module);
 
@@ -228,7 +239,6 @@ function create_module(moduleID, moduleName, _width = 50){
     _section.addModule(_module);
     _module.setSection(_section);
     _module.setWidth(_width);
-    module.attr('data-width', _width);
     _module.refresh();
     return _module;
 }
@@ -264,4 +274,37 @@ function editor_request_save() {
             }, 1000);
         }, 500);
     }, 1000);
+}
+
+function add_module_item_global(parent, showName, paramCategory, removable_form = false, _data = []){
+    const add = $('<span class="add-item">+ '+showName+'</span>').on('click', function(){
+        const _form = create_form('module_add_category_' + paramCategory);
+        create_input(paramCategory, showName, _form, 'autocomplete', _data);
+        build_form(_form, 'Ajouter', [], removable_form);
+        _form.insertBefore($(this));
+        if (removable_form) {
+            $(this).remove();
+        }
+    });
+    parent.append(add);
+}
+
+function add_module_item_param(module, moduleItem, paramCategory, paramItem, paramName, showText, type = 'autocomplete', removable_form = false, _data = []){
+    let _moduleData = module.getData();
+    if(_moduleData.hasOwnProperty(paramCategory)) {
+        if (!_moduleData[paramCategory].hasOwnProperty(paramItem) || !_moduleData[paramCategory][paramItem].hasOwnProperty(paramName) || _moduleData[paramCategory][paramItem][paramName].length === 0) {
+            const add_param = $('<span class="add-item pad-1">+ ' + showText + '</span>').on('click', function () {
+                const _form = create_form('module_item_add_' + paramCategory + '_' + paramName);
+                create_input(paramName, showText, _form, type, _data);
+                build_form(_form, 'Ajouter', [paramItem], removable_form);
+                _form.insertBefore($(this));
+                if (removable_form) {
+                    $(this).remove();
+                }
+            });
+            moduleItem.append(add_param);
+        } else {
+            moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+        }
+    }
 }

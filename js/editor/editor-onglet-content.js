@@ -11,7 +11,9 @@ function refresh_general_content(){
         }
     }
 
-    let _input = create_input('back-color', 'Couleur de fond', content_general, 'colorpicker', [$('#cv .wrap_cv').attr("data-backcol")]);
+    let _input;
+
+    _input = create_input('back-color', 'Couleur de fond', content_general, 'colorpicker', [$('#cv .wrap_cv').attr("data-backcol")]);
     _input.on('input change propertychange', function(){
         $('#cv .wrap_cv').css("background-color", $(this).val());
         $('#cv .wrap_cv').attr("data-backcol", $(this).val());
@@ -37,6 +39,10 @@ function refresh_module_content(){
 
     if(selected_module.getModuleName() === "Module personnalisé"){
         create_input('nom_module', 'Nom du module', content_module, 'text', [$('#module-' + selected_module.getModuleID() + ' h1.module-title').text()]).on('input', function(){
+            const _module = get_selected_module();
+            if(_module != null){
+                _module.setModuleShownName($(this).val());
+            }
             $('#module-' + selected_module.getModuleID() + ' h1.module-title').text($(this).val());
             editor_request_save();
         });

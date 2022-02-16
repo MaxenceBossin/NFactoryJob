@@ -276,6 +276,13 @@ textarea {
 #cv .wrap_cv .modules .module .module-title {
   font-weight: 300;
 }
+#cv .wrap_cv .modules .module .module-item .module-item-head-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+#cv .wrap_cv .modules .module .module-item .desc {
+  padding-left: 1rem;
+}
 #cv .wrap_cv .modules .module.selected {
   border: 2px solid #5e80c9;
 }
