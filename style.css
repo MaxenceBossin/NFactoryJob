@@ -136,6 +136,25 @@ textarea {
   width: 90vw;
 }
 
+#cv .btn, #onglet_editor .btn {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  color: white;
+  width: 95%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+#cv .btn:hover, #onglet_editor .btn:hover {
+  opacity: 0.8;
+}
+#cv .btn.red, #onglet_editor .btn.red {
+  background-color: #f35e5e;
+}
+#cv .btn.blue, #onglet_editor .btn.blue {
+  background-color: #5e80c9;
+}
+
 #onglet_editor {
   position: fixed;
   top: 0;
@@ -184,6 +203,7 @@ textarea {
   flex-flow: column nowrap;
   gap: 0.5rem;
   align-items: center;
+  padding: 0.5rem;
   align-content: center;
   width: 100%;
 }
@@ -214,6 +234,10 @@ textarea {
   flex-flow: column nowrap;
   gap: 1.5rem;
 }
+#cv .wrap_cv .modules .add-item {
+  color: #5e80c9;
+  cursor: pointer;
+}
 #cv .wrap_cv .modules section.module-section {
   position: relative;
   display: flex;
@@ -233,8 +257,11 @@ textarea {
   background-color: white;
   border-radius: 5px;
   border: 2px solid transparent;
-  transition: all 1s;
+  transition: all 0.5s;
   padding: 1rem;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }

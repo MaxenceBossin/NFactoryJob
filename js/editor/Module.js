@@ -1,8 +1,13 @@
 class Module{
-    constructor(moduleID, moduleName) {
+    constructor(moduleID, moduleName, moduleShownName = '') {
         this.moduleID = moduleID;
         this.moduleName = moduleName;
-        this.moduleShownName = moduleName;
+        if(moduleShownName.length === 0){
+            this.moduleShownName = moduleName;
+        }
+        else{
+            this.moduleShownName = moduleShownName;
+        }
         this.section = null;
 
         this.width = 50;

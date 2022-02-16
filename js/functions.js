@@ -39,7 +39,12 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         showName = name;
     }
     let input;
-    if(type === "slider"){
+    if(type === "autocomplete"){
+        input = $('<input type="text" />').on('input', function(){
+
+        });
+    }
+    else if(type === "slider"){
         input = $('<input type="range" min="0" max="100" />').on('input', function(){
             let _name = $(this).attr('name');
             let _type = $(this).attr('data-type');
@@ -127,13 +132,25 @@ function create_input(name, showName = '', parent = null, type = "text", values 
     return input;
 }
 
-function build_form(form, submitValue = 'Valider', secondary_infos = []){
+function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false){
     const submit = $('<input type="submit" value="'+submitValue+'" />');
     form.append(submit);
     form.attr('style', 'opacity: 0;');
     form.animate({
         "opacity": "1"
     }, 300);
+
+    if(add_cancel_option){
+        const cancel_btn = $('<button data-form="'+form.attr('id')+'" class="btn red">Annuler</button>');
+        cancel_btn.on('click', function(){
+            const associated_form = $(this).attr('data-form');
+            $('#' + associated_form).fadeOut('slow', function(){
+                $('#' + associated_form).remove();
+            });
+        });
+        form.append(cancel_btn);
+    }
+
     form.on('submit', function(_e){
         _e.preventDefault();
         let data = {};

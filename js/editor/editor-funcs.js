@@ -208,8 +208,6 @@ function create_module(moduleID, moduleName){
         const _module = get_module_by_ID(get_module_element_id($(this)));
         if (_module !== null) {
             select_module(_module);
-            console.log('open onglet module');
-            open_onglet('module');
         }
     });
     const module_title = $('<h1 class="module-title">'+moduleName+'</h1>');
@@ -230,12 +228,6 @@ function create_module(moduleID, moduleName){
     _module.setSection(_section);
     configure_module(_module);
     return _module;
-}
-
-function configure_module(module, width = 50){
-    const module_element = $('#module-' + module.getModuleID());
-    module.setWidth(width);
-    module_element.attr('data-width', width);
 }
 
 function close_save_notif(){

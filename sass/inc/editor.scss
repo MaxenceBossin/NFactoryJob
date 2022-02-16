@@ -4,6 +4,27 @@
   width: 90vw;
 }
 
+#cv, #onglet_editor{
+  .btn{
+    padding: .5rem 1rem .5rem 1rem;
+    color: white;
+    width: 95%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .25s;
+    &:hover{
+      opacity: .8;
+    }
+  }
+  .btn.red{
+    background-color: #f35e5e;
+  }
+  .btn.blue{
+    background-color: #5e80c9;
+  }
+}
+
 #onglet_editor{
   position: fixed;
   top: 0;
@@ -50,6 +71,7 @@
       flex-flow: column nowrap;
       gap: .5rem;
       align-items: center;
+      padding: .5rem;
       align-content: center;
       width: 100%;
     }
@@ -81,6 +103,10 @@
   display: flex;
   flex-flow: column nowrap;
   gap: 1.5rem;
+  .add-item{
+    color: #5e80c9;
+    cursor: pointer;
+  }
   section.module-section{
     position: relative;
     display: flex;
@@ -100,8 +126,11 @@
     background-color: white;
     border-radius: 5px;
     border: 2px solid transparent;
-    transition: all 1s;
+    transition: all .5s;
     padding: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .5rem;
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     &:hover{
