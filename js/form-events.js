@@ -18,14 +18,44 @@ function on_form_submit(formName, form, data, secondary_infos){
     if(formName === 'editor_add_cv_module'){
         editor_add_cv_module(form, data, secondary_infos);
     }
-    else if(formName === 'module_data_form'){
-        module_data_form(form, data);
+    else if(formName === 'module_competence_form'){
+        module_competence_form(form, data);
+    }
+    else if(formName === 'module_formation_form'){
+        module_formation_form(form, data);
     }
 }
 
-function module_data_form(form, data){
-    console.log(data.largeur);
-    editor_request_save();
+function module_formation_form(form, data){
+    const _module = get_selected_module();
+    if(_module !== null){
+        const _data = _module.getData();
+        if(!_data.hasOwnProperty('formation')){
+            _data['formation'] = [];
+        }
+        if(!_data['formation'].hasOwnProperty(data.formation)){
+            _data['formation'][data.formation] = [];
+        }
+        console.log(_data);
+        _module.updateData(_data);
+        $('<div class="module-item"><p class="module-item-head-title">'+data.formation+'</p></div>').insertBefore(form);
+    }
+}
+
+function module_competence_form(form, data){
+    const _module = get_selected_module();
+    if(_module !== null){
+        const _data = _module.getData();
+        if(!_data.hasOwnProperty('competence')){
+            _data['competence'] = [];
+        }
+        if(_data['competence'][data.competence] === undefined){
+            _data['competence'][data.competence] = [];
+        }
+        console.log(_data);
+        _module.updateData(_data);
+        $('<div class="module-item"><p class="module-item-head-title">'+data.competence+'</p></div>').insertBefore(form);
+    }
 }
 
 function editor_add_cv_module(form, data, secondary_infos){

@@ -4,7 +4,7 @@
 get_header();
 ?>
     <div id="cv">
-        <div class="wrap_cv">
+        <div class="wrap_cv" data-backcol="#FFFFFF">
             <div class="modules"><!-- généré en js --></div>
         </div>
     </div>

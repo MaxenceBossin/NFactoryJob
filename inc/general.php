@@ -41,6 +41,10 @@ function nfactoryjob_scripts() {
 	wp_enqueue_style( 'nfactoryjob-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'nfactoryjob-style', 'rtl', 'replace' );
 
+    if(is_page_template('template-editor.php')){
+        wp_enqueue_style( 'farbtastic', get_template_directory_uri() . '/js/editor/plugins/farbtastic/farbtastic.css', array(), _S_VERSION);
+    }
+
     wp_deregister_script('jquery');
     wp_enqueue_script( 'jquery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js', array(), _S_VERSION, true );
 
@@ -55,6 +59,7 @@ function nfactoryjob_scripts() {
     wp_enqueue_script( 'ajax-events', get_template_directory_uri() . '/js/ajax-events.js', array(), _S_VERSION, true );
 
     if(is_page_template('template-editor.php')){
+        wp_enqueue_script( 'farbtastic', get_template_directory_uri() . '/js/editor/plugins/farbtastic/farbtastic.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'module-class', get_template_directory_uri() . '/js/editor/Module.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'section-class', get_template_directory_uri() . '/js/editor/Section.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-functions', get_template_directory_uri() . '/js/editor/editor-funcs.js', array(), _S_VERSION, true );

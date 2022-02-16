@@ -2,6 +2,7 @@
   padding: 1rem;
   margin-left: 1rem;
   width: 90vw;
+  margin-top: 1rem;
 }
 
 #cv, #onglet_editor{
@@ -35,6 +36,9 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 10;
   transition: all .4s;
+  h1{
+    font-weight: 300;
+  }
   .onglets_parts {
     display: flex;
     flex-flow: row nowrap;
@@ -106,15 +110,13 @@
   .add-item{
     color: #5e80c9;
     cursor: pointer;
+    width: max-content;
   }
   section.module-section{
     position: relative;
     display: flex;
     flex-flow: row nowrap;
     gap: .5rem;
-    padding: .5rem;
-    border-radius: 5px;
-    border: 2px solid rgba(0,0,0,.2);
     .section-title{
       position: absolute;
       top: -20px;

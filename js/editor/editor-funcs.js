@@ -163,7 +163,7 @@ function generate_add_cv_module(parent){
         });
 
         create_input('type_module', 'Type de module', form, 'select', fItems);
-        build_form(form, 'Ajouter', [parent], true);
+        build_form(form, 'Ajouter', [parent], false);
         parent.append(form);
     });
 }
@@ -208,6 +208,7 @@ function create_module(moduleID, moduleName){
         const _module = get_module_by_ID(get_module_element_id($(this)));
         if (_module !== null) {
             select_module(_module);
+            refresh_onglets_menu();
         }
     });
     const module_title = $('<h1 class="module-title">'+moduleName+'</h1>');

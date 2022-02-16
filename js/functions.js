@@ -34,6 +34,10 @@ function get_form(formName){
 
 // Attention: 'values' est un array (utile pour les select)
 function create_input(name, showName = '', parent = null, type = "text", values = [], placeholder = "", specific_ID = ""){
+    let _fID = name;
+    if(specific_ID.length > 0){
+        _fID = specific_ID;
+    }
 
     if(showName.length === 0){
         showName = name;
@@ -43,6 +47,14 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         input = $('<input type="text" />').on('input', function(){
 
         });
+    }
+    else if(type === 'colorpicker'){
+        if(values.length > 0){
+            input = $('<input type="text" value="'+values[0]+'" />');
+        }
+        else{
+            input = $('<input type="text" value="#FFFFFF" />');
+        }
     }
     else if(type === "slider"){
         input = $('<input type="range" min="0" max="100" />').on('input', function(){
@@ -124,6 +136,10 @@ function create_input(name, showName = '', parent = null, type = "text", values 
                 _type = values[3];
             }
             parent.append($('<span id="'+_sliderSpanNam+'">'+_value+_type+'</span>'));
+        }
+        else if(type === "colorpicker"){
+            parent.append($('<div id="picker-'+_fID+'"></div>'));
+            $('#picker-' + _fID).farbtastic('#' +_fID);
         }
 
         parent.append(span_error);

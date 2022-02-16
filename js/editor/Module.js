@@ -11,6 +11,15 @@ class Module{
         this.section = null;
 
         this.width = 50;
+        this.data = [];
+    }
+
+    getData(){
+        return this.data;
+    }
+
+    updateData(data){
+        this.data = data;
     }
 
     setSection(section){

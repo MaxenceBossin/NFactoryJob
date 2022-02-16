@@ -11,6 +11,13 @@ function refresh_general_content(){
         }
     }
 
+    let _input = create_input('back-color', 'Couleur de fond', content_general, 'colorpicker', [$('#cv .wrap_cv').attr("data-backcol")]);
+    _input.on('input change propertychange', function(){
+        $('#cv .wrap_cv').css("background-color", $(this).val());
+        $('#cv .wrap_cv').attr("data-backcol", $(this).val());
+        editor_request_save();
+    });
+
     content_general.append($('<p>Profitez de toutes les fonctionnalités de l\'éditeur et d\'une personnalisation complète de votre CV en créant un compte gratuitement !</p>'));
     content_general.append($('<button class="btn blue" id="create-account">Créer un compte</button>'));
 
@@ -26,7 +33,8 @@ function refresh_module_content(){
         return;
     }
 
-    console.log(selected_module.getModuleName());
+    content_module.append($('<h1>'+selected_module.getModuleName()+'</h1>'));
+
     if(selected_module.getModuleName() === "Module personnalisé"){
         create_input('nom_module', 'Nom du module', content_module, 'text', [$('#module-' + selected_module.getModuleID() + ' h1.module-title').text()]).on('input', function(){
             $('#module-' + selected_module.getModuleID() + ' h1.module-title').text($(this).val());
