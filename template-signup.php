@@ -11,6 +11,7 @@ get_header();
     <div class="wrap">
         <p class="account">Créer un compte</p>
         <div class="box">
+            <div class="box_text">
             <form action="" method="get">
                 <p>Vous êtes :</p>
 
@@ -34,6 +35,7 @@ get_header();
                 <input type="submit" value="S'inscrire">
                 <p class="text_blue">Je possède déjà un compte</p>
             </form>
+            </div>
                 <div class="box_img">
                     <img src="https://img.search.brave.com/0H3rXORse0LxyalDCBhrFoqMpTl6Ise1hjOceQpqO9E/rs:fit:1200:1200:1/g:ce/aHR0cDovL3d3dy5z/bnV0LmZyL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE1LzA4L2lt/YWdlLWRlLXBheXNh/Z2UtNS5qcGc" alt="">
                 </div>
