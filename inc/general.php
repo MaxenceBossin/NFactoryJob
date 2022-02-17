@@ -61,7 +61,8 @@ function nfactoryjob_scripts() {
     if(is_page_template('template-editor.php')){
         wp_enqueue_script( 'farbtastic', get_template_directory_uri() . '/js/editor/plugins/farbtastic/farbtastic.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'module-class', get_template_directory_uri() . '/js/editor/Module.js', array(), _S_VERSION, true );
-        wp_enqueue_script( 'section-class', get_template_directory_uri() . '/js/editor/Section.js', array(), _S_VERSION, true );
+        wp_enqueue_script( 'cv-class', get_template_directory_uri() . '/js/editor/CV.js', array(), _S_VERSION, true );
+        wp_enqueue_script( 'line-class', get_template_directory_uri() . '/js/editor/Line.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-functions', get_template_directory_uri() . '/js/editor/editor-funcs.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-onglet-content', get_template_directory_uri() . '/js/editor/editor-onglet-content.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'editor-basics', get_template_directory_uri() . '/js/editor/editor-basics.js', array(), _S_VERSION, true );

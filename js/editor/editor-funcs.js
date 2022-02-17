@@ -109,8 +109,8 @@ function place_add_module(){
     if($('#add-module').length){
         $('#add-module').remove();
     }
-    if($('#add-section').length){
-        $('#add-section').remove();
+    if($('#add-line').length){
+        $('#add-line').remove();
     }
 
     const add_module = $('<div id="add-module" class="module add"><h1 class="add-block-title">Ajouter un module</h1><i class="fa-solid fa-plus"></i></div>');
@@ -122,21 +122,40 @@ function place_add_module(){
         }
     });
 
-    let _section = get_selected_section();
-    if(_section === null || _section.countModules() + 1 > _section.getMaxModules()){
-        _section = create_section(2);
-        _section.getDOMElement().append(add_module);
+    let _line = get_selected_line();
+    if(_line === null || _line.countModules() + 1 > _line.getMaxModules()){
+        _line = create_line(2);
+        _line.getDOMElement().append(add_module);
     }
     else{
-        _section.getDOMElement().append(add_module);
+        _line.getDOMElement().append(add_module);
     }
 
-    const add_section = $('<section id="add-section" class="module-section"><span class="section-title">Section '+LAST_SECTION_NUM+'</span><div class="module add"><h1 class="add-block-title">Ajouter une section</h1><i class="fa-solid fa-plus"></i></div></section>');
-    add_section.on('click', function(){
+    const add_line = $('<section id="add-line" class="module-line"><div class="module add"><h1 class="add-block-title">Ajouter une ligne</h1><i class="fa-solid fa-plus"></i></div></section>');
+    add_line.on('click', function(){
 
     });
 
-    modules.append(add_section);
+    modules.append(add_line);
+}
+
+function on_color_update(el){
+
+    if(el.attr('id').startsWith('back_module_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
+
+    if(el.attr('id') === 'back-color'){
+        CV.setColor(el.val());
+        CV.refresh();
+        editor_request_save();
+    }
 }
 
 function generate_add_cv_module(parent){
@@ -147,14 +166,14 @@ function generate_add_cv_module(parent){
         $(this).remove();
         const form = create_form('editor_add_cv_module');
 
-        // Nom du module - Est-il unique
+        // Nom du module - Unique?
         let items = [
             ['Compétences', true],
             ['Contact', true],
             ['Expériences personnelles', true],
             ['Expériences professionnelles', true],
             ['Formations', true],
-            ['Icône (inactif)', true],
+            ['Icône (inactif)', false],
             ['Informations', true],
             ['Langues', true],
             ['Loisirs', true],
@@ -166,7 +185,7 @@ function generate_add_cv_module(parent){
         items.forEach(function(item){
             found = false;
             modules_el.forEach(function(el){
-                if(item === el.getModuleName()){
+                if(item[0] === el.getModuleName()){
                     found = true;
                 }
             });
@@ -186,34 +205,34 @@ function get_module_element_id(module_element){
     return parseInt(splitted_module[1]);
 }
 
-function get_section_by_num(_num){
-    for(let i=0;i<sections_el.length;i++){
-        if(sections_el[i] != null && sections_el[i].getSectionNum() === _num){
-            return sections_el[i];
+function get_line_by_num(_num){
+    for(let i=0;i<lines_el.length;i++){
+        if(lines_el[i] != null && lines_el[i].getLineNum() === _num){
+            return lines_el[i];
         }
     }
     return null;
 }
 
-function get_selected_section(){
-    return selected_section;
+function get_selected_line(){
+    return selected_line;
 }
 
-function create_section(maxModules, _num = -1){
+function create_line(maxModules, _num = -1){
 
     if(_num === -1){
-        _num = LAST_SECTION_NUM;
+        _num = LAST_LINE_NUM;
     }
 
-    const sectionElement = $('<section class="module-section"><span class="section-title">Section '+_num+'</span></section>');
-    modules.append(sectionElement);
-    let _section = new Section(_num, maxModules, sectionElement);
-    if(_num + 1 > LAST_SECTION_NUM){
-        LAST_SECTION_NUM = _num + 1;
+    const lineElement = $('<section class="module-line"></section>');
+    modules.append(lineElement);
+    let _line = new Line(_num, maxModules, lineElement);
+    if(_num + 1 > LAST_LINE_NUM){
+        LAST_LINE_NUM = _num + 1;
     }
-    sections_el.push(_section);
-    selected_section = _section;
-    return _section;
+    lines_el.push(_line);
+    selected_line = _line;
+    return _line;
 }
 
 function create_module(moduleID, moduleName, _width = 50){
@@ -228,16 +247,16 @@ function create_module(moduleID, moduleName, _width = 50){
     let _module = new Module(moduleID, moduleName);
     modules_el.push(_module);
 
-    let _section = get_selected_section();
-    if(_section === null || _section.countModules() + 1 > _section.getMaxModules()){
-        _section = create_section(2);
-        _section.getDOMElement().append(module);
+    let _line = get_selected_line();
+    if(_line === null || _line.countModules() + 1 > _line.getMaxModules()){
+        _line = create_line(2);
+        _line.getDOMElement().append(module);
     }
     else{
-        _section.getDOMElement().append(module);
+        _line.getDOMElement().append(module);
     }
-    _section.addModule(_module);
-    _module.setSection(_section);
+    _line.addModule(_module);
+    _module.setLine(_line);
     _module.setWidth(_width);
     _module.refresh();
     return _module;

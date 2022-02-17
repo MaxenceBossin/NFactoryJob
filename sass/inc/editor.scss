@@ -112,12 +112,12 @@
   .add-item.pad-1{
     padding-left: 1rem;
   }
-  section.module-section{
+  section.module-line{
     position: relative;
     display: flex;
     flex-flow: row nowrap;
     gap: .5rem;
-    .section-title{
+    .line-title{
       position: absolute;
       top: -20px;
       left: 0;

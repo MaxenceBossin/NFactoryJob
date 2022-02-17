@@ -9,11 +9,11 @@ const save_notif = $('#save-notif');
 const save_notif_text = $('#save-notif p');
 
 let modules_el = [];
-let sections_el = [];
+let lines_el = [];
 let selected_module = null;
 let LAST_MODULE_ID = 1;
-let LAST_SECTION_NUM = 1;
-let selected_section = null;
+let LAST_LINE_NUM = 1;
+let selected_line = null;
 
 // Todo
 
