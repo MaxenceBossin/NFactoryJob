@@ -302,11 +302,11 @@ function get_selected_line(){
 
 function create_line(maxModules, _num = -1){
 
-    if(_num === -1){
+    if(_num <= 0){
         _num = get_new_available_line_num();
     }
 
-    const lineElement = $('<section class="module-line"></section>');
+    const lineElement = $('<section id="line-'+_num+'" class="module-line"><span class="line-title">Section '+ _num +'</span></section>');
     modules.append(lineElement);
     let _line = new Line(_num, maxModules, lineElement);
     lines_el.push(_line);

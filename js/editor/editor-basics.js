@@ -67,23 +67,58 @@ $(document).on('mousedown', function(e){
     }
 });
 
-$(document).on('mouseup', function(){
+$(document).on('mouseup', function(e){
     if($('body').hasClass('noselect')){
         $('body').removeClass('noselect');
     }
     $('body').css("cursor", "default");
 
     if(drag_module !== null){
+        const over_element = $(e.target);
+        if(over_element !== undefined && (over_element.hasClass('module') || over_element.hasClass('module-line'))){
+            let _section = null;
+            // Module
+            if(over_element.hasClass('module') && over_element !== drag_module){
+                if(over_element.hasClass('add')){
+                    const _line = get_line_by_num(parseInt(over_element.parent().attr('id').split('-')[1]));
+                    if(_line !== null){
+                        _section = _line;
+                    }
+                }
+                else{
+                    const _module = get_module_by_ID(parseInt(over_element.attr('id').split('-')[1]));
+                    if(_module !== null){
+                        _section = _module.getLine();
+                    }
+                }
+            }
+            // Section
+            if(over_element.hasClass('module-line') && over_element.attr('id') !== 'add-line'){
+                const _line = get_line_by_num(parseInt(over_element.attr('id').split('-')[1]));
+                if(_line !== null){
+                    _section = _line;
+                }
+            }
+
+            if(_section !== null){
+                const actualModule = get_module_by_ID(parseInt(drag_module.attr('id').split('-')[1]));
+                if(actualModule !== null){
+                    const actualModuleSection = actualModule.getLine();
+                    if(actualModuleSection !== null){
+
+                        actualModuleSection.removeModule(actualModule);
+                        _section.addModule(actualModule);
+                        actualModule.setLine(_section);
+                        drag_module.appendTo($("#line-" + _section.getLineNum()));
+                        refresh_onglets_menu();
+                        place_add_module();
+                    }
+                }
+            }
+        }
         drag_module.css("position", "relative");
         drag_module.css("top", "0");
         drag_module.css("left", "0");
-        const _module = get_module_by_ID(parseInt(drag_module.attr('id').split('-')[1]));
-        if(_module !== null){
-            const _line = _module.getLine();
-            if(_line !== null){
-
-            }
-        }
     }
     drag_module = null;
 });

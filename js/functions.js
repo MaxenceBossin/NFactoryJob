@@ -224,6 +224,7 @@ function on_ajax_get_autocomplete_data(input_id, data){
                         const _input_target = $('#' + input_id);
                         const _autocomplete_target = $('#autocomplete-for-' + input_id_data);
                         _input_target.val($(this).text());
+                        _input_target.attr('data-fromautocompletion', '1');
                         _autocomplete_target.css("display", "none");
                     });
                     _autocomplete.append(_autocomplete_item);

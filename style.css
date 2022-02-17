@@ -323,12 +323,16 @@ textarea {
   display: flex;
   flex-flow: row nowrap;
   gap: 0.5rem;
+  min-height: 150px;
 }
 #cv .wrap_cv .modules section.module-line .line-title {
   position: absolute;
-  top: -20px;
-  left: 0;
-  color: rgba(0, 0, 0, 0.5);
+  top: 50%;
+  z-index: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(0, 0, 0, 0.15);
+  font-size: 3rem;
 }
 #cv .wrap_cv .modules .module {
   background-color: white;
@@ -336,6 +340,7 @@ textarea {
   border: 2px solid transparent;
   transition: all 0.1s;
   padding: 1rem;
+  z-index: 2;
   display: flex;
   flex-flow: column nowrap;
   gap: 0.5rem;
