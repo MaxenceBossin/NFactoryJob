@@ -1,17 +1,71 @@
 
 // Général
 function refresh_general_content(){
+    let _input;
     content_module.css("display", "none");
     content_general.empty();
     content_general.css("display", "flex");
 
+    _input = create_input('cv-title', 'Nom du CV', content_general, 'text', [CV.getTitle()]);
+    _input.on('input change', function(){
+        CV.setTitle($(this).val());
+        CV.refresh();
+        editor_request_save();
+    });
+
+    const table = $('<table class="section-table"></table>');
+    table.append($('<thead><tr><th></th><th></th></tr></thead>'));
+    const tbody = $('<tbody></tbody>');
+    let foundLine = false;
     for(let i=0;i<lines_el.length;i++){
         if(lines_el[i] != null){
-            content_general.append($('<p>Ligne '+lines_el[i].getLineNum()+'</p>'));
+            foundLine = true;
+            const tr = $('<tr></tr>');
+            let td = $('<td></td>');
+            const delete_line = $('<i data-section="'+lines_el[i].getLineNum()+'" class="fa-solid fa-trash"></i>').on('click', function(){
+                const lineID = $(this).attr('data-section');
+                const _line = get_line_by_num(parseInt(lineID));
+                if(_line !== null){
+                    destroy_section(_line);
+                }
+            });
+            td.append($('<p>Section '+lines_el[i].getLineNum()+'</p>'));
+            if(lines_el[i].getLineNum() > 1 && lines_el[i].countModules() > 0){
+                td.append(delete_line);
+            }
+            tr.append(td);
+            td = $('<td></td>');
+            const _modules = lines_el[i].getModules();
+            let moduleFound = false;
+            if(_modules != null && _modules.length > 0){
+                for(let _mod = 0;_mod<_modules.length;_mod++){
+                    if(_modules[_mod] !== null && _modules[_mod] !== undefined){
+                        td.append($('<button>'+_modules[_mod].getModuleName()+'</button>'));
+                        const delete_module = $('<i data-mod="'+_modules[_mod].getModuleID()+'" class="fa-solid fa-trash"></i>').on('click', function(){
+                            const modID = $(this).attr('data-mod');
+                            const _module = get_module_by_ID(parseInt(modID));
+                            if(_module !== null){
+                                destroy_module(_module);
+                            }
+                        });
+                        td.append(delete_module);
+                        moduleFound = true;
+                    }
+                }
+            }
+            if(!moduleFound){
+                td.append($('<p>Aucun module dans cette section</p>'));
+            }
+            tr.append(td);
+            tbody.append(tr);
         }
     }
+    table.append(tbody);
+    content_general.append(table);
 
-    let _input;
+    if(!foundLine){
+        tbody.append($('<tr><td>Commencez à ajouter vos modules. Ils apparaîtront ici !</td></tr>'));
+    }
 
     _input = create_input('back-color', 'Couleur de fond du CV', content_general, 'colorpicker', [CV.getColor()]);
     _input.on('input change', function(){

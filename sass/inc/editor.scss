@@ -3,6 +3,28 @@
 }
 
 #cv, #onglet_editor{
+  .autocomplete{
+    display: none;
+    height: 150px;
+    overflow-y: auto;
+    background-color: white;
+    border-radius: 5px;
+    padding: .5rem;
+    flex-flow: column nowrap;
+    gap: .5rem;
+    width: 95%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    .autocomplete-item{
+      cursor: pointer;
+      transition: all .25s;
+      color: #5e80c9;
+      width: 100%;
+      &:hover{
+        background-color: #eaeaea;
+        font-weight: bold;
+      }
+    }
+  }
   .btn{
     padding: .5rem 1rem .5rem 1rem;
     color: white;
@@ -100,6 +122,56 @@
   }
 }
 
+.section-table{
+  border-radius: 5px;
+  padding: .5rem;
+  border: 2px solid rgba(0,0,0,.08);
+  width: 95%;
+  button{
+    padding: .5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  .fa-trash{
+    color: #f35e5e;
+  }
+  thead{
+    th:first-child{
+      width: 45%;
+    }
+  }
+  tbody{
+    display: flex;
+    flex-flow: column nowrap;
+    gap: .5rem;
+  }
+  tr{
+    text-align: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+  }
+  td{
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  i{
+    padding: 0 .3rem 0 .3rem;
+    cursor: pointer;
+    &:hover{
+      opacity: .8;
+    }
+  }
+}
+
 #cv .wrap_cv .modules{
   display: flex;
   flex-flow: column nowrap;
@@ -128,7 +200,7 @@
     background-color: white;
     border-radius: 5px;
     border: 2px solid transparent;
-    transition: all .5s;
+    transition: all .1s;
     padding: 1rem;
     display: flex;
     flex-flow: column nowrap;
@@ -138,8 +210,17 @@
     &:hover{
       border: 2px solid #5e80c9;
     }
-    .module-title{
-      font-weight: 300;
+    .head{
+      display: flex;
+      flex-flow: row nowrap;
+      .module-title{
+        font-weight: 300;
+      }
+      i.draggable{
+        padding: .5rem;
+        font-size: 1rem;
+        cursor: move;
+      }
     }
     .module-item{
       .module-item-head-title{
@@ -221,7 +302,7 @@
     color: #484848;
   }
   .error{
-    color: red;
+    color: #f35e5e;
   }
 }
 
@@ -245,6 +326,16 @@
     padding-left: .5rem;
     color: #5e80c9;
   }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
 }
 
 /**

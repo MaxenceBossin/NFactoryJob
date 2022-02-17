@@ -31,6 +31,97 @@ function open_onglet(ongletName = 'module'){
     refresh_onglets_menu();
 }
 
+function get_new_available_line_num(){
+    let idx = 1;
+    for(let i=0;i<lines_el.length;i++){
+        if(lines_el[i] !== null && lines_el[i].getLineNum() >= idx){
+            idx = lines_el[i].getLineNum() + 1;
+        }
+    }
+    return idx;
+}
+
+function destroy_module(_module){
+    if(_module === null){
+        return;
+    }
+
+    if(selected_module !== null && selected_module.getModuleID() === _module.getModuleID()){
+        unselect_module();
+    }
+
+    const _line = _module.getLine();
+    if(_line !== null){
+        _line.removeModule(_module);
+    }
+
+    const element = $('#module-' + _module.getModuleID());
+    if(element !== undefined){
+        element.remove();
+    }
+    for(let i=0;i<modules_el.length;i++){
+        if(modules_el[i] !== null && modules_el[i].getModuleID() === _module.getModuleID()){
+            modules_el.splice(i, 1);
+            break;
+        }
+    }
+
+    place_add_module();
+    refresh_onglets_menu();
+}
+
+function destroy_section(_section){
+    if(_section === null){
+        return;
+    }
+    const _sectionElement = _section.getDOMElement();
+    const _modules = _section.getModules();
+    if(_modules !== null && _modules.length > 0){
+        for(let i=0;i<_modules.length;i++){
+            if(_modules[i] !== null){
+                destroy_module(_modules[i]);
+            }
+        }
+    }
+
+    if(_sectionElement !== undefined){
+        _sectionElement.remove();
+    }
+
+    if(selected_line !== null && selected_line.getLineNum() === _section.getLineNum()){
+        if(lines_el.length-1 >= 0) {
+            for (let i = lines_el.length - 1; i >= 0; i--) {
+                if (lines_el[i] !== null && lines_el[i].getLineNum() !== _section.getLineNum()) {
+                    selected_line = lines_el[i];
+                    break;
+                }
+            }
+        }
+        else{
+            selected_line = create_line(2,1);
+        }
+    }
+
+    for(let i=0;i<lines_el.length;i++){
+        if(lines_el[i] !== null && lines_el[i].getLineNum() === _section.getLineNum()){
+            lines_el.splice(i, 1);
+            break;
+        }
+    }
+
+    place_add_module();
+    refresh_onglets_menu();
+}
+
+function get_line_by_num(_num){
+    for(let i=0;i<lines_el.length;i++){
+        if(lines_el[i] != null && lines_el[i].getLineNum() === _num){
+            return lines_el[i];
+        }
+    }
+    return null;
+}
+
 function get_module_by_ID(_id){
     for(let i=0;i<modules_el.length;i++){
         if(modules_el[i] != null && modules_el[i].getModuleID() === _id){
@@ -131,7 +222,7 @@ function place_add_module(){
         _line.getDOMElement().append(add_module);
     }
 
-    const add_line = $('<section id="add-line" class="module-line"><div class="module add"><h1 class="add-block-title">Ajouter une ligne</h1><i class="fa-solid fa-plus"></i></div></section>');
+    const add_line = $('<section id="add-line" class="module-line"><div class="module add"><h1 class="add-block-title">Ajouter une section</h1><i class="fa-solid fa-plus"></i></div></section>');
     add_line.on('click', function(){
 
     });
@@ -205,15 +296,6 @@ function get_module_element_id(module_element){
     return parseInt(splitted_module[1]);
 }
 
-function get_line_by_num(_num){
-    for(let i=0;i<lines_el.length;i++){
-        if(lines_el[i] != null && lines_el[i].getLineNum() === _num){
-            return lines_el[i];
-        }
-    }
-    return null;
-}
-
 function get_selected_line(){
     return selected_line;
 }
@@ -221,15 +303,12 @@ function get_selected_line(){
 function create_line(maxModules, _num = -1){
 
     if(_num === -1){
-        _num = LAST_LINE_NUM;
+        _num = get_new_available_line_num();
     }
 
     const lineElement = $('<section class="module-line"></section>');
     modules.append(lineElement);
     let _line = new Line(_num, maxModules, lineElement);
-    if(_num + 1 > LAST_LINE_NUM){
-        LAST_LINE_NUM = _num + 1;
-    }
     lines_el.push(_line);
     selected_line = _line;
     return _line;
@@ -295,10 +374,10 @@ function editor_request_save() {
     }, 1000);
 }
 
-function add_module_item_global(parent, showName, paramCategory, removable_form = false, _data = []){
+function add_module_item_global(parent, showName, paramCategory, removable_form = false, _data = [], _type = 'autocomplete'){
     const add = $('<span class="add-item">+ '+showName+'</span>').on('click', function(){
         const _form = create_form('module_add_category_' + paramCategory);
-        create_input(paramCategory, showName, _form, 'autocomplete', _data);
+        create_input(paramCategory, showName, _form, _type, _data);
         build_form(_form, 'Ajouter', [], removable_form);
         _form.insertBefore($(this));
         if (removable_form) {

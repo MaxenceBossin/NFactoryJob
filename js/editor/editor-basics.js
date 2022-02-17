@@ -12,8 +12,11 @@ let modules_el = [];
 let lines_el = [];
 let selected_module = null;
 let LAST_MODULE_ID = 1;
-let LAST_LINE_NUM = 1;
 let selected_line = null;
+
+let drag_module = null;
+let currentMousePos = { x: -1, y: -1 };
+let lastDragMousePos = null;
 
 // Todo
 
@@ -38,4 +41,49 @@ $('#btn-onglet').on('click', function(){
     else{
         open_onglet();
     }
+});
+
+$(document).on('mousemove', function(e){
+    if(drag_module !== null){
+        drag_module.css("position", 'fixed');
+        drag_module.css("top", currentMousePos.y + "px");
+        drag_module.css("left", (currentMousePos.x + 10) + "px");
+    }
+
+    currentMousePos.x = e.pageX;
+    currentMousePos.y = e.pageY;
+});
+
+$(document).on('mousedown', function(e){
+    if($(e.target).hasClass('draggable')){
+        if(drag_module !== $(e.target).parent().parent()){
+            lastDragMousePos = currentMousePos;
+            if(!$('body').hasClass('noselect')){
+                $('body').addClass('noselect');
+            }
+            $('body').css("cursor", "move");
+            drag_module = $(e.target).parent().parent();
+        }
+    }
+});
+
+$(document).on('mouseup', function(){
+    if($('body').hasClass('noselect')){
+        $('body').removeClass('noselect');
+    }
+    $('body').css("cursor", "default");
+
+    if(drag_module !== null){
+        drag_module.css("position", "relative");
+        drag_module.css("top", "0");
+        drag_module.css("left", "0");
+        const _module = get_module_by_ID(parseInt(drag_module.attr('id').split('-')[1]));
+        if(_module !== null){
+            const _line = _module.getLine();
+            if(_line !== null){
+
+            }
+        }
+    }
+    drag_module = null;
 });
