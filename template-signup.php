@@ -8,47 +8,38 @@ get_header();
 </div>
 
 <section id="signup">
-<h3>Créer un compte</h3>
-<div class="box">
     <div class="wrap">
-        <div class="box_text"><p>Vous êtes :</p></div>
-            <div>
+        <p class="account">Créer un compte</p>
+        <div class="box">
+            <form action="" method="get">
+                <p>Vous êtes :</p>
+
                 <input type="radio" id="candidat" name="drone" value="candidat">
                 <label for="huey">Candidat</label>
-            </div>
-            <div>
                 <input type="radio" id="recruteur" name="drone" value="recruteur">
                 <label for="dewey">Recruteur</label>
-            </div>
-            <form action="" method="get" class="form-example">
-                <div class="form-example">
+            
                 <label for="name">Adresse mail </label>
                 <input type="email "name="email" id="email" required>
-            </div>
-                <div class="form-example">
+
                 <label for="email">Mot de passe </label>
                 <input type="password" name="password" id="password" required>
-            </div>
-            </div>
-                <div class="form-example">
+
                 <label for="email">Confirmation du mot de passe </label>
                 <input type="password" name="password" id="password" required>
-            </div>
-            <div>
+
                 <input type="radio" id="cgu" name="drone" value="cgu">
                 <label for="huey">J'accepte les CGU</label>
-            </div>
-            <div class="form-example">
-                <input type="submit" value="Subscribe!">
-            </div>
-            <p class="text_blue">Je possède déjà un compte</p>
+
+                <input type="submit" value="S'inscrire">
+                <p class="text_blue">Je possède déjà un compte</p>
             </form>
+                <div class="box_img">
+                    <img src="https://img.search.brave.com/0H3rXORse0LxyalDCBhrFoqMpTl6Ise1hjOceQpqO9E/rs:fit:1200:1200:1/g:ce/aHR0cDovL3d3dy5z/bnV0LmZyL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE1LzA4L2lt/YWdlLWRlLXBheXNh/Z2UtNS5qcGc" alt="">
+                </div>
+            </div>
         </div>
-        
-        <div class="box_img">
-            <img src="//img a coter de signup" alt="">
-        </div>
-    </div>
+    </div>    
 </section>
 
 
