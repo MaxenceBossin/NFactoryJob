@@ -22,7 +22,7 @@
 <body <?php body_class(); ?>>
 <header id="header" class="site-header">
 	<div class="wrap">
-		<h1><span id="spantitre">N</span>Factory<span id="spantitre">Job</span></h1>
+		<a href="" id="titre"><span id="spantitre">N</span>Factory<span id="spantitre">Job</span></a>
 		<nav>
 			<ul>
 				<li class="desktop"><a href="" class="log"><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>

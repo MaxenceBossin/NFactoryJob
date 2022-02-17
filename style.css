@@ -138,6 +138,10 @@ header .wrap {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+header .wrap #titre {
+  font-size: 2rem;
+  color: black;
+}
 header .wrap #spantitre {
   color: #0c64a6;
 }
