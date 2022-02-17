@@ -244,6 +244,8 @@ jQuery._farbtastic = function (container, callback) {
         color: fb.hsl[2] > 0.5 ? '#000' : '#fff'
       });
 
+      on_color_update($(fb.callback));
+
       // Change linked value
       $(fb.callback).each(function() {
         if (this.value && this.value != fb.color) {

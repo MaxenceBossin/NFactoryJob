@@ -77,7 +77,7 @@ function editor_add_cv_module(form, data, secondary_infos){
 
 function form_error(form, field, error){
     const span_error = form.find('span#error-' + field);
-    if(span_error !== null){
+    if(span_error !== undefined){
         span_error.text(error);
     }
 }

@@ -8,10 +8,24 @@ class Module{
         else{
             this.moduleShownName = moduleShownName;
         }
-        this.section = null;
+        this.line = null;
 
         this.width = 50;
+        this.color = "#FFFFFF";
         this.data = [];
+        this.show_title = true;
+    }
+
+    setShowTitle(status){
+        this.show_title = status;
+    }
+
+    getColor(){
+        return this.color;
+    }
+
+    setColor(col){
+        this.color = col;
     }
 
     getData(){
@@ -26,12 +40,12 @@ class Module{
         }
     }
 
-    setSection(section){
-        this.section = section;
+    setLine(_line){
+        this.line = _line;
     }
 
-    getSection(){
-        return this.section;
+    getLine(){
+        return this.line;
     }
 
     getModuleID(){
@@ -86,10 +100,13 @@ class Module{
         console.log(this.data);
 
         // Global
-        const module_title = $('<h1 class="module-title">'+this.moduleShownName+'</h1>');
-        content.append(module_title);
+        if(this.show_title){
+            const module_title = $('<h1 class="module-title">'+this.moduleShownName+'</h1>');
+            content.append(module_title);
+        }
         content.attr('data-width', this.width);
         content.css("width", this.width + '%');
+        content.css("background-color", this.color);
 
         // Modules Informations
         if(this.moduleName === 'Informations'){
