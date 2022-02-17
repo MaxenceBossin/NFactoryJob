@@ -211,6 +211,11 @@ header .wrap .create:hover {
   width: 400px;
   margin-right: 10%;
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: 0.8s;
+}
+#doubleBox #candidat:hover {
+  box-shadow: rgba(52, 129, 189, 0.25) 0px 14px 28px, rgba(52, 129, 189, 0.25) 0px 10px 10px;
 }
 #doubleBox #create {
   background-color: white;
@@ -226,6 +231,11 @@ header .wrap .create:hover {
   padding: 1rem;
   height: 500px;
   width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: 0.8s;
+}
+#doubleBox #recruteur:hover {
+  box-shadow: rgba(52, 129, 189, 0.25) 0px 14px 28px, rgba(52, 129, 189, 0.25) 0px 10px 10px;
 }
 #doubleBox #consulter {
   background-color: #0c6ea6;
@@ -257,6 +267,7 @@ header .wrap .create:hover {
 }
 #lastCv #lesCv i {
   font-size: 30px;
+  color: #0c64a6;
 }
 
 footer {
