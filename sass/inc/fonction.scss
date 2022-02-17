@@ -13,3 +13,28 @@
     object-fit: cover;
     background-repeat: no-repeat;
 }
+@mixin hoverBackgroundColor($backgroundcolor){
+    transition: .6s;
+    &:hover{
+        background-color: $backgroundcolor;
+    }
+}
+@mixin hoverColor($color){
+    transition: .6s;
+    &:hover{
+        color: $color;
+    }
+}
+@mixin hoverColorBackgroundColor($color,$backgroundcolor){
+    transition: .6s;
+    &:hover{
+        color: $color;
+        background-color: $backgroundcolor;
+    }
+}
+@mixin hoverUnderline($color){
+    transition: .6s;
+    &:hover{
+        border-bottom: 1px solid $color;
+    }
+}

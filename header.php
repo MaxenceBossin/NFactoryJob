@@ -16,29 +16,28 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-
 	<?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
+<body <?php body_class(); ?> >
+
 <?php wp_body_open(); ?>
-<div id="page" class="site">
-	
+<!-- <div id="page" class="site"> -->
 
-	<header id="masthead" class="site-header">
-		
+<header id="header" class="site-header">
+	<div class="wrap">
+		<h1><span id="spantitre">N</span>Factory<span id="spantitre">Job</span></h1>
+		<nav>
+			<ul>
+				<li class="desktop"><a href="" class="log"><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
+				<li class="desktop"><a href="" class="log"><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
+				<li class="desktop"><a href="" class="create">Créer un CV</a></li>
+				<li class="burger"><i class="fa-solid fa-bars"></i></li>
+				<li class="mobile"><a href=""><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
+				<li class="mobile"><a href=""><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
+				<li class="mobile"><a href="" class="create">Créer un CV</a></li>
+			</ul>
+		</nav>
+	</div>
+</header><!-- #masthead -->
 
-		<nav id="site-navigation" class="main-navigation">
-			
-			<?php
-            if(!is_page_template('template-editor.php')){
-                wp_nav_menu(
-                    array(
-                        'theme_location' => 'menu-1',
-                        'menu_id'        => 'primary-menu',
-                    )
-                );
-            }
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->

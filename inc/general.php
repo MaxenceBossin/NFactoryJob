@@ -39,6 +39,7 @@ add_action( 'after_setup_theme', 'nfactoryjob_setup' );
 function nfactoryjob_scripts() {
     wp_enqueue_style( 'fontawewome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css', array(), _S_VERSION );
 	wp_enqueue_style( 'nfactoryjob-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style('fontawesome-css', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
 	wp_style_add_data( 'nfactoryjob-style', 'rtl', 'replace' );
 
     if(is_page_template('template-editor.php')){

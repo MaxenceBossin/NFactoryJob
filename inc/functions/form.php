@@ -1,6 +1,5 @@
 <?php
 
-
 function mailValidation($errors,$value,$key){
     if(!empty($value)){
         if (filter_var($value, FILTER_VALIDATE_EMAIL)==false) {
@@ -16,16 +15,11 @@ function cleanXss($key){
     return trim(strip_tags($_POST[$key]));
 }
 
-
-
 function viewError($errors,$key){
     if(!empty($errors[$key])) {
         echo $errors[$key];
     }
 }
-
-
-
 
 function recupInputValue($key){
     if (!empty($_POST[$key])) {
@@ -34,8 +28,6 @@ function recupInputValue($key){
 
 }
 
-
-
-
-
-
+function asset($file) {
+    return get_template_directory_uri() . '/asset/' .$file;
+}

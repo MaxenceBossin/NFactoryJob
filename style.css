@@ -114,8 +114,8 @@ textarea {
   margin-inline: auto;
 }
 
-.wrap_moyen {
-  width: min(1200px, 100%);
+.wrap_footer {
+  width: min(1600px, 100%);
   margin-inline: auto;
 }
 
@@ -126,6 +126,11 @@ textarea {
 
 .wrap_cv {
   width: min(2040px, 100%);
+  margin-inline: auto;
+}
+
+.wrap_home {
+  width: min(1200px, 100%);
   margin-inline: auto;
 }
 
@@ -471,56 +476,155 @@ FORM - INPUT SLIDER
   background: #5e80c9;
 }
 
-#header {
-  background-color: #D3B68D;
-}
-#header nav {
+header .wrap {
   display: flex;
-  flex-flow: row;
   justify-content: space-between;
-  padding: 3rem 0;
+  font-family: "Quicksand", sans-serif;
+  padding-top: 1.6rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
-#header nav img {
-  width: 20%;
+header .wrap #spantitre {
+  color: #0c64a6;
 }
-#header nav div {
+header .wrap nav ul {
   display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-}
-#header nav div ul {
-  display: flex;
-  flex-flow: row;
-  justify-content: space-between;
-}
-#header nav div ul .connexion {
-  background-color: #F2EDDF;
-  color: #D2B285;
-  transition: 0.6s;
-}
-#header nav div ul .connexion:hover {
-  background-color: #FBFAF7;
-}
-#header nav div ul .pannier {
-  background-color: #037A00;
-  color: #FBFAF7;
-  transition: 0.6s;
-}
-#header nav div ul .pannier .cardreBlanc {
-  background-color: #FBFAF7;
+  gap: 2rem;
+  align-items: center;
   color: black;
 }
-#header nav div ul .pannier:hover {
-  background-color: #049200;
+@media (max-width: 600px) {
+  header .wrap nav ul .desktop {
+    display: none;
+  }
 }
-#header nav div ul span {
-  padding: 0 0.5rem;
+header .wrap nav ul .desktop .log {
+  transition: 0.6s;
 }
-#header nav div ul li, #header nav div ul .pannier, #header nav div ul .connexion {
-  padding: 1rem;
-  border-radius: 0.25rem;
+header .wrap nav ul .desktop .log:hover {
+  border-bottom: 1px solid #0c64a6;
+}
+header .wrap nav ul .mobile {
+  display: none;
+}
+header .wrap nav ul .burger {
+  display: none;
+}
+@media (max-width: 600px) {
+  header .wrap nav ul .burger {
+    display: block;
+  }
+}
+header .wrap nav ul li span {
+  color: black;
+}
+header .wrap nav ul li i {
+  color: #0c64a6;
+  transition: 0.6s;
+}
+header .wrap nav ul li i:hover {
+  color: #3481bd;
+}
+header .wrap .create {
+  background-color: #0c64a6;
+  border-radius: 15px;
+  padding: 0.5rem;
+  width: 175px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  transition: 0.6s;
+}
+header .wrap .create:hover {
+  background-color: #3481bd;
 }
 
 /*ajout des sections ici*/
+#doubleBox {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+#doubleBox #candidat {
+  background-color: rgba(12, 110, 166, 0.6);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  height: 500px;
+  width: 400px;
+  margin-right: 10%;
+  color: white;
+}
+#doubleBox #create {
+  background-color: white;
+  color: #0c6ea6;
+  margin-top: 100%;
+}
+#doubleBox #recruteur {
+  background-color: rgba(71, 148, 191, 0.2);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  height: 500px;
+  width: 400px;
+}
+#doubleBox #consulter {
+  background-color: #0c6ea6;
+  color: white;
+  margin-top: 100%;
+}
+#doubleBox a {
+  border-radius: 10px;
+  padding: 0.4rem;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+}
+
+#lastCv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#lastCv #lesCv {
+  display: flex;
+  align-items: center;
+}
+#lastCv #lesCv #cv img {
+  background-color: red;
+  width: 200px;
+  height: 300px;
+  margin: 1.4rem;
+}
+#lastCv #lesCv i {
+  font-size: 30px;
+}
+
+footer {
+  background-color: #e2e2e2;
+  font-family: "Quicksand", sans-serif;
+}
+footer #contact {
+  padding-top: 1.6rem;
+}
+footer #maps {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -41px;
+}
+footer #footertitre {
+  display: flex;
+  justify-content: center;
+  margin-top: -25px;
+}
+footer #spantitre {
+  color: #0c64a6;
+}
 
 /*# sourceMappingURL=style.css.map */
