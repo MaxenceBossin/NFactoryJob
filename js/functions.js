@@ -139,7 +139,7 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         }
         else if(type === "colorpicker"){
             parent.append($('<div id="picker-'+_fID+'"></div>'));
-            $('#picker-' + _fID).farbtastic('#' +_fID);
+            $('#picker-' + _fID).farbtastic($('#' +_fID));
         }
 
         parent.append(span_error);

@@ -125,7 +125,7 @@ textarea {
 }
 
 .wrap_cv {
-  width: min(2040px, 100%);
+  width: min(1200px, 100%);
   margin-inline: auto;
 }
 
@@ -137,9 +137,6 @@ textarea {
 /* editor  */
 #cv .wrap_cv {
   padding: 1rem;
-  margin-left: 1rem;
-  width: 90vw;
-  margin-top: 1rem;
 }
 
 #cv .btn, #onglet_editor .btn {
@@ -251,13 +248,13 @@ textarea {
 #cv .wrap_cv .modules .add-item.pad-1 {
   padding-left: 1rem;
 }
-#cv .wrap_cv .modules section.module-section {
+#cv .wrap_cv .modules section.module-line {
   position: relative;
   display: flex;
   flex-flow: row nowrap;
   gap: 0.5rem;
 }
-#cv .wrap_cv .modules section.module-section .section-title {
+#cv .wrap_cv .modules section.module-line .line-title {
   position: absolute;
   top: -20px;
   left: 0;

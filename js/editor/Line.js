@@ -1,6 +1,6 @@
-class Section{
-    constructor(sectionNum, maxModules, domElement) {
-        this.sectionNum = sectionNum;
+class Line{
+    constructor(lineNum, maxModules, domElement) {
+        this.lineNum = lineNum;
         this.maxModules = maxModules;
         this.domElement = domElement;
         this.modules = [];
@@ -22,8 +22,8 @@ class Section{
         return this.maxModules;
     }
 
-    getSectionNum(){
-        return this.sectionNum;
+    getLineNum(){
+        return this.lineNum;
     }
 
     countModules(){

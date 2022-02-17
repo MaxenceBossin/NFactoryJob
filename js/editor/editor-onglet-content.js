@@ -5,18 +5,18 @@ function refresh_general_content(){
     content_general.empty();
     content_general.css("display", "flex");
 
-    for(let i=0;i<sections_el.length;i++){
-        if(sections_el[i] != null){
-            content_general.append($('<p>Section '+sections_el[i].getSectionNum()+'</p>'));
+    for(let i=0;i<lines_el.length;i++){
+        if(lines_el[i] != null){
+            content_general.append($('<p>Ligne '+lines_el[i].getLineNum()+'</p>'));
         }
     }
 
     let _input;
 
-    _input = create_input('back-color', 'Couleur de fond', content_general, 'colorpicker', [$('#cv .wrap_cv').attr("data-backcol")]);
-    _input.on('input change propertychange', function(){
-        $('#cv .wrap_cv').css("background-color", $(this).val());
-        $('#cv .wrap_cv').attr("data-backcol", $(this).val());
+    _input = create_input('back-color', 'Couleur de fond du CV', content_general, 'colorpicker', [CV.getColor()]);
+    _input.on('input change', function(){
+        CV.setColor($(this).val());
+        CV.refresh();
         editor_request_save();
     });
 
@@ -47,6 +47,15 @@ function refresh_module_content(){
             editor_request_save();
         });
     }
+
+    let _input;
+
+    _input = create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]);
+    _input.on('input change', function(){
+        selected_module.setColor($(this).val());
+        selected_module.refresh();
+        editor_request_save();
+    });
 
     create_input('largeur', 'Largeur du module', content_module, 'slider', [$('#module-' + selected_module.getModuleID()).attr("data-width"), 20, 100, '%']).on('input', function(){
         $('#module-' + selected_module.getModuleID()).css("width", parseInt($(this).val()) + '%');
