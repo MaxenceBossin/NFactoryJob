@@ -192,16 +192,31 @@ textarea {
   }
 }
 
-#signup {
-  background-color: cyan;
-}
-#signup .wrap p.account {
+#signup .wrap .account {
   font-size: 2rem;
+  padding-bottom: 1rem;
 }
 #signup .wrap div.box {
   background-color: #E3E3E3;
   text-align: center;
   display: flex;
+  border-radius: 10px;
+}
+#signup .wrap .box_text {
+  padding: 3rem;
+}
+#signup .wrap .box_text p {
+  margin-bottom: 1rem;
+}
+#signup .wrap .checkbox_cr {
+  display: flex;
+}
+#signup .wrap .checkbox_cr .candidat {
+  margin-right: 1.5rem;
+}
+#signup .wrap input {
+  margin-bottom: 1rem;
+  padding: 0.5rem 2rem;
 }
 
 /*# sourceMappingURL=style.css.map */
