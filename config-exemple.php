@@ -1,9 +1,8 @@
 <?php
-require_once('inc/fonctions/toolbox.php');
+require_once('inc/functions/toolbox.php');
 
 // CONSTANTES
-// On définit la constante ROOTDIR en appelant la fonction getCurrentFile()
-define('ROOTDIR', getCurrentFile());
+
 
 // DATABASE
 
