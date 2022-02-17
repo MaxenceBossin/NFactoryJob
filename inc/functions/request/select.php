@@ -4,13 +4,19 @@
 
 
 // recup cv user
+// TODO: faire des requete preparé
 function getCvFromUser(int $idUser):array
 {
-    $sql = "SELECT * FROM `nfj_cv` WHERE `id_user` = 1;";
+    global $pdo;
+    $sql = "SELECT * FROM `nfj_cv` WHERE `id_user` = 1";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    return $query->fetchAll();
 }
 
 
 // recupère tous les emplecement pour le quel le cv du candidat peut travailer
+// TODO: faire des requete preparé
 function getLocationWhereCVCanWork(int $idCv):array
 {
     $sql = "SELECT * 
@@ -22,6 +28,7 @@ function getLocationWhereCVCanWork(int $idCv):array
 
 
 // recupère tous les loisir + description d'un CV
+// TODO: faire des requete preparé
 function getRecreationFromCV(int $idCv):array
 {
     $sql = " SELECT description_hobby as description, libelle_loisir as loisir 
@@ -33,20 +40,24 @@ function getRecreationFromCV(int $idCv):array
 }
 
 // recupère toutes les langues et leur niveau de maitrise d'un CV
-
+// TODO: faire des requete preparé
 function getSkillLangageFromCv(int $idCv):array
 {
+    global $pdo;
     $sql = " SELECT libelle_langue as langue, niveau 
     FROM nfj_langues 
     INNER JOIN nfj_cv_langue 
     WHERE nfj_langues.id_langue = nfj_cv_langue.id_cv_langue
     AND `id_cv_langue` = 1;   
     ";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    return $query->fetchAll()[0];
 }
 
 
 // recupère toutes les sofkills  d'un CV
-
+// TODO: faire des requete preparé
 function getSoftSkillFromCv(int $idCv):array
 {
     $sql = " SELECT libelle_softskill as softskill 

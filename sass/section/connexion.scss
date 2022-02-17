@@ -1,0 +1,14 @@
+#connexion{
+    background-color: red;
+    @include breakpoints(phone){
+        background-color: yellow;
+    }
+    .wrap{
+        background-color: cyan;
+    
+        @include breakpoints(tablette){
+            background-color: lime;
+        }
+    }
+    
+}

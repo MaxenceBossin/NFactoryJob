@@ -1,50 +1,58 @@
-#header{
-    background-color: #D3B68D;
-    nav{
+header{
+    .wrap{
         display: flex;
-        flex-flow: row;
         justify-content: space-between;
-        padding: 3rem 0;
-        img{
-            width: 20%;
+        font-family: 'Quicksand', sans-serif;
+        padding-top: 1.6rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        #spantitre{
+            color: $mainColor;
         }
-        div{
-
+        nav ul{
             display: flex;
-            flex-flow: row;
-            justify-content: space-between;
-            
-            ul{
-                display: flex;
-                flex-flow: row;
-                justify-content: space-between;               
-                .connexion{
-                    background-color: #F2EDDF;
-                    color :#D2B285;
-                    transition: .6s;
+            gap: 2rem;
+            align-items: center;
+            color: black;
+            // Gestion du menu burger
+            .desktop{
+                @include breakpoints(tablette){
+                    display: none;
                 }
-                .connexion:hover{
-                    background-color: #FBFAF7;
-                }
-                .pannier{
-                    background-color: #037A00;
-                    color: #FBFAF7;
-                    transition: .6s;
-                    .cardreBlanc{
-                        background-color: #FBFAF7;
-                        color: black;                        
-                    }
-                }.pannier:hover{
-                    background-color: #049200;
-                }
-                span{
-                    padding: 0 .5rem;
-                }
-                li, .pannier, .connexion{
-                    padding: 1rem;
-                    border-radius: 0.25rem;
+                .log{
+                    @include hoverUnderline($mainColor);
                 }
             }
-        }        
+            .mobile{
+                display: none;
+            }
+            .burger{
+                display: none;
+                @include breakpoints(tablette){
+                    display: block;
+                }
+            }
+            li{
+                span{
+                    color: $colorblack;
+                }
+                i{
+                    color: $mainColor;
+                    @include hoverColor($mainColorHover);
+                }
+            }
+        }
+        .create{
+            background-color: $mainColor;
+            border-radius: 15px;
+            padding : .5rem;
+            width: 175px;
+            display: flex;
+            justify-content: center;
+            color: white;
+            @include hoverBackgroundColor($mainColorHover);
+        }
     }
 }
+
