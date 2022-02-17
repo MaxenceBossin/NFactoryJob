@@ -606,6 +606,35 @@ header .wrap .create:hover {
   font-size: 30px;
 }
 
+#connexion {
+  background-color: red;
+}
+@media (max-width: 480px) {
+  #connexion {
+    background-color: yellow;
+  }
+}
+#connexion .wrap {
+  background-color: cyan;
+}
+@media (max-width: 600px) {
+  #connexion .wrap {
+    background-color: lime;
+  }
+}
+
+#signup {
+  background-color: cyan;
+}
+#signup .wrap p.account {
+  font-size: 2rem;
+}
+#signup .wrap div.box {
+  background-color: #E3E3E3;
+  text-align: center;
+  display: flex;
+}
+
 footer {
   background-color: #e2e2e2;
   font-family: "Quicksand", sans-serif;
