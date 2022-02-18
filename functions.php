@@ -21,4 +21,4 @@ require get_template_directory() . '/inc/extra/template-functions.php';
 /**
  * Custom
  */
-
+require_once get_template_directory().'/inc/custom/custom-api.php';

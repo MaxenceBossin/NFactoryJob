@@ -3,7 +3,7 @@
 // permet la connexion pdo
 require_once "config.php";
 require_once('inc/functions/request/pdo.php');
-require_once('inc/functions/request/select.php');
+require_once('inc/functions/request/selectRecruteur.php');
 require_once('inc/functions/toolbox.php');
 
 get_header();
