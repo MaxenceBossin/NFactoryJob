@@ -79,38 +79,74 @@ function refresh_general_content(){
         window.location.href = HOME_URL + 'signup';
     }));
 
-    const expdfBtn = $('<button class="btn red">Exporter mon CV en PDF</button>').on('click', function(){
+    const expdfBtn = $('<button class="btn red">Exporter en PDF</button>').on('click', function(){
         if(generating_pdf){
             return;
         }
         generating_pdf = true;
-        const save = $('#cv .wrap_cv .modules').clone();
-        const element = save.clone();
-        $('#cv .wrap_cv .modules').remove();
-        element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
-            $(this).remove();
-        });
-        element.find('.module.selected').each(function() {
-            $(this).removeClass('selected');
-        });
-        $('#cv .wrap_cv').append(element);
-
-        let filename = CV.getTitle().replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
-        let options = {
-            margin:       1,
-            filename:     filename,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2 },
-            jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
-        };
-        html2pdf().set(options).from(document.getElementById('cv')).save();
+        const preview = $('#preview-infos');
+        $('#preview-infos .content').empty();
+        preview.css("display", "block");
+        append_preview('Prévisualisation du CV', false, true);
         setTimeout(function(){
+            const save = $('#cv .wrap_cv .modules').clone();
+            const element = save.clone();
             $('#cv .wrap_cv .modules').remove();
-            $('#cv .wrap_cv').append(save);
-            generating_pdf = false;
-        }, 500);
+            element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
+                $(this).remove();
+            });
+            element.find('.module.selected').each(function() {
+                $(this).removeClass('selected');
+            });
+            $('#cv .wrap_cv').append(element);
+            append_preview('Génération du CV', false, true);
+            setTimeout(function(){
+                let filename = CV.getTitle().replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
+                let options = {
+                    margin:       1,
+                    filename:     filename,
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    html2canvas:  { scale: 2 },
+                    jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
+                };
+                html2pdf().set(options).from(document.getElementById('cv')).save();
+                append_preview('Mise à jour de l\'éditeur...');
+                setTimeout(function(){
+                    $('#cv .wrap_cv .modules').remove();
+                    $('#cv .wrap_cv').append(save);
+                    place_add_module();
+                    append_preview('Exportation terminée de', true, true);
+                    setTimeout(function(){
+                        generating_pdf = false;
+                        preview.fadeOut('fast', function(){
+                            preview.css("display", "none");
+                        });
+                    }, 1500);
+                }, 800);
+            }, 800);
+        }, 800);
+
     });
     content_general.append(expdfBtn);
+}
+
+function append_preview(texte, appendTick = false, appendCVName = false){
+    const preview = $('#preview-infos .content');
+    let previewText;
+    if(appendCVName){
+        previewText = $('<p>'+texte+' <strong>'+CV.getTitle()+'</strong>...</p>');
+    }
+    else{
+        previewText = $('<p>'+texte+'...</p>');
+    }
+    preview.append(previewText);
+    previewText.hide().fadeIn(500);
+    if(appendTick){
+        const i = $('<i class="fa-solid fa-check"></i>');
+        previewText.append(i);
+        i.fadeOut('fast');
+        i.fadeIn('fast');
+    }
 }
 
 // Module

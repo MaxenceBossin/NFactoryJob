@@ -476,16 +476,26 @@ textarea {
   z-index: 100;
   display: none;
 }
+#preview-infos strong {
+  font-weight: bold;
+  font-size: 1rem;
+}
 #preview-infos .content {
   position: absolute;
   top: 50%;
   left: 50%;
   padding: 0.8rem;
+  min-width: 25vw;
   border-radius: 5px;
   transform: translate(-50%, -50%);
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all 0.5s;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  gap: 0.5rem;
 }
 #preview-infos .content i {
   display: flex;

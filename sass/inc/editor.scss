@@ -344,16 +344,26 @@
   background-color: rgba(0,0,0,.7);
   z-index: 100;
   display: none;
+  strong{
+    font-weight: bold;
+    font-size: 1rem;
+  }
   .content{
     position: absolute;
     top: 50%;
     left: 50%;
     padding: .8rem;
+    min-width: 25vw;
     border-radius: 5px;
     transform: translate(-50%, -50%);
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: all .5s;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    align-content: center;
+    gap: .5rem;
     i{
       display: flex;
       flex-flow: row nowrap;
