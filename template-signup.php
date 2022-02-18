@@ -23,20 +23,20 @@ get_header();
                     </div>
                     
                 
-                    <label for="name">Adresse mail </label>
+                    <label for="name">Adresse mail</label>
                     <input type="email "name="email" id="email" placeholder="contact@nfactoryjob.com" required>
 
-                    <label for="email">Mot de passe </label>
+                    <label for="email">Mot de passe</label>
                     <input type="password" name="password" id="password" placeholder="**********" required>
 
-                    <label for="email">Confirmation du mot de passe </label>
+                    <label for="email">Confirmation du mot de passe</label>
                     <input type="password" name="password" id="password" placeholder="**********" required>
 
                     <input type="checkbox" id="cgu" name="drone" value="cgu">
                     <label for="huey"><a href="<?= path('cgu'); ?>">J'accepte les CGU</a></label>
 
                     <input type="submit" value="S'inscrire">
-                    <p class="text_blue"><a href="<?= path('login'); ?>">Je possède déjà un compte</p>
+                    <p class="text_blue"><a href="<?= path('connexion'); ?>">Je possède déjà un compte</p>
                 </form>
             </div>
             <div class="box_img">
