@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 17 fév. 2022 à 11:23
+-- Généré le : ven. 18 fév. 2022 à 10:23
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.0.13
 
@@ -104,7 +104,8 @@ CREATE TABLE `nfj_cv_competences` (
 --
 
 INSERT INTO `nfj_cv_competences` (`id_cv_competence`, `id_cv_fk`, `id_competence_fk`, `created_at`, `niveau`, `description`) VALUES
-(1, 1, 1, '2022-02-15 17:38:39', 5, 'Dev vactolib');
+(1, 1, 1, '2022-02-15 17:38:39', 5, 'Dev vactolib'),
+(2, 1, 2, '2022-02-17 12:43:21', 4, 'je fais des test');
 
 -- --------------------------------------------------------
 
@@ -114,6 +115,7 @@ INSERT INTO `nfj_cv_competences` (`id_cv_competence`, `id_cv_fk`, `id_competence
 
 CREATE TABLE `nfj_cv_diplome` (
   `id_cv_diplome` int(11) NOT NULL,
+  `id_etablisement_dcv` int(11) DEFAULT NULL,
   `id_cv_dcv` int(11) NOT NULL,
   `id_diplome_dcv` int(11) NOT NULL,
   `date_debut_dcv` datetime DEFAULT NULL,
@@ -125,9 +127,9 @@ CREATE TABLE `nfj_cv_diplome` (
 -- Déchargement des données de la table `nfj_cv_diplome`
 --
 
-INSERT INTO `nfj_cv_diplome` (`id_cv_diplome`, `id_cv_dcv`, `id_diplome_dcv`, `date_debut_dcv`, `date_fin_dcv`, `description_dcv`) VALUES
-(1, 1, 1, '2022-02-16 11:46:51', '2022-02-16 11:46:51', 'Bac mention Bien \r\nApprentissage des métiers du développement durable.'),
-(2, 1, 2, '2022-02-16 11:46:51', '2022-02-16 11:46:51', 'Apprentissage des bases du développement web');
+INSERT INTO `nfj_cv_diplome` (`id_cv_diplome`, `id_etablisement_dcv`, `id_cv_dcv`, `id_diplome_dcv`, `date_debut_dcv`, `date_fin_dcv`, `description_dcv`) VALUES
+(1, 7, 1, 1, '2022-02-16 11:46:51', '2022-02-16 11:46:51', 'Bac mention Bien \r\nApprentissage des métiers du développement durable.'),
+(2, 5, 1, 2, '2022-02-16 11:46:51', '2022-02-16 11:46:51', 'Apprentissage des bases du développement web');
 
 -- --------------------------------------------------------
 
@@ -204,17 +206,16 @@ CREATE TABLE `nfj_diplome` (
   `id_diplome` int(11) NOT NULL,
   `intitule_diplome` varchar(128) NOT NULL,
   `id_typediplome_diplome` int(11) DEFAULT NULL,
-  `id_typesecteur_diplome` int(11) DEFAULT NULL,
-  `id_etablisement_diplome` int(11) DEFAULT NULL
+  `id_typesecteur_diplome` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `nfj_diplome`
 --
 
-INSERT INTO `nfj_diplome` (`id_diplome`, `intitule_diplome`, `id_typediplome_diplome`, `id_typesecteur_diplome`, `id_etablisement_diplome`) VALUES
-(1, 'Sti2D', 1, NULL, 1),
-(2, 'Bachelor Informatique', 3, 1, NULL);
+INSERT INTO `nfj_diplome` (`id_diplome`, `intitule_diplome`, `id_typediplome_diplome`, `id_typesecteur_diplome`) VALUES
+(1, 'Sti2D', 1, NULL),
+(2, 'Bachelor Informatique', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -267,17 +268,20 @@ INSERT INTO `nfj_etablisement_emplacement` (`id_etablisement_emplacement`, `id_e
 
 CREATE TABLE `nfj_etablissement` (
   `id_etablissement` int(11) NOT NULL,
-  `nom_typeEtablissement` varchar(128) NOT NULL,
-  `id_typeEtablissement` int(11) NOT NULL
+  `nom_etablissement` varchar(128) NOT NULL,
+  `id_typeEtablissement` int(11) DEFAULT NULL,
+  `id_emplacement_etablissement` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `nfj_etablissement`
 --
 
-INSERT INTO `nfj_etablissement` (`id_etablissement`, `nom_typeEtablissement`, `id_typeEtablissement`) VALUES
-(4, 'Jean Rostand', 1),
-(5, 'Inetum', 6);
+INSERT INTO `nfj_etablissement` (`id_etablissement`, `nom_etablissement`, `id_typeEtablissement`, `id_emplacement_etablissement`) VALUES
+(4, 'Jean Rostand', 1, 1),
+(5, 'Inetum', 6, 1),
+(6, 'Need For School', 5, 2),
+(7, 'Jules verne', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -297,7 +301,8 @@ CREATE TABLE `nfj_hobbies` (
 --
 
 INSERT INTO `nfj_hobbies` (`id_hobby`, `description_hobby`, `id_cv_hobby`, `id_loisir_hobby`) VALUES
-(1, 'Pratique depuis l\'enfance', 1, 1);
+(1, 'Pratique depuis l\'enfance', 1, 1),
+(2, '', 1, 4);
 
 -- --------------------------------------------------------
 
@@ -409,6 +414,26 @@ INSERT INTO `nfj_softskill` (`id_softskill`, `libelle_softskill`) VALUES
 (2, 'à l\'écoute'),
 (3, 'entreprenant'),
 (4, 'esprit critique');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `nfj_term_relationships`
+--
+
+CREATE TABLE `nfj_term_relationships` (
+  `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `term_order` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `nfj_term_relationships`
+--
+
+INSERT INTO `nfj_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
+(1, 1, 0),
+(6, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -536,7 +561,8 @@ ALTER TABLE `nfj_cv_competences`
 ALTER TABLE `nfj_cv_diplome`
   ADD PRIMARY KEY (`id_cv_diplome`),
   ADD UNIQUE KEY `pivot_unique_diplome` (`id_cv_dcv`,`id_diplome_dcv`),
-  ADD KEY `FK_Diplome` (`id_diplome_dcv`);
+  ADD KEY `FK_Diplome` (`id_diplome_dcv`),
+  ADD KEY `FK_EtablissmentDiplome` (`id_etablisement_dcv`);
 
 --
 -- Index pour la table `nfj_cv_emplacement`
@@ -567,9 +593,8 @@ ALTER TABLE `nfj_cv_softskill`
 --
 ALTER TABLE `nfj_diplome`
   ADD PRIMARY KEY (`id_diplome`),
-  ADD UNIQUE KEY `pivot_unique_diplome` (`id_typediplome_diplome`,`id_typesecteur_diplome`,`id_etablisement_diplome`),
-  ADD KEY `FK_Secteur` (`id_typesecteur_diplome`),
-  ADD KEY `FK_Etablisment_Diplome` (`id_etablisement_diplome`);
+  ADD UNIQUE KEY `pivot_unique_diplome` (`id_typediplome_diplome`,`id_typesecteur_diplome`) USING BTREE,
+  ADD KEY `FK_Secteur` (`id_typesecteur_diplome`);
 
 --
 -- Index pour la table `nfj_emplacement`
@@ -591,7 +616,8 @@ ALTER TABLE `nfj_etablisement_emplacement`
 --
 ALTER TABLE `nfj_etablissement`
   ADD PRIMARY KEY (`id_etablissement`),
-  ADD KEY `FK_EtablissementType` (`id_typeEtablissement`);
+  ADD KEY `FK_EtablissementType` (`id_typeEtablissement`),
+  ADD KEY `FK_EmplacementEtablissment` (`id_emplacement_etablissement`);
 
 --
 -- Index pour la table `nfj_hobbies`
@@ -637,6 +663,13 @@ ALTER TABLE `nfj_postes`
 --
 ALTER TABLE `nfj_softskill`
   ADD PRIMARY KEY (`id_softskill`);
+
+--
+-- Index pour la table `nfj_term_relationships`
+--
+ALTER TABLE `nfj_term_relationships`
+  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
+  ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
 
 --
 -- Index pour la table `nfj_typecontrat`
@@ -688,13 +721,13 @@ ALTER TABLE `nfj_cv`
 -- AUTO_INCREMENT pour la table `nfj_cv_competences`
 --
 ALTER TABLE `nfj_cv_competences`
-  MODIFY `id_cv_competence` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_cv_competence` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `nfj_cv_diplome`
 --
 ALTER TABLE `nfj_cv_diplome`
-  MODIFY `id_cv_diplome` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cv_diplome` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `nfj_cv_emplacement`
@@ -736,13 +769,13 @@ ALTER TABLE `nfj_etablisement_emplacement`
 -- AUTO_INCREMENT pour la table `nfj_etablissement`
 --
 ALTER TABLE `nfj_etablissement`
-  MODIFY `id_etablissement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_etablissement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `nfj_hobbies`
 --
 ALTER TABLE `nfj_hobbies`
-  MODIFY `id_hobby` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_hobby` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `nfj_langues`
@@ -828,7 +861,8 @@ ALTER TABLE `nfj_cv_competences`
 --
 ALTER TABLE `nfj_cv_diplome`
   ADD CONSTRAINT `FK_CV` FOREIGN KEY (`id_cv_dcv`) REFERENCES `nfj_cv` (`id_cv`),
-  ADD CONSTRAINT `FK_Diplome` FOREIGN KEY (`id_diplome_dcv`) REFERENCES `nfj_diplome` (`id_diplome`);
+  ADD CONSTRAINT `FK_Diplome` FOREIGN KEY (`id_diplome_dcv`) REFERENCES `nfj_diplome` (`id_diplome`),
+  ADD CONSTRAINT `FK_EtablissmentDiplome` FOREIGN KEY (`id_etablisement_dcv`) REFERENCES `nfj_etablissement` (`id_etablissement`);
 
 --
 -- Contraintes pour la table `nfj_cv_emplacement`
@@ -855,7 +889,6 @@ ALTER TABLE `nfj_cv_softskill`
 -- Contraintes pour la table `nfj_diplome`
 --
 ALTER TABLE `nfj_diplome`
-  ADD CONSTRAINT `FK_Etablisment_Diplome` FOREIGN KEY (`id_etablisement_diplome`) REFERENCES `nfj_etablissement` (`id_typeEtablissement`),
   ADD CONSTRAINT `FK_Secteur` FOREIGN KEY (`id_typesecteur_diplome`) REFERENCES `nfj_typemetier` (`id_typemetier`),
   ADD CONSTRAINT `FK_typeDiplome` FOREIGN KEY (`id_typediplome_diplome`) REFERENCES `nfj_typediplome` (`id_typediplome`);
 
@@ -870,6 +903,7 @@ ALTER TABLE `nfj_etablisement_emplacement`
 -- Contraintes pour la table `nfj_etablissement`
 --
 ALTER TABLE `nfj_etablissement`
+  ADD CONSTRAINT `FK_EmplacementEtablissment` FOREIGN KEY (`id_emplacement_etablissement`) REFERENCES `nfj_emplacement` (`id_emplacement`),
   ADD CONSTRAINT `FK_EtablissementType` FOREIGN KEY (`id_typeEtablissement`) REFERENCES `nfj_typeetablissement` (`id_typeEtablissement`);
 
 --

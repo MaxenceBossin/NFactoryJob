@@ -6,13 +6,13 @@
         display: flex;
         align-items: center;
         #cv img{
-            background-color: red;
             width: 200px;
             height: 300px;
             margin: 1.4rem;
         }
         i{
             font-size: 30px;
+            color: $mainColor;
         }
     }
 }

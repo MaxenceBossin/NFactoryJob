@@ -482,6 +482,10 @@ header .wrap {
   padding-left: 1rem;
   padding-right: 1rem;
 }
+header .wrap #titre {
+  font-size: 2rem;
+  color: black;
+}
 header .wrap #spantitre {
   color: #0c64a6;
 }
@@ -555,6 +559,11 @@ header .wrap .create:hover {
   width: 400px;
   margin-right: 10%;
   color: white;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 6px, rgba(0, 0, 0, 0.25) 0px 3px 6px;
+  transition: 0.8s;
+}
+#doubleBox #candidat:hover {
+  box-shadow: rgba(52, 129, 189, 0.25) 0px 14px 28px, rgba(52, 129, 189, 0.25) 0px 10px 10px;
 }
 #doubleBox #create {
   background-color: white;
@@ -570,6 +579,11 @@ header .wrap .create:hover {
   padding: 1rem;
   height: 500px;
   width: 400px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 6px, rgba(0, 0, 0, 0.25) 0px 3px 6px;
+  transition: 0.8s;
+}
+#doubleBox #recruteur:hover {
+  box-shadow: rgba(52, 129, 189, 0.25) 0px 14px 28px, rgba(52, 129, 189, 0.25) 0px 10px 10px;
 }
 #doubleBox #consulter {
   background-color: #0c6ea6;
@@ -594,42 +608,99 @@ header .wrap .create:hover {
   align-items: center;
 }
 #lastCv #lesCv #cv img {
-  background-color: red;
   width: 200px;
   height: 300px;
   margin: 1.4rem;
 }
 #lastCv #lesCv i {
   font-size: 30px;
+  color: #0c64a6;
 }
 
-#connexion {
-  background-color: red;
-}
-@media (max-width: 480px) {
-  #connexion {
-    background-color: yellow;
-  }
-}
-#connexion .wrap {
-  background-color: cyan;
-}
-@media (max-width: 600px) {
-  #connexion .wrap {
-    background-color: lime;
-  }
-}
-
-#signup {
-  background-color: cyan;
-}
-#signup .wrap p.account {
+#connexion .wrap h2 {
+  margin-left: 3rem;
+  margin-bottom: 1rem;
   font-size: 2rem;
+}
+#connexion .wrap .box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+#connexion .wrap .box img {
+  margin-left: 3rem;
+  height: 640px;
+}
+#connexion .wrap .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(124, 124, 124, 0.3);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-left: 3%;
+  margin-right: 3%;
+  width: 540px;
+  height: 640px;
+}
+#connexion .wrap .form #co {
+  border: none;
+  border-radius: 5px;
+  background-color: #0c64a6;
+  color: white;
+  padding: 0.6rem;
+  width: 500px;
+  font-size: 1.4rem;
+  margin: 0.8rem auto;
+}
+#connexion .wrap .form a {
+  color: #0c64a6;
+  font-size: 1.4rem;
+}
+#connexion .wrap .form-example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#connexion .wrap .form-example input {
+  width: 500px;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  margin-top: 1rem;
+  margin-bottom: 1.6rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 6px, rgba(0, 0, 0, 0.25) 0px 3px 6px;
+}
+#connexion .wrap .form-example label {
+  font-size: 1.6rem;
+}
+
+#signup .wrap .account {
+  font-size: 2rem;
+  padding-bottom: 1rem;
 }
 #signup .wrap div.box {
   background-color: #E3E3E3;
   text-align: center;
   display: flex;
+  border-radius: 10px;
+}
+#signup .wrap .box_text {
+  padding: 3rem;
+}
+#signup .wrap .box_text p {
+  margin-bottom: 1rem;
+}
+#signup .wrap .checkbox_cr {
+  display: flex;
+}
+#signup .wrap .checkbox_cr .candidat {
+  margin-right: 1.5rem;
+}
+#signup .wrap input {
+  margin-bottom: 1rem;
+  padding: 0.5rem 2rem;
 }
 
 footer {
