@@ -75,9 +75,42 @@ function refresh_general_content(){
     });
 
     content_general.append($('<p>Profitez de toutes les fonctionnalités de l\'éditeur et d\'une personnalisation complète de votre CV en créant un compte gratuitement !</p>'));
-    content_general.append($('<button class="btn blue" id="create-account">Créer un compte</button>'));
+    content_general.append($('<button class="btn blue" id="create-account">Créer un compte</button>').on('click', function(){
+        window.location.href = HOME_URL + 'signup';
+    }));
 
-    content_general.append($('<button class="btn red" id="export-pdf">Exporter mon CV en PDF</button>'));
+    const expdfBtn = $('<button class="btn red">Exporter mon CV en PDF</button>').on('click', function(){
+        if(generating_pdf){
+            return;
+        }
+        generating_pdf = true;
+        const save = $('#cv .wrap_cv .modules').clone();
+        const element = save.clone();
+        $('#cv .wrap_cv .modules').remove();
+        element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
+            $(this).remove();
+        });
+        element.find('.module.selected').each(function() {
+            $(this).removeClass('selected');
+        });
+        $('#cv .wrap_cv').append(element);
+
+        let filename = CV.getTitle().replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
+        let options = {
+            margin:       1,
+            filename:     filename,
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
+        };
+        html2pdf().set(options).from(document.getElementById('cv')).save();
+        setTimeout(function(){
+            $('#cv .wrap_cv .modules').remove();
+            $('#cv .wrap_cv').append(save);
+            generating_pdf = false;
+        }, 500);
+    });
+    content_general.append(expdfBtn);
 }
 
 // Module

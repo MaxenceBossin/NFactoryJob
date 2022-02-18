@@ -18,6 +18,8 @@ let drag_module = null;
 let currentMousePos = { x: -1, y: -1 };
 let lastDragMousePos = null;
 
+let generating_pdf = false;
+
 // Todo
 
 $( document ).ready(function() {

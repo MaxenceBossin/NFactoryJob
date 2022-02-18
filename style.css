@@ -465,6 +465,39 @@ textarea {
   color: #5e80c9;
 }
 
+#preview-infos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  display: none;
+}
+#preview-infos .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0.8rem;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.5s;
+}
+#preview-infos .content i {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 0.5rem;
+  color: #5e80c9;
+}
+
 .noselect {
   -webkit-touch-callout: none;
   /* iOS Safari */
