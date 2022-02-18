@@ -4,8 +4,6 @@ function assetImg() {
     return  get_template_directory_uri().'/asset/img/';
 }
 
-
-
 function debug($tableau)
 {
     echo '<pre style="height:300px;overflow-y: scroll;font-size: .7rem;padding: .6rem;font-family: Verdana;background-color: #000;color:#fff;">';

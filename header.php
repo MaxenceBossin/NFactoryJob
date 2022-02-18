@@ -8,7 +8,6 @@
  *
  * @package nfactoryjob
  */
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
@@ -33,9 +32,9 @@
 				<li class="desktop"><a href="<?= path('connexion'); ?>" class="log"><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
 				<li class="desktop"><a href="<?= path('editor'); ?>" class="create">Créer un CV</a></li>
 				<li class="burger"><i class="fa-solid fa-bars"></i></li>
-				<li class="mobile"><a href=""><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
-				<li class="mobile"><a href=""><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
-				<li class="mobile"><a href="" class="create">Créer un CV</a></li>
+				<li class="mobile"><a href="<?= path('home'); ?>"><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
+				<li class="mobile"><a href="<?= path('connexion'); ?>"><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
+				<li class="mobile"><a href="<?= path('editor'); ?>" class="create">Créer un CV</a></li>
 			</ul>
 		</nav>
 	</div>

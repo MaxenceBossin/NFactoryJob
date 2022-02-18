@@ -10,21 +10,22 @@ get_header();
         <?php the_post_thumbnail('full')?>
             <form action="" method="get" class="form">
                 <div class="form-example">
-                    <label for="name">Adresse mail </label>
-                    <input type="email "name="email" id="email" required>
+                    <label for="name">Adresse mail</label>
+                    <input type="email "name="email" id="email" value="<?= recupInputValue('mail')?>" required>
                 </div>
                 <div class="form-example">
-                    <label for="email">Mot de passe </label>
-                    <input type="password" name="password" id="password" required>
+                    <label for="email">Mot de passe</label>
+                    <input type="password" name="password" id="password" value="<?= recupInputValue('password')?>" required>
                 </div>
                 <a href="#">Mot de passe oublié</a>
                 <div class="form-button">
                     <input id="co" type="submit" value="Se connecter">
                 </div>
-                    <a href="#">Je n'ai pas de compte</a>
+                    <a href="<?= path('inscription'); ?>">Je n'ai pas de compte</a>
             </form>
         </div>        
     </div>
 </section>
 
-<?php get_footer();
+<?php
+get_footer();
