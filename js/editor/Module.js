@@ -72,9 +72,9 @@ class Module{
         this.width = _width;
     }
 
-    generate_onemodule_item(content, field, showName){
+    generate_onemodule_item(content, field, showName, type = 'autocomplete'){
         if(!this.data.hasOwnProperty(field)) {
-            add_module_item_global(content, showName, field);
+            add_module_item_global(content, showName, field, false, [], type);
         }
         else{
             const moduleItem = $('<div class="module-item"></div>');
@@ -100,34 +100,37 @@ class Module{
         console.log(this.data);
 
         // Global
+        const head = $('<div class="head"></div>');
+        head.append($('<i class="fa-solid fa-arrows-up-down-left-right draggable"></i>'));
         if(this.show_title){
             const module_title = $('<h1 class="module-title">'+this.moduleShownName+'</h1>');
-            content.append(module_title);
+            head.append(module_title);
         }
+        content.append(head);
         content.attr('data-width', this.width);
         content.css("width", this.width + '%');
         content.css("background-color", this.color);
 
         // Modules Informations
         if(this.moduleName === 'Informations'){
-            this.generate_onemodule_item(content, 'nomprenom', 'Ajouter un nom et prénom');
-            this.generate_onemodule_item(content, 'adresse', 'Ajouter une adresse');
+            this.generate_onemodule_item(content, 'nomprenom', 'Ajouter un nom et prénom', 'text');
+            this.generate_onemodule_item(content, 'adresse', 'Ajouter une adresse', 'text');
             this.generate_onemodule_item(content, 'contratrecherche', 'Ajouter un type de contrat recherché');
             this.generate_onemodule_item(content, 'posterecherche', 'Ajouter un poste recherché');
         }
 
         // Modules personnalisé
         else if(this.moduleName === 'Module personnalisé'){
-            this.generate_onemodule_item(content, 'contenu', 'Ajouter un contenu');
+            this.generate_onemodule_item(content, 'contenu', 'Ajouter un contenu', 'textarea');
         }
 
         // Module Contact
         else if(this.moduleName === 'Contact'){
-            this.generate_onemodule_item(content, 'email', 'Ajouter une adresse mail');
-            this.generate_onemodule_item(content, 'tel', 'Ajouter un numéro de téléphone');
-            this.generate_onemodule_item(content, 'linkedin', 'Ajouter un lien LinkedIn');
-            this.generate_onemodule_item(content, 'github', 'Ajouter un lien GitHub');
-            this.generate_onemodule_item(content, 'portfolio', 'Ajouter un lien vers votre portfolio');
+            this.generate_onemodule_item(content, 'email', 'Ajouter une adresse mail', 'text');
+            this.generate_onemodule_item(content, 'tel', 'Ajouter un numéro de téléphone', 'text');
+            this.generate_onemodule_item(content, 'linkedin', 'Ajouter un lien LinkedIn', 'text');
+            this.generate_onemodule_item(content, 'github', 'Ajouter un lien GitHub', 'text');
+            this.generate_onemodule_item(content, 'portfolio', 'Ajouter un lien vers votre portfolio', 'text');
         }
 
         // Module Loisirs

@@ -1,5 +1,6 @@
 <?php
 /** Template Name: Editor **/
+
 // permet la connexion pdo
 require_once "config.php";
 require_once('inc/functions/request/pdo.php');
@@ -33,5 +34,10 @@ get_header();
             </div>
         </div>
     </div>
+
+    <div id="preview-infos"><div class="content"><p></p></div></div>
 <?php
+
+echo "<script>const HOME_URL = '".get_site_url()."/';</script>";
+
 get_footer();

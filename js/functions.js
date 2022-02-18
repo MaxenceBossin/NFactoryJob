@@ -1,3 +1,5 @@
+let autocomplete_ajax_timeout = null;
+
 function ajax(name, fichierPhp, data = {}){
     show_loading();
     $.ajax({
@@ -32,8 +34,11 @@ function get_form(formName){
     return $('#' + formName);
 }
 
-// Attention: 'values' est un array (utile pour les select)
+// Attention: 'values' est un array (utile pour les select par exemple)
 function create_input(name, showName = '', parent = null, type = "text", values = [], placeholder = "", specific_ID = ""){
+    if(name.length === 0){
+        name = 'field';
+    }
     let _fID = name;
     if(specific_ID.length > 0){
         _fID = specific_ID;
@@ -45,7 +50,8 @@ function create_input(name, showName = '', parent = null, type = "text", values 
     let input;
     if(type === "autocomplete"){
         input = $('<input type="text" />').on('input', function(){
-
+            $(this).attr('data-fromautocompletion', '0');
+            on_autocomplete_ajax(_fID, $(this).val());
         });
     }
     else if(type === 'colorpicker'){
@@ -141,6 +147,9 @@ function create_input(name, showName = '', parent = null, type = "text", values 
             parent.append($('<div id="picker-'+_fID+'"></div>'));
             $('#picker-' + _fID).farbtastic($('#' +_fID));
         }
+        else if(type === 'autocomplete'){
+            parent.append($('<div id="autocomplete-for-' + _fID + '" class="autocomplete"></div>'));
+        }
 
         parent.append(span_error);
     }
@@ -180,4 +189,55 @@ function build_form(form, submitValue = 'Valider', secondary_infos = [], add_can
         });
         on_form_submit($(this).attr('id'), $(this), data, secondary_infos);
     });
+}
+
+function on_autocomplete_ajax(input_id, input_value){
+    if(autocomplete_ajax_timeout !== null){
+        clearTimeout(autocomplete_ajax_timeout);
+    }
+
+    autocomplete_ajax_timeout = setTimeout(function(){
+        on_valid_autocomplete_ajax_request(input_id, input_value);
+    }, 500);
+}
+
+function on_valid_autocomplete_ajax_request(input_id, input_value){
+    console.log('ajax for ' + input_id);
+
+    if(input_id === ''){
+
+    }
+
+    on_ajax_get_autocomplete_data(input_id, ['Donnée 1', 'Donnée 2', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3']); // temporaire, plutot utiliser ajax(...);
+}
+
+function on_ajax_get_autocomplete_data(input_id, data){
+    const _input = $('#' + input_id);
+    const _autocomplete = $('#autocomplete-for-' + input_id);
+    if(_autocomplete !== undefined){
+        _autocomplete.empty();
+        if(data !== null && (data.length > 1 || (data.length > 0 && data[0] !== _input.val()))){
+            for(let i=0;i<data.length;i++){
+                if(data[i].length > 0){
+                    const _autocomplete_item = $('<div data-inputid="'+input_id+'" class="autocomplete-item">'+data[i]+'</div>').on('click', function(){
+                        const input_id_data = $(this).attr('data-inputid');
+                        const _input_target = $('#' + input_id);
+                        const _autocomplete_target = $('#autocomplete-for-' + input_id_data);
+                        _input_target.val($(this).text());
+                        _input_target.attr('data-fromautocompletion', '1');
+                        _autocomplete_target.css("display", "none");
+                    });
+                    _autocomplete.append(_autocomplete_item);
+                }
+            }
+            _autocomplete.css('display', 'flex');
+        }
+        else{
+            _autocomplete.css('display', 'none');
+        }
+    }
+}
+
+function truncate(str, n){
+    return (str.length > n) ? str.substr(0, n-1) + '&hellip;' : str;
 }

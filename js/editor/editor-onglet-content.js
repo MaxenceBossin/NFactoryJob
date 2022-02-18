@@ -1,17 +1,71 @@
 
 // Général
 function refresh_general_content(){
+    let _input;
     content_module.css("display", "none");
     content_general.empty();
     content_general.css("display", "flex");
 
+    _input = create_input('cv-title', 'Nom du CV', content_general, 'text', [CV.getTitle()]);
+    _input.on('input change', function(){
+        CV.setTitle($(this).val());
+        CV.refresh();
+        editor_request_save();
+    });
+
+    const table = $('<table class="section-table"></table>');
+    table.append($('<thead><tr><th></th><th></th></tr></thead>'));
+    const tbody = $('<tbody></tbody>');
+    let foundLine = false;
     for(let i=0;i<lines_el.length;i++){
         if(lines_el[i] != null){
-            content_general.append($('<p>Ligne '+lines_el[i].getLineNum()+'</p>'));
+            foundLine = true;
+            const tr = $('<tr></tr>');
+            let td = $('<td></td>');
+            const delete_line = $('<i data-section="'+lines_el[i].getLineNum()+'" class="fa-solid fa-trash"></i>').on('click', function(){
+                const lineID = $(this).attr('data-section');
+                const _line = get_line_by_num(parseInt(lineID));
+                if(_line !== null){
+                    destroy_section(_line);
+                }
+            });
+            td.append($('<p>Section '+lines_el[i].getLineNum()+'</p>'));
+            if(lines_el[i].getLineNum() > 1 && lines_el[i].countModules() > 0){
+                td.append(delete_line);
+            }
+            tr.append(td);
+            td = $('<td></td>');
+            const _modules = lines_el[i].getModules();
+            let moduleFound = false;
+            if(_modules != null && _modules.length > 0){
+                for(let _mod = 0;_mod<_modules.length;_mod++){
+                    if(_modules[_mod] !== null && _modules[_mod] !== undefined){
+                        td.append($('<button>'+_modules[_mod].getModuleName()+'</button>'));
+                        const delete_module = $('<i data-mod="'+_modules[_mod].getModuleID()+'" class="fa-solid fa-trash"></i>').on('click', function(){
+                            const modID = $(this).attr('data-mod');
+                            const _module = get_module_by_ID(parseInt(modID));
+                            if(_module !== null){
+                                destroy_module(_module);
+                            }
+                        });
+                        td.append(delete_module);
+                        moduleFound = true;
+                    }
+                }
+            }
+            if(!moduleFound){
+                td.append($('<p>Aucun module dans cette section</p>'));
+            }
+            tr.append(td);
+            tbody.append(tr);
         }
     }
+    table.append(tbody);
+    content_general.append(table);
 
-    let _input;
+    if(!foundLine){
+        tbody.append($('<tr><td>Commencez à ajouter vos modules. Ils apparaîtront ici !</td></tr>'));
+    }
 
     _input = create_input('back-color', 'Couleur de fond du CV', content_general, 'colorpicker', [CV.getColor()]);
     _input.on('input change', function(){
@@ -21,9 +75,78 @@ function refresh_general_content(){
     });
 
     content_general.append($('<p>Profitez de toutes les fonctionnalités de l\'éditeur et d\'une personnalisation complète de votre CV en créant un compte gratuitement !</p>'));
-    content_general.append($('<button class="btn blue" id="create-account">Créer un compte</button>'));
+    content_general.append($('<button class="btn blue" id="create-account">Créer un compte</button>').on('click', function(){
+        window.location.href = HOME_URL + 'signup';
+    }));
 
-    content_general.append($('<button class="btn red" id="export-pdf">Exporter mon CV en PDF</button>'));
+    const expdfBtn = $('<button class="btn red">Exporter en PDF</button>').on('click', function(){
+        if(generating_pdf){
+            return;
+        }
+        generating_pdf = true;
+        const preview = $('#preview-infos');
+        $('#preview-infos .content').empty();
+        preview.css("display", "block");
+        append_preview('Prévisualisation du CV', false, true);
+        setTimeout(function(){
+            const save = $('#cv .wrap_cv .modules').clone();
+            const element = save.clone();
+            $('#cv .wrap_cv .modules').remove();
+            element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
+                $(this).remove();
+            });
+            element.find('.module.selected').each(function() {
+                $(this).removeClass('selected');
+            });
+            $('#cv .wrap_cv').append(element);
+            append_preview('Génération du CV', false, true);
+            setTimeout(function(){
+                let filename = CV.getTitle().replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
+                let options = {
+                    filename:     filename,
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
+                };
+                html2pdf().set(options).from(document.getElementById('cv')).save();
+                append_preview('Mise à jour de l\'éditeur...');
+                setTimeout(function(){
+                    $('#cv .wrap_cv .modules').remove();
+                    $('#cv .wrap_cv').append(save);
+                    append_preview('Exportation terminée de', true, true);
+                    setTimeout(function(){
+                        refresh_all_modules();
+                        modules = $('#cv .modules');
+                        place_add_module();
+                        generating_pdf = false;
+                        preview.fadeOut('fast', function(){
+                            preview.css("display", "none");
+                        });
+                    }, 1500);
+                }, 800);
+            }, 800);
+        }, 800);
+
+    });
+    content_general.append(expdfBtn);
+}
+
+function append_preview(texte, appendTick = false, appendCVName = false){
+    const preview = $('#preview-infos .content');
+    let previewText;
+    if(appendCVName){
+        previewText = $('<p>'+texte+' <strong>'+CV.getTitle()+'</strong>...</p>');
+    }
+    else{
+        previewText = $('<p>'+texte+'...</p>');
+    }
+    preview.append(previewText);
+    previewText.hide().fadeIn(500);
+    if(appendTick){
+        const i = $('<i class="fa-solid fa-check"></i>');
+        previewText.append(i);
+        i.fadeOut('fast');
+        i.fadeIn('fast');
+    }
 }
 
 // Module

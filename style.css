@@ -139,6 +139,28 @@ textarea {
   padding: 1rem;
 }
 
+#cv .autocomplete, #onglet_editor .autocomplete {
+  display: none;
+  height: 150px;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.5rem;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  width: 95%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+#cv .autocomplete .autocomplete-item, #onglet_editor .autocomplete .autocomplete-item {
+  cursor: pointer;
+  transition: all 0.25s;
+  color: #5e80c9;
+  width: 100%;
+}
+#cv .autocomplete .autocomplete-item:hover, #onglet_editor .autocomplete .autocomplete-item:hover {
+  background-color: #eaeaea;
+  font-weight: bold;
+}
 #cv .btn, #onglet_editor .btn {
   padding: 0.5rem 1rem 0.5rem 1rem;
   color: white;
@@ -235,6 +257,54 @@ textarea {
   color: #5e80c9;
 }
 
+.section-table {
+  border-radius: 5px;
+  padding: 0.5rem;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  width: 95%;
+}
+.section-table button {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.section-table .fa-trash {
+  color: #f35e5e;
+}
+.section-table thead th:first-child {
+  width: 45%;
+}
+.section-table tbody {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+}
+.section-table tr {
+  text-align: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+.section-table td {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.section-table i {
+  padding: 0 0.3rem 0 0.3rem;
+  cursor: pointer;
+}
+.section-table i:hover {
+  opacity: 0.8;
+}
+
 #cv .wrap_cv .modules {
   display: flex;
   flex-flow: column nowrap;
@@ -253,19 +323,24 @@ textarea {
   display: flex;
   flex-flow: row nowrap;
   gap: 0.5rem;
+  min-height: 150px;
 }
 #cv .wrap_cv .modules section.module-line .line-title {
   position: absolute;
-  top: -20px;
-  left: 0;
-  color: rgba(0, 0, 0, 0.5);
+  top: 50%;
+  z-index: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(0, 0, 0, 0.15);
+  font-size: 3rem;
 }
 #cv .wrap_cv .modules .module {
   background-color: white;
   border-radius: 5px;
   border: 2px solid transparent;
-  transition: all 0.5s;
+  transition: all 0.1s;
   padding: 1rem;
+  z-index: 2;
   display: flex;
   flex-flow: column nowrap;
   gap: 0.5rem;
@@ -275,8 +350,17 @@ textarea {
 #cv .wrap_cv .modules .module:hover {
   border: 2px solid #5e80c9;
 }
-#cv .wrap_cv .modules .module .module-title {
+#cv .wrap_cv .modules .module .head {
+  display: flex;
+  flex-flow: row nowrap;
+}
+#cv .wrap_cv .modules .module .head .module-title {
   font-weight: 300;
+}
+#cv .wrap_cv .modules .module .head i.draggable {
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: move;
 }
 #cv .wrap_cv .modules .module .module-item .module-item-head-title {
   font-size: 1.5rem;
@@ -355,7 +439,7 @@ textarea {
   color: #484848;
 }
 #cv form .error, #onglet_editor .content .error {
-  color: red;
+  color: #f35e5e;
 }
 
 #save-notif {
@@ -374,10 +458,70 @@ textarea {
   align-content: center;
   align-items: center;
   text-align: center;
+  z-index: 10;
 }
 #save-notif i {
   padding-left: 0.5rem;
   color: #5e80c9;
+}
+
+#preview-infos {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: all 0.5s;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  display: none;
+}
+#preview-infos strong {
+  font-weight: bold;
+  font-size: 1rem;
+}
+#preview-infos .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 0.8rem;
+  min-width: 25vw;
+  border-radius: 5px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.5s;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  gap: 0.5rem;
+}
+#preview-infos .content i {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  padding-left: 0.5rem;
+  color: #5e80c9;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+               supported by Chrome, Edge, Opera and Firefox */
 }
 
 /**
