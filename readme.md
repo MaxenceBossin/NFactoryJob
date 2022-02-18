@@ -2,10 +2,10 @@
 
 Projet de groupe réalisé par :
 
-** Maxence BOSSIN **
-** Anthony CHEVALIER ** _en tant que chef de projet_
-** Léonard JOUEN **
-** Maxence LALLEMENT **
+**Maxence BOSSIN**
+**Anthony CHEVALIER** _en tant que chef de projet_
+**Léonard JOUEN**
+**Romain LALLEMENT**
 
 ## Description du besoin client
 
@@ -51,13 +51,41 @@ Il y a trois rôle d'utlisateur :
 
 ### 1. Instalation de **WORDPRESS**
 
-Pour une version local :
+#### L'installation en local
+
+##### Instalation de XAMPP, simule un serveur en local
+
 Installation de Xampp (terlerchargement de la version correspondant à votre systeme d'exploitation) : https://www.apachefriends.org/fr/index.html
 Ensuite Allumer XAMMP cliquer sur RUN pour Appache et MySql
+
 ![Image XAMP](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/XAMP.PNG);
+
+Pour WINDOW :
+Une fois l'installation fini un dossier xampp s'est créer à l'endroit où vous l'avez installer.
+Normalement il se situe sur votre disque C à l'emplacement : C:\xampp\htdocs
+Vous devrai ensuite placer votre WORDPRESS dans le dossier **htdocs**
+
+##### Instalation de WORDPRESS
+
+Une fois fait vous devez installer **WORDPRESS**
+
+Rendez-vous sur ce site : https://fr.wordpress.org/download/
+Il fait décendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
+à noté que la version peut changer, ça n'a pas d'importance.
+
+![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/wordpressInstallation.PNG);
+
+###### Instalation de WORDPRESS
 
 ### 2. Telechargement du thème _NFactoryJob_
 
-### 3. Mise en place de la BDD
+Via GITHUB :
 
-### 4. Comment passer un compte en recruteur
+![Image GIT CLONE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/gitClone.png);
+
+Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encardré en rouge en haut à droite.
+Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliquer sur les deux carés surligné en rouge sur l'image.
+
+### . Mise en place de la BDD
+
+### . Comment passer un compte en recruteur
