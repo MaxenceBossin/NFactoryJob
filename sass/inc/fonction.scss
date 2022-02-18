@@ -38,3 +38,12 @@
         border-bottom: 1px solid $color;
     }
 }
+@mixin boxShadow($color){
+    box-shadow: rgba($color, 0.25) 0px 3px 6px, rgba($color, 0.25) 0px 3px 6px;
+}
+@mixin boxShadowHover($color) {
+    transition: .8s;
+    &:hover{
+        box-shadow: rgba($color, 0.25) 0px 14px 28px, rgba($color, 0.25) 0px 10px 10px;
+    }
+}

@@ -8,5 +8,9 @@
         @media (max-width: 900px){ @content;}
     }@else if $size == underWrap {
         @media (max-width: 1200px){ @content;}
+    }@else if $size == underWrap2 {
+        @media (max-width: 1800px){ @content;}
     }
 }
+
+

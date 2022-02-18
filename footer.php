@@ -10,6 +10,7 @@
  */
 
 ?>
+
 <footer id="colophon" class="site-footer">
 	<div class="wrap_footer">
 		<div class="site-info">

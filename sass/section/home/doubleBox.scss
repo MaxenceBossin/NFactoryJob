@@ -14,11 +14,8 @@
         width: 400px;
         margin-right: 10%;
         color: $colorwhite;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-        transition: .8s;
-        &:hover{
-            box-shadow: rgba(52, 129, 189, 0.25) 0px 14px 28px, rgba(52, 129, 189, 0.25) 0px 10px 10px;
-        }
+        @include boxShadow($colorblack);
+        @include boxShadowHover($mainColorHover);
     }
     #create{
         background-color: $colorwhite;
@@ -34,11 +31,8 @@
         padding: 1rem;
         height: 500px;
         width: 400px;
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-        transition: .8s;
-        &:hover{
-            box-shadow: rgba(52, 129, 189, 0.25) 0px 14px 28px, rgba(52, 129, 189, 0.25) 0px 10px 10px;
-        }
+        @include boxShadow($colorblack);
+        @include boxShadowHover($mainColorHover);
     }
     #consulter{
         background-color: $colorBlue;
