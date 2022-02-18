@@ -54,7 +54,7 @@ Il y a trois rôle d'utlisateur :
 Pour une version local :
 Installation de Xampp (terlerchargement de la version correspondant à votre systeme d'exploitation) : https://www.apachefriends.org/fr/index.html
 Ensuite Allumer XAMMP cliquer sur RUN pour Appache et MySql
-![Image XAMP](https://github.com/MaxenceBossin/NFactoryJob/iamgeReadMe/XAMP.PNG);
+![Image XAMP](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/XAMP.PNG);
 
 ### 2. Telechargement du thème _NFactoryJob_
 
