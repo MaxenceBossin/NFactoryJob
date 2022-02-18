@@ -58,7 +58,7 @@ Il y a trois rôle d'utlisateur :
 Installation de Xampp (terlerchargement de la version correspondant à votre systeme d'exploitation) : https://www.apachefriends.org/fr/index.html
 Ensuite Allumer XAMMP cliquer sur RUN pour Appache et MySql
 
-![Image XAMP](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/XAMP.PNG);
+![Image XAMP](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/XAMP.PNG)
 
 Pour WINDOW :
 Une fois l'installation fini un dossier xampp s'est créer à l'endroit où vous l'avez installer.
@@ -73,7 +73,7 @@ Rendez-vous sur ce site : https://fr.wordpress.org/download/
 Il fait décendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
 à noté que la version peut changer, ça n'a pas d'importance.
 
-![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/wordpressInstallation.PNG);
+![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/wordpressInstallation.PNG)
 
 ###### Instalation de WORDPRESS
 
@@ -81,7 +81,7 @@ Il fait décendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
 
 Via GITHUB :
 
-![Image GIT CLONE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/gitClone.png);
+![Image GIT CLONE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/gitClone.png)
 
 Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encardré en rouge en haut à droite.
 Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliquer sur les deux carés surligné en rouge sur l'image.
