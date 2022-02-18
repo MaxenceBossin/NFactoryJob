@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 18 fév. 2022 à 10:23
+-- Généré le : ven. 18 fév. 2022 à 10:39
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.0.13
 
@@ -418,26 +418,6 @@ INSERT INTO `nfj_softskill` (`id_softskill`, `libelle_softskill`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `nfj_term_relationships`
---
-
-CREATE TABLE `nfj_term_relationships` (
-  `object_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-  `term_taxonomy_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
-  `term_order` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `nfj_term_relationships`
---
-
-INSERT INTO `nfj_term_relationships` (`object_id`, `term_taxonomy_id`, `term_order`) VALUES
-(1, 1, 0),
-(6, 2, 0);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `nfj_typecontrat`
 --
 
@@ -663,13 +643,6 @@ ALTER TABLE `nfj_postes`
 --
 ALTER TABLE `nfj_softskill`
   ADD PRIMARY KEY (`id_softskill`);
-
---
--- Index pour la table `nfj_term_relationships`
---
-ALTER TABLE `nfj_term_relationships`
-  ADD PRIMARY KEY (`object_id`,`term_taxonomy_id`),
-  ADD KEY `term_taxonomy_id` (`term_taxonomy_id`);
 
 --
 -- Index pour la table `nfj_typecontrat`
