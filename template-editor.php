@@ -1,5 +1,6 @@
 <?php
 /** Template Name: Editor **/
+
 // permet la connexion pdo
 require_once "config.php";
 require_once('inc/functions/request/pdo.php');

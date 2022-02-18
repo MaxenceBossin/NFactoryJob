@@ -458,6 +458,7 @@ textarea {
   align-content: center;
   align-items: center;
   text-align: center;
+  z-index: 10;
 }
 #save-notif i {
   padding-left: 0.5rem;
