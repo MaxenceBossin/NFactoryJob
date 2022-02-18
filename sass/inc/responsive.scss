@@ -3,10 +3,14 @@
     @if $size == phone {
         @media (max-width: 480px){ @content;}
     }@else if $size == tablette {
-        @media (max-width: 700px){ @content;}
+        @media (max-width: 600px){ @content;}
     }@else if $size == petitlaptop {
         @media (max-width: 900px){ @content;}
     }@else if $size == underWrap {
         @media (max-width: 1200px){ @content;}
+    }@else if $size == underWrap2 {
+        @media (max-width: 1800px){ @content;}
     }
 }
+
+

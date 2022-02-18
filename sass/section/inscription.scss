@@ -1,0 +1,30 @@
+#signup{
+    .wrap{
+        .account{
+            font-size: 2rem;
+            padding-bottom: 1rem;
+        }
+        div.box{
+            background-color: #E3E3E3;
+            text-align: center;
+            display: flex;
+            border-radius: 10px;
+        }
+            .box_text{
+                padding: 3rem;
+                p{
+                    margin-bottom: 1rem;
+                }
+            }
+                .checkbox_cr{
+                    display: flex;
+                    .candidat{
+                        margin-right: 1.5rem;
+                    }
+                }
+                    input{
+                        margin-bottom: 1rem;
+                        padding: 0.5rem 2rem;
+                    }
+    }
+}

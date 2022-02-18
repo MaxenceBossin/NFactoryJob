@@ -15,12 +15,13 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned.
 
-legume is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
+nfactoryjob is based on Underscores https://underscores.me/, (C) 2012-2020 Automattic, Inc.
 Underscores is distributed under the terms of the GNU GPL v2 or later.
 
 Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 */
+//
 
 @import "inc/reset";
 @import "inc/variable";
@@ -30,8 +31,19 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "inc/base";
 @import "inc/wrap";
 
+/* editor  */
+@import "inc/editor";
+
 @import "header_footer/header";
 /*ajout des sections ici*/
+
+// Page Home
+@import "section/home/image";
+@import "section/home/doubleBox";
+@import "section/home/lastCv";
+// Page connexion/ inscription
+@import "section/connexion";
+@import "section/inscription";
 
 
 @import "header_footer/footer";

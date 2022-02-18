@@ -13,3 +13,37 @@
     object-fit: cover;
     background-repeat: no-repeat;
 }
+@mixin hoverBackgroundColor($backgroundcolor){
+    transition: .6s;
+    &:hover{
+        background-color: $backgroundcolor;
+    }
+}
+@mixin hoverColor($color){
+    transition: .6s;
+    &:hover{
+        color: $color;
+    }
+}
+@mixin hoverColorBackgroundColor($color,$backgroundcolor){
+    transition: .6s;
+    &:hover{
+        color: $color;
+        background-color: $backgroundcolor;
+    }
+}
+@mixin hoverUnderline($color){
+    transition: .6s;
+    &:hover{
+        border-bottom: 1px solid $color;
+    }
+}
+@mixin boxShadow($color){
+    box-shadow: rgba($color, 0.25) 0px 3px 6px, rgba($color, 0.25) 0px 3px 6px;
+}
+@mixin boxShadowHover($color) {
+    transition: .8s;
+    &:hover{
+        box-shadow: rgba($color, 0.25) 0px 14px 28px, rgba($color, 0.25) 0px 10px 10px;
+    }
+}
