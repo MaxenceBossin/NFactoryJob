@@ -68,9 +68,9 @@ function editor_add_cv_module(form, data, secondary_infos){
         form_error(form, 'type_module', 'Une erreur s\'est produite');
         return;
     }
+    const _lineNum = parseInt(secondary_infos[0].attr('data-line'));
     secondary_infos[0].remove();
-    select_module(create_module(LAST_MODULE_ID, data.type_module));
-    LAST_MODULE_ID++;
+    select_module(create_module(get_new_available_module_id(), data.type_module, 50, _lineNum));
     place_add_module();
     editor_request_save();
 }

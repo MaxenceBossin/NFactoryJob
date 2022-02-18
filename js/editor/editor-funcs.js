@@ -31,6 +31,16 @@ function open_onglet(ongletName = 'module'){
     refresh_onglets_menu();
 }
 
+function get_new_available_module_id(){
+    let idx = 1;
+    for(let i=0;i<modules_el.length;i++){
+        if(modules_el[i] !== null && modules_el[i].getModuleID() >= idx){
+            idx = modules_el[i].getModuleID() + 1;
+        }
+    }
+    return idx;
+}
+
 function get_new_available_line_num(){
     let idx = 1;
     for(let i=0;i<lines_el.length;i++){
@@ -70,6 +80,14 @@ function destroy_module(_module){
     refresh_onglets_menu();
 }
 
+function refresh_all_modules(){
+    for(let i=0;i<modules_el.length;i++){
+        if(modules_el[i] !== null){
+            modules_el[i].refresh();
+        }
+    }
+}
+
 function destroy_section(_section){
     if(_section === null){
         return;
@@ -86,20 +104,6 @@ function destroy_section(_section){
 
     if(_sectionElement !== undefined){
         _sectionElement.remove();
-    }
-
-    if(selected_line !== null && selected_line.getLineNum() === _section.getLineNum()){
-        if(lines_el.length-1 >= 0) {
-            for (let i = lines_el.length - 1; i >= 0; i--) {
-                if (lines_el[i] !== null && lines_el[i].getLineNum() !== _section.getLineNum()) {
-                    selected_line = lines_el[i];
-                    break;
-                }
-            }
-        }
-        else{
-            selected_line = create_line(2,1);
-        }
     }
 
     for(let i=0;i<lines_el.length;i++){
@@ -196,38 +200,68 @@ function is_onglet_opened(){
     return onglet_opened;
 }
 
-function place_add_module(){
-    if($('#add-module').length){
-        $('#add-module').remove();
-    }
+function place_add_module(deploy_last_module = false){
+    $('.module.add').each(function(){
+       $(this).remove();
+    });
     if($('#add-line').length){
         $('#add-line').remove();
     }
 
-    const add_module = $('<div id="add-module" class="module add"><h1 class="add-block-title">Ajouter un module</h1><i class="fa-solid fa-plus"></i></div>');
-    add_module.on('click', function(){
-        if(!$(this).hasClass('generated')){
-            $(this).addClass('generated');
-            generate_add_cv_module($(this));
-            close_onglet();
+    if(!$('.module-line').length){
+        console.log('create_line0');
+        create_line();
+    }
+
+    let last_module = null;
+    $('.module-line').each(function(){
+        const line_id = parseInt($(this).attr('id').split('-')[1]);
+        const line = get_line_by_num(line_id);
+        if(line !== null && line.countModules() < Line.IDEAL_NB_MODULES && line.getDOMElement().attr('id') !== 'add-line'){
+            const add_module = $('<div data-line="'+line_id+'" class="module add"><h1 class="add-block-title">Ajouter un module</h1><i class="fa-solid fa-plus"></i></div>');
+            add_module.on('click', function(){
+                if(!$(this).hasClass('generated')){
+                    $(this).addClass('generated');
+                    generate_add_cv_module($(this));
+                    close_onglet();
+                }
+            });
+
+            $(this).append(add_module);
+            last_module = add_module;
         }
     });
 
-    let _line = get_selected_line();
-    if(_line === null || _line.countModules() + 1 > _line.getMaxModules()){
-        _line = create_line(2);
-        _line.getDOMElement().append(add_module);
-    }
-    else{
-        _line.getDOMElement().append(add_module);
+    if(deploy_last_module && last_module !== null){
+        last_module.addClass('generated');
+        generate_add_cv_module(last_module);
+        close_onglet();
     }
 
-    const add_line = $('<section id="add-line" class="module-line"><div class="module add"><h1 class="add-block-title">Ajouter une section</h1><i class="fa-solid fa-plus"></i></div></section>');
-    add_line.on('click', function(){
+    const last_line = get_last_line();
+    if(last_line !== null && last_line.countModules() > 0){
+        const add_line = $('<section id="add-line" class="module-line"></section>');
+        const add_line_module = $('<div class="module add"><h1 class="add-block-title">Ajouter une section</h1><i class="fa-solid fa-plus"></i></div>');
+        add_line.append(add_line_module);
+        add_line_module.on('click', function(){
+            create_line();
+            place_add_module(true);
+        });
 
-    });
+        modules.append(add_line);
+    }
+}
 
-    modules.append(add_line);
+function get_last_line(){
+    let _line = null;
+    let nb = -1;
+    for(let i=0;i<lines_el.length;i++){
+        if(lines_el[i] !== null && lines_el[i].getLineNum() > nb && lines_el[i].getDOMElement().attr('id') !== 'add-line'){
+            _line = lines_el[i];
+            nb = lines_el[i].getLineNum();
+        }
+    }
+    return _line;
 }
 
 function on_color_update(el){
@@ -296,25 +330,25 @@ function get_module_element_id(module_element){
     return parseInt(splitted_module[1]);
 }
 
-function get_selected_line(){
-    return selected_line;
-}
-
-function create_line(maxModules, _num = -1){
-
+function create_line(_num = -1){
     if(_num <= 0){
         _num = get_new_available_line_num();
     }
 
     const lineElement = $('<section id="line-'+_num+'" class="module-line"><span class="line-title">Section '+ _num +'</span></section>');
     modules.append(lineElement);
-    let _line = new Line(_num, maxModules, lineElement);
+    let _line = new Line(_num);
     lines_el.push(_line);
-    selected_line = _line;
+    place_add_module();
     return _line;
 }
 
-function create_module(moduleID, moduleName, _width = 50){
+function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
+
+    if(_lineNum === -1 && get_last_line() !== null){
+        _lineNum = get_last_line().getLineNum();
+    }
+
     const module = $('<div id="module-'+moduleID+'" class="module"></div>').on('click', function() {
         const _module = get_module_by_ID(get_module_element_id($(this)));
         if (_module !== null) {
@@ -326,9 +360,10 @@ function create_module(moduleID, moduleName, _width = 50){
     let _module = new Module(moduleID, moduleName);
     modules_el.push(_module);
 
-    let _line = get_selected_line();
-    if(_line === null || _line.countModules() + 1 > _line.getMaxModules()){
-        _line = create_line(2);
+    let _line = get_line_by_num(_lineNum);
+    if(_line === null || _line.countModules() + 1 > Line.IDEAL_NB_MODULES){
+        console.log('create_line1');
+        _line = create_line();
         _line.getDOMElement().append(module);
     }
     else{
@@ -338,6 +373,7 @@ function create_module(moduleID, moduleName, _width = 50){
     _module.setLine(_line);
     _module.setWidth(_width);
     _module.refresh();
+    place_add_module();
     return _module;
 }
 

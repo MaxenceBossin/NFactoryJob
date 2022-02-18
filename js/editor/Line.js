@@ -1,8 +1,9 @@
 class Line{
-    constructor(lineNum, maxModules, domElement) {
+
+    static IDEAL_NB_MODULES = 2;
+
+    constructor(lineNum) {
         this.lineNum = lineNum;
-        this.maxModules = maxModules;
-        this.domElement = domElement;
         this.modules = [];
     }
 
@@ -27,11 +28,7 @@ class Line{
     }
 
     getDOMElement(){
-        return this.domElement;
-    }
-
-    getMaxModules(){
-        return this.maxModules;
+        return $('#line-' + this.lineNum);
     }
 
     getLineNum(){

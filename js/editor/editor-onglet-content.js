@@ -103,10 +103,8 @@ function refresh_general_content(){
             setTimeout(function(){
                 let filename = CV.getTitle().replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
                 let options = {
-                    margin:       1,
                     filename:     filename,
                     image:        { type: 'jpeg', quality: 0.98 },
-                    html2canvas:  { scale: 2 },
                     jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
                 };
                 html2pdf().set(options).from(document.getElementById('cv')).save();
@@ -114,9 +112,11 @@ function refresh_general_content(){
                 setTimeout(function(){
                     $('#cv .wrap_cv .modules').remove();
                     $('#cv .wrap_cv').append(save);
-                    place_add_module();
                     append_preview('Exportation terminée de', true, true);
                     setTimeout(function(){
+                        refresh_all_modules();
+                        modules = $('#cv .modules');
+                        place_add_module();
                         generating_pdf = false;
                         preview.fadeOut('fast', function(){
                             preview.css("display", "none");
