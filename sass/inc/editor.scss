@@ -43,6 +43,9 @@
   .btn.blue{
     background-color: #5e80c9;
   }
+  .btn.green{
+    background-color: #9ec95e;
+  }
 }
 
 #onglet_editor{
@@ -311,7 +314,7 @@
   }
 }
 
-#save-notif{
+#save-notif, #quit-preview{
   position: fixed;
   bottom: -100px;
   left: 50%;
@@ -320,6 +323,7 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all .5s;
   padding: .8rem;
+  min-width: 25vw;
   border-radius: 5px;
   display: flex;
   flex-flow: row nowrap;
@@ -331,6 +335,19 @@
   i{
     padding-left: .5rem;
     color: #5e80c9;
+  }
+  button{
+    padding: .5rem 1rem .5rem 1rem;
+    color: white;
+    background-color: #f35e5e;
+    width: 95%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .25s;
+    &:hover{
+      opacity: .8;
+    }
   }
 }
 

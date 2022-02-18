@@ -179,6 +179,9 @@ textarea {
 #cv .btn.blue, #onglet_editor .btn.blue {
   background-color: #5e80c9;
 }
+#cv .btn.green, #onglet_editor .btn.green {
+  background-color: #9ec95e;
+}
 
 #onglet_editor {
   position: fixed;
@@ -442,7 +445,7 @@ textarea {
   color: #f35e5e;
 }
 
-#save-notif {
+#save-notif, #quit-preview {
   position: fixed;
   bottom: -100px;
   left: 50%;
@@ -451,6 +454,7 @@ textarea {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all 0.5s;
   padding: 0.8rem;
+  min-width: 25vw;
   border-radius: 5px;
   display: flex;
   flex-flow: row nowrap;
@@ -460,9 +464,22 @@ textarea {
   text-align: center;
   z-index: 10;
 }
-#save-notif i {
+#save-notif i, #quit-preview i {
   padding-left: 0.5rem;
   color: #5e80c9;
+}
+#save-notif button, #quit-preview button {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  color: white;
+  background-color: #f35e5e;
+  width: 95%;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+#save-notif button:hover, #quit-preview button:hover {
+  opacity: 0.8;
 }
 
 #preview-infos {
