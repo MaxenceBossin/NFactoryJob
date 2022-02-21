@@ -26,5 +26,7 @@ get_header();
         </table>
     </div>
 </section>
+
+<script>const DASHBOARD = true;</script>
 <?php
 get_footer();

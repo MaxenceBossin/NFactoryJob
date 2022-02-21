@@ -84,6 +84,13 @@ function form_error(form, field, error){
     }
 }
 
+function input_error(field, error){
+    const span_error = $('span#error-' + field);
+    if(span_error.length){
+        span_error.text(error);
+    }
+}
+
 $(document).on('click', function(e) {
     const element = $(e.target);
     if(element.length){
