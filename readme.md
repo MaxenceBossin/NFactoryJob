@@ -109,7 +109,7 @@ Maintenant ce fichier il va falloir le mettre dans le fichier de votre site pour
 
 ![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/fichierdusite.PNG)
 
-#### Installation du thème _NFactoryJob_  
+#### . Installation du thème _NFactoryJob_  
 Pour installez le thème vous avez donc deux façon :    
 
 Via GitHub :  
@@ -152,7 +152,7 @@ Vous allez avoir une page de "phpMyAdmin" qui c'est donc ouvert :
   
   Je vais donc maintenant vous expliquez comment crée une base de donnée pour wordpress :
 
-  ### Création d'une base de donnée  
+  ### . Création d'une base de donnée  
 Premiere étape vous allez devoir appuyer sur le bouton "**Nouvelle base de données**" sur la gauche du site  
     
 Secondes étape vous allez devoir crée la base de données :  
@@ -163,5 +163,12 @@ Puis vous appuyer sur le bouton "Créer"
 ![Image nombasededonne](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/nombase.PNG)
 
 Retenez bien le nom de votre base de donnée elle va être importante pour la suite de l'installation du site.
+
+### . Installation de Wordpress
+
+Nous y somme la dernière étapes de l'installation de wordpress, après cette étapes vous pourrais accédez à votre site.  
+Pour faire cela  nous allons faire la dernière installation de wordpress pour cela il va falloir retourné sur votre XAMPP et cette fois si appuyer sur le bouton Admin de la catégorie Apache (encadré vert)  
+
+![Image lancementLocalHots](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lancementlocalhost.PNG)
 
 ### . Comment passer un compte en recruteur
