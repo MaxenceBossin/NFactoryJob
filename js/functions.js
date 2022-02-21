@@ -30,29 +30,60 @@ function create_form(formName){
     return form;
 }
 
-function get_form(formName){
-    return $('#' + formName);
+function set_input_checkboxed(input, input_wrapper, field){
+    if(input === undefined){
+        return;
+    }
+    
+    const add_btn = $('<button data-inputid="'+input.attr('id')+'" class="btn blue checkboxgroup-add">+</button>');
+    field.append(add_btn);
+
+    const div_filters = $('<div id="checkboxgroup-'+input.attr('id')+'" class="checkboxgroup"></div>');
+    input_wrapper.append(div_filters);
+
+    add_btn.on('click',function() {
+        const input_id = $(this).attr('data-inputid');
+        const checkboxgroup = $('#checkboxgroup-' + input_id);
+        const input = $('#' + input_id);
+        const val = input.val();
+        if(val.length > 0){
+            const checkgroup_element = $('<div class="checkboxgroup-element">'+val+'</div>');
+            const i = $('<i class="fa-solid fa-trash"></i>').on('click', function(){
+                $(this).parent().remove();
+            });
+            checkgroup_element.append(i);
+            $('#checkboxgroup-'+input_id).append(checkgroup_element);
+        }
+        input.val('');
+        const autocomplete = $('#autocomplete-for-' + input_id);
+        if(autocomplete.length){
+            autocomplete.css('display', 'none');
+        }
+    });
 }
 
 // Attention: 'values' est un array (utile pour les select par exemple)
-function create_input(name, showName = '', parent = null, type = "text", values = [], placeholder = "", specific_ID = ""){
+function create_input(name, showName = '', parent = null, type = "text", values = [], placeholder = "", specific_ID = "", checkboxed_filters = false){
     if(name.length === 0){
         name = 'field';
     }
+
+    if(type.length === 0){
+        type = 'text';
+    }
+
     let _fID = name;
     if(specific_ID.length > 0){
         _fID = specific_ID;
     }
 
-    if(showName.length === 0){
-        showName = name;
-    }
     let input;
     if(type === "autocomplete"){
         input = $('<input type="text" />').on('input', function(){
             $(this).attr('data-fromautocompletion', '0');
             on_autocomplete_ajax(_fID, $(this).val());
         });
+        input.attr('placeholder', placeholder);
     }
     else if(type === 'colorpicker'){
         if(values.length > 0){
@@ -118,52 +149,66 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         input.attr('id', name);
     }
 
-    if(parent != null){
+    const input_wrapper = $('<div class="input_wrapper"></div>');
+    const field = $('<div class="field"></div>');
+
+    if(showName.length > 0){
         const label = $('<label for="'+name+'">'+showName+'</label>');
-        parent.append(label);
-        const span_error = $('<span id="error-'+name+'" class="error"></span>');
-        parent.append(label);
-        parent.append(input);
+        input_wrapper.append(label);
+    }
+    field.append(input);
+    input_wrapper.append(field);
+    const span_error = $('<span id="error-'+name+'" class="error"></span>');
+    input_wrapper.append(span_error);
 
-        if(type === "slider"){
-            let _sliderSpanNam = 'slider-span-';
-            if(specific_ID.length > 0){
-                _sliderSpanNam += specific_ID;
-            }
-            else{
-                _sliderSpanNam += name;
-            }
-            let _value = 0;
-            if(values.length > 0){
-                _value = parseInt(values[0]);
-            }
-            let _type = '';
-            if(values.length >= 4){
-                _type = values[3];
-            }
-            parent.append($('<span id="'+_sliderSpanNam+'">'+_value+_type+'</span>'));
+    if(type === "slider"){
+        let _sliderSpanNam = 'slider-span-';
+        if(specific_ID.length > 0){
+            _sliderSpanNam += specific_ID;
         }
-        else if(type === "colorpicker"){
-            parent.append($('<div id="picker-'+_fID+'"></div>'));
-            $('#picker-' + _fID).farbtastic($('#' +_fID));
+        else{
+            _sliderSpanNam += name;
         }
-        else if(type === 'autocomplete'){
-            parent.append($('<div id="autocomplete-for-' + _fID + '" class="autocomplete"></div>'));
+        let _value = 0;
+        if(values.length > 0){
+            _value = parseInt(values[0]);
         }
+        let _type = '';
+        if(values.length >= 4){
+            _type = values[3];
+        }
+        input_wrapper.append($('<span id="'+_sliderSpanNam+'">'+_value+_type+'</span>'));
+    }
+    else if(type === "colorpicker"){
+        input_wrapper.append($('<div id="picker-'+_fID+'"></div>'));
+        $('#picker-' + _fID).farbtastic($('#' +_fID));
+    }
+    else if(type === 'autocomplete'){
+        input_wrapper.append($('<div id="autocomplete-for-' + _fID + '" class="autocomplete"></div>'));
+    }
 
-        parent.append(span_error);
+    if(checkboxed_filters && parent !== null){
+        set_input_checkboxed(input, input_wrapper, field);
+    }
+
+    if(parent !== null){
+        parent.append(input_wrapper);
     }
 
     return input;
 }
 
-function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false){
+function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false, form_horizontal = false){
     const submit = $('<input type="submit" value="'+submitValue+'" />');
     form.append(submit);
     form.attr('style', 'opacity: 0;');
     form.animate({
         "opacity": "1"
     }, 300);
+
+    if(form_horizontal){
+        form.css("flex-flow", "row nowrap");
+    }
 
     if(add_cancel_option){
         const cancel_btn = $('<span data-form="'+form.attr('id')+'" class="btn red">Annuler</span>');
