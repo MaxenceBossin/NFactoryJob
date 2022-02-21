@@ -88,7 +88,7 @@ Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliquer sur 
 
 Via ZIP :
 
-![Image GIT CLONE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/gitClone.png)
+![Image GIT CLONE](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/gitzip.png)
 
 Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encardré en rouge en haut à droite.
 Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliqyer sur '_Download ZIP_' qui se trouve dans l'encadré blanc
@@ -107,7 +107,7 @@ Dans cette archive vous allez trouvez un fichier **"wordpress"** ce fichier cont
 
 Maintenant ce fichier il va falloir le mettre dans le fichier de votre site pour cela vous allez copier le fichier dans l'archive et le copier dans le fichier de votre site.    
 
-![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/fichierdusite.PNG)
+![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/fichierdusite.PNG)
 
 #### Installation du thème _NFactoryJob_  
 Pour installez le thème vous avez donc deux façon :    
@@ -118,10 +118,10 @@ Pour installez le thème via GitHub il va falloir ouvrir le terminal de commande
 Dans ce terminal vous allez devoir marqué le chemin vers le theme pas de panique je vous aide :  
 Tout d'abord avant de marquez le chemin vers votre dossier il va falloir marquez cd puis le chemin ce qui donne dans votre invite de commande :  
 
-![Image lien vers theme](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/lientheme.PNG)
+![Image lien vers theme](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lientheme.PNG)
   
   Une fois cette étapes faites vous allez pouvoir cloné le theme pour cela toujours dans l'invite de commande vous allez devoir marquez :  
-![Image lien pour git clone](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/liengitclone.PNG)  
+![Image lien pour git clone](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/liengitclone.PNG)  
 
 Une fois tous les étapes faites le theme est installer.
  
