@@ -77,9 +77,28 @@ function set_input_checkboxed(input, input_wrapper, field){
 
 function request_add_checkboxgroup_element(input_id){
     const input = $('#' + input_id);
-    const val = input.val();
+    let val = input.val();
     if(val.length > 0){
         if(!checkboxgroup_has_element(input_id, val)){
+
+            // Champs autocomplete, on vérifie que la valeur est bien présente dans la liste
+            if(input.hasClass("autocomplete-field")){
+                let _items = get_good_autocomplete_data(input_id);
+                let _found = false;
+                for(let i=0;i<_items.length;i++){
+                    if(_items[i] !== null && _items[i].getShowName().toLowerCase() === val.toLowerCase()){
+                        val = _items[i].getShowName();
+                        _found = true;
+                        break;
+                    }
+                }
+
+                if(!_found){
+                    input_error(input_id, 'Veuillez renseigner une valeur parmi les valeurs proposées');
+                    return;
+                }
+            }
+
             const checkgroup_element = $('<div class="checkboxgroup-element">'+val+'</div>');
             checkgroup_element.attr('data-value', val.replace('"', '\\"'));
             const i = $('<i class="fa-solid fa-trash"></i>').on('click', function(){
@@ -128,7 +147,7 @@ function create_input(name, showName = '', parent = null, type = "text", values 
 
     let input;
     if(type === "autocomplete"){
-        input = $('<input type="text" />').on('input', function(){
+        input = $('<input class="autocomplete-field" type="text" />').on('input', function(){
             $(this).attr('data-fromautocompletion', '0');
             if($(this).val().length > 0){
                 on_autocomplete_ajax($(this));

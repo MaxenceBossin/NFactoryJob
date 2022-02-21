@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd3dd6b-d995-49a9-a18d-5a6d69f0a5e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js/AutocompleteItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inc/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/general.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/dashboard/dashboard-funcs.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/dashboard/dashboard-funcs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/AutocompleteItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/AutocompleteItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/functions.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

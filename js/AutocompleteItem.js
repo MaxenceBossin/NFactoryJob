@@ -7,11 +7,11 @@ function add_autocomplete_item(showName, inputID, data = {}){
     return _item;
 }
 
-function get_good_autocomplete_data(inputID, writeValue){
+function get_good_autocomplete_data(inputID, writeValue = ''){
     let _items = [];
     for(let i=0;i<autocomplete_items.length;i++){
         if(autocomplete_items[i] !== null && autocomplete_items[i].getInputID() === inputID){
-            if(autocomplete_items[i].getShowName().toLowerCase().includes(writeValue.toLowerCase())){
+            if(writeValue.length === 0 || autocomplete_items[i].getShowName().toLowerCase().includes(writeValue.toLowerCase())){
                 _items.push(autocomplete_items[i]);
             }
         }
