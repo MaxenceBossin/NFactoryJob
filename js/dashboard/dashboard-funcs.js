@@ -35,13 +35,20 @@ function refresh_dashboard(){
 function generate_filters_form(){
     const parent = $('#dashboard .filters');
 
-    create_input('poste', 'Poste', parent, 'autocomplete', []).on('input', function(){ refresh_dashboard(); });
-    create_input('emplacement', 'Emplacement', parent, 'autocomplete', []).on('input', function(){ refresh_dashboard(); });
-    create_input('typecontrat', 'Type de contrat', parent, 'autocomplete', [], '', '', true);
-    create_input('typediplome', 'Type de diplôme', parent, 'autocomplete', []).on('input', function(){ refresh_dashboard(); });
-    create_input('hard-skills', 'Hard skills', parent, 'autocomplete', [], '', '', true);
-    create_input('soft-skills', 'Soft skills', parent, 'autocomplete', [], '', '', true);
-
-    create_input('langues', 'Langues', parent, 'autocomplete', [], '', '', true);
+    let _items;
+    _items = autocomplete_item_load_from_json(api_data.typemetier, 'libelle_type_metier', 'typemetier');
+    create_input('typemetier', 'Poste', parent, 'autocomplete', _items).on('input', function(){ refresh_dashboard(); });
+    _items = autocomplete_item_load_from_json(api_data.emplacement, 'ville', 'emplacement');
+    create_input('emplacement', 'Emplacement', parent, 'autocomplete', _items).on('input', function(){ refresh_dashboard(); });
+    _items = autocomplete_item_load_from_json(api_data.contrat, 'intitule_type_contrat', 'typecontrat');
+    create_input('typecontrat', 'Type de contrat', parent, 'autocomplete', _items, '', '', true);
+    /*_items = autocomplete_item_load_from_json(api_data., '', '');
+    create_input('typediplome', 'Type de diplôme', parent, 'autocomplete', _items).on('input', function(){ refresh_dashboard(); });*/
+    _items = autocomplete_item_load_from_json(api_data.competences, 'libelle', 'hard-skills');
+    create_input('hard-skills', 'Hard skills', parent, 'autocomplete', _items, '', '', true);
+    _items = autocomplete_item_load_from_json(api_data.softskills, 'libelle_softskill', 'soft-skills');
+    create_input('soft-skills', 'Soft skills', parent, 'autocomplete', _items, '', '', true);
+    _items = autocomplete_item_load_from_json(api_data.langues, 'libelle_langue', 'langues');
+    create_input('langues', 'Langues', parent, 'autocomplete', _items, '', '', true);
     create_input('date', 'À partir du', parent, 'date', [Date.now()]);
 }

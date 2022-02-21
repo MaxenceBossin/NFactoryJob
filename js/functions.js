@@ -1,3 +1,4 @@
+let autocomplete_ajax_timeout = null;
 
 function ajax(name, fichierPhp, data = {}){
     $.ajax({
@@ -295,31 +296,17 @@ function build_form(form, submitValue = 'Valider', secondary_infos = [], add_can
 }
 
 function on_autocomplete_ajax(input){
-    /*if(autocomplete_ajax_timeout !== null){
+    if(autocomplete_ajax_timeout !== null){
         clearTimeout(autocomplete_ajax_timeout);
     }
 
     autocomplete_ajax_timeout = setTimeout(function(){
         const input_value = input.val();
         if(input_value.length > 0){
-            on_valid_autocomplete_ajax_request(input);
+            const input_id = input.attr('id');
+            on_ajax_get_autocomplete_data(input_id, get_good_autocomplete_data(input_id, input_value));
         }
-    }, 500);*/
-}
-
-function on_valid_autocomplete_ajax_request(input){
-    if(input === undefined){
-        return;
-    }
-    const input_id = input.attr('id');
-    const input_value = input.val();
-    console.log('ajax for ' + input_id);
-
-    if(input_id === ''){
-
-    }
-
-    on_ajax_get_autocomplete_data(input_id, ['Donnée 1', 'Donnée 2', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3']); // temporaire, plutot utiliser ajax(...);
+    }, 300);
 }
 
 function on_ajax_get_autocomplete_data(input_id, data){
@@ -327,10 +314,10 @@ function on_ajax_get_autocomplete_data(input_id, data){
     const _autocomplete = $('#autocomplete-for-' + input_id);
     if(_autocomplete !== undefined){
         _autocomplete.empty();
-        if(data !== null && (data.length > 1 || (data.length > 0 && data[0] !== _input.val()))){
+        if(data !== null && data.length > 0 && data[0] !== null && (data.length > 1 || data[0].getShowName() !== _input.val())){
             for(let i=0;i<data.length;i++){
-                if(data[i].length > 0){
-                    const _autocomplete_item = $('<div data-inputid="'+input_id+'" class="autocomplete-item">'+data[i]+'</div>').on('click', function(){
+                if(data[i] !== null && data[i].getShowName().length > 0){
+                    const _autocomplete_item = $('<div data-autoitemid="'+data[i].getItemID()+'" data-inputid="'+input_id+'" class="autocomplete-item">'+data[i].getShowName()+'</div>').on('click', function(){
                         const input_id_data = $(this).attr('data-inputid');
                         const _input_target = $('#' + input_id);
                         const _autocomplete_target = $('#autocomplete-for-' + input_id_data);
