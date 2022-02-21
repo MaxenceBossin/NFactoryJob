@@ -200,8 +200,19 @@ Attention bien sur au mot de passe que vous mettez bien mettre un mot de passe d
 ### . Installation du thème _NFactoryJob_  
 Bien vous êtes maintenant dans la partie administateur du site. Avant toute chose nous allons choisir le bon thème pour notre site pour cela rien de plus simple il vous suffi de cliqué sur "Apparence" à droite de votre écran. Une fois cela fait 4 thèmes s'offres à vous mais nous allons prendre celui qui nous interesse c'est à dire le thème NfactoryJob pour l'activé il suffi de passez votre curseur sur le theme et de cliquez sur "Activer"  
   
-Une fois cette étapes faites nous allons faire une partie assez simple qui va faire en sorte que le site fonctionne bien, pour cela rendez-vous dans l'onglets "Réglages" puis "Permaliens"  
+Une fois cette étapes faites nous allons faire une partie assez simple qui va faire en sorte que le site fonctionne bien, pour cela rendez-vous dans l'onglet "Réglages" puis "Permaliens"  
   
 Vous allez donc devoir cliquez sur le bouton à gauche de "Titre de la publication" comme sur l'exemple si dessous  
 ![Image permalien](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/permalien.PNG)  
+N'oubliez pas d'enregistrer les modifications et maintenant je vous laisse allez dans l'onglet "Pages"
+  
+Une fois dans cette onglet deux pages par default seront déjà présentes mais elle ne nous interesse pas nous allons donc crée notre page principale pour cela en haut de la page vous allez devoir cliquez sur "Ajouter"  
+
+Une fois sur cette page vous allez pouvoir donc suivre certaines étapes pour la création de la page.  
+Première choses au niveau de "Saisissez le titre" vous allez pouvoir noté "HomePage" puis sur la droite de la page dans le petit menu dans la catégorie "Modèle" selectionnez le modele de page "HomePage" puis vous pouvez publier votre page avec le bouton en haut à droite du site 
+
+Ce parametre va dire au site quelle page afficher en premier pour cela il va falloir cliquez sur le bouton  
+"Une page statique" et choisir comme 'Page d'accueil' la page "HomePage" comme indiquez si dessous :  
+![Image lecture](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lecture.PNG)  
+Encore une fois n'oubliez pas d'enregistrer les modifications
 ### . Comment passer un compte en recruteur
