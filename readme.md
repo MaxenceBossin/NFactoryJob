@@ -88,7 +88,7 @@ Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliquer sur 
 
 Via ZIP :
 
-![Image DL VIA ZIP](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/gitzip.png)
+![Image DL VIA ZIP](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/gitzip.PNG)
 
 Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encardré en rouge en haut à droite.
 Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliqyer sur '_Download ZIP_' qui se trouve dans l'encadré blanc
@@ -107,7 +107,7 @@ Dans cette archive vous allez trouvez un fichier **"wordpress"** ce fichier cont
 
 Maintenant ce fichier il va falloir le mettre dans le fichier de votre site pour cela vous allez copier le fichier dans l'archive et le copier dans le fichier de votre site.    
 
-![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/fichierdusite.PNG)
+![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/fichier_du_site.PNG)
 
 #### Installation du thème _NFactoryJob_  
 Pour installez le thème vous avez donc deux façon :    
