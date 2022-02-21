@@ -99,7 +99,7 @@ Dans cette archive vous allez trouvez un fichier **"wordpress"** ce fichier cont
 
 Maintenant ce fichier il va falloir le mettre dans le fichier de votre site pour cela vous allez copier le fichier dans l'archive et le copier dans le fichier de votre site.    
 
-![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/fichier_du_site.PNG)
+![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/fichierdusite.PNG)
 
 #### Installation du thème _NFactoryJob_  
 Pour installez le thème
