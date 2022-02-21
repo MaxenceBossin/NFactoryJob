@@ -86,6 +86,24 @@ Via GITHUB :
 Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encardré en rouge en haut à droite.
 Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliquer sur les deux carés surligné en rouge sur l'image.
 
+### 2.1 Installation du thème _NFactoryJob_
+
+Rendez-vous dans votre explorateur de fichier et allez la ou vous voulez crée votre site. Après cette étapes nous allons commencer l'installation de **Wordpress** :
+
+#### Installation de Wordpress :
+Précédement nous vous avons demandez de télécharger, il est temps de les utilisez.  
+
+En premier lieux nous allons installez les fichiers de wordpress dans le dossier de notre site pour cela vous allez devoir ouvrir via (WinRar ou 7Zip) l'archive que vous avez télécharger tout à l'heure.    
+
+Dans cette archive vous allez trouvez un fichier **"wordpress"** ce fichier contient tout ce que le site à besoin pour fonctionnez.    
+
+Maintenant ce fichier il va falloir le mettre dans le fichier de votre site pour cela vous allez copier le fichier dans l'archive et le copier dans le fichier de votre site.    
+
+![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/fichier_du_site.png)
+
+#### Installation du thème _NFactoryJob_  
+Pour installez le thème
+
 ### . Mise en place de la BDD
 
 ### . Comment passer un compte en recruteur

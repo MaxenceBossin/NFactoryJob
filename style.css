@@ -742,6 +742,7 @@ header .wrap .create:hover {
   justify-content: center;
 }
 
+<<<<<<< HEAD
 #lastCv {
   display: flex;
   flex-direction: column;
@@ -764,7 +765,11 @@ header .wrap .create:hover {
 #connexion .wrap h2 {
   margin-left: 3rem;
   margin-bottom: 1rem;
+=======
+#signup .wrap .account {
+>>>>>>> a1abcf66943c559a32967e5cab33be0a23d30c8b
   font-size: 2rem;
+  padding-bottom: 1rem;
 }
 #connexion .wrap .box {
   display: flex;
@@ -845,6 +850,7 @@ header .wrap .create:hover {
 #signup .wrap input {
   margin-bottom: 1rem;
   padding: 0.5rem 2rem;
+<<<<<<< HEAD
 }
 
 footer {
@@ -866,6 +872,8 @@ footer #footertitre {
 }
 footer #spantitre {
   color: #0c64a6;
+=======
+>>>>>>> a1abcf66943c559a32967e5cab33be0a23d30c8b
 }
 
 /*# sourceMappingURL=style.css.map */

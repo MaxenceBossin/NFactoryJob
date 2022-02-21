@@ -21,8 +21,6 @@ get_header();
                         <input type="checkbox" id="recruteur" name="drone" value="recruteur">
                         <label for="recruteur">Recruteur</label>
                     </div>
-                    
-                
                     <label for="name">Adresse mail</label>
                     <input type="email "name="email" id="email" placeholder="contact@nfactoryjob.com" required>
 
@@ -37,6 +35,7 @@ get_header();
 
                     <input type="submit" value="S'inscrire">
                     <p class="text_blue"><a href="<?= path('connexion'); ?>">Je possède déjà un compte</p>
+
                 </form>
             </div>
             <div class="box_img">
