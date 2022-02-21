@@ -86,6 +86,14 @@ Via GITHUB :
 Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encardré en rouge en haut à droite.
 Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliquer sur les deux carés surligné en rouge sur l'image.
 
+Via ZIP :
+
+![Image GIT CLONE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/gitClone.png)
+
+Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encardré en rouge en haut à droite.
+Ensuite cliqué sur '_code_' une petite fenêtre va s'ouvire. Alors cliqyer sur '_Download ZIP_' qui se trouve dans l'encadré blanc
+
+
 ### 2.1 Installation du thème _NFactoryJob_
 
 Rendez-vous dans votre explorateur de fichier et allez la ou vous voulez crée votre site. Après cette étapes nous allons commencer l'installation de **Wordpress** :
@@ -102,7 +110,24 @@ Maintenant ce fichier il va falloir le mettre dans le fichier de votre site pour
 ![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/fichierdusite.PNG)
 
 #### Installation du thème _NFactoryJob_  
-Pour installez le thème
+Pour installez le thème vous avez donc deux façon :    
+
+Via GitHub :  
+  
+Pour installez le thème via GitHub il va falloir ouvrir le terminal de commande :  
+Dans ce terminal vous allez devoir marqué le chemin vers le theme pas de panique je vous aide :  
+Tout d'abord avant de marquez le chemin vers votre dossier il va falloir marquez cd puis le chemin ce qui donne dans votre invite de commande :  
+
+![Image lien vers theme](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/lientheme.PNG)
+  
+  Une fois cette étapes faites vous allez pouvoir cloné le theme pour cela toujours dans l'invite de commande vous allez devoir marquez :  
+![Image lien pour git clone](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/liengitclone.PNG)  
+
+Une fois tous les étapes faites le theme est installer.
+ 
+  Via ZIP :
+
+
 
 ### . Mise en place de la BDD
 
