@@ -148,7 +148,7 @@ textarea {
   padding: 0.5rem;
   flex-flow: column nowrap;
   gap: 0.5rem;
-  width: 95%;
+  width: 100%;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 #cv .autocomplete .autocomplete-item, #onglet_editor .autocomplete .autocomplete-item {
@@ -164,7 +164,7 @@ textarea {
 #cv .btn, #onglet_editor .btn {
   padding: 0.5rem 1rem 0.5rem 1rem;
   color: white;
-  width: 95%;
+  width: 100%;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -264,7 +264,7 @@ textarea {
   border-radius: 5px;
   padding: 0.5rem;
   border: 2px solid rgba(0, 0, 0, 0.08);
-  width: 95%;
+  width: 100%;
 }
 .section-table button {
   padding: 0.5rem;
@@ -427,7 +427,7 @@ textarea {
   border: none;
   border-radius: 5px;
   padding: 0.5rem;
-  width: 95%;
+  width: 100%;
 }
 #cv form input[type=submit], #onglet_editor .content input[type=submit] {
   cursor: pointer;
@@ -472,7 +472,7 @@ textarea {
   padding: 0.5rem 1rem 0.5rem 1rem;
   color: white;
   background-color: #f35e5e;
-  width: 95%;
+  width: 100%;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -825,6 +825,10 @@ FORM - INPUT SLIDER
                supported by Chrome, Edge, Opera and Firefox */
 }
 
+.input_wrapper {
+  width: 100%;
+}
+
 .field {
   display: flex;
   flex-flow: row nowrap;
@@ -833,6 +837,7 @@ FORM - INPUT SLIDER
   align-items: center;
   text-align: center;
   padding: 0.3rem;
+  width: 100%;
 }
 
 /**

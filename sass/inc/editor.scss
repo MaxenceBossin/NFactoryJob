@@ -12,7 +12,7 @@
     padding: .5rem;
     flex-flow: column nowrap;
     gap: .5rem;
-    width: 95%;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     .autocomplete-item{
       cursor: pointer;
@@ -28,7 +28,7 @@
   .btn{
     padding: .5rem 1rem .5rem 1rem;
     color: white;
-    width: 95%;
+    width: 100%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -129,7 +129,7 @@
   border-radius: 5px;
   padding: .5rem;
   border: 2px solid rgba(0,0,0,.08);
-  width: 95%;
+  width: 100%;
   button{
     padding: .5rem;
     border: none;
@@ -295,7 +295,7 @@
     border: none;
     border-radius: 5px;
     padding: .5rem;
-    width: 95%;
+    width: 100%;
   }
   input[type=submit]{
     cursor: pointer;
@@ -340,7 +340,7 @@
     padding: .5rem 1rem .5rem 1rem;
     color: white;
     background-color: #f35e5e;
-    width: 95%;
+    width: 100%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
