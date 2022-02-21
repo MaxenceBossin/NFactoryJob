@@ -1,28 +1,39 @@
-let autocomplete_ajax_timeout = null;
 
 function ajax(name, fichierPhp, data = {}){
-    show_loading();
     $.ajax({
         type: "POST",
-        url: "ajax/" + fichierPhp,
+        url: fichierPhp,
         data: data,
         success: function(response){
             on_ajax_response(name, JSON.parse(response));
-            hide_loading();
         },
         error: function(){
             console.log("ajax error on " + name);
-            hide_loading();
         }
     });
 }
 
-function show_loading(parent = null){
+function show_loading(){
+    if($('#loading').length){
+        return;
+    }
 
+    const loading = $('<div id="loading"></div>');
+    const content = $('<div class="content"></div>');
+    loading.append(content);
+    content.append($('<h1><span id="spantitre">N</span>Factory<span id="spantitre">Job</span></h1>'));
+    content.append($('<span class="loader"><span class="loader-inner"></span></span>'));
+   /* content.append($('<h3>Chargement <span id="bounce">.</span><span id="bounce">.</span><span id="bounce">.</span></h3>'));*/
+
+    $('body').append(loading);
 }
 
 function hide_loading(){
-
+    if($('#loading').length){
+        $('#loading').fadeOut('fast', function(){
+            $('#loading').remove();
+        })
+    }
 }
 
 function create_form(formName){
@@ -284,7 +295,7 @@ function build_form(form, submitValue = 'Valider', secondary_infos = [], add_can
 }
 
 function on_autocomplete_ajax(input){
-    if(autocomplete_ajax_timeout !== null){
+    /*if(autocomplete_ajax_timeout !== null){
         clearTimeout(autocomplete_ajax_timeout);
     }
 
@@ -293,7 +304,7 @@ function on_autocomplete_ajax(input){
         if(input_value.length > 0){
             on_valid_autocomplete_ajax_request(input);
         }
-    }, 500);
+    }, 500);*/
 }
 
 function on_valid_autocomplete_ajax_request(input){

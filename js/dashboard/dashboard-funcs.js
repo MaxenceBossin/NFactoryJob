@@ -28,8 +28,7 @@ function refresh_dashboard(){
         data['langues'].push({'nom': 'Espagnol', 'niveau': 'A2'});*/
 
 
-
-        console.log(data);
+        //console.log(data);
     }, 800);
 }
 
@@ -42,6 +41,7 @@ function generate_filters_form(){
     create_input('typediplome', 'Type de diplôme', parent, 'autocomplete', []).on('input', function(){ refresh_dashboard(); });
     create_input('hard-skills', 'Hard skills', parent, 'autocomplete', [], '', '', true);
     create_input('soft-skills', 'Soft skills', parent, 'autocomplete', [], '', '', true);
+
     create_input('langues', 'Langues', parent, 'autocomplete', [], '', '', true);
     create_input('date', 'À partir du', parent, 'date', [Date.now()]);
 }

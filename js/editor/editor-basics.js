@@ -24,9 +24,8 @@ let preview_mode = false;
 // Todo
 
 $( document ).ready(function() {
-    open_onglet();
-    close_save_notif();
-    place_add_module();
+    show_loading();
+    api_load_all();
 });
 
 btn_onglet_general.on('click', function(){

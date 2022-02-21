@@ -20,7 +20,7 @@ if(get_the_title() === 'getLangues'){
     echo(json_encode(getEtablissement(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 }elseif(get_the_title() === 'getTypeMetier'){
     echo(json_encode(getTypeMetier(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
-}elseif(get_the_title() === 'getTypeEtablisement'){
+}elseif(get_the_title() === 'getTypeEtablissement'){
     echo(json_encode(getTypeEtablisement(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 }elseif(get_the_title() === 'getTypeContrat'){
     echo(json_encode(getTypeContrat(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
