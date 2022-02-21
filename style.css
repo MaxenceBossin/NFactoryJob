@@ -326,6 +326,8 @@ textarea {
   color: white;
 }
 #onglet_editor .content {
+  overflow-y: auto;
+  height: 80%;
   padding: 1rem;
 }
 #onglet_editor .content .content-module, #onglet_editor .content .content-general {
@@ -336,6 +338,31 @@ textarea {
   padding: 0.5rem;
   align-content: center;
   width: 100%;
+}
+#onglet_editor .content .icon-list {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 0.5rem;
+  height: 300px;
+  overflow-y: auto;
+  border-radius: 5px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.3rem;
+}
+#onglet_editor .content .icon-list i {
+  padding: 0.5rem;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+  background-color: white;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+#onglet_editor .content .icon-list i:hover {
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #5e80c9;
 }
 #onglet_editor .attached {
   position: relative;
@@ -455,6 +482,9 @@ textarea {
 #cv .wrap_cv .modules .module .head {
   display: flex;
   flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
 #cv .wrap_cv .modules .module .head .module-title {
   font-weight: 300;
@@ -506,7 +536,19 @@ textarea {
 }
 
 #onglet_editor .content input {
-  width: 90%;
+  width: 100%;
+}
+
+#onglet_editor .input_wrapper {
+  padding: 0.5rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+#onglet_editor .input_wrapper label {
+  padding: 0.5rem 0rem 0.5rem 0rem;
+  font-weight: 300;
+  font-size: 1.2rem;
 }
 
 #cv form, #onglet_editor .content {
@@ -520,7 +562,7 @@ textarea {
   gap: 0.5rem;
   transition: all 0.35s;
 }
-#cv form input:not([type=range]), #cv form select, #onglet_editor .content input:not([type=range]), #onglet_editor .content select {
+#cv form input:not([type=range]):not([type=checkbox]), #cv form select, #onglet_editor .content input:not([type=range]):not([type=checkbox]), #onglet_editor .content select {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   background-color: #d0d4dc;
   border: none;
@@ -924,17 +966,6 @@ FORM - INPUT SLIDER
                supported by Chrome, Edge, Opera and Firefox */
 }
 
-.field {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 0.5rem;
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0.3rem;
-  width: 100%;
-}
-
 /**
 
 FORM - INPUT SLIDER
@@ -1264,6 +1295,17 @@ header .wrap .create:hover {
   flex-flow: column nowrap;
   align-items: center;
   align-content: center;
+}
+
+.field {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 0.5rem;
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0.3rem;
+  width: 100%;
 }
 
 footer {

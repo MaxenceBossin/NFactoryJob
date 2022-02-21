@@ -10,4 +10,10 @@ function on_ajax_response(name, json){
         icons = json;
         on_api_loaded();
     }
+
+    if(name === 'all_fonts'){
+        fonts = json;
+        console.log(fonts);
+        on_api_loaded();
+    }
 }

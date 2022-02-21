@@ -283,6 +283,24 @@ function on_color_update(el){
             editor_request_save();
         }
     }
+    else if(el.attr('id').startsWith('separator_module_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setSeparatorColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
+    else if(el.attr('id').startsWith('border_col_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setBordersColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
 
     if(el.attr('id') === 'back-color'){
         CV.setColor(el.val());

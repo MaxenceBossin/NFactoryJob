@@ -1,4 +1,7 @@
 
+let icons_count = 0;
+const icons_loaded_by_page = 200;
+
 // Général
 function refresh_general_content(){
     let _input;
@@ -206,20 +209,35 @@ function refresh_module_content(){
         return;
     }
 
+    icons_count = 0;
+
     content_module.append($('<h1>'+selected_module.getModuleName()+'</h1>'));
 
     if(selected_module.getModuleName() === "Module personnalisé"){
-        create_input('nom_module', 'Nom du module', content_module, 'text', [$('#module-' + selected_module.getModuleID() + ' h1.module-title').text()]).on('input', function(){
+        create_input('nom_module', 'Nom du module', content_module, 'text', [selected_module.getModuleShownName()]).on('input', function(){
             const _module = get_selected_module();
             if(_module != null){
                 _module.setModuleShownName($(this).val());
             }
-            $('#module-' + selected_module.getModuleID() + ' h1.module-title').text($(this).val());
+            _module.refresh();
             editor_request_save();
         });
     }
 
     let _input;
+
+    create_input('showtitle', 'Afficher le titre', content_module, 'checkbox', [selected_module.getShowTitle()]).on('input', function(){
+        const checked = $(this).prop('checked');
+        selected_module.setShowTitle(checked);
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    create_input('largeur', 'Largeur du module', content_module, 'slider', [selected_module.getLargeur(), 20, 100, '%']).on('input', function(){
+        selected_module.setLargeur(parseInt($(this).val()));
+        selected_module.refresh();
+        editor_request_save();
+    });
 
     _input = create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]);
     _input.on('input change', function(){
@@ -235,9 +253,142 @@ function refresh_module_content(){
         editor_request_save();
     });
 
-    create_input('largeur', 'Largeur du module', content_module, 'slider', [$('#module-' + selected_module.getModuleID()).attr("data-width"), 20, 100, '%']).on('input', function(){
-        selected_module.setLargeur(parseInt($(this).val()));
+    create_input('separator-size', 'Taille du séparateur', content_module, 'slider', [selected_module.getSeparatorSize(), 0, 15, 'px']).on('input', function(){
+        selected_module.setSeparatorSize(parseInt($(this).val()));
         selected_module.refresh();
         editor_request_save();
     });
+
+    create_input('separator-radius', 'Contours du séparateur', content_module, 'slider', [selected_module.getSeparatorRadius(), 0, 10, 'px']).on('input', function(){
+        selected_module.setSeparatorRadius(parseInt($(this).val()));
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    _input = create_input('separator_module_' + selected_module.getModuleID(), 'Couleur du séparateur', content_module, 'colorpicker', [selected_module.getSeparatorColor()]);
+    _input.on('input change', function(){
+        selected_module.setSeparatorColor($(this).val());
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    create_input('border-top', 'Bord haut', content_module, 'slider', [selected_module.getBorderTop(), 0, 20, 'px']).on('input', function(){
+        selected_module.setBorderTop(parseInt($(this).val()));
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    create_input('border-bottom', 'Bord bas', content_module, 'slider', [selected_module.getBorderBottom(), 0, 20, 'px']).on('input', function(){
+        selected_module.setBorderBottom(parseInt($(this).val()));
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    create_input('border-left', 'Bord gauche', content_module, 'slider', [selected_module.getBorderLeft(), 0, 20, 'px']).on('input', function(){
+        selected_module.setBorderLeft(parseInt($(this).val()));
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    create_input('border-right', 'Bord droit', content_module, 'slider', [selected_module.getBorderRight(), 0, 20, 'px']).on('input', function(){
+        selected_module.setBorderRight(parseInt($(this).val()));
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    create_input('border-radius', 'Contour des bords', content_module, 'slider', [selected_module.getBorderRadius(), 0, 10, 'px']).on('input', function(){
+        selected_module.setBorderRadius(parseInt($(this).val()));
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    _input = create_input('mode-affichage', 'Mode d\'affichage', content_module, 'select', ['Vertical', 'Horizontal']).on('input', function(){
+        let _idx = $(this).prop('selectedIndex');
+        if(_idx == 0){
+            $(this).prop('selectedIndex', 1);
+            _idx = 1;
+        }
+        selected_module.setModeAffichage(_idx - 1);
+        selected_module.refresh();
+        editor_request_save();
+    });
+    set_selectinput_index(_input, selected_module.getModeAffichage() + 1);
+
+    let _polices = [];
+    for(let i=0;i<fonts.length;i++){
+        _polices.push(fonts[i].family);
+    }
+
+    create_input('police', 'Police d\'écriture', content_module, 'select', _polices).on('input', function(){
+        load_font($(this).val());
+        selected_module.setFont($(this).val());
+        selected_module.refresh();
+        editor_request_save();
+    });
+
+    const icon_list = $('<div class="icon-list"></div>');
+    let loaded_icons = 0;
+
+    for (const [key, value] of Object.entries(icons)) {
+        if(value.hasOwnProperty('free') && value.free !== null && value.free.length > 0){
+            icon_list.append($('<i class="fa-'+value.free[0]+' fa-'+key+'"></i>').on('click', function(){
+                selected_module.setIcon($(this).attr('class'));
+                selected_module.refresh();
+                editor_request_save();
+            }));
+            loaded_icons++;
+            if(loaded_icons >= icons_loaded_by_page){
+                break;
+            }
+        }
+    }
+
+    icons_count += loaded_icons;
+
+    if(icons_count < Object.keys(icons).length){
+        icon_list.append($('<button class="btn blue">Afficher plus</button>').on('click', function(){
+            add_icons($(this));
+        }));
+    }
+
+    content_module.append(icon_list);
+}
+
+function add_icons(btn){
+    let loaded_icons = 0;
+    let actual_count = 0;
+    if(icons_count < Object.keys(icons).length) {
+        for (const [key, value] of Object.entries(icons)) {
+            if (actual_count < icons_count) {
+                actual_count++;
+            } else {
+                if (value.hasOwnProperty('free') && value.free !== null && value.free.length > 0) {
+                    btn.before($('<i class="fa-' + value.free[0] + ' fa-' + key + '"></i>').on('click', function () {
+                        selected_module.setIcon($(this).attr('class'));
+                        selected_module.refresh();
+                        editor_request_save();
+                    }));
+                    loaded_icons++;
+                    if (loaded_icons >= icons_loaded_by_page) {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    icons_count += loaded_icons;
+
+    if(icons_count >= Object.keys(icons).length){
+        btn.remove();
+    }
+}
+
+function load_font(fontName){
+    var link = document.createElement( "link" );
+    link.href = 'https://fonts.googleapis.com/css2?family='+fontName+':wght@300;400;700';
+    link.type = "text/css";
+    link.rel = "stylesheet";
+
+    document.getElementsByTagName( "head" )[0].appendChild( link );
 }

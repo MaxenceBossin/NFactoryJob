@@ -274,7 +274,17 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         $('#picker-' + _fID).farbtastic($('#' +_fID));
     }
 
+    if(type === 'checkbox'){
+        if(values !== null && values.length > 0){
+            input.prop('checked', values[0]);
+        }
+    }
+
     return input;
+}
+
+function set_selectinput_index(select, idx){
+    select.prop('selectedIndex', idx);
 }
 
 function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false, form_horizontal = false){
