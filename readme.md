@@ -189,4 +189,13 @@ Pour les utilisateurs de pc sur IOS donc sur MAC l'identifiant est le même mais
 
 l'Adresse de la base de données ne doit pas être changer et pour finir le préfixe des tables peux être changer mais je conseil de garder quelque chose de simple et attention le préfix doit toujours finir par un **"_"**
 
+Une fois ses informations inscrite vous pouvez passez à la prochaines étapes :  
+  
+Pour cette étapes vous allez simplement devoir enregistrez le nom du site vos identifiants et un mot de passe :  
+  
+Attention bien sur au mot de passe que vous mettez bien mettre un mot de passe donc vous pouvez vous rappelez mais qui reste assez complexe pour évitez que n'importe qui viennent sur la partie admin de votre site !
+
+![Image installateurwpbddmac](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/infosupp.PNG)  
+
+
 ### . Comment passer un compte en recruteur
