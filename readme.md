@@ -141,7 +141,26 @@ Ce qui doit donnez :
 
 ![Image dossierthememodif](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/dossierthememodif.PNG)
 
+Une fois tous les étapes faites le theme est installer.
 
 ### . Mise en place de la BDD
+
+Pour la mise en place de la BDD vous allez devoir retrounez sur XAMPP et appuyiez sur "**Admin**" au niveau de "**MySQL**" (encadrer bleu) :  
+![Image lancementMySQL](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/dossierthememodif.PNG)
+
+Vous allez avoir une page de "phpMyAdmin" qui c'est donc ouvert :  
+  
+  Je vais donc maintenant vous expliquez comment crée une base de donnée pour wordpress :
+
+  ### Création d'une base de donnée  
+Premiere étape vous allez devoir appuyer sur le bouton "**Nouvelle base de données**" sur la gauche du site  
+    
+Secondes étape vous allez devoir crée la base de données :  
+(Attention au nom de votre base de donnée il faut évité tous ce qui est espace, majuscule, accent)  
+Vous marquez par exemple le nom de votre site en remplacent donc les espaces par des "_"  
+Puis vous appuyer sur le bouton "Créer"
+![Image nombasededonne](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/nombase.PNG)
+
+
 
 ### . Comment passer un compte en recruteur
