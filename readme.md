@@ -75,6 +75,12 @@ Il fait décendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
 
 ![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/wordpressInstallation.PNG)
 
+Vous allez ensuite telercharger un dossiers au format _ZIP_
+Ouvrez le zip qu'on vient de telercharger
+Si vous n'avez pas de quoi décomprésser un fichier ZIP vous pouvez installer WINRAR (gratuit) : https://www.win-rar.com/start.html?&L=10
+
+Ensuite vous devez décomprésser le fichier dans votre dossier **htdocs**
+
 ###### Instalation de WORDPRESS
 
 ### 2. Telechargement du thème _NFactoryJob_

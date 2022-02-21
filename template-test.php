@@ -10,7 +10,6 @@ require_once('inc/functions/toolbox.php');
 
 
 
-debug(getLangues());
 
 
 echo " OK: recup cv user ";
@@ -32,5 +31,26 @@ echo " OK: recupère toutes les compétence présente dans un cv ";
 // debug(getCompetenceFromCv(1));
 echo'<br>';
 echo " OK: recupère tous les diplome d' un cv ";
-debug(getDiplomeFromCv(1));
+// debug(getDiplomeFromCv(1));
+echo'<br>';
+echo " OK: liscv par competences ";
+// debug(getCVByCompetence('php'));
+// debug(getCVBySoftSkill('autonomie'));
+// debug(getCVBySoftSkill("à l'écoute"));
+echo'<br>';
+
+$array=[
+    "competences" => [
+        ['id'=> 'com','nom' => 'PHP', 'niveau' => 1],
+        ['nom' => 'JAVA', 'niveau' => 2],
+    ],
+    "contrat"  => [
+
+    ]
+  
+
+
+];
+debug($array);
+// debug(test(true, $array));
 echo'<br>';

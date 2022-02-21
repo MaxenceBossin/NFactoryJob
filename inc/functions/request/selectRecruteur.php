@@ -129,4 +129,83 @@ function getDiplomeFromCv(int $idCv):array
 
 
 
-// requete pour la création d'un CV
+// requete pour la page qui recherche un candiat en fonction des ces comptences (unique)
+function getCVByCompetence($idComptence, $niveau = 0){
+    global $pdo;
+    $sql = " SELECT `id_cv_fk` as IdCv
+    FROM `nfj_cv_competences` 
+    JOIN `nfj_competences` 
+        ON `nfj_cv_competences`.`id_competence_fk`= `nfj_competences`.`id_competence`
+    WHERE `nfj_competences`.`id_competence` = :idComptence
+    AND `niveau` > :niveau
+    ";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':idComptence',$idComptence);
+    $query->bindValue(':niveau',$niveau);
+    $query->execute();
+    return $query->fetchAll();
+}
+
+
+function getCVBySoftSkill($idSoftskill){
+    global $pdo;
+    $sql = " SELECT `id_cv_fk` as IdCV 
+    FROM `nfj_cv_softskill` 
+    JOIN `nfj_softskill` 
+        ON `nfj_softskill`.`id_softskill`= `nfj_cv_softskill`.`id_softskill_fk` 
+        WHERE `nfj_softskill`.`id_softskill` = :idSoftskill
+    ";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':idSoftskill',$idSoftskill);
+    $query->execute();
+    return $query->fetchAll();
+}
+
+
+function getCVByLangue($idLangue){
+    global $pdo;
+    $sql = " SELECT `id_cv_fk` as IdCV 
+    FROM `nfj_cv_langue` 
+    JOIN `nfj_langues` ON `nfj_langues`.`id_langue`= `nfj_cv_langue`.`id_langue_fk` 
+    WHERE `nfj_langues`.`id_langue` = :idLangue;
+    ";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':idLangue',$idLangue);
+    $query->execute();
+    return $query->fetchAll();
+}
+
+function getCVByEmplacement($idEmplacement, $dateReadyToWork = 0){
+    global $pdo;
+    $sql = "
+    SELECT `id_cv_fk` as IdCV, `readyToWorkAt` 
+    FROM `nfj_cv_emplacement`
+    JOIN `nfj_emplacement` 
+    ON `nfj_emplacement`.`id_emplacement` = `nfj_cv_emplacement`.`id_emplacement_fk` 
+    WHERE `nfj_emplacement`.`id_emplacement` = :idEmplacement
+    AND `readyToWorkAt` > :date 
+    ";  
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':idEmplacement',$idEmplacement);
+    $query->bindValue(':date',$dateReadyToWork);
+    $query->execute();
+    return $query->fetchAll();
+}
+
+function test (bool $metier = false , array $array){
+    global $pdo;
+    debug($array);
+    $metier = ($metier === true) ? 'JOIN `nfj_metier` ON `nfj_cv`.`id_metier_cv` =  `nfj_metier`.`id_metier`' : '';
+    $sql = "
+    SELECT `id_cv`
+    FROM `nfj_cv` 
+    $metier
+    JOIN `nfj_cv_competences` ON `nfj_cv_competences`.`id_cv_competence`  = `nfj_cv`.`id_cv`    
+    ";
+    echo $sql;
+    $query = $pdo->prepare($sql);
+
+    $query->execute();
+    return $query->fetchAll();
+
+}

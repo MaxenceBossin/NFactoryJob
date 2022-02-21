@@ -69,3 +69,8 @@ function metaTitle(string $data): string {
     }
     
 }
+
+// 
+function arrayJson(array $requestResult): string{
+    return  (json_encode($requestResult, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+}
