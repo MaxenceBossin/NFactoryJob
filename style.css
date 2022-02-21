@@ -221,4 +221,20 @@ textarea {
   padding: 0.5rem 2rem;
 }
 
+#mentionslegales h2, #mentionslegales h3 {
+  font-size: clamp(1rem, 1rem + 3vw, 2rem);
+  text-align: center;
+  padding: max(0.5rem, 0.5rem + 3vw);
+}
+#mentionslegales strong {
+  font-size: 1.5rem;
+}
+#mentionslegales h1, #mentionslegales h2, #mentionslegales h3, #mentionslegales h4, #mentionslegales h5, #mentionslegales h6 {
+  text-align: center;
+  padding: 1.5rem;
+}
+#mentionslegales p, #mentionslegales li {
+  text-align: justify;
+}
+
 /*# sourceMappingURL=style.css.map */
