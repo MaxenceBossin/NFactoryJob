@@ -210,12 +210,14 @@ textarea {
 }
 #signup .wrap .checkbox_cr {
   display: flex;
+  justify-content: center;
 }
 #signup .wrap .checkbox_cr .candidat {
   margin-right: 1.5rem;
 }
 #signup .wrap input {
   margin-bottom: 1rem;
+  justify-content: center;
   padding: 0.5rem 2rem;
 }
 

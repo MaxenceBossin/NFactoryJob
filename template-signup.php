@@ -36,11 +36,11 @@ get_header();
                     <label for="huey"><a href="<?= path('cgu'); ?>">J'accepte les CGU</a></label>
 
                     <input type="submit" value="S'inscrire">
-                    <p class="text_blue"><a href="<?= path('login'); ?>">Je possède déjà un compte</p>
+                    <p class="text_blue"><a href="<?= path('connexion'); ?>">Je possède déjà un compte</a></p>
                 </form>
             </div>
             <div class="box_img">
-                <?php the_post_thumbnail('signup')?>
+                <?php the_post_thumbnail('img_form')?>
             </div>
         </div>
     </div>    
