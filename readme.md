@@ -169,6 +169,24 @@ Retenez bien le nom de votre base de donnée elle va être importante pour la su
 Nous y somme la dernière étapes de l'installation de wordpress, après cette étapes vous pourrais accédez à votre site.  
 Pour faire cela  nous allons faire la dernière installation de wordpress pour cela il va falloir retourné sur votre XAMPP et cette fois si appuyer sur le bouton Admin de la catégorie Apache (encadré vert)  
 
-![Image lancementLocalHots](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lancementlocalhost.PNG)
+![Image lancementLocalHots](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lancementlocalhost.PNG)  
+
+Après cette étapes vous avez donc lancé votre "LocalHost" ce qui nous permet de voir notre site sans le mettre en ligne
+
+Une fois que vous êtes dans votre localhost il suffi cliqué en direction des fichiers de votre site.  
+  
+Une fois que vous êtes au bonne endroit un page d'installation de wordpress va s'afficher et la rien de plus simple il faut suivre ce que dit l'installateur.  
+Attention cependant certaine chose sont à changer avec précaution !  
+![Image installateurwpbdd](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/instalwpbbd.PNG)  
+Pour le nom de la base de donnée il faut bien mettre le nom de votre site,  
+Pour les identifiants nous somme en local donc pour les utilisateurs windows seul l'identifiant est à changer pas le mot de passe !  
+Pour les utilisateurs windows :  
+Identifiant : root  
+Mot de passe :  
+
+Pour les utilisateurs de pc sur IOS donc sur MAC l'identifiant est le même mais il faut appliqué root au mot de passe donc :  
+![Image installateurwpbddmac](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/instalwpbbdmac.PNG) 
+
+l'Adresse de la base de données ne doit pas être changer et pour finir le préfixe des tables peux être changer mais je conseil de garder quelque chose de simple et attention le préfix doit toujours finir par un **"_"**
 
 ### . Comment passer un compte en recruteur
