@@ -210,6 +210,8 @@ Une fois dans cette onglet deux pages par default seront déjà présentes mais 
 
 Une fois sur cette page vous allez pouvoir donc suivre certaines étapes pour la création de la page.  
 Première choses au niveau de "Saisissez le titre" vous allez pouvoir noté "HomePage" puis sur la droite de la page dans le petit menu dans la catégorie "Modèle" selectionnez le modele de page "HomePage" puis vous pouvez publier votre page avec le bouton en haut à droite du site 
+![Image lecture](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/createpage.PNG)  
+
 
 Ce parametre va dire au site quelle page afficher en premier pour cela il va falloir cliquez sur le bouton  
 "Une page statique" et choisir comme 'Page d'accueil' la page "HomePage" comme indiquez si dessous :  
