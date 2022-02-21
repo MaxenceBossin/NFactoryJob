@@ -158,7 +158,8 @@ Premiere étape vous allez devoir appuyer sur le bouton "**Nouvelle base de donn
 Secondes étape vous allez devoir crée la base de données :  
 (Attention au nom de votre base de donnée il faut évité tous ce qui est espace, majuscule, accent)  
 Vous marquez par exemple le nom de votre site en remplacent donc les espaces par des "_"  
-Puis vous appuyer sur le bouton "Créer"
+Puis vous appuyer sur le bouton "Créer"  
+
 ![Image nombasededonne](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/nombase.PNG)
 
 
