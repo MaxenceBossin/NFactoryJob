@@ -146,7 +146,7 @@ Une fois tous les étapes faites le theme est installer.
 ### . Mise en place de la BDD
 
 Pour la mise en place de la BDD vous allez devoir retrounez sur XAMPP et appuyiez sur "**Admin**" au niveau de "**MySQL**" (encadrer bleu) :  
-![Image lancementMySQL](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/dossierthememodif.PNG)
+![Image lancementMySQL](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lancementMySQL.PNG)
 
 Vous allez avoir une page de "phpMyAdmin" qui c'est donc ouvert :  
   
