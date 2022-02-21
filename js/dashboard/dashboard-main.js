@@ -13,4 +13,5 @@ $( document ).ready(function() {
     });
 
     generate_filters_form();
+    refresh_dashboard();
 });
