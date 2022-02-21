@@ -39,6 +39,6 @@ get_header();
     <div id="preview-infos"><div class="content"><p></p></div></div>
 <?php
 
-echo "<script>const HOME_URL = '".get_site_url()."/';</script>";
+echo "<script>const SIGNUP_URL = '".get_page_url('template-signup')."';</script>";
 
 get_footer();

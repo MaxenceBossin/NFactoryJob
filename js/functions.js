@@ -103,7 +103,7 @@ function request_add_checkboxgroup_element(input_id){
             checkgroup_element.attr('data-value', val.replace('"', '\\"'));
             const i = $('<i class="fa-solid fa-trash"></i>').on('click', function(){
                 $(this).parent().remove();
-                if(DASHBOARD){
+                if(PAGE_NAME === 'template-dashboard.php'){
                     refresh_dashboard();
                 }
             });
@@ -112,7 +112,7 @@ function request_add_checkboxgroup_element(input_id){
             input.val('');
             input_error(input_id, '');
 
-            if(DASHBOARD){
+            if(PAGE_NAME === 'template-dashboard.php'){
                 refresh_dashboard();
             }
         }
@@ -159,6 +159,7 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         input.attr('placeholder', placeholder);
     }
     else if(type === 'colorpicker'){
+        // évent géré dans editor-funcs.js => on_color_update
         if(values.length > 0){
             input = $('<input type="text" value="'+values[0]+'" />');
         }
@@ -177,7 +178,7 @@ function create_input(name, showName = '', parent = null, type = "text", values 
                 $('#slider-span-' + _name).text(parseInt($(this).val()));
             }
 
-            if(DASHBOARD){
+            if(PAGE_NAME === 'template-dashboard.php'){
                 refresh_dashboard();
             }
         });

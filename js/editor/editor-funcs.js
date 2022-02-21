@@ -274,6 +274,15 @@ function on_color_update(el){
             editor_request_save();
         }
     }
+    else if(el.attr('id').startsWith('fontcolor_module_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setFontColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
 
     if(el.attr('id') === 'back-color'){
         CV.setColor(el.val());
@@ -361,7 +370,6 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
 
     let _line = get_line_by_num(_lineNum);
     if(_line === null || _line.countModules() + 1 > Line.IDEAL_NB_MODULES){
-        console.log('create_line1');
         _line = create_line();
         _line.getDOMElement().append(module);
     }
@@ -370,7 +378,7 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
     }
     _line.addModule(_module);
     _module.setLine(_line);
-    _module.setWidth(_width);
+    _module.setLargeur(_width);
     _module.refresh();
     place_add_module();
     return _module;

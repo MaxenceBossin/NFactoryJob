@@ -76,7 +76,7 @@ function refresh_general_content(){
 
     content_general.append($('<p>Profitez de toutes les fonctionnalités de l\'éditeur et d\'une personnalisation complète de votre CV en créant un compte gratuitement !</p>'));
     content_general.append($('<button class="btn blue" id="create-account">Créer un compte</button>').on('click', function(){
-        window.location.href = HOME_URL + 'signup';
+        window.location.href = SIGNUP_URL;
     }));
 
     const previewBtn = $('<button class="btn green">Prévisualiser</button>').on('click', function(){
@@ -228,9 +228,16 @@ function refresh_module_content(){
         editor_request_save();
     });
 
+    _input = create_input('fontcolor_module_' + selected_module.getModuleID(), 'Couleur du texte du module', content_module, 'colorpicker', [selected_module.getFontColor()]);
+    _input.on('input change', function(){
+        selected_module.setFontColor($(this).val());
+        selected_module.refresh();
+        editor_request_save();
+    });
+
     create_input('largeur', 'Largeur du module', content_module, 'slider', [$('#module-' + selected_module.getModuleID()).attr("data-width"), 20, 100, '%']).on('input', function(){
-        $('#module-' + selected_module.getModuleID()).css("width", parseInt($(this).val()) + '%');
-        $('#module-' + selected_module.getModuleID()).attr('data-width', parseInt($(this).val()));
+        selected_module.setLargeur(parseInt($(this).val()));
+        selected_module.refresh();
         editor_request_save();
     });
 }

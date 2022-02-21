@@ -12,12 +12,21 @@ class Module{
 
         this.width = 50;
         this.color = "#FFFFFF";
+        this.fontColor = "#000000";
         this.data = [];
         this.show_title = true;
     }
 
     setShowTitle(status){
         this.show_title = status;
+    }
+
+    getFontColor(){
+        return this.fontColor;
+    }
+
+    setFontColor(col){
+        this.fontColor = col;
     }
 
     getColor(){
@@ -68,7 +77,7 @@ class Module{
         return this.width;
     }
 
-    setWidth(_width){
+    setLargeur(_width){
         this.width = _width;
     }
 
@@ -107,9 +116,9 @@ class Module{
             head.append(module_title);
         }
         content.append(head);
-        content.attr('data-width', this.width);
         content.css("width", this.width + '%');
         content.css("background-color", this.color);
+        content.css("color", this.fontColor);
 
         // Modules Informations
         if(this.moduleName === 'Informations'){

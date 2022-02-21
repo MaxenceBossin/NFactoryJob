@@ -924,10 +924,6 @@ FORM - INPUT SLIDER
                supported by Chrome, Edge, Opera and Firefox */
 }
 
-.input_wrapper {
-  width: 100%;
-}
-
 .field {
   display: flex;
   flex-flow: row nowrap;
@@ -1260,6 +1256,14 @@ header .wrap .create:hover {
 #signup .wrap input {
   margin-bottom: 1rem;
   padding: 0.5rem 2rem;
+}
+
+.input_wrapper {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
 }
 
 footer {
