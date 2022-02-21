@@ -197,5 +197,11 @@ Attention bien sur au mot de passe que vous mettez bien mettre un mot de passe d
 
 ![Image installateurwpbddmac](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/infosupp.PNG)  
 
-
+### . Installation du thème _NFactoryJob_  
+Bien vous êtes maintenant dans la partie administateur du site. Avant toute chose nous allons choisir le bon thème pour notre site pour cela rien de plus simple il vous suffi de cliqué sur "Apparence" à droite de votre écran. Une fois cela fait 4 thèmes s'offres à vous mais nous allons prendre celui qui nous interesse c'est à dire le thème NfactoryJob pour l'activé il suffi de passez votre curseur sur le theme et de cliquez sur "Activer"  
+  
+Une fois cette étapes faites nous allons faire une partie assez simple qui va faire en sorte que le site fonctionne bien, pour cela rendez-vous dans l'onglets "Réglages" puis "Permaliens"  
+  
+Vous allez donc devoir cliquez sur le bouton à gauche de "Titre de la publication" comme sur l'exemple si dessous  
+![Image permalien](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/permalien.PNG)  
 ### . Comment passer un compte en recruteur
