@@ -127,6 +127,19 @@ Une fois tous les étapes faites le theme est installer.
  
   Via ZIP :
 
+Un peux plus tôt je vous avez dit que vous pouviez télécharger une archive pour mettre en place le theme, il est donc temps de l'installez.  
+Pour cela rendez-vous dans votre explorateur de fichier dans le dossier de votre site.  
+Ensuite il va falloir ce rendre dans le dossier des themes, pour cela vous allez devoir rentrez dans le dossier '**wp-content**' / '**themes**'
+  
+  Une fois dans ce dossier vous allez retrouvé :  
+
+![Image dossierthemebase](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/dossiertheme.PNG)
+
+Ensuite comme pour le fichier wordpress vous allez devoir ouvrir l'archive ou ce trouve le themes et glisser le themes avec les autres thèmes par default de wordpress.  
+
+Ce qui doit donnez :  
+
+![Image dossierthememodif](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/dossierthememodif.PNG)
 
 
 ### . Mise en place de la BDD
