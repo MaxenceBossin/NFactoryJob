@@ -162,6 +162,6 @@ Puis vous appuyer sur le bouton "Créer"
 
 ![Image nombasededonne](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/nombase.PNG)
 
-
+Retenez bien le nom de votre base de donnée elle va être importante pour la suite de l'installation du site.
 
 ### . Comment passer un compte en recruteur

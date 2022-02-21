@@ -742,7 +742,6 @@ header .wrap .create:hover {
   justify-content: center;
 }
 
-<<<<<<< HEAD
 #lastCv {
   display: flex;
   flex-direction: column;
@@ -765,11 +764,7 @@ header .wrap .create:hover {
 #connexion .wrap h2 {
   margin-left: 3rem;
   margin-bottom: 1rem;
-=======
-#signup .wrap .account {
->>>>>>> a1abcf66943c559a32967e5cab33be0a23d30c8b
   font-size: 2rem;
-  padding-bottom: 1rem;
 }
 #connexion .wrap .box {
   display: flex;
@@ -829,28 +824,107 @@ header .wrap .create:hover {
   font-size: 2rem;
   padding-bottom: 1rem;
 }
-#signup .wrap div.box {
-  background-color: #E3E3E3;
-  text-align: center;
-  display: flex;
-  border-radius: 10px;
+#signup .wrap .form {
+  font-size: 1.3rem;
 }
-#signup .wrap .box_text {
+#signup .wrap .box {
+  display: flex;
+  width: 100%;
+  margin-bottom: 5rem;
+}
+#signup .wrap .box .box_text {
+  width: 48%;
+  background-color: rgba(124, 124, 124, 0.3);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  margin-right: 2rem;
+}
+#signup .wrap .box .box_text #vous {
+  display: flex;
+  justify-content: center;
+}
+#signup .wrap .box .box_text .box_text {
   padding: 3rem;
 }
-#signup .wrap .box_text p {
-  margin-bottom: 1rem;
-}
-#signup .wrap .checkbox_cr {
+#signup .wrap .box .box_text .checkbox_cr {
   display: flex;
+  justify-content: center;
+  margin-left: 3rem;
 }
-#signup .wrap .checkbox_cr .candidat {
-  margin-right: 1.5rem;
+#signup .wrap .box .box_text .checkbox_cr label {
+  margin-right: 3rem;
 }
-#signup .wrap input {
+#signup .wrap .box .box_text .checkbox_cr input {
+  margin-top: 1.2%;
+}
+#signup .wrap .box .box_text #mail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#signup .wrap .box .box_text #mail input {
+  width: 500px;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  margin-top: 1rem;
+  margin-bottom: 1.6rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 6px, rgba(0, 0, 0, 0.25) 0px 3px 6px;
+}
+#signup .wrap .box .box_text #mdp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#signup .wrap .box .box_text #mdp input {
+  width: 500px;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  margin-top: 1rem;
+  margin-bottom: 1.6rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 6px, rgba(0, 0, 0, 0.25) 0px 3px 6px;
+}
+#signup .wrap .box .box_text #cmdp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#signup .wrap .box .box_text #cmdp input {
+  width: 500px;
+  border-radius: 5px;
+  height: 40px;
+  border: none;
+  margin-top: 1rem;
+  margin-bottom: 1.6rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 6px, rgba(0, 0, 0, 0.25) 0px 3px 6px;
+}
+#signup .wrap .box .box_text input {
   margin-bottom: 1rem;
   padding: 0.5rem 2rem;
-<<<<<<< HEAD
+}
+#signup .wrap .box .box_text #co {
+  border: none;
+  border-radius: 5px;
+  background-color: #0c64a6;
+  color: white;
+  padding: 0.6rem;
+  width: 500px;
+  font-size: 1.4rem;
+  margin: 0.8rem auto;
+}
+#signup .wrap .box .box_text #cgu a {
+  color: black;
+}
+#signup .wrap .box .box_text #possede a {
+  display: flex;
+  justify-content: center;
+  color: #0c64a6;
+}
+#signup .wrap .box .box_img {
+  width: 48%;
 }
 
 footer {
@@ -872,8 +946,6 @@ footer #footertitre {
 }
 footer #spantitre {
   color: #0c64a6;
-=======
->>>>>>> a1abcf66943c559a32967e5cab33be0a23d30c8b
 }
 
 /*# sourceMappingURL=style.css.map */

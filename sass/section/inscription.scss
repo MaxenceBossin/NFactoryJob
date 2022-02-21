@@ -4,27 +4,108 @@
             font-size: 2rem;
             padding-bottom: 1rem;
         }
-        div.box{
-            background-color: #E3E3E3;
-            text-align: center;
-            display: flex;
-            border-radius: 10px;
+        .form{
+            font-size: 1.3rem;
         }
+        .box{
+            display: flex;
+            width: 100%;
+            margin-bottom: 5rem;
             .box_text{
-                padding: 3rem;
-                p{
-                    margin-bottom: 1rem;
+                width: 48%;
+                background-color: rgba($color: #7c7c7c, $alpha: .3);
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                border-radius: 10px;
+                margin-right: 2rem;
+                #vous{
+                    display: flex;
+                    justify-content: center;
                 }
-            }
+                .box_text{
+                    padding: 3rem;
+                }
                 .checkbox_cr{
                     display: flex;
-                    .candidat{
-                        margin-right: 1.5rem;
+                    justify-content: center;
+                    margin-left: 3rem;
+                    label{
+                        margin-right: 3rem;
+                    }
+                    input{
+                        margin-top: 1.2%;
                     }
                 }
+                #mail{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     input{
-                        margin-bottom: 1rem;
-                        padding: 0.5rem 2rem;
+                        width: 500px;
+                        border-radius: 5px;
+                        height: 40px;
+                        border: none;
+                        margin-top: 1rem;
+                        margin-bottom: 1.6rem;
+                        @include boxShadow($colorblack)
                     }
+                }
+                #mdp{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    input{
+                        width: 500px;
+                        border-radius: 5px;
+                        height: 40px;
+                        border: none;
+                        margin-top: 1rem;
+                        margin-bottom: 1.6rem;
+                        @include boxShadow($colorblack);
+                    }
+                }
+                #cmdp{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    input{
+                        width: 500px;
+                        border-radius: 5px;
+                        height: 40px;
+                        border: none;
+                        margin-top: 1rem;
+                        margin-bottom: 1.6rem;
+                        @include boxShadow($colorblack)
+                    }
+                }
+                input{
+                    margin-bottom: 1rem;
+                    padding: 0.5rem 2rem;
+                }
+                #co{
+                    border: none;
+                    border-radius: 5px;
+                    background-color: $mainColor;
+                    color: $colorwhite;
+                    padding: .6rem;
+                    width: 500px;
+                    font-size: 1.4rem;
+                    margin: .8rem auto;
+                }
+                #cgu a{
+                    color: $colorblack;
+                }
+                #possede a{
+                    display: flex;
+                    justify-content: center;
+                    color : $mainColor;
+                }
+            }
+            .box_img{
+                width: 48%;
+            }
+        }
+
     }
 }
