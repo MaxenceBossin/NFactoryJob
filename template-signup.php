@@ -12,31 +12,41 @@ get_header();
         <p class="account">Créer un compte</p>
         <div class="box">
             <div class="box_text">
-                <form action="" method="get">
-                    <p>Vous êtes :</p>
-
+                <form action="" method="get" class="form">
+                    <div id="vous">
+                            <p>Vous êtes :</p>
+                    </div>
                     <div class="checkbox_cr">
                         <input type="checkbox" id="candidat" name="drone" value="candidat">
                         <label for="candidat" class="candidat">Candidat</label>
                         <input type="checkbox" id="recruteur" name="drone" value="recruteur">
                         <label for="recruteur">Recruteur</label>
                     </div>
-                    
-                
-                    <label for="name">Adresse mail</label>
-                    <input type="email "name="email" id="email" placeholder="contact@nfactoryjob.com" required>
+                    <div id="mail">
+                        <label for="email">Adresse mail</label>
+                        <input type="email "name="email" id="email" placeholder="contact@nfactoryjob.com" required>
+                    </div>
 
-                    <label for="email">Mot de passe</label>
-                    <input type="password" name="password" id="password" placeholder="**********" required>
+                    <div id="mdp">
+                        <label for="mdp">Mot de passe</label>
+                        <input type="password" name="password" id="password" placeholder="**********" required>
+                    </div>
 
-                    <label for="email">Confirmation du mot de passe</label>
-                    <input type="password" name="password" id="password" placeholder="**********" required>
+                    <div id="cmdp">
+                        <label for="cmdp">Confirmation du mot de passe</label>
+                        <input type="password" name="password" id="password" placeholder="**********" required>
+                    </div>
 
-                    <input type="checkbox" id="cgu" name="drone" value="cgu">
-                    <label for="huey"><a href="<?= path('cgu'); ?>">J'accepte les CGU</a></label>
+                    <div id="cgu">
+                        <input type="checkbox" id="cgu" name="drone" value="cgu">
+                        <label for="huey"><a href="<?= path('cgu'); ?>">J'accepte les CGU</a></label>
+                    </div>
 
-                    <input type="submit" value="S'inscrire">
-                    <p class="text_blue"><a href="<?= path('connexion'); ?>">Je possède déjà un compte</p>
+                    <div id="possede">
+                        <input type="submit" value="Continuer" id="co">
+                        <p class="text_blue"><a href="<?= path('connexion'); ?>">Je possède déjà un compte</p>
+                    </div>
+
                 </form>
             </div>
             <div class="box_img">

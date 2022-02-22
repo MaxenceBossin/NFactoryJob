@@ -209,7 +209,6 @@ function place_add_module(deploy_last_module = false){
     }
 
     if(!$('.module-line').length){
-        console.log('create_line0');
         create_line();
     }
 
@@ -275,6 +274,33 @@ function on_color_update(el){
             editor_request_save();
         }
     }
+    else if(el.attr('id').startsWith('fontcolor_module_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setFontColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
+    else if(el.attr('id').startsWith('separator_module_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setSeparatorColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
+    else if(el.attr('id').startsWith('border_col_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setBordersColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
 
     if(el.attr('id') === 'back-color'){
         CV.setColor(el.val());
@@ -298,12 +324,12 @@ function generate_add_cv_module(parent){
             ['Expériences personnelles', true],
             ['Expériences professionnelles', true],
             ['Formations', true],
-            ['Icône (inactif)', false],
+            ['Icône', false],
             ['Informations', true],
             ['Langues', true],
             ['Loisirs', true],
             ['Module personnalisé', false],
-            ['Photo de profil (inactif)', false]
+            ['Image', false]
         ];
         let fItems = [];
         let found = false;
@@ -349,20 +375,13 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
         _lineNum = get_last_line().getLineNum();
     }
 
-    const module = $('<div id="module-'+moduleID+'" class="module"></div>').on('click', function() {
-        const _module = get_module_by_ID(get_module_element_id($(this)));
-        if (_module !== null) {
-            select_module(_module);
-            refresh_onglets_menu();
-        }
-    });
+    const module = $('<div id="module-'+moduleID+'" class="module"></div>');
 
     let _module = new Module(moduleID, moduleName);
     modules_el.push(_module);
 
     let _line = get_line_by_num(_lineNum);
     if(_line === null || _line.countModules() + 1 > Line.IDEAL_NB_MODULES){
-        console.log('create_line1');
         _line = create_line();
         _line.getDOMElement().append(module);
     }
@@ -371,7 +390,7 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
     }
     _line.addModule(_module);
     _module.setLine(_line);
-    _module.setWidth(_width);
+    _module.setLargeur(_width);
     _module.refresh();
     place_add_module();
     return _module;

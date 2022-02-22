@@ -12,7 +12,7 @@
     padding: .5rem;
     flex-flow: column nowrap;
     gap: .5rem;
-    width: 95%;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     .autocomplete-item{
       cursor: pointer;
@@ -28,7 +28,7 @@
   .btn{
     padding: .5rem 1rem .5rem 1rem;
     color: white;
-    width: 95%;
+    width: 100%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -42,6 +42,9 @@
   }
   .btn.blue{
     background-color: #5e80c9;
+  }
+  .btn.green{
+    background-color: #90c725;
   }
 }
 
@@ -88,6 +91,8 @@
     }
   }
   .content{
+    overflow-y: auto;
+    height: 80%;
     padding: 1rem;
     .content-module, .content-general{
       display: flex;
@@ -97,6 +102,31 @@
       padding: .5rem;
       align-content: center;
       width: 100%;
+    }
+    .icon-list{
+      background-color: white;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      padding: .5rem;
+      height: 300px;
+      overflow-y: auto;
+      border-radius: 5px;
+      display: flex;
+      flex-flow: row wrap;
+      gap: .3rem;
+      i{
+        padding: .5rem;
+        border: 2px solid rgba(0,0,0,.2);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 5px;
+        background-color: white;
+        transition: all .25s;
+        cursor: pointer;
+        &:hover{
+          border: 2px solid rgba(0,0,0,.4);
+          background-color: rgba(0,0,0,.2);
+          color: #5e80c9;
+        }
+      }
     }
   }
   .attached{
@@ -126,7 +156,7 @@
   border-radius: 5px;
   padding: .5rem;
   border: 2px solid rgba(0,0,0,.08);
-  width: 95%;
+  width: 100%;
   button{
     padding: .5rem;
     border: none;
@@ -218,6 +248,9 @@
     .head{
       display: flex;
       flex-flow: row nowrap;
+      align-content: center;
+      align-items: center;
+      gap: .5rem;
       .module-title{
         font-weight: 300;
       }
@@ -273,7 +306,19 @@
 }
 
 #onglet_editor .content input{
-  width: 90%;
+  width: 100%;
+}
+
+#onglet_editor .input_wrapper{
+  padding: .5rem;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  label{
+    padding: .5rem 0rem .5rem 0rem;
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
 }
 
 #cv form, #onglet_editor .content{
@@ -286,13 +331,13 @@
   text-align: center;
   gap: .5rem;
   transition: all .35s;
-  input:not([type=range]), select{
+  input:not([type=range]):not([type=checkbox]), select{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     background-color: #d0d4dc;
     border: none;
     border-radius: 5px;
     padding: .5rem;
-    width: 95%;
+    width: 100%;
   }
   input[type=submit]{
     cursor: pointer;
@@ -311,7 +356,7 @@
   }
 }
 
-#save-notif{
+#save-notif, #quit-preview{
   position: fixed;
   bottom: -100px;
   left: 50%;
@@ -320,6 +365,7 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all .5s;
   padding: .8rem;
+  min-width: 25vw;
   border-radius: 5px;
   display: flex;
   flex-flow: row nowrap;
@@ -331,6 +377,19 @@
   i{
     padding-left: .5rem;
     color: #5e80c9;
+  }
+  button{
+    padding: .5rem 1rem .5rem 1rem;
+    color: white;
+    background-color: #f35e5e;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .25s;
+    &:hover{
+      opacity: .8;
+    }
   }
 }
 

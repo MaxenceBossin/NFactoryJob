@@ -31,8 +31,12 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "inc/base";
 @import "inc/wrap";
 
+/* loading  */
+@import "inc/loading";
 /* editor  */
 @import "inc/editor";
+/* dashboard  */
+@import "inc/dashboard";
 
 @import "header_footer/header";
 /*ajout des sections ici*/
@@ -44,6 +48,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 // Page connexion/ inscription
 @import "section/connexion";
 @import "section/inscription";
-
+// Globals
+@import "inc/globals";
 
 @import "header_footer/footer";

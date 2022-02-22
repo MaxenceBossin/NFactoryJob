@@ -75,9 +75,29 @@ function editor_add_cv_module(form, data, secondary_infos){
     editor_request_save();
 }
 
+/** Global **/
+
 function form_error(form, field, error){
     const span_error = form.find('span#error-' + field);
     if(span_error !== undefined){
         span_error.text(error);
     }
 }
+
+function input_error(field, error){
+    const span_error = $('span#error-' + field);
+    if(span_error.length){
+        span_error.text(error);
+    }
+}
+
+$(document).on('click', function(e) {
+    const element = $(e.target);
+    if(element.length){
+        if(!element.hasClass('input_wrapper') && !element.hasClass('autocomplete') && !element.hasClass('autocomplete-item')){
+            $('.autocomplete').each(function(){
+                $(this).css("display", "none");
+            });
+        }
+    }
+});

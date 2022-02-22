@@ -27,6 +27,10 @@
 		</div><!-- .site-info -->
 	</div>
 </footer><!-- #colophon -->
+
+<script>const PAGE_NAME = '<?= get_page_template_slug(); ?>';</script>
+<script>const SITE_URL = '<?= get_site_url(); ?>/';</script>
+<script>const THEME_URL = '<?= get_template_directory_uri(); ?>/';</script>
 <?php wp_footer(); ?>
 </body>
 </html>
