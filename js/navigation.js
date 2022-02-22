@@ -116,4 +116,17 @@ document.addEventListener('scroll', function (event) {
 	else{
 		header.style.backgroundColor = baseCol;
 	}
-}, true /*Capture event*/);
+}, true);
+
+// menu burger
+
+$('#burger').on('click', function(){
+	if($('.mobile').css("display") === 'none'){
+		$('.mobile').css("display", "flex");
+		$('.mobile').css("opacity", "1");
+	}
+	else{
+		$('.mobile').css("display", "none");
+		$('.mobile').css("opacity", "0");
+	}
+});

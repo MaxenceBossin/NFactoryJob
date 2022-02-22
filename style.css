@@ -1104,10 +1104,30 @@ FORM - INPUT SLIDER
   border-bottom: 1px solid #0c64a6;
 }
 #header .wrap nav ul .mobile {
+  position: fixed;
+  opacity: 0;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  top: 150px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s;
   display: none;
+  width: 75vw;
+  flex-flow: column nowrap;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  gap: 1rem;
 }
 #header .wrap nav ul .burger {
   display: none;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+#header .wrap nav ul .burger:hover {
+  opacity: 0.7;
 }
 @media (max-width: 600px) {
   #header .wrap nav ul .burger {
@@ -1136,10 +1156,6 @@ FORM - INPUT SLIDER
 }
 #header .wrap .create:hover {
   background-color: #3481bd;
-}
-
-#head-separator {
-  height: 70px;
 }
 
 /*ajout des sections ici*/

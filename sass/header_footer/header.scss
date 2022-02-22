@@ -38,10 +38,30 @@
                 }
             }
             .mobile{
+                position: fixed;
+                opacity: 0;
+                background-color: white;
+                padding: 1rem;
+                border-radius: 10px;
+                top: 150px;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                transition: all .3s;
                 display: none;
+                width: 75vw;
+                flex-flow: column nowrap;
+                align-items: center;
+                align-content: center;
+                text-align: center;
+                gap: 1rem;
             }
             .burger{
                 display: none;
+                cursor: pointer;
+                transition: all .25s;
+                &:hover{
+                    opacity: .7;
+                }
                 @include breakpoints(tablette){
                     display: block;
                 }
@@ -67,8 +87,4 @@
             @include hoverBackgroundColor($mainColorHover);
         }
     }
-}
-
-#head-separator{
-    height: 70px;
 }
