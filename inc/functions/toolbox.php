@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function assetImg() {
     return  get_template_directory_uri().'/asset/img/';
@@ -100,4 +101,12 @@ function get_page_url($template_name)
         }
     }
     return get_bloginfo('url');
+}
+
+function is_recruteur() {
+    $user = wp_get_current_user();
+    if ( in_array( 'recruteur', (array) $user->roles ) || in_array( 'administrator', (array) $user->roles ) ) {
+        return true;
+    }
+    return false;
 }

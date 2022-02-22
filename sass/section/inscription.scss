@@ -1,4 +1,9 @@
+
+
 #signup{
+    .error{
+        color: red;
+    }
     .wrap{
         .account{
             font-size: 2rem;
@@ -12,6 +17,7 @@
             width: 100%;
             margin-bottom: 5rem;
             .box_text{
+                padding: 1rem;
                 width: 48%;
                 background-color: rgba($color: #7c7c7c, $alpha: .3);
                 align-items: center;
@@ -83,7 +89,7 @@
                     margin-bottom: 1rem;
                     padding: 0.5rem 2rem;
                 }
-                #co{
+                input[type=submit]{
                     border: none;
                     border-radius: 5px;
                     background-color: $mainColor;
@@ -94,7 +100,13 @@
                     margin: .8rem auto;
                 }
                 #cgu a{
-                    color: $colorblack;
+                    color : $mainColor;
+                }
+                #possede{
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-content: center;
+                    align-items: center;
                 }
                 #possede a{
                     display: flex;

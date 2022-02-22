@@ -29,11 +29,35 @@
 		<nav>
 			<ul>
 				<li class="desktop"><a href="<?= path('home'); ?>" class="log"><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
-				<li class="desktop"><a href="<?= path('connexion'); ?>" class="log"><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
+                <?php
+                if(is_user_logged_in()){
+                    ?>
+                    <li class="desktop"><a href="<?= path('dashboard'); ?>" class="log"><i class="fa-solid fa-chalkboard-user"></i> <span>Dashboard</span></a></li>
+                    <li class="desktop"><a href="<?= path('logout'); ?>" class="log"><i style="color: red;" class="fa-solid fa-key"></i> <span>Déconnexion</span></a></li>
+                <?php
+                }
+                else{
+                    ?>
+                    <li class="desktop"><a href="<?= path('connexion'); ?>" class="log"><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
+                    <?php
+                }
+                ?>
 				<li class="desktop"><a href="<?= path('editor'); ?>" class="create">Créer un CV</a></li>
 				<li class="burger"><i class="fa-solid fa-bars"></i></li>
 				<li class="mobile"><a href="<?= path('home'); ?>"><i class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
-				<li class="mobile"><a href="<?= path('connexion'); ?>"><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
+                <?php
+                if(is_user_logged_in()){
+                    ?>
+                    <li class="mobile"><a href="<?= path('dashboard'); ?>" class="log"><i class="fa-solid fa-chalkboard-user"></i> <span>Dashboard</span></a></li>
+                    <li class="mobile"><a href="<?= path('logout'); ?>" class="log"><i style="color: red;" class="fa-solid fa-key"></i> <span>Déconnexion</span></a></li>
+                    <?php
+                }
+                else{
+                    ?>
+                    <li class="mobile"><a href="<?= path('connexion'); ?>" class="log"><i class="fa-solid fa-key"></i> <span>Connexion</span></a></li>
+                    <?php
+                }
+                ?>
 				<li class="mobile"><a href="<?= path('editor'); ?>" class="create">Créer un CV</a></li>
 			</ul>
 		</nav>

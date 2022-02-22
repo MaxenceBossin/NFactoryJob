@@ -33,5 +33,5 @@ function on_api_loaded(){
         }
 
         hide_loading();
-    }, 2500);
+    }, 500);
 }

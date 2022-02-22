@@ -1,9 +1,17 @@
 <?php
 /** Template Name: Dashboard **/
 
+if(!is_user_logged_in()){
+    header('Location: ' . get_site_url());
+    die();
+}
+
+$isRecruteur = is_recruteur();
+
 get_header();
 ?>
 <section id="dashboard" class="wrap">
+
     <div class="filters"><!-- généré en js --></div>
     <div class="all-cv">
         <div class="search"><!-- généré en js --></div>
