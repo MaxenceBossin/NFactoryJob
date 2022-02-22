@@ -45,7 +45,7 @@ Il y a trois rôles d'utlisateur :
 
 ## Mise en place du projet
 
-### __1. Installation de *WORDPRESS*__
+### __Installation de *WORDPRESS*__
 
 ### __L'installation en local__
 
@@ -72,7 +72,7 @@ Il faut descendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
 
 ### __Installation de WORDPRESS__
 
-### __2. Téléchargement du thème *NFactoryJob*__
+### __Téléchargement du thème *NFactoryJob*__
 
 #### **Via GITHUB :**
 
@@ -89,7 +89,7 @@ Bien vérifier que vous êtes sur la branche ***Master*** comme l'encadré en ro
 Ensuite cliquer sur `code` une petite fenêtre va s'ouvrir. Alors cliquer sur '***Download ZIP***' qui se trouve dans l'encadré blanc
 
 
-### __2.1 Installation du thème *NFactoryJob*__
+### __Installation du thème *NFactoryJob*__
 
 Rendez-vous dans votre explorateur de fichier et allez là ou vous voulez créer votre site.  
 Après cette étape nous allons commencer l'installation de **WORDPRESS** :
