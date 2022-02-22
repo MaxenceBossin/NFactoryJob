@@ -37,8 +37,14 @@ function hide_loading(){
     }
 }
 
-function create_form(formName){
-    const form = $('<form id="'+formName+'" action = "" method = "POST"></form>');
+function create_form(formName, forUpload = false, action = ''){
+    let form;
+    if(forUpload){
+        form = $('<form id="'+formName+'" action = "'+action+'" method = "POST" enctype="multipart/form-data"></form>');
+    }
+    else{
+        form = $('<form id="'+formName+'" action = "'+action+'" method = "POST"></form>');
+    }
     return form;
 }
 
@@ -103,7 +109,7 @@ function request_add_checkboxgroup_element(input_id){
             checkgroup_element.attr('data-value', val.replace('"', '\\"'));
             const i = $('<i class="fa-solid fa-trash"></i>').on('click', function(){
                 $(this).parent().remove();
-                if(DASHBOARD){
+                if(PAGE_NAME === 'template-dashboard.php'){
                     refresh_dashboard();
                 }
             });
@@ -112,7 +118,7 @@ function request_add_checkboxgroup_element(input_id){
             input.val('');
             input_error(input_id, '');
 
-            if(DASHBOARD){
+            if(PAGE_NAME === 'template-dashboard.php'){
                 refresh_dashboard();
             }
         }
@@ -159,6 +165,7 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         input.attr('placeholder', placeholder);
     }
     else if(type === 'colorpicker'){
+        // évent géré dans editor-funcs.js => on_color_update
         if(values.length > 0){
             input = $('<input type="text" value="'+values[0]+'" />');
         }
@@ -177,7 +184,7 @@ function create_input(name, showName = '', parent = null, type = "text", values 
                 $('#slider-span-' + _name).text(parseInt($(this).val()));
             }
 
-            if(DASHBOARD){
+            if(PAGE_NAME === 'template-dashboard.php'){
                 refresh_dashboard();
             }
         });
@@ -273,10 +280,20 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         $('#picker-' + _fID).farbtastic($('#' +_fID));
     }
 
+    if(type === 'checkbox'){
+        if(values !== null && values.length > 0){
+            input.prop('checked', values[0]);
+        }
+    }
+
     return input;
 }
 
-function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false, form_horizontal = false){
+function set_selectinput_index(select, idx){
+    select.prop('selectedIndex', idx);
+}
+
+function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false, form_horizontal = false, add_event = true){
     const submit = $('<input type="submit" value="'+submitValue+'" />');
     form.append(submit);
     form.attr('style', 'opacity: 0;');
@@ -299,19 +316,21 @@ function build_form(form, submitValue = 'Valider', secondary_infos = [], add_can
         form.append(cancel_btn);
     }
 
-    form.on('submit', function(_e){
-        _e.preventDefault();
-        let data = {};
-        $(this).find('input:not([type=submit]), select').each(function(){
-            const _id = $(this).attr('id');
-            data[_id] = $(this).val();
+    if(add_event){
+        form.on('submit', function(_e){
+            _e.preventDefault();
+            let data = {};
+            $(this).find('input:not([type=submit]), select').each(function(){
+                const _id = $(this).attr('id');
+                data[_id] = $(this).val();
+            });
+            $(this).find('textarea').each(function(){
+                const _id = $(this).attr('id');
+                data[_id] = $(this).text();
+            });
+            on_form_submit($(this).attr('id'), $(this), data, secondary_infos);
         });
-        $(this).find('textarea').each(function(){
-            const _id = $(this).attr('id');
-            data[_id] = $(this).text();
-        });
-        on_form_submit($(this).attr('id'), $(this), data, secondary_infos);
-    });
+    }
 }
 
 function on_autocomplete_ajax(input){

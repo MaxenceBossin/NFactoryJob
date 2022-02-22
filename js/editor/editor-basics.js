@@ -21,10 +21,15 @@ let generating_pdf = false;
 let preview_save = null;
 let preview_mode = false;
 
+let icons = [];
+let fonts = [];
+
 // Todo
 
 $( document ).ready(function() {
     show_loading();
+    ajax('all_icons', THEME_URL + 'ajax/editor/get_icons.php', {});
+    ajax('all_fonts', THEME_URL + 'ajax/editor/get_google_fonts.php', {});
     api_load_all();
 });
 

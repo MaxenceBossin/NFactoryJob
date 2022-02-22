@@ -3,8 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="bbd3dd6b-d995-49a9-a18d-5a6d69f0a5e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/AutocompleteItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/AutocompleteItem.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/functions/toolbox.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/functions/toolbox.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ajax-events.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ajax-events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/Module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/editor-funcs.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-funcs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/editor-onglet-content.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-onglet-content.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/inc/editor.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/editor.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,10 +41,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\MAMP\htdocs\cvtheque\wp-content\themes\NFactoryJob" />
+      <recent name="C:\MAMP\htdocs\cvtheque\wp-content\themes\NFactoryJob\ajax\editor" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\MAMP\htdocs\cvtheque\wp-content\themes\NFactoryJob\js" />
     </key>
@@ -54,6 +65,7 @@
       <workItem from="1645184483497" duration="5828000" />
       <workItem from="1645190658905" duration="8755000" />
       <workItem from="1645430261040" duration="15833000" />
+      <workItem from="1645515567948" duration="6590000" />
     </task>
     <servers />
   </component>
