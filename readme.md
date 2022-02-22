@@ -49,10 +49,10 @@ Il y a trois rôles d'utlisateur :
 
 ### __L'installation en local__
 
-### __Installation de XAMPP, simule un serveur en local__
+### __Installation de XAMPP, simule un serveur en local sur windows__
 
 Installation de Xampp (téléchargement de la version correspondant à votre système d'exploitation) : https://www.apachefriends.org/fr/index.html  
-Ensuite Allumer XAMMP cliquer sur RUN pour Appache et MySql
+Ensuite Allumer XAMMP cliquer sur RUN pour Apache et MySql
 
 ![Image XAMP](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/XAMP.PNG)
 
@@ -60,7 +60,12 @@ Pour WINDOW :
 Une fois l'installation fini un dossier xampp s'est créé à l'endroit où vous l'avez installé.
 Normalement, il se situe sur votre disque C à l'emplacement : C:\xampp\htdocs
 
-### __Installation de WORDPRESS__
+### __Installation de MAMP, simule un serveur en local sur windows__
+
+Installation de MAMP (téléchargement de la version correspondant à votre système d'exploitation) : https://www.mamp.info/en/downloads/   
+Ensuite Allumer MAMP cliquer sur Démarrer les serveurs pour lancez MySQL et Apache
+
+## __Installation de WORDPRESS__
 
 Une fois fait, vous devez installer l'archive de **WORDPRESS**
 
