@@ -233,5 +233,6 @@ Ce paramètre va dire au site quelle page afficher en premier pour cela il va fa
 
 ![Image lecture](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lecture.PNG)  
 
-Encore une fois n'oubliez pas d'enregistrer les modifications.
-### . Comment passer un compte en recruteur
+Encore une fois n'oubliez pas d'enregistrer les modifications.  
+
+### **Comment passer un compte en recruteur**
