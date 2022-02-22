@@ -110,3 +110,21 @@ function is_recruteur() {
     }
     return false;
 }
+
+function get_backcolor_by_role(){
+    if(is_recruteur()){
+        return "#fad5b4";
+    }
+    return "rgb(176, 214, 248)";
+}
+
+function get_color_by_role(){
+    if(is_recruteur()){
+        return "#f67631";
+    }
+    return "rgb(12, 100, 166)";
+}
+
+function get_good_logo(){
+    echo '<a href="'.get_site_url().'" class="main-title"><span style="color: '.get_color_by_role().';">N</span>Factory<span style="color: '.get_color_by_role().';">Job</span></a>';
+}

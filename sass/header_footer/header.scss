@@ -1,4 +1,13 @@
-header{
+
+.main-title{
+    font-size: 1.5rem;
+    color: black;
+    font-weight: 300;
+}
+
+#header{
+    background-color: $lessMainColor;
+    transition: all .3s;
     .wrap{
         display: flex;
         justify-content: space-between;
@@ -49,7 +58,7 @@ header{
         }
         .create{
             background-color: $mainColor;
-            border-radius: 15px;
+            border-radius: 5px;
             padding : .5rem;
             width: 175px;
             display: flex;
@@ -60,3 +69,6 @@ header{
     }
 }
 
+#head-separator{
+    height: 70px;
+}
