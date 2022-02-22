@@ -25,7 +25,6 @@ if(!empty($_POST['submitted'])) {
 
     if(count($errors) == 0){
         $userdata = array(
-            'ID'                    => 0,    //(int) User ID. If supplied, the user will be updated.
             'user_pass'             => $pass,   //(string) The plain-text user password.
             'user_login'            => $email,   //(string) The user's login username.
             'user_email'            => $email,   //(string) The user email address.
@@ -33,8 +32,14 @@ if(!empty($_POST['submitted'])) {
             'nickname'              => $email,
             'show_admin_bar_front'  => false
         );
-        wp_insert_user($userdata);
-        header('Location: ' . path('connexion').'?creation=1');
+        $user_id = wp_insert_user($userdata);
+        wp_update_user( array ('ID' => $user_id, 'role' => 'utilisateur') ) ;
+        if ( ! is_wp_error( $user_id ) ) {
+            header('Location: ' . path('connexion').'?creation=1');
+        }
+        else{
+            $errors['email'] = 'Une erreur est survenue. Veuillez réessayer ultérieurement';
+        }
     }
 }
 
