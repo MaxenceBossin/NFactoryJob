@@ -37,8 +37,14 @@ function hide_loading(){
     }
 }
 
-function create_form(formName){
-    const form = $('<form id="'+formName+'" action = "" method = "POST"></form>');
+function create_form(formName, forUpload = false, action = ''){
+    let form;
+    if(forUpload){
+        form = $('<form id="'+formName+'" action = "'+action+'" method = "POST" enctype="multipart/form-data"></form>');
+    }
+    else{
+        form = $('<form id="'+formName+'" action = "'+action+'" method = "POST"></form>');
+    }
     return form;
 }
 
@@ -287,7 +293,7 @@ function set_selectinput_index(select, idx){
     select.prop('selectedIndex', idx);
 }
 
-function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false, form_horizontal = false){
+function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false, form_horizontal = false, add_event = true){
     const submit = $('<input type="submit" value="'+submitValue+'" />');
     form.append(submit);
     form.attr('style', 'opacity: 0;');
@@ -310,19 +316,21 @@ function build_form(form, submitValue = 'Valider', secondary_infos = [], add_can
         form.append(cancel_btn);
     }
 
-    form.on('submit', function(_e){
-        _e.preventDefault();
-        let data = {};
-        $(this).find('input:not([type=submit]), select').each(function(){
-            const _id = $(this).attr('id');
-            data[_id] = $(this).val();
+    if(add_event){
+        form.on('submit', function(_e){
+            _e.preventDefault();
+            let data = {};
+            $(this).find('input:not([type=submit]), select').each(function(){
+                const _id = $(this).attr('id');
+                data[_id] = $(this).val();
+            });
+            $(this).find('textarea').each(function(){
+                const _id = $(this).attr('id');
+                data[_id] = $(this).text();
+            });
+            on_form_submit($(this).attr('id'), $(this), data, secondary_infos);
         });
-        $(this).find('textarea').each(function(){
-            const _id = $(this).attr('id');
-            data[_id] = $(this).text();
-        });
-        on_form_submit($(this).attr('id'), $(this), data, secondary_infos);
-    });
+    }
 }
 
 function on_autocomplete_ajax(input){

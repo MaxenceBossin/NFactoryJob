@@ -144,8 +144,13 @@ function refresh_general_content(){
                 let filename = CV.getTitle().replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
                 let options = {
                     filename:     filename,
-                    image:        { type: 'jpeg', quality: 0.98 },
-                    jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' }
+                    image:        { type: 'jpg', quality: 0.95 },
+                    jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' },
+                    html2canvas: {
+                        dpi: 300,
+                        letterRendering: true,
+                        useCORS: true
+                    }
                 };
                 html2pdf().set(options).from(document.getElementById('cv')).save();
                 append_preview('Mise à jour de l\'éditeur...');
@@ -238,6 +243,34 @@ function refresh_module_content(){
         selected_module.refresh();
         editor_request_save();
     });
+
+    if(selected_module.getModuleName() === 'Image'){
+        create_input('image', 'URL de l\'image', content_module, 'text', [selected_module.getProfilePic()], 'https://').on('input', function(){
+            selected_module.setProfilePic($(this).val());
+            selected_module.refresh();
+            editor_request_save();
+        });
+
+        create_input('icon-size', 'Taille de l\'image', content_module, 'slider', [selected_module.getIconSize(), 10, 100, '%']).on('input', function(){
+            selected_module.setIconSize(parseInt($(this).val()));
+            selected_module.refresh();
+            editor_request_save();
+        });
+
+        create_input('icon-radius', 'Contours de l\'image', content_module, 'slider', [selected_module.getIconRadius(), 0, 50, '%']).on('input', function(){
+            selected_module.setIconRadius(parseInt($(this).val()));
+            selected_module.refresh();
+            editor_request_save();
+        });
+    }
+
+    if(selected_module.getModuleName() === "Icône"){
+        create_input('icon-size', 'Taille de l\'icône', content_module, 'slider', [selected_module.getIconSize(), 10, 100, '%']).on('input', function(){
+            selected_module.setIconSize(parseInt($(this).val()));
+            selected_module.refresh();
+            editor_request_save();
+        });
+    }
 
     _input = create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]);
     _input.on('input change', function(){
@@ -385,6 +418,12 @@ function add_icons(btn){
 }
 
 function load_font(fontName){
+
+    let _data = document.querySelectorAll('link[href$="https://fonts.googleapis.com/css2?family='+fontName+':wght@300;400;700"]');
+    if(_data !== null && _data.length > 0){
+        return;
+    }
+
     var link = document.createElement( "link" );
     link.href = 'https://fonts.googleapis.com/css2?family='+fontName+':wght@300;400;700';
     link.type = "text/css";

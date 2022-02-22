@@ -13,7 +13,6 @@ function on_ajax_response(name, json){
 
     if(name === 'all_fonts'){
         fonts = json;
-        console.log(fonts);
         on_api_loaded();
     }
 }

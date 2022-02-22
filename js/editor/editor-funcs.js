@@ -324,12 +324,12 @@ function generate_add_cv_module(parent){
             ['Expériences personnelles', true],
             ['Expériences professionnelles', true],
             ['Formations', true],
-            ['Icône (inactif)', false],
+            ['Icône', false],
             ['Informations', true],
             ['Langues', true],
             ['Loisirs', true],
             ['Module personnalisé', false],
-            ['Photo de profil (inactif)', false]
+            ['Image', false]
         ];
         let fItems = [];
         let found = false;
@@ -375,13 +375,7 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
         _lineNum = get_last_line().getLineNum();
     }
 
-    const module = $('<div id="module-'+moduleID+'" class="module"></div>').on('click', function() {
-        const _module = get_module_by_ID(get_module_element_id($(this)));
-        if (_module !== null) {
-            select_module(_module);
-            refresh_onglets_menu();
-        }
-    });
+    const module = $('<div id="module-'+moduleID+'" class="module"></div>');
 
     let _module = new Module(moduleID, moduleName);
     modules_el.push(_module);

@@ -27,6 +27,33 @@ class Module{
         this.modeAffichage = 0;
         this.icon = '';
         this.font = '';
+        this.profilePic = '';
+        this.iconSize = 100;
+        this.iconRadius = 0;
+    }
+
+    getIconRadius(){
+        return this.iconRadius;
+    }
+
+    setIconRadius(radius){
+        this.iconRadius = radius;
+    }
+
+    getIconSize(){
+        return this.iconSize;
+    }
+
+    setIconSize(size){
+        this.iconSize = size;
+    }
+
+    getProfilePic(){
+        return this.profilePic;
+    }
+
+    setProfilePic(picName){
+        this.profilePic = picName;
     }
 
     setSeparatorColor(col){
@@ -204,15 +231,21 @@ class Module{
 
     refresh(){
         const content = $('#module-' + this.moduleID);
+        content.unbind('click');
+        content.on('click', function() {
+            const _module = get_module_by_ID(get_module_element_id($(this)));
+            if (_module !== null) {
+                select_module(_module);
+                refresh_onglets_menu();
+            }
+        });
         content.empty();
-        console.log(this.moduleName + ' : ');
-        console.log(this.data);
 
         // Global
         const head = $('<div class="head"></div>');
         head.append($('<i class="fa-solid fa-arrows-up-down-left-right draggable"></i>'));
 
-        if(this.icon.length > 0){
+        if(this.icon.length > 0 && this.moduleName !== 'Icône'){
             const icon_element = $('<i class="'+this.icon+'"></i>');
             head.append(icon_element);
         }
@@ -261,6 +294,7 @@ class Module{
         if(this.modeAffichage === 1){
             module_items.css("flex-flow", "row wrap");
             module_items.css("justify-content", "space-between");
+            module_items.css("gap", "1rem");
         }
         else{
             module_items.css("flex-flow", "column nowrap");
@@ -286,6 +320,36 @@ class Module{
             this.generate_onemodule_item(module_items, 'linkedin', 'Ajouter un lien LinkedIn', 'text');
             this.generate_onemodule_item(module_items, 'github', 'Ajouter un lien GitHub', 'text');
             this.generate_onemodule_item(module_items, 'portfolio', 'Ajouter un lien vers votre portfolio', 'text');
+        }
+
+        else if(this.moduleName === 'Icône'){
+            module_items.css("height", "100%");
+            module_items.css("width", "100%");
+            module_items.css("justify-content", "center");
+            module_items.css("align-items", "center");
+            module_items.css("align-content", "center");
+            if(this.icon.length > 0){
+                const icon_element = $('<i class="'+this.icon+'"></i>');
+                icon_element.css("width", "100%");
+                icon_element.css("font-size", (this.iconSize / 10) + "rem");
+                icon_element.css("text-align", "center");
+                module_items.append(icon_element);
+            }
+        }
+
+        else if(this.moduleName === 'Image'){
+            module_items.css("height", "100%");
+            module_items.css("width", "100%");
+            module_items.css("justify-content", "center");
+            module_items.css("align-items", "center");
+            module_items.css("align-content", "center");
+            if(this.profilePic.length > 0){
+                const icon_element = $('<img src="'+this.profilePic+'" alt="Photo de profil" />');
+                icon_element.css("width", this.iconSize + "%");
+                icon_element.css("text-align", "center");
+                icon_element.css("border-radius", this.iconRadius + "%");
+                module_items.append(icon_element);
+            }
         }
 
         // Module Loisirs
