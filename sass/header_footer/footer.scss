@@ -20,6 +20,10 @@
         padding: 2rem;
         display: flex;
         flex-flow: row nowrap;
+        @include breakpoints(tablettebig){
+            flex-flow: column nowrap;
+            text-align: center;
+        }
         justify-content: space-between;
         align-content: center;
         align-items: center;
@@ -30,6 +34,12 @@
         .links{
             display: flex;
             flex-flow: row nowrap;
+            @include breakpoints(tablettebig){
+                flex-flow: column nowrap;
+                text-align: center;
+                align-content: center;
+                align-items: center;
+            }
             gap: 1rem;
             .foot-link{
                 button{

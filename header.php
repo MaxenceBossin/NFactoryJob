@@ -65,7 +65,7 @@ $recruteur = false;
                 ?>
 				<li id="burger" class="burger"><i class="fa-solid fa-bars"></i></li>
                 <div class="mobile">
-                    <li><a href="<?= path('home'); ?>"><i style="color: <?= get_color_by_role(); ?>" class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
+                    <li><a href="<?= path('home'); ?>" class="log"><i style="color: <?= get_color_by_role(); ?>" class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
                     <?php
                     if(is_user_logged_in()){
                         if(is_recruteur()){

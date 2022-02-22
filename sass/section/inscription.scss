@@ -6,6 +6,7 @@
         color: red;
     }
     .wrap{
+        padding: 1rem;
         .account{
             font-size: 2rem;
             padding-bottom: 1rem;
@@ -15,17 +16,27 @@
         }
         .box{
             display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            gap: 1rem;
+            @include breakpoints(tablettebig){
+                gap: 0;
+            }
             width: 100%;
-            margin-bottom: 5rem;
             .box_text{
                 padding: 1rem;
                 width: 48%;
+                @include breakpoints(tablettebig){
+                    width: 100%;
+                    text-align: center;
+                }
                 background-color: rgba($color: #7c7c7c, $alpha: .3);
                 align-items: center;
                 display: flex;
                 justify-content: center;
                 border-radius: 10px;
-                margin-right: 2rem;
                 #vous{
                     display: flex;
                     justify-content: center;
@@ -49,7 +60,6 @@
                     flex-direction: column;
                     align-items: center;
                     input{
-                        width: 500px;
                         border-radius: 5px;
                         height: 40px;
                         border: none;
@@ -63,7 +73,6 @@
                     flex-direction: column;
                     align-items: center;
                     input{
-                        width: 500px;
                         border-radius: 5px;
                         height: 40px;
                         border: none;
@@ -77,7 +86,6 @@
                     flex-direction: column;
                     align-items: center;
                     input{
-                        width: 500px;
                         border-radius: 5px;
                         height: 40px;
                         border: none;
@@ -96,7 +104,6 @@
                     background-color: $mainColor;
                     color: $colorwhite;
                     padding: .6rem;
-                    width: 500px;
                     font-size: 1.4rem;
                     margin: .8rem auto;
                 }
@@ -117,6 +124,10 @@
             }
             .box_img{
                 width: 48%;
+                @include breakpoints(tablettebig){
+                    display: none;
+                    width: 0;
+                }
             }
         }
 

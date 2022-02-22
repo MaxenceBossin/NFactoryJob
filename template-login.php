@@ -45,37 +45,41 @@ if(!empty($_POST['submitted'])) {
 get_header();
 ?>
 
-<section id="connexion">
-    <div class="wrap">
-        <h2>Connexion</h2>
-        <div class="box">
-        <?php the_post_thumbnail('full')?>
-            <form action="" method="POST" class="form">
-                <?php
-                if($creation === 1) {
-                    ?>
-                    <p class="success">Votre compte a bien été créé, vous pouvez désormais vous connecter.</p>
+    <section id="connexion">
+        <div class="wrap">
+            <h2>Connexion</h2>
+            <div class="box">
+                <div class="item">
+                    <?php the_post_thumbnail('full')?>
+                </div>
+                <div class="item">
+                    <form action="" method="POST" class="form">
                         <?php
-                }
-                ?>
-                <div class="form-example">
-                    <label for="name">Adresse mail</label>
-                    <input type="email "name="email" id="email" value="<?= recupInputValue('email')?>" required>
-                    <span class="error"><? if(!empty($errors['email'])){ echo $errors['email']; } ?></span>
+                        if($creation === 1) {
+                            ?>
+                            <p class="success">Votre compte a bien été créé, vous pouvez désormais vous connecter.</p>
+                            <?php
+                        }
+                        ?>
+                        <div class="form-example">
+                            <label for="name">Adresse mail</label>
+                            <input type="email "name="email" id="email" value="<?= recupInputValue('email')?>" required>
+                            <span class="error"><? if(!empty($errors['email'])){ echo $errors['email']; } ?></span>
+                        </div>
+                        <div class="form-example">
+                            <label for="email">Mot de passe</label>
+                            <input type="password" name="password" id="password" value="<?= recupInputValue('password')?>" required>
+                            <span class="error"><? if(!empty($errors['password'])){ echo $errors['password']; } ?></span>
+                        </div>
+                        <div class="form-button">
+                            <input id="submitted" name="submitted" type="submit" value="Se connecter">
+                        </div>
+                        <a href="<?= path('inscription'); ?>">Je n'ai pas de compte</a>
+                    </form>
                 </div>
-                <div class="form-example">
-                    <label for="email">Mot de passe</label>
-                    <input type="password" name="password" id="password" value="<?= recupInputValue('password')?>" required>
-                    <span class="error"><? if(!empty($errors['password'])){ echo $errors['password']; } ?></span>
-                </div>
-                <div class="form-button">
-                    <input id="submitted" name="submitted" type="submit" value="Se connecter">
-                </div>
-                    <a href="<?= path('inscription'); ?>">Je n'ai pas de compte</a>
-            </form>
-        </div>        
-    </div>
-</section>
+            </div>
+        </div>
+    </section>
 
 <?php
 get_footer();

@@ -12,10 +12,7 @@
         display: flex;
         justify-content: space-between;
         font-family: 'Quicksand', sans-serif;
-        padding-top: 1.6rem;
-        padding-bottom: 1rem;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding: 1.5rem;
         #titre{
             font-size: 2rem;
             color: $colorblack;
@@ -29,12 +26,18 @@
             align-items: center;
             color: black;
             // Gestion du menu burger
-            .desktop{
-                @include breakpoints(tablette){
-                    display: none;
+            .log{
+                transition: .6s;
+                background-color: transparent;
+                padding: .5rem;
+                border-radius: 5px;
+                &:hover{
+                    background-color: rgba(0,0,0,.15);
                 }
-                .log{
-                    @include hoverUnderline($mainColor);
+            }
+            .desktop{
+                @include breakpoints(tablettebig){
+                    display: none;
                 }
             }
             .mobile{
@@ -62,7 +65,7 @@
                 &:hover{
                     opacity: .7;
                 }
-                @include breakpoints(tablette){
+                @include breakpoints(tablettebig){
                     display: block;
                 }
             }

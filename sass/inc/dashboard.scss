@@ -1,6 +1,9 @@
 #dashboard{
   display: flex;
   flex-flow: row nowrap;
+  @include breakpoints(tablettebig){
+    flex-flow: column nowrap;
+  }
   gap: 1rem;
   padding: 1rem;
   .autocomplete{
@@ -57,12 +60,19 @@
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     border-radius: 5px;
     width: 30%;
+    @include breakpoints(tablettebig){
+      width: 100%;
+    }
   }
   .all-cv{
+    overflow-y: auto;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.05);
     min-height: 80vh;
     width: 70%;
+    @include breakpoints(tablettebig){
+      width: 100%;
+    }
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 8px;
     border-radius: 5px;
   }

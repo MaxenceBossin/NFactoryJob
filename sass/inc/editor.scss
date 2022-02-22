@@ -59,6 +59,16 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   z-index: 10;
   transition: all .4s;
+  @include breakpoints(tablettebig){
+    width: 60vh;
+  }
+  @include breakpoints(phone){
+    width: 40vh;
+  }
+  @include breakpoints(tablettebig){
+    flex-flow: column nowrap;
+    text-align: center;
+  }
   h1{
     font-weight: 300;
   }
@@ -293,6 +303,9 @@
       transform: translate(-50%, -50%);
       font-size: 1.6rem;
       color: #8b909b;
+      @include breakpoints(tablettebig){
+        display: none;
+      }
     }
     i{
       position: absolute;

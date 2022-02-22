@@ -35,12 +35,20 @@
     align-content: center;
     border-radius: 5px;
     justify-content: space-between;
+    @include breakpoints(tablettebig){
+      flex-flow: column nowrap;
+      justify-content: center;
+    }
     gap: 1rem;
     .home-item{
       width: 45%;
       display: flex;
       flex-flow: column nowrap;
       gap: 1rem;
+      @include breakpoints(tablettebig){
+        width: 100%;
+        text-align: center;
+      }
       h2{
         font-size: 3rem;
         font-weight: 300;
@@ -54,6 +62,9 @@
   }
   .wrap_home:nth-child(2n){
     flex-flow: row-reverse nowrap;
+    @include breakpoints(tablettebig){
+      flex-flow: column-reverse nowrap;
+    }
     background-color: rgba(21, 65, 119, .6);
     color: white;
   }
@@ -70,6 +81,9 @@
       width: 100%;
       a{
         width: 50%;
+        @include breakpoints(tablettebig){
+          width: 100%;
+        }
         margin: auto;
       }
       .home-btn{
