@@ -9,8 +9,9 @@ require_once('inc/functions/toolbox.php');
 
 
 
-
-
+$toto = 'toto';
+$toto .= ' boit de leau';
+var_dump($toto);
 
 echo " OK: recup cv user ";
 // debug(getCvFromUser(1));
@@ -38,19 +39,41 @@ echo " OK: liscv par competences ";
 // debug(getCVBySoftSkill('autonomie'));
 // debug(getCVBySoftSkill("à l'écoute"));
 echo'<br>';
-
-$array=[
+echo site_url().'/api/getlangues/';
+$arrayALL=[
     "competences" => [
-        ['id'=> 'com','nom' => 'PHP', 'niveau' => 1],
-        ['nom' => 'JAVA', 'niveau' => 2],
+
+        ['id'=> '1','nom' => 'PHP'],
+        ['id'=> '2','nom' => 'JAVA'],
     ],
-    "contrat"  => [
+    "niveauCompetence" => 3,   
 
-    ]
-  
-
-
+    "contrats"  => [
+        ['id'=> '1', 'libelle' => 'stage'],
+        ['id'=> '2', 'libelle' => 'alternance'],
+    ],
+    "metiers"  => [
+        ['id'=> '1', 'libelle' => 'developpeur Web'],
+        ['id'=> '2', 'libelle' => 'designeur Web']
+    ],
+    "langues"  => [
+        ['id'=> '1', 'libelle' => 'Français'],
+        ['id'=> '2', 'libelle' => 'Espagnol'],
+    ],
+    "niveauLangues" => 2,
+    "softskills"  => [
+        ['id'=> '1', 'libelle' => 'autonomie'],
+        ['id'=> '2', 'libelle' => 'patient'],
+    ],
+    "diplomes"  => [
+        ['id'=> '1', 'libelle' => 'BTS'],
+    ],
+    "niveauDiplomes" => 4,
+    "emplacements"  => [
+        ['id'=> '1', 'lieu' => 'Caen'],
+        ['id'=> '2', 'lieu' => 'Rouen'],
+    ],
+    "dateReadyToWork" => '2022-02-01'
 ];
-debug($array);
-// debug(test(true, $array));
+debug(rechercheCv($arrayALL, true ,true, false, true, true, true, true));
 echo'<br>';

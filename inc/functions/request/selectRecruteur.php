@@ -191,20 +191,126 @@ function getCVByEmplacement($idEmplacement, $dateReadyToWork = 0){
     $query->execute();
     return $query->fetchAll();
 }
+// on adapte la fonction SQL en fonction des besoin
+// de base tout est mis à false comme ça si on fait un recher on renvoit tous les CV
+// le tableau $datas corespnd à un tableau assoatif contenant les infos envoyé en JS 
 
-function test (bool $metier = false , array $array){
+function rechercheCv (array $datas, bool $competences = false, bool $contrats = false, bool $metiers = false ,bool $langues = false, bool $softskills = false, bool $diplomes = false, bool $emplacements = false){
     global $pdo;
-    debug($array);
-    $metier = ($metier === true) ? 'JOIN `nfj_metier` ON `nfj_cv`.`id_metier_cv` =  `nfj_metier`.`id_metier`' : '';
+    $joinCompetences = '';
+    $andCompetence   = '';
+    // liste des compétences
+    if($competences === true){
+        $i=0;
+        $niveau = $datas['niveauCompetence'];
+        $joinCompetences = 'JOIN `nfj_cv_competences` ON `nfj_cv_competences`.`id_cv_competence`  = `nfj_cv`.`id_cv`';
+        foreach ($datas['competences'] as $competence){
+            debug($competence);
+            $id     = $competence['id'];
+            // pour faire un AND en premier tours puis un Or pour ceux d'apres
+            $andOr       = ($i === 0) ? 'AND' : 'OR';
+            $i++;
+            $andCompetence .= ' '.$andOr.' `nfj_cv_competences`.`id_competence_fk` = '.$id;
+            $andCompetence .= '  AND `nfj_cv_competences`.`niveau` >= '.$niveau;
+        }
+    };
+    $joinContrats = '';
+    $andContrats  = '';
+    if($contrats === true){
+        $i=0;
+        $joinContrats = 'JOIN `nfj_contratrecherche` ON `nfj_contratrecherche`.`id_contratrecherche`  = `nfj_cv`.`id_cv`';
+        foreach ($datas['competences'] as $contrat){
+            $idContrat = $contrat['id'];
+            $andOr       = ($i === 0) ? 'AND' : 'OR';
+            $i++;
+            $andContrats .= ' '. $andOr.' `nfj_contratrecherche`.`id_typecontrat_contratrecherche` = '.$idContrat;
+        }
+    }    
+    $joinMetiers = '';
+    $andMetiers  = '';
+    if($metiers === true){
+        $i=0;
+        $joinMetiers = 'JOIN `nfj_metier` ON  `nfj_metier`.`id_metier` = `nfj_cv`.`id_metier_cv`';
+        foreach ($datas['metiers'] as $metier){
+            $idMetier = $metier['id'];
+            $andOr       = ($i === 0) ? 'AND' : 'OR';
+            $i++;
+            $andMetiers .= ' '.$andOr.' `nfj_metier`.`id_metier` = '.$idMetier;
+        }
+    }
+    $joinLangues = '';
+    $andLangues  = '';
+    if($langues === true){
+        $i=0;
+        $joinLangues = 'JOIN `nfj_cv_langue` ON `nfj_cv_langue`.`id_cv_fk` = `nfj_cv`.`id_cv`';
+        foreach ($datas['langues'] as $langue){
+            $idLangue = $langue['id'];
+            $andOr       = ($i === 0) ? 'AND' : 'OR';
+            $i++;
+            $andLangues .= ' '.$andOr.' `nfj_cv_langue`.`id_langue_fk` = '.$idLangue;
+        }
+    }
+    $joinSoftskills = '';
+    $andSoftskills  = '';
+    if($softskills === true){
+        $i=0;
+        $joinSoftskills = 'JOIN `nfj_cv_softskill` ON `nfj_cv_softskill`.`id_cv_fk`  = `nfj_cv`.`id_cv`';
+        foreach ($datas['softskills'] as $softskill){
+            $idSoftskill = $softskill['id'];
+            $andOr       = ($i === 0) ? 'AND' : 'OR';
+            $i++;
+            $andSoftskills .= ' '.$andOr.' `nfj_cv_softskill`.`id_softskill_fk` = '.$idSoftskill;
+        }
+    }
+    $joinDiplomes = '';
+    $andDiplomes  = '';
+    if($diplomes === true){
+        $niveauDiplome = $datas['niveauDiplomes'];     
+        $idDiplome = $datas['diplomes'][0]['id'];
+        $joinDiplomes = '
+        JOIN `nfj_cv_diplome` ON `nfj_cv`.`id_cv` = `nfj_cv_diplome`.`id_cv_dcv`
+        JOIN `nfj_diplome` ON `nfj_diplome`.`id_diplome` = `nfj_cv_diplome`.`id_diplome_dcv`
+        JOIN `nfj_typediplome` ON `nfj_diplome`.`id_typediplome_diplome` = `nfj_typediplome`.`id_typediplome`
+        ';
+        $andDiplomes = 'AND `nfj_typediplome`.`niveau_type_diplome` >= '.$niveauDiplome.'';        
+    }
+    $joinEmplacement = '';
+    $andEmplacement  = '';
+    if($emplacements === true){
+        $i=0;
+        $joinEmplacement = 'JOIN `nfj_cv_emplacement` ON `nfj_cv_emplacement`.`id_cv_fk`  = `nfj_cv`.`id_cv`';
+        // si on précise pas de date, on suppose que le c'est 0 ce qui fait en sorte que la date n'impacte la requette et prennent tous les résulats
+        $dateReadyToWork = (!empty($datas['dateReadyToWork']) ? $datas['dateReadyToWork'] : 0);
+        foreach ($datas['emplacements'] as $emplacement){
+            $idEmplacement = $emplacement['id'];
+            $andOr       = ($i === 0) ? 'AND' : 'OR';
+            $i++;
+            $andEmplacement .= ' '.$andOr.' `nfj_cv_emplacement`.`id_emplacement_fk` = '.$idEmplacement;
+            $andEmplacement .= '  AND `nfj_cv_emplacement`.`readyToWorkAt` >= '.$dateReadyToWork;
+        }
+    }
     $sql = "
-    SELECT `id_cv`
+    SELECT DISTINCT `id_cv`
     FROM `nfj_cv` 
-    $metier
-    JOIN `nfj_cv_competences` ON `nfj_cv_competences`.`id_cv_competence`  = `nfj_cv`.`id_cv`    
+    $joinCompetences
+    $joinContrats
+    $joinMetiers
+    $joinLangues
+    $joinSoftskills
+    $joinDiplomes
+    $joinEmplacement
+    
+    WHERE 1
+    $andCompetence
+    $andContrats
+    $andMetiers
+    $andLangues
+    $andSoftskills
+    $andDiplomes
+    $andEmplacement
     ";
     echo $sql;
     $query = $pdo->prepare($sql);
-
     $query->execute();
     return $query->fetchAll();
 
