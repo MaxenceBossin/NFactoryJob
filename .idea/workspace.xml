@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbd3dd6b-d995-49a9-a18d-5a6d69f0a5e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/editor/editor-funcs.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-funcs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/header_footer/footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/header_footer/footer.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/header_footer/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/header_footer/header.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/inc/dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/dashboard.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/inc/editor.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/editor.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/inc/responsive.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/responsive.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/section/connexion.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/section/connexion.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/section/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/section/home.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sass/section/inscription.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/section/inscription.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/style.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template-login.php" beforeDir="false" afterPath="$PROJECT_DIR$/template-login.php" afterDir="false" />
-    </list>
+    <list default="true" id="bbd3dd6b-d995-49a9-a18d-5a6d69f0a5e1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -74,7 +58,7 @@
       <workItem from="1645184483497" duration="5828000" />
       <workItem from="1645190658905" duration="8755000" />
       <workItem from="1645430261040" duration="15833000" />
-      <workItem from="1645515567948" duration="30115000" />
+      <workItem from="1645515567948" duration="30419000" />
     </task>
     <servers />
   </component>
