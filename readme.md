@@ -1,10 +1,10 @@
 # Projet NFactoryJob
 
-Projet de groupe réalisé par :
+## Projet de groupe réalisé par :
 
-**Maxence BOSSIN**
-**Anthony CHEVALIER** _en tant que chef de projet_
-**Léonard JOUEN**
+**Maxence BOSSIN**  
+**Anthony CHEVALIER** _en tant que chef de projet_  
+**Léonard JOUEN**  
 **Romain LALLEMENT**
 
 ## Description du besoin client
@@ -20,7 +20,7 @@ Une fois le CV créé par l'utilsateur (connecté ou non) les recruteurs du cabi
 
 ### Compte
 
-Nous avons créé un site WEB via ** WORDPRESS **
+Nous avons créé un site WEB via **WORDPRESS**
 Il y a trois rôles d'utlisateur :
 
 - [x] Administrateur => Gestion des comptes via l'interface de wordpress
@@ -43,17 +43,13 @@ Il y a trois rôles d'utlisateur :
 
 - **PhpMyAdmin** phpMyAdmin est une application Web de gestion pour les systèmes de gestion de base de donnée
 
-#### Le modèle conceptuel des données
-
-(ajouter l'image)
-
 ## Mise en place du projet
 
 ### 1. Installation de **WORDPRESS**
 
-#### L'installation en local
+### L'installation en local
 
-##### Installation de XAMPP, simule un serveur en local
+### Installation de XAMPP, simule un serveur en local
 
 Installation de Xampp (téléchargement de la version correspondant à votre système d'exploitation) : https://www.apachefriends.org/fr/index.html
 Ensuite Allumer XAMMP cliquer sur RUN pour Appache et MySql
@@ -64,7 +60,7 @@ Pour WINDOW :
 Une fois l'installation fini un dossier xampp s'est créé à l'endroit où vous l'avez installé.
 Normalement, il se situe sur votre disque C à l'emplacement : C:\xampp\htdocs
 
-##### Installation de WORDPRESS
+### Installation de WORDPRESS
 
 Une fois fait, vous devez installer **WORDPRESS**
 
@@ -74,7 +70,7 @@ Il faut descendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
 
 ![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/wordpressInstallation.PNG)
 
-###### Installation de WORDPRESS
+### Installation de WORDPRESS
 
 ### 2. Téléchargement du thème _NFactoryJob_
 
@@ -97,7 +93,7 @@ Ensuite cliquer sur '_code_' une petite fenêtre va s'ouvrir. Alors cliquer sur 
 
 Rendez-vous dans votre explorateur de fichier et allez là ou vous voulez créer votre site. Après cette étape nous allons commencer l'installation de **Wordpress** :
 
-#### Installation de Wordpress :
+### Installation de Wordpress :
 Précédemment nous vous avons demandé de télécharger : il est temps de les utiliser.  
 
 En premier lieu, nous allons installer les fichiers de wordpress dans le dossier de notre site.  
@@ -109,7 +105,7 @@ Maintenant, il va falloir mettre le dossier dans le dossier de votre site.  Pour
 
 ![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/fichierdusite.PNG)
 
-#### . Installation du thème _NFactoryJob_  
+### . Installation du thème _NFactoryJob_  
 Pour installez le thème vous avez donc deux façons :    
 
 Via GitHub :  
@@ -206,7 +202,7 @@ Vous allez donc devoir cliquer sur le bouton à gauche de "Titre de la publicati
 ![Image permalien](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/permalien.PNG)  
 N'oubliez pas d'enregistrer les modifications et maintenant je vous laisse aller dans l'onglet "Pages"
   
-Une fois dans cet onglet, deux pages par défaut seront déjà présentes mais elle ne nous interesse pas. Nous allons donc créer notre page principale. Pour cela en haut de la page vous allez devoir cliquez sur "Ajouter"  
+Une fois dans cet onglet, deux pages par défaut seront déjà présentes mais elle ne nous intéresse pas. Nous allons donc créer notre page principale. Pour cela en haut de la page vous allez devoir cliquez sur "Ajouter"  
 
 Une fois sur cette page vous allez pouvoir donc suivre certaines étapes pour la création de la page.  
 Première chose au niveau de "Saisissez le titre" vous allez pouvoir noté "HomePage" puis sur la droite de la page dans le petit menu dans la catégorie "Modèle" sélectionnez le modèle de page "HomePage" puis vous pouvez publier votre page avec le bouton en haut à droite du site. 

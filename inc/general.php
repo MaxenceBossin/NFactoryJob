@@ -58,6 +58,13 @@ function nfactoryjob_scripts() {
     wp_enqueue_script( 'functions', get_template_directory_uri() . '/js/functions.js', array(), _S_VERSION, true );
     wp_enqueue_script( 'form-events', get_template_directory_uri() . '/js/form-events.js', array(), _S_VERSION, true );
     wp_enqueue_script( 'ajax-events', get_template_directory_uri() . '/js/ajax-events.js', array(), _S_VERSION, true );
+    wp_enqueue_script( 'api-actions', get_template_directory_uri() . '/js/api-actions.js', array(), _S_VERSION, true );
+    wp_enqueue_script( 'autocomplete-item', get_template_directory_uri() . '/js/AutocompleteItem.js', array(), _S_VERSION, true );
+
+    if(is_page_template('template-dashboard.php')){
+        wp_enqueue_script( 'dashboard-funcs', get_template_directory_uri() . '/js/dashboard/dashboard-funcs.js', array(), _S_VERSION, true );
+        wp_enqueue_script( 'dashboard-main', get_template_directory_uri() . '/js/dashboard/dashboard-main.js', array(), _S_VERSION, true );
+    }
 
     if(is_page_template('template-editor.php')){
         wp_enqueue_script( 'html2pdf', 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js', array(), _S_VERSION, true );

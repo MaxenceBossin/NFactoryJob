@@ -7,6 +7,7 @@ const btn_onglet_general = $('#onglet_editor #btn-onglet-general');
 const btn_onglet_module = $('#onglet_editor #btn-onglet-module');
 const save_notif = $('#save-notif');
 const save_notif_text = $('#save-notif p');
+const quit_preview = $('#quit-preview');
 
 let modules_el = [];
 let lines_el = [];
@@ -17,13 +18,14 @@ let currentMousePos = { x: -1, y: -1 };
 let lastDragMousePos = null;
 
 let generating_pdf = false;
+let preview_save = null;
+let preview_mode = false;
 
 // Todo
 
 $( document ).ready(function() {
-    open_onglet();
-    close_save_notif();
-    place_add_module();
+    show_loading();
+    api_load_all();
 });
 
 btn_onglet_general.on('click', function(){
@@ -122,3 +124,30 @@ $(document).on('mouseup', function(e){
     }
     drag_module = null;
 });
+
+$('#quit-preview button').on('click', function(){
+    if(preview_mode && preview_save !== null){
+        const preview = $('#preview-infos');
+        $('#preview-infos .content').empty();
+        preview.css("display", "block");
+        append_preview('Mise à jour de l\'éditeur');
+        $('#cv .wrap_cv .modules').remove();
+        $('#cv .wrap_cv').append(preview_save);
+        setTimeout(function(){
+            $('#save-notif').css("display", "block");
+            $('#onglet_editor').css("display", "block");
+            quit_preview.css("bottom", "-100px");
+            append_preview('Mise à jour terminée', true);
+            setTimeout(function(){
+                previewMode = false;
+                refresh_all_modules();
+                modules = $('#cv .modules');
+                place_add_module();
+                generating_pdf = false;
+                preview.fadeOut('fast', function(){
+                    preview.css("display", "none");
+                });
+            }, 1000);
+        }, 1500);
+    }
+})

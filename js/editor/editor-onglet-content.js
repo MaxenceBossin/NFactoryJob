@@ -79,11 +79,48 @@ function refresh_general_content(){
         window.location.href = HOME_URL + 'signup';
     }));
 
+    const previewBtn = $('<button class="btn green">Prévisualiser</button>').on('click', function(){
+        if(generating_pdf){
+            return;
+        }
+        generating_pdf = true;
+        preview_mode = true;
+        const preview = $('#preview-infos');
+        $('#preview-infos .content').empty();
+        preview.css("display", "block");
+        append_preview('Prévisualisation de', false, true);
+        setTimeout(function(){
+            preview_save = $('#cv .wrap_cv .modules').clone();
+            const element = preview_save.clone();
+            $('#cv .wrap_cv .modules').remove();
+            element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
+                $(this).remove();
+            });
+            element.find('.module.selected').each(function() {
+                $(this).removeClass('selected');
+            });
+            $('#cv .wrap_cv').append(element);
+            append_preview('Prévisualisation générée', true);
+            $('#save-notif').css("display", "none");
+            $('#onglet_editor').css("display", "none");
+            quit_preview.css("bottom", "10px");
+            setTimeout(function(){
+                generating_pdf = false;
+                preview.fadeOut('fast', function(){
+                    preview.css("display", "none");
+                });
+            }, 800);
+        }, 800);
+
+    });
+    content_general.append(previewBtn);
+
     const expdfBtn = $('<button class="btn red">Exporter en PDF</button>').on('click', function(){
         if(generating_pdf){
             return;
         }
         generating_pdf = true;
+        preview_mode = true;
         const preview = $('#preview-infos');
         $('#preview-infos .content').empty();
         preview.css("display", "block");
@@ -118,6 +155,7 @@ function refresh_general_content(){
                         modules = $('#cv .modules');
                         place_add_module();
                         generating_pdf = false;
+                        preview_mode = false;
                         preview.fadeOut('fast', function(){
                             preview.css("display", "none");
                         });
@@ -133,11 +171,21 @@ function refresh_general_content(){
 function append_preview(texte, appendTick = false, appendCVName = false){
     const preview = $('#preview-infos .content');
     let previewText;
-    if(appendCVName){
-        previewText = $('<p>'+texte+' <strong>'+CV.getTitle()+'</strong>...</p>');
+    if(appendTick){
+        if(appendCVName){
+            previewText = $('<p>'+texte+' <strong>'+CV.getTitle()+'</strong></p>');
+        }
+        else{
+            previewText = $('<p>'+texte+'</p>');
+        }
     }
     else{
-        previewText = $('<p>'+texte+'...</p>');
+        if(appendCVName){
+            previewText = $('<p>'+texte+' <strong>'+CV.getTitle()+'</strong>...</p>');
+        }
+        else{
+            previewText = $('<p>'+texte+'...</p>');
+        }
     }
     preview.append(previewText);
     previewText.hide().fadeIn(500);

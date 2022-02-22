@@ -16,6 +16,7 @@ get_header();
     </div>
 
     <div id="save-notif"><p></p></div>
+    <div id="quit-preview"><button>Revenir à l'éditeur</button></div>
 
     <div id="onglet_editor">
         <div class="attached">

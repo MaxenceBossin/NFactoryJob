@@ -12,7 +12,7 @@
     padding: .5rem;
     flex-flow: column nowrap;
     gap: .5rem;
-    width: 95%;
+    width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     .autocomplete-item{
       cursor: pointer;
@@ -28,7 +28,7 @@
   .btn{
     padding: .5rem 1rem .5rem 1rem;
     color: white;
-    width: 95%;
+    width: 100%;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -42,6 +42,9 @@
   }
   .btn.blue{
     background-color: #5e80c9;
+  }
+  .btn.green{
+    background-color: #9ec95e;
   }
 }
 
@@ -126,7 +129,7 @@
   border-radius: 5px;
   padding: .5rem;
   border: 2px solid rgba(0,0,0,.08);
-  width: 95%;
+  width: 100%;
   button{
     padding: .5rem;
     border: none;
@@ -292,7 +295,7 @@
     border: none;
     border-radius: 5px;
     padding: .5rem;
-    width: 95%;
+    width: 100%;
   }
   input[type=submit]{
     cursor: pointer;
@@ -311,7 +314,7 @@
   }
 }
 
-#save-notif{
+#save-notif, #quit-preview{
   position: fixed;
   bottom: -100px;
   left: 50%;
@@ -320,6 +323,7 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all .5s;
   padding: .8rem;
+  min-width: 25vw;
   border-radius: 5px;
   display: flex;
   flex-flow: row nowrap;
@@ -331,6 +335,19 @@
   i{
     padding-left: .5rem;
     color: #5e80c9;
+  }
+  button{
+    padding: .5rem 1rem .5rem 1rem;
+    color: white;
+    background-color: #f35e5e;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .25s;
+    &:hover{
+      opacity: .8;
+    }
   }
 }
 

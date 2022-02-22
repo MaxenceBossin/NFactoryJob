@@ -1,28 +1,40 @@
 let autocomplete_ajax_timeout = null;
 
 function ajax(name, fichierPhp, data = {}){
-    show_loading();
     $.ajax({
         type: "POST",
-        url: "ajax/" + fichierPhp,
+        url: fichierPhp,
         data: data,
         success: function(response){
             on_ajax_response(name, JSON.parse(response));
-            hide_loading();
         },
         error: function(){
             console.log("ajax error on " + name);
-            hide_loading();
         }
     });
 }
 
-function show_loading(parent = null){
+function show_loading(){
+    if($('#loading').length){
+        return;
+    }
 
+    const loading = $('<div id="loading"></div>');
+    const content = $('<div class="content"></div>');
+    loading.append(content);
+    content.append($('<h1><span id="spantitre">N</span>Factory<span id="spantitre">Job</span></h1>'));
+    content.append($('<span class="loader"><span class="loader-inner"></span></span>'));
+   /* content.append($('<h3>Chargement <span id="bounce">.</span><span id="bounce">.</span><span id="bounce">.</span></h3>'));*/
+
+    $('body').append(loading);
 }
 
 function hide_loading(){
-
+    if($('#loading').length){
+        $('#loading').fadeOut('fast', function(){
+            $('#loading').remove();
+        })
+    }
 }
 
 function create_form(formName){
@@ -30,29 +42,121 @@ function create_form(formName){
     return form;
 }
 
-function get_form(formName){
-    return $('#' + formName);
+function checkboxgroup_has_element(input_id, value){
+    let found = false;
+    $('#checkboxgroup-' + input_id + ' .checkboxgroup-element').each(function(){
+        const dataVal = $(this).attr('data-value');
+        if(dataVal.toLowerCase() === value.toLowerCase()){
+            found = true;
+        }
+    });
+    return found;
+}
+
+function set_input_checkboxed(input, input_wrapper, field){
+    if(input === undefined){
+        return;
+    }
+    
+    const add_btn = $('<button data-inputid="'+input.attr('id')+'" class="btn blue checkboxgroup-add"><i class="fa-solid fa-plus"></i></button>');
+    field.append(add_btn);
+
+    const div_filters = $('<div id="checkboxgroup-'+input.attr('id')+'" class="checkboxgroup"></div>');
+    input_wrapper.append(div_filters);
+
+    input.on('keypress',function(e) {
+        if(e.which == 13) {
+            request_add_checkboxgroup_element(input.attr('id'));
+        }
+    });
+
+    add_btn.on('click',function() {
+        request_add_checkboxgroup_element($(this).attr('data-inputid'));
+    });
+}
+
+function request_add_checkboxgroup_element(input_id){
+    const input = $('#' + input_id);
+    let val = input.val();
+    if(val.length > 0){
+        if(!checkboxgroup_has_element(input_id, val)){
+
+            // Champs autocomplete, on vérifie que la valeur est bien présente dans la liste
+            if(input.hasClass("autocomplete-field")){
+                let _items = get_good_autocomplete_data(input_id);
+                let _found = false;
+                for(let i=0;i<_items.length;i++){
+                    if(_items[i] !== null && _items[i].getShowName().toLowerCase() === val.toLowerCase()){
+                        val = _items[i].getShowName();
+                        _found = true;
+                        break;
+                    }
+                }
+
+                if(!_found){
+                    input_error(input_id, 'Veuillez renseigner une valeur parmi les valeurs proposées');
+                    return;
+                }
+            }
+
+            const checkgroup_element = $('<div class="checkboxgroup-element">'+val+'</div>');
+            checkgroup_element.attr('data-value', val.replace('"', '\\"'));
+            const i = $('<i class="fa-solid fa-trash"></i>').on('click', function(){
+                $(this).parent().remove();
+                if(DASHBOARD){
+                    refresh_dashboard();
+                }
+            });
+            checkgroup_element.append(i);
+            $('#checkboxgroup-'+input_id).append(checkgroup_element);
+            input.val('');
+            input_error(input_id, '');
+
+            if(DASHBOARD){
+                refresh_dashboard();
+            }
+        }
+        else{
+            input_error(input_id, 'Cette donnée a déjà été ajoutée');
+        }
+    }
+    else{
+        input_error(input_id, 'Veuillez renseigner une valeur');
+    }
+
+    const autocomplete = $('#autocomplete-for-' + input_id);
+    if(autocomplete.length){
+        autocomplete.css('display', 'none');
+    }
 }
 
 // Attention: 'values' est un array (utile pour les select par exemple)
-function create_input(name, showName = '', parent = null, type = "text", values = [], placeholder = "", specific_ID = ""){
+function create_input(name, showName = '', parent = null, type = "text", values = [], placeholder = "", specific_ID = "", checkboxed_filters = false, added_paragraph = ''){
     if(name.length === 0){
         name = 'field';
     }
+
+    if(type.length === 0){
+        type = 'text';
+    }
+
     let _fID = name;
     if(specific_ID.length > 0){
         _fID = specific_ID;
     }
 
-    if(showName.length === 0){
-        showName = name;
-    }
     let input;
     if(type === "autocomplete"){
-        input = $('<input type="text" />').on('input', function(){
+        input = $('<input class="autocomplete-field" type="text" />').on('input', function(){
             $(this).attr('data-fromautocompletion', '0');
-            on_autocomplete_ajax(_fID, $(this).val());
+            if($(this).val().length > 0){
+                on_autocomplete_ajax($(this));
+            }
+            else{
+                $('#autocomplete-for-' + $(this).attr('id')).css("display", "none");
+            }
         });
+        input.attr('placeholder', placeholder);
     }
     else if(type === 'colorpicker'){
         if(values.length > 0){
@@ -66,7 +170,16 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         input = $('<input type="range" min="0" max="100" />').on('input', function(){
             let _name = $(this).attr('name');
             let _type = $(this).attr('data-type');
-            $('#slider-span-' + _name).text(parseInt($(this).val()) + '' + _type);
+            if (typeof _type !== 'undefined' && _type !== false) {
+                $('#slider-span-' + _name).text(parseInt($(this).val()) + '' + _type);
+            }
+            else{
+                $('#slider-span-' + _name).text(parseInt($(this).val()));
+            }
+
+            if(DASHBOARD){
+                refresh_dashboard();
+            }
         });
         if(values.length > 0){
             let _value = parseFloat(values[0]);
@@ -111,59 +224,69 @@ function create_input(name, showName = '', parent = null, type = "text", values 
     }
 
     input.attr('name', name);
-    if(specific_ID.length > 0){
-        input.attr('id', specific_ID);
-    }
-    else{
-        input.attr('id', name);
-    }
+    input.attr('id', _fID);
 
-    if(parent != null){
+    const input_wrapper = $('<div class="input_wrapper"></div>');
+    const field = $('<div class="field"></div>');
+
+    if(showName.length > 0){
         const label = $('<label for="'+name+'">'+showName+'</label>');
-        parent.append(label);
-        const span_error = $('<span id="error-'+name+'" class="error"></span>');
-        parent.append(label);
-        parent.append(input);
+        input_wrapper.append(label);
+    }
+    field.append(input);
+    if(added_paragraph.length > 0){
+        field.append($('<p>'+added_paragraph+'</p>'));
+    }
+    input_wrapper.append(field);
+    const span_error = $('<span id="error-'+name+'" class="error"></span>');
+    input_wrapper.append(span_error);
 
-        if(type === "slider"){
-            let _sliderSpanNam = 'slider-span-';
-            if(specific_ID.length > 0){
-                _sliderSpanNam += specific_ID;
-            }
-            else{
-                _sliderSpanNam += name;
-            }
-            let _value = 0;
-            if(values.length > 0){
-                _value = parseInt(values[0]);
-            }
-            let _type = '';
-            if(values.length >= 4){
-                _type = values[3];
-            }
-            parent.append($('<span id="'+_sliderSpanNam+'">'+_value+_type+'</span>'));
+    if(type === "slider"){
+        let _sliderSpanNam = 'slider-span-';
+        _sliderSpanNam += _fID;
+        let _value = 0;
+        if(values.length > 0){
+            _value = parseInt(values[0]);
         }
-        else if(type === "colorpicker"){
-            parent.append($('<div id="picker-'+_fID+'"></div>'));
-            $('#picker-' + _fID).farbtastic($('#' +_fID));
+        let _type = '';
+        if(values.length >= 4){
+            _type = values[3];
         }
-        else if(type === 'autocomplete'){
-            parent.append($('<div id="autocomplete-for-' + _fID + '" class="autocomplete"></div>'));
-        }
+        input_wrapper.append($('<span id="'+_sliderSpanNam+'">'+_value+_type+'</span>'));
+    }
+    else if(type === "colorpicker"){
+        input_wrapper.append($('<div id="picker-'+_fID+'"></div>'));
+    }
+    else if(type === 'autocomplete'){
+        input_wrapper.append($('<div id="autocomplete-for-' + _fID + '" class="autocomplete"></div>'));
+    }
 
-        parent.append(span_error);
+    if(checkboxed_filters && parent !== null){
+        set_input_checkboxed(input, input_wrapper, field);
+    }
+
+    if(parent !== null){
+        parent.append(input_wrapper);
+    }
+
+    if(type === 'colorpicker'){
+        $('#picker-' + _fID).farbtastic($('#' +_fID));
     }
 
     return input;
 }
 
-function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false){
+function build_form(form, submitValue = 'Valider', secondary_infos = [], add_cancel_option = false, form_horizontal = false){
     const submit = $('<input type="submit" value="'+submitValue+'" />');
     form.append(submit);
     form.attr('style', 'opacity: 0;');
     form.animate({
         "opacity": "1"
     }, 300);
+
+    if(form_horizontal){
+        form.css("flex-flow", "row nowrap");
+    }
 
     if(add_cancel_option){
         const cancel_btn = $('<span data-form="'+form.attr('id')+'" class="btn red">Annuler</span>');
@@ -191,24 +314,18 @@ function build_form(form, submitValue = 'Valider', secondary_infos = [], add_can
     });
 }
 
-function on_autocomplete_ajax(input_id, input_value){
+function on_autocomplete_ajax(input){
     if(autocomplete_ajax_timeout !== null){
         clearTimeout(autocomplete_ajax_timeout);
     }
 
     autocomplete_ajax_timeout = setTimeout(function(){
-        on_valid_autocomplete_ajax_request(input_id, input_value);
-    }, 500);
-}
-
-function on_valid_autocomplete_ajax_request(input_id, input_value){
-    console.log('ajax for ' + input_id);
-
-    if(input_id === ''){
-
-    }
-
-    on_ajax_get_autocomplete_data(input_id, ['Donnée 1', 'Donnée 2', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3', 'Donnée 3']); // temporaire, plutot utiliser ajax(...);
+        const input_value = input.val();
+        if(input_value.length > 0){
+            const input_id = input.attr('id');
+            on_ajax_get_autocomplete_data(input_id, get_good_autocomplete_data(input_id, input_value));
+        }
+    }, 300);
 }
 
 function on_ajax_get_autocomplete_data(input_id, data){
@@ -216,10 +333,10 @@ function on_ajax_get_autocomplete_data(input_id, data){
     const _autocomplete = $('#autocomplete-for-' + input_id);
     if(_autocomplete !== undefined){
         _autocomplete.empty();
-        if(data !== null && (data.length > 1 || (data.length > 0 && data[0] !== _input.val()))){
+        if(data !== null && data.length > 0 && data[0] !== null && (data.length > 1 || data[0].getShowName() !== _input.val())){
             for(let i=0;i<data.length;i++){
-                if(data[i].length > 0){
-                    const _autocomplete_item = $('<div data-inputid="'+input_id+'" class="autocomplete-item">'+data[i]+'</div>').on('click', function(){
+                if(data[i] !== null && data[i].getShowName().length > 0){
+                    const _autocomplete_item = $('<div data-autoitemid="'+data[i].getItemID()+'" data-inputid="'+input_id+'" class="autocomplete-item">'+data[i].getShowName()+'</div>').on('click', function(){
                         const input_id_data = $(this).attr('data-inputid');
                         const _input_target = $('#' + input_id);
                         const _autocomplete_target = $('#autocomplete-for-' + input_id_data);

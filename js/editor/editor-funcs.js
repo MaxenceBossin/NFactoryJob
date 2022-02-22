@@ -209,7 +209,6 @@ function place_add_module(deploy_last_module = false){
     }
 
     if(!$('.module-line').length){
-        console.log('create_line0');
         create_line();
     }
 
