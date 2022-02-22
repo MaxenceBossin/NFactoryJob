@@ -7,6 +7,7 @@ get_header();
         <?php $metas = get_post_meta(get_the_ID());?>
         <?php the_post_thumbnail('full')?>
     </section>
+    <h1 style="text-align: center; color: red;">/!\ Refonte en cours</h1>
     <section id="doubleBox">
         <div id="candidat">
             <h2>Candidat</h2>
