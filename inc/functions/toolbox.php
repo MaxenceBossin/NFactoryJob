@@ -68,6 +68,7 @@ function metaTitle(string $data): string {
     
 }
 
+
 function showJson($data)
 {
     header("Content-type: application/db-projects");
@@ -100,4 +101,9 @@ function get_page_url($template_name)
         }
     }
     return get_bloginfo('url');
+}
+
+function arrayJson(array $requestResult): string{
+    return  (json_encode($requestResult, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
 }
