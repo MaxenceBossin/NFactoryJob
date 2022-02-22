@@ -2,10 +2,10 @@
 
 Projet de groupe réalisé par :
 
-**Maxence BOSSIN**
-**Anthony CHEVALIER** _en tant que chef de projet_
-**Léonard JOUEN**
-**Romain LALLEMENT**
+**Maxence BOSSIN**  
+**Anthony CHEVALIER** _en tant que chef de projet_  
+**Léonard JOUEN**  
+**Romain LALLEMENT**  
 
 ## Description du besoin client
 
@@ -13,49 +13,45 @@ Une agence de recrutement cherche à moderniser sa lecture de CV.
 
 Avant, les candidats devaient envoyer des CV manuscrits à l'agence ou bien des PDF en ligne par mail.
 
-Elle desire numériser son processus pour qu'un utilisateur puisse directement saisir son CV en ligne.
-Une fois le CV créé par l'utilsateur (connecté ou non) les recruteurs du cabinet pourront le générer en PDF. L'utilisateur pourra également le générer en PDF pour ces besoins personnels.
+Elle desire numériser son processus pour qu'un utilisateur puisse directement saisir son CV en ligne.  
+Une fois le CV créé par l'utilsateur (connecté ou non) les recruteurs du cabinet pourront le générer en PDF.  
+L'utilisateur pourra également le générer en PDF pour ces besoins personnels.
 
-## Réponse au besoin
-
+## Réponse au besoin  
 ### Compte
 
-Nous avons créé un site WEB via ** WORDPRESS **
+Nous avons créé un site WEB via **WORDPRESS**  
 Il y a trois rôles d'utlisateur :
 
-- [x] Administrateur => Gestion des comptes via l'interface de wordpress
-- [x] Recruteur => Possiblité de trier les CV correspondant au besoin des entreprises | possibilité de télécharger les CV en PDF
-- [x] Chercheur d'emploi => Possibilité de s'enregister pour garder en mémoire ces informations | créer un CV
+- Administrateur => Gestion des comptes via l'interface de wordpress
+- Recruteur => Possiblité de trier les CV correspondant au besoin des entreprises | possibilité de télécharger les CV en PDF
+- Chercheur d'emploi => Possibilité de s'enregister pour garder en mémoire ces informations | créer un CV
 
 ### Technologies Utilisés
 
-#### Backend
+### __Backend__
 
 - **PHP** avec wordpress, interagit avec le serveur. Il nous a également servi à créer les API pour l'ajax.
 
-#### FrontEnd
+### __FrontEnd__
 
 - **HTML** Il permet d'enrichir un texte avec des informations structurelles, sémantiques et de présentation.
 - **SASS** librairie CSS, stylise le HTML
 - **JQUERY** librairie Javascript, interaction avec les pages WEB
 
-#### Système de gestion de base de données
+#### __Système de gestion de base de données__
 
 - **PhpMyAdmin** phpMyAdmin est une application Web de gestion pour les systèmes de gestion de base de donnée
 
-#### Le modèle conceptuel des données
-
-(ajouter l'image)
-
 ## Mise en place du projet
 
-### 1. Installation de **WORDPRESS**
+### __1. Installation de *WORDPRESS*__
 
-#### L'installation en local
+### __L'installation en local__
 
-##### Installation de XAMPP, simule un serveur en local
+### __Installation de XAMPP, simule un serveur en local__
 
-Installation de Xampp (téléchargement de la version correspondant à votre système d'exploitation) : https://www.apachefriends.org/fr/index.html
+Installation de Xampp (téléchargement de la version correspondant à votre système d'exploitation) : https://www.apachefriends.org/fr/index.html  
 Ensuite Allumer XAMMP cliquer sur RUN pour Appache et MySql
 
 ![Image XAMP](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/XAMP.PNG)
@@ -64,9 +60,9 @@ Pour WINDOW :
 Une fois l'installation fini un dossier xampp s'est créé à l'endroit où vous l'avez installé.
 Normalement, il se situe sur votre disque C à l'emplacement : C:\xampp\htdocs
 
-##### Installation de WORDPRESS
+### __Installation de WORDPRESS__
 
-Une fois fait, vous devez installer **WORDPRESS**
+Une fois fait, vous devez installer l'archive de **WORDPRESS**
 
 Rendez-vous sur ce site : https://fr.wordpress.org/download/
 Il faut descendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
@@ -74,30 +70,31 @@ Il faut descendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
 
 ![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/wordpressInstallation.PNG)
 
-###### Installation de WORDPRESS
+### __Installation de WORDPRESS__
 
-### 2. Téléchargement du thème _NFactoryJob_
+### __2. Téléchargement du thème *NFactoryJob*__
 
-Via GITHUB :
+#### **Via GITHUB :**
 
 ![Image GIT CLONE](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/gitClone.png)
 
 Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encadré en rouge en haut à droite.
 Ensuite cliquer sur '_code_' une petite fenêtre va s'ouvrir. Alors cliquer sur les deux carrés surlignés en rouge sur l'image.
 
-Via ZIP :
+#### **Via ZIP** :
 
 ![Image DL VIA ZIP](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/gitzip.PNG)
 
-Bien vérifier que vous êtes sur la branche _*Master*_ comme l'encadré en rouge en haut à droite.
-Ensuite cliquer sur '_code_' une petite fenêtre va s'ouvrir. Alors cliquer sur '_Download ZIP_' qui se trouve dans l'encadré blanc
+Bien vérifier que vous êtes sur la branche ***Master*** comme l'encadré en rouge en haut à droite.
+Ensuite cliquer sur `code` une petite fenêtre va s'ouvrir. Alors cliquer sur '***Download ZIP***' qui se trouve dans l'encadré blanc
 
 
-### 2.1 Installation du thème _NFactoryJob_
+### __2.1 Installation du thème *NFactoryJob*__
 
-Rendez-vous dans votre explorateur de fichier et allez là ou vous voulez créer votre site. Après cette étape nous allons commencer l'installation de **Wordpress** :
+Rendez-vous dans votre explorateur de fichier et allez là ou vous voulez créer votre site.  
+Après cette étape nous allons commencer l'installation de **WORDPRESS** :
 
-#### Installation de Wordpress :
+### __Installation de Wordpress :__
 Précédemment nous vous avons demandé de télécharger : il est temps de les utiliser.  
 
 En premier lieu, nous allons installer les fichiers de wordpress dans le dossier de notre site.  
@@ -109,29 +106,31 @@ Maintenant, il va falloir mettre le dossier dans le dossier de votre site.  Pour
 
 ![Image FICHIER DU SITE](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/fichierdusite.PNG)
 
-#### . Installation du thème _NFactoryJob_  
+### __Installation du thème *NFactoryJob*__  
 Pour installez le thème vous avez donc deux façons :    
 
-Via GitHub :  
+#### **Via GitHub :**  
   
 Pour installez le thème via GitHub il va falloir ouvrir le terminal de commandes :  
 Dans ce terminal vous allez devoir marquer le chemin vers le thème. Pas de panique on vous aide :  
-Tout d'abord, il va falloir marquer "**cd**" puis le chemin vers votre dossier racine du site, ce qui donne dans votre invite de commandes :  
+Tout d'abord, il va falloir marquer "`cd`" puis le chemin vers votre dossier racine du site, ce qui donne dans votre invite de commandes :  
 
 ![Image lien vers theme](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lientheme.PNG)
   
   Une fois cette étape faite, vous allez pouvoir cloner le thème : pour cela toujours dans l'invite de commande vous allez devoir marquer :  
+
 ![Image lien pour git clone](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/liengitclone.PNG)  
 
 Une fois tous les étapes exécutées le thème est installé.
  
-  Via ZIP :
+#### **Via ZIP :**  
 
 Un peu plus tôt, je vous avais dit que vous pouviez télécharger une archive pour mettre en place le thème, il est donc temps de l'installer.  
+
 Pour cela rendez-vous dans votre explorateur de fichier dans le dossier de votre site.  
 Ensuite, il va falloir se rendre dans le dossier des thèmes, pour cela vous allez devoir rentrer dans le dossier '**wp-content**' / '**themes**'
   
-  Une fois dans ce dossier vous allez retrouver :  
+Une fois dans ce dossier vous allez retrouver :  
 
 ![Image dossierthemebase](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/dossiertheme.PNG)
 
@@ -143,79 +142,96 @@ Ce qui doit donner :
 
 Une fois tous les étapes exécutées le thème est installé.
 
-### . Mise en place de la BDD
+###  __Mise en place de la BDD__
 
 Pour la mise en place de la BDD vous allez devoir retrouner sur XAMPP et appuyez sur "**Admin**" au niveau de "**MySQL**" (encadré bleu) :  
+
 ![Image lancementMySQL](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lancementMySQL.PNG)
 
-Vous allez avoir une page de "phpMyAdmin" qui s'est donc ouverte :  
+Vous allez avoir une page de "**phpMyAdmin**" qui s'est donc ouverte :  
   
   Je vais donc maintenant vous expliquez comment créé une base de données pour wordpress :
 
-  ### . Création d'une base de données  
-Première étape : vous allez devoir appuyer sur le bouton "**Nouvelle base de données**" sur la gauche du site  
+  ###  __Création d'une base de données__  
+- Première étape : vous allez devoir appuyer sur le bouton "**Nouvelle base de données**" sur la gauche du site  
     
-Seconde étape : vous allez devoir créer la base de données :  
-(Attention au nom de votre base de données, il faut éviter tous ce qui est espace, majuscule, accent)  
+- Seconde étape : vous allez devoir créer la base de données :  
+(Attention au nom de votre base de données, il faut éviter tous ce qui est espace, majuscule, accent)
 Vous marquez par exemple le nom de votre site en remplaçant donc les espaces par des "_"  
 Puis vous appuyer sur le bouton "Créer"  
 
 ![Image nombasededonne](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/nombase.PNG)
 
-Retenez bien le nom de votre base de données, elle va être importante pour la suite de l'installation du site.
+**Retenez bien le nom de votre base de données, elle va être importante pour la suite de l'installation du site.**
 
-### . Installation de Wordpress
+###  **Installation de Wordpress**  
 
 Nous y sommes : dernière étape de l'installation de wordpress, après cette étape vous pourrez accéder à votre site.  
 Nous allons faire la dernière installation de wordpress. Pour cela, il va falloir retourner sur votre XAMPP et cette fois-ci appuyer sur le bouton Admin de la catégorie Apache (encadré vert)  
 
 ![Image lancementLocalHots](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lancementlocalhost.PNG)  
 
-Après cette étape, vous avez donc lancé votre "LocalHost" ce qui vous permet de voir votre site sans le mettre en ligne.
+Après cette étape, vous avez donc lancé votre "**LocalHost**" ce qui vous permet de voir votre site sans le mettre en ligne.
 
 Une fois que vous êtes dans votre localhost, il suffit de cliquer en direction des fichiers de votre site.  
   
 Une fois que vous êtes au bon endroit une page d'installation de wordpress va s'afficher et là, rien de plus simple, il suffit de suivre ce que dit l'installateur.  
+
 Attention cependant certaines choses sont à changer avec précaution !  
+
 ![Image installateurwpbdd](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/instalwpbbd.PNG)  
+
 Pour le nom de la base de données, il faut bien mettre le nom de votre site,  
-Pour les identifiants, nous sommes en local, donc pour les utilisateurs windows seul l'identifiant est à changer pas le mot de passe !  
+Pour les identifiants, nous sommes en local, pour les utilisateurs windows seul l'identifiant est à changer pas le mot de passe !  
 Pour les utilisateurs windows :  
 Identifiant : root  
 Mot de passe :  
 
-Pour les utilisateurs de pc sur IOS donc sur MAC l'identifiant est le même mais il faut appliquer root au mot de passe donc :  
+Pour les utilisateurs d'ordinateur sur IOS donc sur **MAC** l'identifiant est le même mais il faut appliquer root au mot de passe donc :  
+
 ![Image installateurwpbddmac](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/instalwpbbdmac.PNG) 
 
-L'Adresse de la base de données ne doit pas être changé et pour finir le préfixe des tables peux être changé, mais je conseille de garder quelque chose de simple et attention le préfix doit toujours finir par un **"_"**
+L'Adresse de la base de données ne doit pas être changé et pour finir le préfixe des tables doit être changé par "**nfj_**" le site à étais pensé avec ce prefix de table si celui la n'est pas bien rentré cela peux causer des bugs sur le site.
 
 Une fois ses informations inscrites vous pouvez passez à la prochaine étape :  
   
 Pour cette étape vous allez simplement devoir enregistrer le nom du site, vos identifiants et un mot de passe :  
   
-Attention bien sûr au mot de passe que vous mettez. Bien mettre un mot de passe dont vous pouvez vous rappeler mais qui reste assez complexe pour éviter que n'importe qui vienne sur la partie admin de votre site !
+Attention au mot de passe que vous mettez. Bien mettre un mot de passe dont vous pouvez vous rappeler mais qui reste assez complexe pour éviter que n'importe qui vienne sur la partie admin de votre site !
 
 ![Image installateurwpbddmac](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/infosupp.PNG)  
 
-### . Installation du thème _NFactoryJob_  
-Bien! Vous êtes maintenant dans la partie administateur du site. Avant toute chose nous allons choisir le bon thème pour notre site pour cela rien de plus simple. Il vous suffit de cliquer sur "Apparence" à droite de votre écran. Une fois cela fait 4 thèmes s'offrent à vous mais nous allons prendre celui qui nous interesse c'est à dire le thème NfactoryJob. Pour l'activer, il suffit de passer votre curseur sur le thème et de cliquez sur "Activer"  
+### **Installation du thème _NFactoryJob_**  
+Bien! Vous êtes maintenant dans la partie administateur du site.  
+Avant toute chose nous allons choisir le bon thème pour notre site pour cela rien de plus simple.  
+Il vous suffit de cliquer sur "Apparence" à droite de votre écran.  
+Une fois cela fait 4 thèmes s'offrent à vous mais nous allons prendre celui qui nous interesse c'est à dire le thème NfactoryJob.  
+Pour l'activer, il suffit de passer votre curseur sur le thème et de cliquez sur "Activer"  
   
+### **Configuration du thème _NFactoryJob_** 
 Une fois cette étape faite, nous allons faire une partie assez simple qui va faire en sorte que le site fonctionne bien, pour cela rendez-vous dans l'onglet "Réglages" puis "Permaliens"  
   
 Vous allez donc devoir cliquer sur le bouton à gauche de "Titre de la publication" comme sur l'exemple ci dessous  
+
 ![Image permalien](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/permalien.PNG)  
-N'oubliez pas d'enregistrer les modifications et maintenant je vous laisse aller dans l'onglet "Pages"
+
+N'oubliez pas d'enregistrer les modifications et maintenant je vous laisse aller dans l'onglet "**Pages**"
   
-Une fois dans cet onglet, deux pages par défaut seront déjà présentes mais elle ne nous interesse pas. Nous allons donc créer notre page principale. Pour cela en haut de la page vous allez devoir cliquez sur "Ajouter"  
+Une fois dans cet onglet, deux pages par défaut seront déjà présentes mais elle ne nous interesse pas.  
+Nous allons donc créer notre page principale.  
+Pour cela en haut de la page vous allez devoir cliquez sur "Ajouter"  
 
 Une fois sur cette page vous allez pouvoir donc suivre certaines étapes pour la création de la page.  
-Première chose au niveau de "Saisissez le titre" vous allez pouvoir noté "HomePage" puis sur la droite de la page dans le petit menu dans la catégorie "Modèle" sélectionnez le modèle de page "HomePage" puis vous pouvez publier votre page avec le bouton en haut à droite du site. 
+Première chose au niveau de "**Saisissez le titre**" vous allez pouvoir noté "***HomePage***" puis sur la droite de la page dans le petit menu dans la catégorie "**Modèle**" sélectionnez le modèle de page "***HomePage***" puis vous pouvez publier votre page avec le bouton en haut à droite du site.  
+
 ![Image lecture](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/createpage.PNG)  
 
-Après cette étape, nous allons mettre la page que nous venons de créer en page principale. Pour cela, je vous laisse aller au niveau de l'onglet "Réglages" puis dans "Lecture"
+Après cette étape, nous allons mettre la page que nous venons de créer en page principale. Pour cela, je vous laisse aller au niveau de l'onglet "**Réglages**" puis dans "**Lecture**"
 
 Ce paramètre va dire au site quelle page afficher en premier pour cela il va falloir cliquez sur le bouton  
-"Une page statique" et choisir comme 'Page d'accueil' la page "HomePage" comme indiqué ci dessous :  
+"**Une page statique**" et choisir comme '*Page d'accueil*' la page "**HomePage**" comme indiqué ci dessous :  
+
 ![Image lecture](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lecture.PNG)  
+
 Encore une fois n'oubliez pas d'enregistrer les modifications.
 ### . Comment passer un compte en recruteur
