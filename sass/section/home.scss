@@ -1,0 +1,94 @@
+#home{
+  background-color: $lessMainColor;
+  min-height: 60vh;
+  display: flex;
+  gap: 3rem;
+  flex-flow: column nowrap;
+  justify-content: center;
+  .home-btn{
+    width: 100%;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: all .3s;
+    font-weight: 300;
+    font-size: 1.3rem;
+    &:hover{
+      opacity: .8;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    }
+  }
+  .home-btn.blue{
+    background-color: $mainColor;
+  }
+  .home-btn.green{
+    background-color: #3ca200;
+  }
+  .wrap_home{
+    padding: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    align-content: center;
+    border-radius: 5px;
+    justify-content: space-between;
+    @include breakpoints(tablettebig){
+      flex-flow: column nowrap;
+      justify-content: center;
+    }
+    gap: 1rem;
+    .home-item{
+      width: 45%;
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 1rem;
+      @include breakpoints(tablettebig){
+        width: 100%;
+        text-align: center;
+      }
+      h2{
+        font-size: 3rem;
+        font-weight: 300;
+      }
+      img, iframe{
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 10px;
+      }
+    }
+  }
+  .wrap_home:nth-child(2n){
+    flex-flow: row-reverse nowrap;
+    @include breakpoints(tablettebig){
+      flex-flow: column-reverse nowrap;
+    }
+    background-color: rgba(21, 65, 119, .6);
+    color: white;
+  }
+  .wrap_home.oranged:nth-child(2n){
+    background-color: rgba(197, 103, 37, 0.6);
+  }
+  .wrap_home.centered{
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    .home-item {
+      width: 100%;
+      a{
+        width: 50%;
+        @include breakpoints(tablettebig){
+          width: 100%;
+        }
+        margin: auto;
+      }
+      .home-btn{
+        width: 100%;
+      }
+    }
+  }
+}

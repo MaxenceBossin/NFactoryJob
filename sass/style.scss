@@ -42,9 +42,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /*ajout des sections ici*/
 
 // Page Home
-@import "section/home/image";
-@import "section/home/doubleBox";
-@import "section/home/lastCv";
+@import "section/home";
 // Page connexion/ inscription
 @import "section/connexion";
 @import "section/inscription";

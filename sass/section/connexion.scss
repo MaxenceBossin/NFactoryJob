@@ -1,5 +1,14 @@
+
 #connexion{
+    padding-top: 1rem;
+    .success{
+        color: green;
+    }
+    strong{
+        font-size: 1rem;
+    }
     .wrap{
+        padding: 1rem;
         h2{
             margin-left: 3rem;
             margin-bottom: 1rem;
@@ -7,11 +16,23 @@
         }
         .box{
             display: flex;
+            flex-flow: row nowrap;
             align-items: center;
-            margin-bottom: 3rem;
+            align-content: center;
+            width: 100%;
+            justify-content: center;
+            @include breakpoints(tablettebig){
+                flex-flow: column nowrap;
+                text-align: center;
+            }
+            .item{
+                width: 100%;
+            }
             img{
-                margin-left: 3rem;
-                height: 640px;
+                display: block;
+                @include breakpoints(tablettebig){
+                    display: none;
+                }
             }
         }
         .form{
@@ -24,15 +45,16 @@
             padding: 2rem;
             margin-left: 3%;
             margin-right: 3%;
-            width: 540px;
-            height: 640px;
-            #co{
+            input{
+                padding-left: .5rem;
+            }
+            input[type=submit]{
                 border: none;
                 border-radius: 5px;
                 background-color: $mainColor;
                 color: $colorwhite;
                 padding: .6rem;
-                width: 500px;
+                cursor: pointer;
                 font-size: 1.4rem;
                 margin: .8rem auto;
             }
@@ -46,7 +68,6 @@
             flex-direction: column;
             align-items: center;
             input{
-                width: 500px;
                 border-radius: 5px;
                 height: 40px;
                 border: none;
