@@ -236,3 +236,18 @@ Ce paramètre va dire au site quelle page afficher en premier pour cela il va fa
 Encore une fois n'oubliez pas d'enregistrer les modifications.  
 
 ### **Comment passer un compte en recruteur**
+
+
+## **Information complémentaire**
+### **Enlever les thèmes qui nous servent à rien**
+
+Dans cette étapes je vais vous expliquer comment enlever dans nos fichier les thèmes qui nous servent à rien et garder une interface admin propore.  
+  
+Pour cela rendez-vous dans le dossier thèmes de votre site qui se trouve pour rappel dans le dossier "wordpress\wp-content\themes"  
+Une fois dans ce dossier nous allons donc enlevez les thèmes qui ne sont pas utile pour votre site :  
+Avant la manipulation nous retrouvont donc 4 dossiers et un fichier "index"  .
+Pour notre site seul le dossier "**NFactoryJob**" nous interesse donc les trois autres fichiers nous allons pouvoirs les supprimer mais attention à ne pas supprimer le fichier "index" il est important pour le fonctionnement du site.
+
+![Image supprtheme](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/supprtheme.PNG)  
+  
+Une fois la manipulation faite votre fichier thème devrais resembler à l'exemple ci-dessus.  
