@@ -77,3 +77,7 @@ elseif(get_the_title() === 'getCVByEmplacement'){
     $emplacelement     = (!empty($_GET['emplacelement'])) ? $_GET['emplacelement'] : '';
     echo arrayJson(getCVByLangue($langue));
 }
+
+elseif(get_the_title() === 'refreshDashboard'){
+    include_once 'ajax_refresh_dashboard.php';
+}

@@ -27,8 +27,9 @@ function refresh_dashboard(){
         data['langues'].push({'nom': 'Anglais', 'niveau': 'B1'});
         data['langues'].push({'nom': 'Espagnol', 'niveau': 'A2'});*/
 
-
         //console.log(data);
+
+        ajax('dashboard_refresh', SITE_URL + 'api/refreshDashboard', data);
     }, 800);
 }
 

@@ -309,9 +309,21 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
     $andDiplomes
     $andEmplacement
     ";
-    echo $sql;
+    //echo $sql;
     $query = $pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();
 
+}
+
+// ajouts
+
+function getCV(int $idCv):array
+{
+    global $pdo;
+    $sql = "SELECT * FROM `nfj_cv` WHERE `id_cv` = :idCV";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':idCV',$idCv);
+    $query->execute();
+    return $query->fetch();
 }
