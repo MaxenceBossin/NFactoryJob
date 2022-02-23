@@ -32,6 +32,34 @@ class Module{
         this.iconRadius = 0;
     }
 
+    getJson(){
+        let data = {
+            'name': this.moduleName,
+            'showName': this.moduleShownName,
+            'line': this.line.getLineNum(),
+            'width': this.width,
+            'color': this.color,
+            'fontColor': this.fontColor,
+            'separatorColor': this.separatorColor,
+            'data': this.data,
+            'showTitle': this.show_title,
+            'separatorSize': this.separator_size,
+            'separatorRadius': this.separator_radius,
+            'borderTop': this.border_top,
+            'borderBottom': this.border_bottom,
+            'borderRight': this.border_right,
+            'borderLeft': this.border_left,
+            'borderRadius': this.border_radius,
+            'modeAffichage': this.modeAffichage,
+            'icon': this.icon,
+            'font': this.font,
+            'profilePic': this.profilePic,
+            'iconSize': this.iconSize,
+            'iconRadius': this.iconRadius
+        };
+        return data;
+    }
+
     getIconRadius(){
         return this.iconRadius;
     }

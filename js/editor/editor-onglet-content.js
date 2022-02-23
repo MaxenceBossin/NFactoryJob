@@ -85,38 +85,7 @@ function refresh_general_content(){
     }
 
     const previewBtn = $('<button class="btn green">Prévisualiser</button>').on('click', function(){
-        if(generating_pdf){
-            return;
-        }
-        generating_pdf = true;
-        preview_mode = true;
-        const preview = $('#preview-infos');
-        $('#preview-infos .content').empty();
-        preview.css("display", "block");
-        append_preview('Prévisualisation de', false, true);
-        setTimeout(function(){
-            preview_save = $('#cv .wrap_cv .modules').clone();
-            const element = preview_save.clone();
-            $('#cv .wrap_cv .modules').remove();
-            element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
-                $(this).remove();
-            });
-            element.find('.module.selected').each(function() {
-                $(this).removeClass('selected');
-            });
-            $('#cv .wrap_cv').append(element);
-            append_preview('Prévisualisation générée', true);
-            $('#save-notif').css("display", "none");
-            $('#onglet_editor').css("display", "none");
-            quit_preview.css("bottom", "10px");
-            setTimeout(function(){
-                generating_pdf = false;
-                preview.fadeOut('fast', function(){
-                    preview.css("display", "none");
-                });
-            }, 800);
-        }, 800);
-
+        start_preview(true);
     });
     content_general.append(previewBtn);
 
@@ -427,4 +396,47 @@ function load_font(fontName){
     link.rel = "stylesheet";
 
     document.getElementsByTagName( "head" )[0].appendChild( link );
+}
+
+function start_preview(canEdit){
+    if(generating_pdf){
+        return;
+    }
+
+    if(!canEdit){
+        quit_preview.empty();
+        const p = $('<p>Lecture seule</p>');
+        p.css("color", "white");
+        quit_preview.append(p);
+        quit_preview.css("background-color", "rgb(12, 100, 166)");
+    }
+
+    generating_pdf = true;
+    preview_mode = true;
+    const preview = $('#preview-infos');
+    $('#preview-infos .content').empty();
+    preview.css("display", "block");
+    append_preview('Prévisualisation de', false, true);
+    setTimeout(function(){
+        preview_save = $('#cv .wrap_cv .modules').clone();
+        const element = preview_save.clone();
+        $('#cv .wrap_cv .modules').remove();
+        element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
+            $(this).remove();
+        });
+        element.find('.module.selected').each(function() {
+            $(this).removeClass('selected');
+        });
+        $('#cv .wrap_cv').append(element);
+        append_preview('Prévisualisation générée', true);
+        $('#save-notif').css("display", "none");
+        $('#onglet_editor').css("display", "none");
+        quit_preview.css("bottom", "10px");
+        setTimeout(function(){
+            generating_pdf = false;
+            preview.fadeOut('fast', function(){
+                preview.css("display", "none");
+            });
+        }, 800);
+    }, 800);
 }

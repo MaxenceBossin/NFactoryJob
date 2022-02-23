@@ -17,6 +17,10 @@ function api_load_all(){
 }
 
 function on_api_loaded(){
+    if(api_loaded){
+        return;
+    }
+
     if(api_timeout !== null){
         clearTimeout(api_timeout);
     }
@@ -28,9 +32,17 @@ function on_api_loaded(){
             generate_filters_form();
         }
         else if(PAGE_NAME === 'template-editor.php'){
-            open_onglet();
-            close_save_notif();
-            place_add_module();
+            if(READONLY){
+                close_onglet();
+                close_save_notif();
+                place_add_module();
+                start_preview(false);
+            }
+            else{
+                open_onglet();
+                close_save_notif();
+                place_add_module();
+            }
         }
 
         hide_loading();
