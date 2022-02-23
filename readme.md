@@ -282,3 +282,5 @@ Une fois cette étapes faites rendez-vous dans l'éditeur de la page *inscriptio
 Une fois dans l'onglet page vous n'avez plus qu'a cliquer sur la page que vous voulez modifier. Dans cette exemple nous allons modifier la page *inscription*. 
 
 Une fois dans l'éditeur mettre une image en avant est simple, sur la droite de l'éditeur vous avez un menu, cherchez "**Image mise en avant**" puis cliquez dessus puis sur "**Definir l'image mise en avant**", choisissez l'une des images dans votre Médiathèque une fois fait vous pouvez cliquer sur Définir l'image mise en avant en bas à droite et voila votre image est mise en avant. Maintenant vous pouvez faire la même chose pour la page *connexion*.
+
+![Image supprtheme](https://github.com/MaxenceBossin/NFactoryJob/blob/dev/imageReadMe/imgmea.PNG) 
