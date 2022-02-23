@@ -40,5 +40,7 @@ get_header();
 <?php
 
 echo "<script>const SIGNUP_URL = '".get_page_url('template-signup')."';</script>";
+if(is_user_logged_in()){echo "<script>const LOGGED = 1;</script>";}
+else{echo "<script>const LOGGED = 0;</script>";}
 
 get_footer();

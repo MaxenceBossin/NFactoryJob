@@ -77,10 +77,12 @@ function refresh_general_content(){
         editor_request_save();
     });
 
-    content_general.append($('<p>Profitez de toutes les fonctionnalités de l\'éditeur et d\'une personnalisation complète de votre CV en créant un compte gratuitement !</p>'));
-    content_general.append($('<button class="btn blue" id="create-account">Créer un compte</button>').on('click', function(){
-        window.location.href = SIGNUP_URL;
-    }));
+    if(LOGGED !== 1) {
+        content_general.append($('<p>Profitez de toutes les fonctionnalités de l\'éditeur et d\'une personnalisation complète de votre CV en créant un compte gratuitement !</p>'));
+        content_general.append($('<button class="btn blue" id="create-account">Créer un compte</button>').on('click', function () {
+            window.location.href = SIGNUP_URL;
+        }));
+    }
 
     const previewBtn = $('<button class="btn green">Prévisualiser</button>').on('click', function(){
         if(generating_pdf){

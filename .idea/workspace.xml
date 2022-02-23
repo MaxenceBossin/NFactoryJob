@@ -2,15 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbd3dd6b-d995-49a9-a18d-5a6d69f0a5e1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/asset/img/gif_editor.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/nfactoryjob22-02-2022.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sass/section/home.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template-logout.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inc/functions/toolbox.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/functions/toolbox.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/ajax-events.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ajax-events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/editor/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/Module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/general.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/api-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/api-actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/editor/editor-funcs.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-funcs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/editor/editor-onglet-content.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-onglet-content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/navigation.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/navigation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/header_footer/footer.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/header_footer/footer.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/header_footer/header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/header_footer/header.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/inc/dashboard.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/dashboard.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sass/inc/editor.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/editor.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/inc/responsive.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/responsive.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/inc/variable.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/variable.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/inc/wrap.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/wrap.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/section/connexion.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/section/connexion.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/section/home/doubleBox.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/section/home/image.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/section/home/lastCv.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/section/inscription.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/section/inscription.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/style.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template-dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/template-dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template-editor.php" beforeDir="false" afterPath="$PROJECT_DIR$/template-editor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template-home.php" beforeDir="false" afterPath="$PROJECT_DIR$/template-home.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template-login.php" beforeDir="false" afterPath="$PROJECT_DIR$/template-login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template-signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/template-signup.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +75,9 @@
       <recent name="C:\MAMP\htdocs\cvtheque\wp-content\themes\NFactoryJob\ajax\editor" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\MAMP\htdocs\cvtheque\wp-content\themes\NFactoryJob\db" />
+      <recent name="C:\MAMP\htdocs\cvtheque\wp-content\themes\NFactoryJob\asset\img" />
+      <recent name="C:\MAMP\htdocs\cvtheque\wp-content\themes\NFactoryJob\sass\section" />
       <recent name="C:\MAMP\htdocs\cvtheque\wp-content\themes\NFactoryJob\js" />
     </key>
   </component>
@@ -65,7 +92,7 @@
       <workItem from="1645184483497" duration="5828000" />
       <workItem from="1645190658905" duration="8755000" />
       <workItem from="1645430261040" duration="15833000" />
-      <workItem from="1645515567948" duration="6590000" />
+      <workItem from="1645515567948" duration="30561000" />
     </task>
     <servers />
   </component>

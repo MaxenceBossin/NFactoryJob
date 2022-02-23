@@ -97,3 +97,36 @@
 		}
 	}
 }() );
+
+// Navigation sur la home page
+
+function getYPosition(){
+	var top  = window.pageYOffset || document.documentElement.scrollTop
+	return top;
+}
+
+const baseCol = document.getElementById('header').style.backgroundColor;
+document.getElementById('header').style.backgroundColor = "white";
+
+document.addEventListener('scroll', function (event) {
+	const header = document.getElementById('header');
+	if(getYPosition() <= 5){
+		header.style.backgroundColor = "white";
+	}
+	else{
+		header.style.backgroundColor = baseCol;
+	}
+}, true);
+
+// menu burger
+
+$('#burger').on('click', function(){
+	if($('.mobile').css("display") === 'none'){
+		$('.mobile').css("display", "flex");
+		$('.mobile').css("opacity", "1");
+	}
+	else{
+		$('.mobile').css("display", "none");
+		$('.mobile').css("opacity", "0");
+	}
+});

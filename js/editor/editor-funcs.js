@@ -163,7 +163,7 @@ function get_selected_menu_onglet(){
 }
 
 function close_onglet(){
-    onglet.css("right", "-35vw");
+    onglet.css("right", "-" + onglet.css('width'));
     onglet_opened = false;
     btn_i.fadeOut('fast', function(){
         btn_i.attr('class', 'fa-solid fa-arrow-left');
