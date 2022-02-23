@@ -355,6 +355,10 @@ function on_ajax_get_autocomplete_data(input_id, data){
                         _input_target.val($(this).text());
                         _input_target.attr('data-fromautocompletion', '1');
                         _autocomplete_target.css("display", "none");
+
+                        if(PAGE_NAME === 'template-dashboard.php'){
+                            refresh_dashboard();
+                        }
                     });
                     _autocomplete.append(_autocomplete_item);
                 }

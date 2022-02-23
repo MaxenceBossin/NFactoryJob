@@ -32,10 +32,12 @@ function dashboard_refresh(json){
             infos.append($('<p>Version <strong>'+value.version+'</strong></p>'));
         }
         if(value.hasOwnProperty('created_at')){
-            infos.append($('<p>Créé le <strong>'+value.created_at+'</strong></p>'));
+            let _date = new Date(value.created_at);
+            infos.append($('<p>Créé le <strong>'+_date.toLocaleDateString("fr")+'</strong></p>'));
         }
         if(value.hasOwnProperty('modified_at')){
-            infos.append($('<p>Modifié le <strong>'+value.modified_at+'</strong></p>'));
+            let _date = new Date(value.modified_at);
+            infos.append($('<p>Modifié le <strong>'+_date.toLocaleDateString("fr")+'</strong></p>'));
         }
         item.append(infos);
         item.on('click', function(){

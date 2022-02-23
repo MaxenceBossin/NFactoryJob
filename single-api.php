@@ -25,7 +25,7 @@ if(get_the_title() === 'getLangues'){
     echo(json_encode(getTypeEtablisement(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 }elseif(get_the_title() === 'getTypeContrat'){
     echo(json_encode(getTypeContrat(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
-} 
+}
 // Partie Recherche recruteur getFromCV il faut ajouter ' ?id=1'  lors l'appel de ces apis
 elseif(get_the_title() === 'getCvFromUser'){
     $idCV = (!empty($_GET['id'])) ? $_GET['id'] : '';
@@ -72,12 +72,34 @@ elseif(get_the_title() === 'getCVByLangue'){
     echo arrayJson(getCVByLangue($langue));
 }
 // posibilite d'ajouter la date 
- // exemple : /api/getCVByEmplacement/?emplacelement=1
+// exemple : /api/getCVByEmplacement/?emplacelement=1
 elseif(get_the_title() === 'getCVByEmplacement'){
     $emplacelement     = (!empty($_GET['emplacelement'])) ? $_GET['emplacelement'] : '';
     echo arrayJson(getCVByLangue($langue));
 }
 
 elseif(get_the_title() === 'refreshDashboard'){
-    include_once 'ajax_refresh_dashboard.php';
+
+    if(empty($_GET['alldata'])){
+        die('no data');
+    }
+
+    $alldata = $_GET['alldata'];
+    $d = str_replace("\\", "", $alldata);
+    //die($d);
+    $manage = json_decode($d, true);
+    $isRecruteur = is_recruteur();
+
+    if(!is_user_logged_in()){
+        die('not logged');
+    }
+
+    if($isRecruteur){
+        $cvs = rechercheCv($manage);
+        echo json_encode($cvs);
+    }
+    else{
+        $userid = get_current_user_id();
+        echo json_encode(getCVFromUser($userid));
+    }
 }

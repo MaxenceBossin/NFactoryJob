@@ -905,6 +905,11 @@ FORM - INPUT SLIDER
   flex-flow: row nowrap;
   align-content: center;
   align-items: center;
+  padding: 0.5rem;
+}
+#dashboard table tbody tr td:first-child {
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 #dashboard table tbody tr td {
   padding: 0.5rem;

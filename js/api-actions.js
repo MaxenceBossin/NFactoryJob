@@ -20,6 +20,7 @@ function on_api_loaded(){
     if(api_timeout !== null){
         clearTimeout(api_timeout);
     }
+
     api_timeout = setTimeout(function(){
         api_loaded = true;
 
