@@ -3,11 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="bbd3dd6b-d995-49a9-a18d-5a6d69f0a5e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/editor/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/Module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inc/general.php" beforeDir="false" afterPath="$PROJECT_DIR$/inc/general.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/editor/editor-basics.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-basics.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/editor/editor-funcs.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-funcs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/editor/editor-onglet-content.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-onglet-content.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/plugins/farbtastic/farbtastic.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/plugins/farbtastic/farbtastic.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/plugins/farbtastic/marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/plugins/farbtastic/mask.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/plugins/farbtastic/wheel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sass/inc/editor.scss" beforeDir="false" afterPath="$PROJECT_DIR$/sass/inc/editor.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/style.css.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

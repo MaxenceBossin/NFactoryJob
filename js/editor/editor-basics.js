@@ -75,6 +75,7 @@ $(document).on('mousedown', function(e){
             drag_module.css("position", 'fixed');
             drag_module.css("width", width);
             drag_module.css("height", height);
+            drag_module.css("z-index", "20");
         }
     }
 });
@@ -128,6 +129,7 @@ $(document).on('mouseup', function(e){
                 }
             }
         }
+        drag_module.css("z-index", "2");
         drag_module.css("position", "relative");
         drag_module.css("top", "0");
         drag_module.css("left", "0");

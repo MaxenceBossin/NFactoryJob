@@ -71,7 +71,7 @@ function refresh_general_content(){
     }
 
     _input = create_input('back-color', 'Couleur de fond du CV', content_general, 'colorpicker', [CV.getColor()]);
-    _input.on('input', function(){
+    _input.on('input change', function(){
         CV.setColor($(this).val());
         CV.refresh();
         editor_request_save();
@@ -274,7 +274,7 @@ function refresh_module_content(){
 
     // colorpicker font bug?
 
-    /*create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]).on('input', function(){
+    /*create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]).on('input change', function(){
         selected_module.setColor($(this).val());
         selected_module.refresh();
         editor_request_save();
