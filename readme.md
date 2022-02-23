@@ -268,3 +268,17 @@ Pour notre site seul le dossier "**NFactoryJob**" nous interesse donc les trois 
 ![Image supprtheme](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/supprtheme.PNG)  
   
 Une fois la manipulation faite votre fichier thème devrais resembler à l'exemple ci-dessus.  
+
+### **Mettre une images en avant**
+
+Pour ce site, certaines pages donc la page inscription et la page connexion utilisent le fonctionnement de l'image mise en avant nous allons donc voir comment faire cela :  
+
+Pour mettre une image en avant rendez-vous en premier lieux dans l'espace administrateur puis dans l'onglet "Médias".  
+
+Dans cette onglet vous allez pouvoir ajouter l'image que vous voulez mettre en avant pour cela cliquer sur le bouton "Ajouter" puis sélectionnez l'image que vous voulais dans vos fichiers.  
+
+Une fois cette étapes faites rendez-vous dans l'éditeur de la page *inscription* qui se trouve dans l'onglet "Pages".  
+
+Une fois dans l'onglet page vous n'avez plus qu'a cliquer sur la page que vous voulez modifier. Dans cette exemple nous allons modifier la page *inscription*. 
+
+Une fois dans l'éditeur mettre une image en avant est simple, sur la droite de l'éditeur vous avez un menu, cherchez "**Image mise en avant**" puis cliquez dessus puis sur "**Definir l'image mise en avant**", choisissez l'une des images dans votre Médiathèque une fois fait vous pouvez cliquer sur Définir l'image mise en avant en bas à droite et voila votre image est mise en avant. Maintenant vous pouvez faire la même chose pour la page *connexion*.
