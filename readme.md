@@ -73,7 +73,7 @@ Rendez-vous sur ce site : https://fr.wordpress.org/download/
 Il faut descendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
 à noter que la version peut changer, ça n'a pas d'importance.
 
-![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/wordpressInstallation.PNG)
+![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/gitClone.png)
 
 ### __Installation de WORDPRESS__
 
