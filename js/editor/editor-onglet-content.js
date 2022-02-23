@@ -71,7 +71,7 @@ function refresh_general_content(){
     }
 
     _input = create_input('back-color', 'Couleur de fond du CV', content_general, 'colorpicker', [CV.getColor()]);
-    _input.on('input change', function(){
+    _input.on('input', function(){
         CV.setColor($(this).val());
         CV.refresh();
         editor_request_save();
@@ -231,8 +231,6 @@ function refresh_module_content(){
         });
     }
 
-    let _input;
-
     create_input('showtitle', 'Afficher le titre', content_module, 'checkbox', [selected_module.getShowTitle()]).on('input', function(){
         const checked = $(this).prop('checked');
         selected_module.setShowTitle(checked);
@@ -274,19 +272,19 @@ function refresh_module_content(){
         });
     }
 
-    _input = create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]);
-    _input.on('input change', function(){
+    // colorpicker font bug?
+
+    /*create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]).on('input', function(){
         selected_module.setColor($(this).val());
         selected_module.refresh();
         editor_request_save();
-    });
+    });*/
 
-    _input = create_input('fontcolor_module_' + selected_module.getModuleID(), 'Couleur du texte du module', content_module, 'colorpicker', [selected_module.getFontColor()]);
-    _input.on('input change', function(){
+    /*create_input('fontcolor_module_' + selected_module.getModuleID(), 'Couleur du texte du module', content_module, 'colorpicker', [selected_module.getFontColor()]).on('input change', function(){
         selected_module.setFontColor($(this).val());
         selected_module.refresh();
         editor_request_save();
-    });
+    });*/
 
     create_input('separator-size', 'Taille du séparateur', content_module, 'slider', [selected_module.getSeparatorSize(), 0, 15, 'px']).on('input', function(){
         selected_module.setSeparatorSize(parseInt($(this).val()));
@@ -300,12 +298,11 @@ function refresh_module_content(){
         editor_request_save();
     });
 
-    _input = create_input('separator_module_' + selected_module.getModuleID(), 'Couleur du séparateur', content_module, 'colorpicker', [selected_module.getSeparatorColor()]);
-    _input.on('input change', function(){
+    /*create_input('separator_module_' + selected_module.getModuleID(), 'Couleur du séparateur', content_module, 'colorpicker', [selected_module.getSeparatorColor()]).on('input change', function(){
         selected_module.setSeparatorColor($(this).val());
         selected_module.refresh();
         editor_request_save();
-    });
+    });*/
 
     create_input('border-top', 'Bord haut', content_module, 'slider', [selected_module.getBorderTop(), 0, 20, 'px']).on('input', function(){
         selected_module.setBorderTop(parseInt($(this).val()));
@@ -337,7 +334,7 @@ function refresh_module_content(){
         editor_request_save();
     });
 
-    _input = create_input('mode-affichage', 'Mode d\'affichage', content_module, 'select', ['Vertical', 'Horizontal']).on('input', function(){
+    let inputAffichage = create_input('mode-affichage', 'Mode d\'affichage', content_module, 'select', ['Vertical', 'Horizontal']).on('input', function(){
         let _idx = $(this).prop('selectedIndex');
         if(_idx == 0){
             $(this).prop('selectedIndex', 1);
@@ -347,7 +344,7 @@ function refresh_module_content(){
         selected_module.refresh();
         editor_request_save();
     });
-    set_selectinput_index(_input, selected_module.getModeAffichage() + 1);
+    set_selectinput_index(inputAffichage, selected_module.getModeAffichage() + 1);
 
     let _polices = [];
     for(let i=0;i<fonts.length;i++){

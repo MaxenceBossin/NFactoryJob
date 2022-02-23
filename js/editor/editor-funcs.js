@@ -169,6 +169,10 @@ function close_onglet(){
         btn_i.attr('class', 'fa-solid fa-arrow-left');
         btn_i.fadeIn('fast');
     });
+    content_module.empty();
+    content_general.empty();
+    content_general.css("display", "none");
+    content_module.css("display", "none");
 }
 
 function unselect_module(){
@@ -222,7 +226,6 @@ function place_add_module(deploy_last_module = false){
                 if(!$(this).hasClass('generated')){
                     $(this).addClass('generated');
                     generate_add_cv_module($(this));
-                    close_onglet();
                 }
             });
 
@@ -234,7 +237,6 @@ function place_add_module(deploy_last_module = false){
     if(deploy_last_module && last_module !== null){
         last_module.addClass('generated');
         generate_add_cv_module(last_module);
-        close_onglet();
     }
 
     const last_line = get_last_line();
@@ -446,7 +448,9 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
     let _moduleData = module.getData();
     if(_moduleData.hasOwnProperty(paramCategory)) {
         if (!_moduleData[paramCategory].hasOwnProperty(paramItem) || !_moduleData[paramCategory][paramItem].hasOwnProperty(paramName) || _moduleData[paramCategory][paramItem][paramName].length === 0) {
-            const add_param = $('<span class="add-item pad-1">+ ' + showText + '</span>').on('click', function () {
+            const span = $('<span class="add-item pad-1">+ ' + showText + '</span>');
+            span.unbind('click');
+            span.on('click', function () {
                 const _form = create_form('module_item_add_' + paramCategory + '_' + paramName);
                 create_input(paramName, showText, _form, type, _data);
                 build_form(_form, 'Ajouter', [paramItem], removable_form);
@@ -455,7 +459,7 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
                     $(this).remove();
                 }
             });
-            moduleItem.append(add_param);
+            moduleItem.append(span);
         } else {
             moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
         }

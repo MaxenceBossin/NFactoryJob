@@ -69,7 +69,12 @@ $(document).on('mousedown', function(e){
                 $('body').addClass('noselect');
             }
             $('body').css("cursor", "move");
+            const width = $(e.target).parent().parent().css("width");
+            const height = $(e.target).parent().parent().css("height");
             drag_module = $(e.target).parent().parent();
+            drag_module.css("position", 'fixed');
+            drag_module.css("width", width);
+            drag_module.css("height", height);
         }
     }
 });

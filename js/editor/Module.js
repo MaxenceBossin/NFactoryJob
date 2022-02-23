@@ -148,13 +148,15 @@ class Module{
     }
 
     generate_form_input_item(_content, paramCategory, showName){
-        const add = $('<span class="add-item">+ '+showName+'</span>').on('click', function(){
+        const span = $('<span class="add-item">+ '+showName+'</span>');
+        span.unbind('click');
+        span.on('click', function(){
             const _form = create_form('module_add_category_' + paramCategory);
             create_input(paramCategory, showName, _form, 'autocomplete', []);
             build_form(_form, 'Ajouter', [], true);
             _form.insertBefore($(this));
         });
-        _content.append(add);
+        _content.append(span);
     }
 
     getSeparatorSize(){
