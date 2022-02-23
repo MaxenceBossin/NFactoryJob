@@ -31,6 +31,7 @@ $( document ).ready(function() {
     ajax('all_icons', THEME_URL + 'ajax/editor/get_icons.php', {});
     ajax('all_fonts', THEME_URL + 'ajax/editor/get_google_fonts.php', {});
     api_load_all();
+    ajax('cv_load', SITE_URL + 'api/cvLoad/?idcv=' + CV_ID, {});
 });
 
 btn_onglet_general.on('click', function(){

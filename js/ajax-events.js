@@ -19,6 +19,22 @@ function on_ajax_response(name, json){
     else if(name === 'dashboard_refresh'){
         dashboard_refresh(json);
     }
+
+    else if(name === 'cv_save'){
+        cv_save(json);
+    }
+
+    else if(name === 'cv_load'){
+        cv_load(json);
+    }
+}
+
+function cv_load(json){
+
+}
+
+function cv_save(json){
+    on_save_end();
 }
 
 function dashboard_refresh(json){

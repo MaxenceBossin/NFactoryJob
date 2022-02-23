@@ -86,7 +86,6 @@ elseif(get_the_title() === 'refreshDashboard'){
 
     $alldata = $_GET['alldata'];
     $d = str_replace("\\", "", $alldata);
-    //die($d);
     $manage = json_decode($d, true);
     $isRecruteur = is_recruteur();
 
@@ -102,4 +101,23 @@ elseif(get_the_title() === 'refreshDashboard'){
         $userid = get_current_user_id();
         echo json_encode(getCVFromUser($userid));
     }
+}
+
+elseif(get_the_title() === 'CvSave'){
+    if(empty($_GET['alldata'])){
+        die('no data');
+    }
+    $alldata = $_GET['alldata'];
+    $d = str_replace("\\", "", $alldata);
+    $manage = json_decode($d, true);
+    die('ok');
+}
+
+elseif(get_the_title() === 'CvLoad'){
+    if(empty($_GET['idcv'])){
+        die('no cv id');
+    }
+    $id_cv = intval($_GET['idcv']);
+
+    die('ok');
 }

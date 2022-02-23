@@ -419,14 +419,8 @@ function editor_request_save() {
             save_notif_text.empty();
             save_notif_text.text('Sauvegarde en cours ...');
             save_request = setTimeout(function () {
-                save_notif_text.text('Sauvegarde effectuée');
-                const i = $('<i class="fa-solid fa-check"></i>');
-                save_notif_text.append(i);
-                i.fadeOut('fast');
-                i.fadeIn('fast');
-                save_en_cours = false;
-                close_save_notif();
-            }, 1000);
+                do_save();
+            }, 300);
         }, 500);
     }, 1000);
 }
@@ -464,4 +458,32 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
             moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
         }
     }
+}
+
+function do_save(){
+
+    let CVdata = CV.getJson();
+    let Modulesdata = [];
+
+    for(let i=0;i<modules_el.length;i++){
+        if(modules_el[i] !== null){
+            Modulesdata.push(modules_el[i].getJson());
+        }
+    }
+
+    let global = {CVdata, Modulesdata};
+    console.log('save');
+    console.log(global);
+
+    ajax('cv_save', SITE_URL + 'api/cvSave/?alldata=' + JSON.stringify(global), {});
+}
+
+function on_save_end(){
+    save_notif_text.text('Sauvegarde effectuée');
+    const i = $('<i class="fa-solid fa-check"></i>');
+    save_notif_text.append(i);
+    i.fadeOut('fast');
+    i.fadeIn('fast');
+    save_en_cours = false;
+    close_save_notif();
 }

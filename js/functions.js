@@ -6,6 +6,8 @@ function ajax(name, fichierPhp, data = {}){
         url: fichierPhp,
         data: data,
         success: function(response){
+            console.log(name);
+            console.log(response);
             on_ajax_response(name, JSON.parse(response));
         },
         error: function(){

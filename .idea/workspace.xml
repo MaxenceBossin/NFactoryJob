@@ -3,11 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="bbd3dd6b-d995-49a9-a18d-5a6d69f0a5e1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/api-actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/api-actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/editor/CV.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/CV.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/editor/Module.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/Module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/editor/editor-onglet-content.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-onglet-content.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template-editor.php" beforeDir="false" afterPath="$PROJECT_DIR$/template-editor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/ajax-events.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/ajax-events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/editor-basics.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-basics.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/editor/editor-funcs.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/editor/editor-funcs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/functions.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/functions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/single-api.php" beforeDir="false" afterPath="$PROJECT_DIR$/single-api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
