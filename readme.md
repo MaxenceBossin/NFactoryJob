@@ -82,9 +82,6 @@ Si vous n'avez pas de quoi décomprésser un fichier ZIP vous pouvez installer W
 
 Ensuite vous devez décomprésser le fichier dans votre dossier **htdocs**
 
-### Installation de WORDPRESS
-![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/wordpressInstallation.png)
-
 ### __Installation de WORDPRESS__
 
 ### __Téléchargement du thème *NFactoryJob*__
