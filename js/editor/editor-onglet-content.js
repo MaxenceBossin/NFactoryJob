@@ -272,19 +272,17 @@ function refresh_module_content(){
         });
     }
 
-    // colorpicker font bug?
-
-    /*create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]).on('input change', function(){
+    create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]).on('input change', function(){
         selected_module.setColor($(this).val());
         selected_module.refresh();
         editor_request_save();
-    });*/
+    });
 
-    /*create_input('fontcolor_module_' + selected_module.getModuleID(), 'Couleur du texte du module', content_module, 'colorpicker', [selected_module.getFontColor()]).on('input change', function(){
+    create_input('fontcolor_module_' + selected_module.getModuleID(), 'Couleur du texte du module', content_module, 'colorpicker', [selected_module.getFontColor()]).on('input change', function(){
         selected_module.setFontColor($(this).val());
         selected_module.refresh();
         editor_request_save();
-    });*/
+    });
 
     create_input('separator-size', 'Taille du séparateur', content_module, 'slider', [selected_module.getSeparatorSize(), 0, 15, 'px']).on('input', function(){
         selected_module.setSeparatorSize(parseInt($(this).val()));
@@ -298,11 +296,11 @@ function refresh_module_content(){
         editor_request_save();
     });
 
-    /*create_input('separator_module_' + selected_module.getModuleID(), 'Couleur du séparateur', content_module, 'colorpicker', [selected_module.getSeparatorColor()]).on('input change', function(){
+    create_input('separator_module_' + selected_module.getModuleID(), 'Couleur du séparateur', content_module, 'colorpicker', [selected_module.getSeparatorColor()]).on('input change', function(){
         selected_module.setSeparatorColor($(this).val());
         selected_module.refresh();
         editor_request_save();
-    });*/
+    });
 
     create_input('border-top', 'Bord haut', content_module, 'slider', [selected_module.getBorderTop(), 0, 20, 'px']).on('input', function(){
         selected_module.setBorderTop(parseInt($(this).val()));
