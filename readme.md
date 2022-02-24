@@ -47,7 +47,7 @@ Il y a trois rôles d'utlisateur :
 
 - **UML** de la base de données NfactoryJob
 
-![UML](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/UML.PNG)
+![UML](https://github.com/MaxenceBossin/NFactoryJob/blob/dev/imageReadMe/UML.PNG)
 
 ## Mise en place du projet
 
