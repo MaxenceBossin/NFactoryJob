@@ -306,7 +306,7 @@ function rechercheCv ($datas, bool $competences = false, bool $contrats = false,
         }
     }
     $sql = "
-    SELECT DISTINCT `id_cv` ,`intitule` ,`version`
+    SELECT DISTINCT `id_cv`, `intitule`, `version`, `created_at`, `modified_at`
     FROM `nfj_cv` 
     $joinCompetences
     $joinContrats
@@ -325,12 +325,19 @@ function rechercheCv ($datas, bool $competences = false, bool $contrats = false,
     $andDiplomes
     $andEmplacement
     ";
-    echo $sql;
-    echo'<br>';
-    echo'<br>';
     $query = $pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();
 
 }
 
+// ajouts
+function getCV(int $idCv):array
+{
+    global $pdo;
+    $sql = "SELECT * FROM `nfj_cv` WHERE `id_cv` = :idCV";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':idCV',$idCv);
+    $query->execute();
+    return $query->fetch();
+}

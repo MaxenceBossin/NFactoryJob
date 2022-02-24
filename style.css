@@ -512,11 +512,12 @@ textarea {
   cursor: move;
 }
 #cv .wrap_cv .modules .module .module-item .module-item-head-title {
-  font-size: 1.5rem;
-  font-weight: 300;
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 #cv .wrap_cv .modules .module .module-item .desc {
   padding-left: 1rem;
+  font-size: 1rem;
 }
 #cv .wrap_cv .modules .module.selected {
   border: 2px solid #5e80c9;
@@ -900,9 +901,31 @@ FORM - INPUT SLIDER
 #dashboard table tbody tr {
   transition: all 0.35s;
   cursor: pointer;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+#dashboard table tbody tr td:first-child {
+  font-size: 1.5rem;
+  font-weight: 300;
 }
 #dashboard table tbody tr td {
   padding: 0.5rem;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 0.5rem;
+  min-width: 45%;
+}
+#dashboard table tbody tr td p {
+  background-color: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+#dashboard table tbody tr td p strong {
+  font-size: 1rem;
 }
 #dashboard table tbody tr:nth-child(2n-1) {
   background-color: rgba(0, 0, 0, 0.1);

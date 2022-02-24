@@ -96,8 +96,30 @@
     tr{
       transition: all .35s;
       cursor: pointer;
+      display: flex;
+      flex-flow: row nowrap;
+      align-content: center;
+      align-items: center;
+      padding: .5rem;
+      td:first-child{
+        font-size: 1.5rem;
+        font-weight: 300;
+      }
       td{
         padding: .5rem;
+        display: flex;
+        flex-flow: row wrap;
+        gap: .5rem;
+        min-width: 45%;
+        p{
+          background-color: white;
+          padding: .5rem;
+          border-radius: 5px;
+          box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+          strong{
+            font-size: 1rem;
+          }
+        }
       }
     }
     tr:nth-child(2n-1){

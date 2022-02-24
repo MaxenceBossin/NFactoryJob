@@ -37,6 +37,18 @@
 <script>const PAGE_NAME = '<?= get_page_template_slug(); ?>';</script>
 <script>const SITE_URL = '<?= get_site_url(); ?>/';</script>
 <script>const THEME_URL = '<?= get_template_directory_uri(); ?>/';</script>
+<?php
+if(is_recruteur()){
+    ?>
+    <script>const RECRUTEUR = true;</script>
+<?php
+}
+else{
+    ?>
+    <script>const RECRUTEUR = false;</script>
+<?php
+}
+?>
 <?php wp_footer(); ?>
 </body>
 </html>
