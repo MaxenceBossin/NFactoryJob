@@ -48,6 +48,49 @@ string $fontModule, string $profilPictureModule, int $iconSizeModule, int $iconR
     $query->execute();
 }
 
+function updateModule(string $nameModule, int $coloneModule, string $showNameModule, int $lineModule,
+                   int $widthModule, string $colormodule, string $fontColorModule, string $separatorColorModule, string $dataModule,
+                   int $showTitleModule, int $separatorSizeModule, int $separatorRadiusModule, int $borderTopModule, int $borderBottomModule,
+                   int $borderRightModule, int $borderLeftModule, int $borderRadiusModule, int $modeAffichageModule, string $iconModule,
+                   string $fontModule, string $profilPictureModule, int $iconSizeModule, int $iconRadiusModule, int $moduleIDBDD)
+{
+    global $pdo;
+    $sql = "UPDATE `nfj_modules` SET
+    
+    `name_module` = :nameModule, `colone_module` = :coloneModule, `show_name_module` = :showNameModule, `line_module` = :lineModule, 
+    `width_module` = :widthModule, `color_module` = :colormodule, `font_color_module` = :fontColorModule,  `separator_color_module` = :separatorColorModule,  `data_module` = :dataModule, 
+    `show_title_module` = :showTitleModule, `separator_size_module` = :separatorSizeModule, `separator_radius_module` = :separatorRadiusModule,`border_top_module` = :borderTopModule,`border_bottom_module` = :borderBottomModule, 
+    `border_right_module` = :borderRightModule,`border_left_module` = :borderLeftModule,`border_radius_module` = :borderRadiusModule,`modeAffichage_module` = :modeAffichageModule,`icon_module` = :iconModule, 
+    `font_module` = :fontModule,`profil_picture_module` = :profilPictureModule,`icon_size_module` = :iconSizeModule, `icon_radius_module` = :iconRadiusModule
+     WHERE id_module = :moduleid";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':nameModule', $nameModule);
+    $query->bindValue(':coloneModule', $coloneModule, PDO::PARAM_INT);
+    $query->bindValue(':showNameModule', $showNameModule);
+    $query->bindValue(':lineModule', $lineModule, PDO::PARAM_INT);
+    $query->bindValue(':widthModule', $widthModule, PDO::PARAM_INT);
+    $query->bindValue(':colormodule', $colormodule);
+    $query->bindValue(':fontColorModule', $fontColorModule);
+    $query->bindValue(':separatorColorModule', $separatorColorModule);
+    $query->bindValue(':dataModule', $dataModule);
+    $query->bindValue(':showTitleModule', $showTitleModule, PDO::PARAM_INT);
+    $query->bindValue(':separatorSizeModule', $separatorSizeModule, PDO::PARAM_INT);
+    $query->bindValue(':separatorRadiusModule', $separatorRadiusModule, PDO::PARAM_INT);
+    $query->bindValue(':borderTopModule', $borderTopModule, PDO::PARAM_INT);
+    $query->bindValue(':borderBottomModule', $borderBottomModule, PDO::PARAM_INT);
+    $query->bindValue(':borderRightModule', $borderRightModule, PDO::PARAM_INT);
+    $query->bindValue(':borderLeftModule', $borderLeftModule, PDO::PARAM_INT);
+    $query->bindValue(':borderRadiusModule', $borderRadiusModule, PDO::PARAM_INT);
+    $query->bindValue(':modeAffichageModule', $modeAffichageModule, PDO::PARAM_INT);
+    $query->bindValue(':iconModule', $iconModule);
+    $query->bindValue(':fontModule', $fontModule);
+    $query->bindValue(':profilPictureModule', $profilPictureModule);
+    $query->bindValue(':iconSizeModule', $iconSizeModule, PDO::PARAM_INT);
+    $query->bindValue(':iconRadiusModule', $iconRadiusModule, PDO::PARAM_INT);
+    $query->bindValue(':moduleid', $moduleIDBDD, PDO::PARAM_INT);
+    $query->execute();
+}
+
 
 // requete 
 function newEmplacement(string $departement, string $ville,string $cp):void

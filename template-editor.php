@@ -31,8 +31,7 @@ if(!empty($_GET['id'])){
         }
     }
     else{
-        $canEdit = true;
-        $idCv = 0;
+        $canEdit = false;
     }
 }
 
@@ -54,9 +53,12 @@ if($idCv <= 0){
     $sql = "SELECT id_cv FROM nfj_cv WHERE id_cv = (SELECT LAST_INSERT_ID());";
     $query = $pdo->prepare($sql);
     $query->execute();
-    $idCv = $query->fetchColumn();
+    $idCv = intval($query->fetchColumn());
 
-    header('Location: ' . get_permalink() . '?id=' . $idCv);
+    if($idCv > 0){
+        header('Location: ' . get_permalink() . '?id=' . $idCv);
+    }
+    die();
 }
 
 get_header();

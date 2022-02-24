@@ -118,14 +118,17 @@ elseif(strtolower(get_the_title()) === 'cvsave'){
     $query->bindValue(':backcol',$color);
     $query->bindValue(':idcv',$id_cv);
     $query->execute();
+
+    die(json_encode([]));
 }
 
-elseif(strtolower(get_the_title()) === 'cvclearmodules'){
-    $idcv = intval(trim(strip_tags($_POST['idcv'])));
-    $sql = "DELETE FROM nfj_modules WHERE module_id_cv_FK = :id_cv";
+elseif(strtolower(get_the_title()) === 'cvdeletemodule'){
+    $bddid = intval(trim(strip_tags($_POST['bddid'])));
+    $sql = "DELETE FROM nfj_modules WHERE id_module = :bddid";
     $query = $pdo->prepare($sql);
-    $query->bindValue(':id_cv',$idcv);
+    $query->bindValue(':bddid',$bddid);
     $query->execute();
+    die(json_encode([]));
 }
 
 elseif(strtolower(get_the_title()) === 'cvsavemodule'){
@@ -154,8 +157,16 @@ elseif(strtolower(get_the_title()) === 'cvsavemodule'){
     $iconSize = intval(trim(strip_tags($_POST['iconSize'])));
     $iconRadius = intval(trim(strip_tags($_POST['iconRadius'])));
     $idcv = intval(trim(strip_tags($_POST['idcv'])));
+    $bddid = intval(trim(strip_tags($_POST['bddid'])));
 
-    putModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $idcv);
+    if($bddid !== -1){
+        updateModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $bddid);
+    }
+    else{
+        putModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $idcv);
+    }
+
+    die(json_encode([]));
 }
 
 elseif(strtolower(get_the_title()) === 'cvload'){
@@ -164,7 +175,7 @@ elseif(strtolower(get_the_title()) === 'cvload'){
     }
     $id_cv = intval($_GET['idcv']);
 
-    $sql = " SELECT * FROM nfj_modules WHERE module_id_cv_FK = :id_cv";
+    $sql = " SELECT * FROM nfj_modules WHERE module_id_cv_FK = :id_cv ORDER BY line_module, colone_module";
     $query = $pdo->prepare($sql);
     $query->bindValue(':id_cv',$id_cv);
     $query->execute();

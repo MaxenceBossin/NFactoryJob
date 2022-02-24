@@ -56,6 +56,11 @@ function destroy_module(_module){
         return;
     }
 
+    const moduleBDDID = _module.getModuleBDDID();
+    ajax('cv_destroy_module', SITE_URL + 'api/cvdeletemodule', {
+        bddid: moduleBDDID
+    });
+
     if(selected_module !== null && selected_module.getModuleID() === _module.getModuleID()){
         unselect_module();
     }
@@ -462,50 +467,46 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
 
 function do_save(){
 
-    ajax('cv_clear_modules', SITE_URL + 'api/cvclearmodules', {
-        idcv : CV_ID
-    });
+    for(let i=0;i<modules_el.length;i++){
+        if(modules_el[i] !== null){
+
+            ajax('cv_save_module', SITE_URL + 'api/cvSaveModule', {
+                moduleid: modules_el[i].getModuleID(),
+                name: modules_el[i].getModuleName(),
+                showName: modules_el[i].getModuleShownName(),
+                line: modules_el[i].getLine().getLineNum(),
+                width: modules_el[i].getLargeur(),
+                color: modules_el[i].getColor(),
+                fontColor: modules_el[i].getFontColor(),
+                separatorColor: modules_el[i].getSeparatorColor(),
+                data: JSON.stringify(modules_el[i].getData()),
+                showTitle: + modules_el[i].getShowTitle(),
+                separatorSize: modules_el[i].getSeparatorSize(),
+                separatorRadius: modules_el[i].getSeparatorRadius(),
+                borderTop: modules_el[i].getBorderTop(),
+                borderBottom: modules_el[i].getBorderBottom(),
+                borderRight: modules_el[i].getBorderRight(),
+                borderLeft: modules_el[i].getBorderLeft(),
+                borderRadius: modules_el[i].getBorderRadius(),
+                modeAffichage: modules_el[i].getModeAffichage(),
+                icon: modules_el[i].getIcon(),
+                font: modules_el[i].getFont(),
+                profilePic: modules_el[i].getProfilePic(),
+                iconSize: modules_el[i].getIconSize(),
+                iconRadius: modules_el[i].getIconRadius(),
+                bddid: modules_el[i].getModuleBDDID(),
+                idcv: CV_ID
+            });
+        }
+    }
 
     setTimeout(function(){
-        for(let i=0;i<modules_el.length;i++){
-            if(modules_el[i] !== null){
-                ajax('cv_save_module', SITE_URL + 'api/cvSaveModule', {
-                    moduleid: modules_el[i].getModuleID(),
-                    name: modules_el[i].getModuleName(),
-                    showName: modules_el[i].getModuleShownName(),
-                    line: modules_el[i].getLine().getLineNum(),
-                    width: modules_el[i].getLargeur(),
-                    color: modules_el[i].getColor(),
-                    fontColor: modules_el[i].getFontColor(),
-                    separatorColor: modules_el[i].getSeparatorColor(),
-                    data: JSON.stringify(modules_el[i].getData()),
-                    showTitle: + modules_el[i].getShowTitle(),
-                    separatorSize: modules_el[i].getSeparatorSize(),
-                    separatorRadius: modules_el[i].getSeparatorRadius(),
-                    borderTop: modules_el[i].getBorderTop(),
-                    borderBottom: modules_el[i].getBorderBottom(),
-                    borderRight: modules_el[i].getBorderRight(),
-                    borderLeft: modules_el[i].getBorderLeft(),
-                    borderRadius: modules_el[i].getBorderRadius(),
-                    modeAffichage: modules_el[i].getModeAffichage(),
-                    icon: modules_el[i].getIcon(),
-                    font: modules_el[i].getFont(),
-                    profilePic: modules_el[i].getProfilePic(),
-                    iconSize: modules_el[i].getIconSize(),
-                    iconRadius: modules_el[i].getIconRadius(),
-                    idcv: CV_ID
-                });
-            }
-        }
-
-        setTimeout(function(){
-            ajax('cv_save', SITE_URL + 'api/cvSave', {
-                title: CV.getTitle(),
-                color: CV.getColor(),
-                idcv : CV_ID
-            });
-        }, 500);
-    }, 500);
+        ajax('cv_save', SITE_URL + 'api/cvSave', {
+            title: CV.getTitle(),
+            color: CV.getColor(),
+            idcv : CV_ID
+        });
+    }, 1000);
 }
 
 function on_save_end(){
