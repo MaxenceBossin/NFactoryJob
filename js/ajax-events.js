@@ -48,6 +48,7 @@ function cv_load(json){
         _mod.updateData(JSON.parse(_updatedData));
         _mod.setFontColor(_m.font_color_module);
         _mod.setFont(_m.font_module);
+        load_font(_m.font_module);
         _mod.setIcon(_m.icon_module);
         _mod.setIconSize(parseInt(_m.icon_size_module));
         _mod.setIconRadius(parseInt(_m.icon_radius_module));
@@ -64,6 +65,11 @@ function cv_load(json){
 }
 
 function cv_save(json){
+
+    // recup id module aussi (colone)
+    if(json.hasOwnProperty('idbdd')){
+     //json.idbdd
+    }
 
     // Ici dans le json je dois pouvoir récupérer les IDBDD que je n'ai pas et les associer à mes modules
 

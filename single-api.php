@@ -163,7 +163,9 @@ elseif(strtolower(get_the_title()) === 'cvsavemodule'){
         updateModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $bddid);
     }
     else{
-        putModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $idcv);
+        $newid = putModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $idcv);
+
+        die(json_encode(['idbdd' => $newid]));
     }
 
     die(json_encode([]));

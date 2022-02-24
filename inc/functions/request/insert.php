@@ -46,6 +46,12 @@ string $fontModule, string $profilPictureModule, int $iconSizeModule, int $iconR
     $query->bindValue(':iconRadiusModule', $iconRadiusModule, PDO::PARAM_INT);
     $query->bindValue(':moduleIdCv_FK', $moduleIdCv_FK, PDO::PARAM_INT);
     $query->execute();
+
+    $sql = "SELECT id_module FROM nfj_modules WHERE id_module = (SELECT LAST_INSERT_ID());";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $idModule = $query->fetchColumn();
+    return intval($idModule);
 }
 
 function updateModule(string $nameModule, int $coloneModule, string $showNameModule, int $lineModule,
