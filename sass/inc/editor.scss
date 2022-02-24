@@ -221,6 +221,7 @@
     color: #5e80c9;
     cursor: pointer;
     width: max-content;
+    padding: .5rem .5rem .5rem 0;
   }
   .add-item.pad-1{
     padding-left: 1rem;
@@ -346,13 +347,16 @@
   text-align: center;
   gap: .5rem;
   transition: all .35s;
-  input:not([type=range]):not([type=checkbox]), select{
+  input:not([type=range]):not([type=checkbox]), select, textarea{
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     background-color: #d0d4dc;
     border: none;
     border-radius: 5px;
     padding: .5rem;
     width: 100%;
+  }
+  textarea{
+    min-height: 150px;
   }
   input[type=submit]{
     cursor: pointer;

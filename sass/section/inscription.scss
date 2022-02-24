@@ -2,19 +2,29 @@
 
 #signup{
     padding-top: 1rem;
+    font-size: 1.6rem;
     .error{
         color: red;
     }
+    color: rgba(0,0,0,.7);
     .wrap{
         padding: 1rem;
         .account{
-            font-size: 2rem;
             padding-bottom: 1rem;
+            font-size: 3rem;
+            font-weight: 300;
+            color: black;
         }
         .form{
             font-size: 1.3rem;
         }
+        label{
+            font-weight: 300;
+            color: rgba(0,0,0,.7);
+            font-size: 1.6rem;
+        }
         .box{
+            padding: 1rem;
             display: flex;
             flex-flow: row nowrap;
             align-items: center;
@@ -26,8 +36,8 @@
             }
             width: 100%;
             .box_text{
-                padding: 1rem;
-                width: 48%;
+                padding: 2rem;
+                width: 100%;
                 @include breakpoints(tablettebig){
                     width: 100%;
                     text-align: center;
@@ -122,14 +132,12 @@
                     color : $mainColor;
                 }
             }
-            .box_img{
-                width: 48%;
-                @include breakpoints(tablettebig){
-                    display: none;
-                    width: 0;
-                }
-            }
         }
-
+    }
+    input{
+        width: 50%;
+        @include breakpoints(tablettebig){
+            width: 100%;
+        }
     }
 }

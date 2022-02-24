@@ -376,7 +376,11 @@ function create_line(_num = -1){
     return _line;
 }
 
-function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
+function create_module(moduleID, moduleName, _width = 50, _lineNum = -1, fromLoad = false){
+
+    if(moduleName.length === 0){
+        return;
+    }
 
     if(_lineNum === -1 && get_last_line() !== null){
         _lineNum = get_last_line().getLineNum();
@@ -388,8 +392,13 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
     modules_el.push(_module);
 
     let _line = get_line_by_num(_lineNum);
-    if(_line === null || _line.countModules() + 1 > Line.IDEAL_NB_MODULES){
-        _line = create_line();
+    if(_line === null || (_line.countModules() + 1 > Line.IDEAL_NB_MODULES && !fromLoad)){
+        if(fromLoad){
+            _line = create_line(_lineNum);
+        }
+        else{
+            _line = create_line();
+        }
         _line.getDOMElement().append(module);
     }
     else{
@@ -414,6 +423,11 @@ function close_save_notif(){
 }
 
 function editor_request_save() {
+
+    if(READONLY){
+        return;
+    }
+
     if (save_request != null) {
         clearTimeout(save_request);
     }
@@ -466,6 +480,10 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
 }
 
 function do_save(){
+
+    if(READONLY){
+        return;
+    }
 
     for(let i=0;i<modules_el.length;i++){
         if(modules_el[i] !== null){

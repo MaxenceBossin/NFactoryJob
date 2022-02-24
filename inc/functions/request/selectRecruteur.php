@@ -197,6 +197,7 @@ function getCVByEmplacement($idEmplacement, $dateReadyToWork = 0){
 // Pour le premier tour de boucle on fait un AND( pour envelopper la partie ciblé
 // en suite on fait un AND pour lié les partie entres elles
 
+
 function rechercheCvOld ($datas, bool $competences = false, bool $contrats = false, bool $metiers = false ,bool $langues = false, bool $softskills = false, bool $diplomes = false, bool $emplacements = false){
     global $pdo;
     // l'objet JSON transfomé en tableau PHP
@@ -325,7 +326,6 @@ function rechercheCvOld ($datas, bool $competences = false, bool $contrats = fal
     $andDiplomes
     $andEmplacement
     ";
-    echo $sql;
     $query = $pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();
@@ -460,7 +460,6 @@ function rechercheCv ($datas){
     $andDiplomes
     $andEmplacement
     ";
-    echo $sql;
     $query = $pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();

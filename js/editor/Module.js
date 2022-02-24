@@ -1,6 +1,6 @@
 class Module{
     constructor(moduleID, moduleName, moduleShownName = '') {
-        this.moduleID = moduleID;
+        this.setModuleID(moduleID);
         this.moduleName = moduleName;
         if(moduleShownName.length === 0){
             this.moduleShownName = moduleName;
@@ -42,6 +42,9 @@ class Module{
     }
 
     setModuleID(id){
+        if($('#module-' + this.moduleID).length){
+            $('#module-' + this.moduleID).attr('id', 'module-' + id);
+        }
         this.moduleID = id;
     }
 
@@ -361,7 +364,7 @@ class Module{
 
         // Modules personnalisé
         else if(this.moduleName === 'Module personnalisé'){
-            this.generate_onemodule_item(module_items, 'contenu', 'Ajouter un contenu', 'textarea');
+            this.generate_onemodule_item(module_items, 'contenu', 'Ajouter un contenu', 'text');
         }
 
         // Module Contact
@@ -428,9 +431,9 @@ class Module{
                     const moduleItem = $('<div class="module-item"></div>');
                     moduleItem.append($('<p class="module-item-head-title">'+key+'</p>'));
                     add_module_item_param(this, moduleItem, 'expro', key, 'description', 'Ajouter une description', 'text', false);
-                    add_module_item_param(this, moduleItem, 'expro', key, 'description', 'Ajouter un établissement', 'text', false);
-                    add_module_item_param(this, moduleItem, 'expro', key, 'description', 'Ajouter une date de début', 'text', false);
-                    add_module_item_param(this, moduleItem, 'expro', key, 'description', 'Ajouter une date de fin', 'text', false);
+                    add_module_item_param(this, moduleItem, 'expro', key, 'etablissement', 'Ajouter un établissement', 'text', false);
+                    add_module_item_param(this, moduleItem, 'expro', key, 'date_debut', 'Ajouter une date de début', 'text', false);
+                    add_module_item_param(this, moduleItem, 'expro', key, 'date_fin', 'Ajouter une date de fin', 'text', false);
                     module_items.append(moduleItem);
                 });
             }
