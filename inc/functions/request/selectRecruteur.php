@@ -197,8 +197,10 @@ function getCVByEmplacement($idEmplacement, $dateReadyToWork = 0){
 // Pour le premier tour de boucle on fait un AND( pour envelopper la partie ciblé
 // en suite on fait un AND pour lié les partie entres elles
 
-function rechercheCv (array $datas, bool $competences = false, bool $contrats = false, bool $metiers = false ,bool $langues = false, bool $softskills = false, bool $diplomes = false, bool $emplacements = false){
+function rechercheCv ($datas, bool $competences = false, bool $contrats = false, bool $metiers = false ,bool $langues = false, bool $softskills = false, bool $diplomes = false, bool $emplacements = false){
     global $pdo;
+    // l'objet JSON transfomé en tableau PHP
+    $datas = json_decode($datas, true) ;
     $joinCompetences = '';
     $andCompetence   = '';
     // liste des compétences
@@ -206,10 +208,10 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
         
         $i=0;
         $imax = count($datas['competences']);
-        $niveau = $datas['niveauCompetence'];
+        $niveau = (!empty($datas['niveauCompetence'])) ? $datas['niveauCompetence'] : '0';
         $joinCompetences = 'JOIN `nfj_cv_competences` ON `nfj_cv_competences`.`id_cv_fk` = `nfj_cv`.`id_cv`';
         foreach ($datas['competences'] as $competence){
-            $id     = $competence['id'];
+            $id     = $competence['id_competence'];
             // on commence par ajputer une parenthèse pour le début de la jointure ciblé)
             $andOr       = ($i === 0) ? 'AND(' : 'OR';
             $i++;
@@ -226,11 +228,11 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
         $i=0;
         $imax = count($datas['contrats']);
         $joinContrats = 'JOIN `nfj_contratrecherche` ON `nfj_contratrecherche`.`id_cv_contratrecherche`  = `nfj_cv`.`id_cv`';
-        foreach ($datas['competences'] as $contrat){
-            $idContrat = $contrat['id'];
+        foreach ($datas['contrats'] as $contrat){
+            $idContrat = $contrat['id_typecontrat'];
             $andOr       = ($i === 0) ? 'AND(' : 'OR';
-            $endAnd      = ($i === $imax) ? ' )' : '';
             $i++;
+            $endAnd      = ($i === $imax) ? ' )' : '';
             $andContrats .= ' '. $andOr.' `nfj_contratrecherche`.`id_typecontrat_contratrecherche` = '.$idContrat.$endAnd;
         }
     }    
@@ -238,7 +240,7 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
     $andMetiers  = '';
     if($metiers === true){
         // on ne recheche qu'un métier par recheche
-        $idMetier = $datas['metiers'];
+        $idMetier = $datas['id_metier'];
         $i=0;
         $joinMetiers = 'JOIN `nfj_metier` ON  `nfj_metier`.`id_metier` = `nfj_cv`.`id_metier_cv`';
         $andMetiers .= 'AND( `nfj_metier`.`id_metier` = '.$idMetier.')';
@@ -250,7 +252,7 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
         $imax = count($datas['langues']);
         $joinLangues = 'JOIN `nfj_cv_langue` ON `nfj_cv_langue`.`id_cv_fk` = `nfj_cv`.`id_cv`';
         foreach ($datas['langues'] as $langue){
-            $idLangue = $langue['id'];
+            $idLangue = $langue['id_langue'];
             $andOr       = ($i === 0) ? 'AND(' : 'OR';
             $i++;
             $endAnd      = ($i === $imax) ? ' )' : '';
@@ -265,7 +267,7 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
         $imax = count($datas['softskills']);
         $joinSoftskills = 'JOIN `nfj_cv_softskill` ON `nfj_cv_softskill`.`id_cv_fk`  = `nfj_cv`.`id_cv`';
         foreach ($datas['softskills'] as $softskill){
-            $idSoftskill = $softskill['id'];
+            $idSoftskill = $softskill['id_softskill'];
             $andOr       = ($i === 0) ? 'AND(' : 'OR';
             $i++;
             $endAnd      = ($i === $imax) ? ' )' : '';
@@ -276,8 +278,8 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
     $andDiplomes  = '';
     if($diplomes === true){
         // On ne cherche le CV des personnes qui ont au moins le niveau de diplome requis 
-        $niveauDiplome = $datas['niveauDiplomes'];     
-        $idDiplome = $datas['diplomes'][0]['id'];
+        $niveauDiplome = (!empty($datas['niveauDiplomes']) ? $datas['niveauDiplomes'] : '0');     
+        $idDiplome = $datas['diplomes'][0]['id_diplome'];
         $joinDiplomes = '
         JOIN `nfj_cv_diplome` ON `nfj_cv`.`id_cv` = `nfj_cv_diplome`.`id_cv_dcv`
         JOIN `nfj_diplome` ON `nfj_diplome`.`id_diplome` = `nfj_cv_diplome`.`id_diplome_dcv`
@@ -295,7 +297,7 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
         // si on précise pas de date, on suppose que le c'est 0 ce qui fait en sorte que la date n'impacte la requette et prennent tous les résulats
         $dateReadyToWork = (!empty($datas['dateReadyToWork']) ? $datas['dateReadyToWork'] : 0);
         foreach ($datas['emplacements'] as $emplacement){
-            $idEmplacement = $emplacement['id'];
+            $idEmplacement = $emplacement['id_emplacement'];
             $andOr       = ($i === 0) ? 'AND(' : 'OR';
             $i++;
             $endAnd      = ($i === $imax) ? ' )' : '';

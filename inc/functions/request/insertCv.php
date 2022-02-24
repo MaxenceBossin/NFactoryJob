@@ -1,6 +1,7 @@
 <?php
 
-function putNewCv(string $libelle,string $createdAt, string  $backgroundColor = '#FFF',string $version ='',$fkIdUser='', $fkIdMetier=''):void
+function putNewCv(string $libelle,string $createdAt, string  $backgroundColor = '#FFF',
+string $version ='',$fkIdUser='', $fkIdMetier=''):void
 {
     global $pdo;
     $libelle = cleanXssAjax($libelle);

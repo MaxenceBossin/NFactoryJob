@@ -21,7 +21,7 @@ require_once('inc/functions/toolbox.php');
 // newSoftSkill('orGanisé');
 // newDiplome('test',2,2);
 // newMetier('UX designer');   
-putNewCv('newCv','2022-02-15 16:46:40','newBackground','1','2','2');
+// putNewCv('newCv','2022-02-15 16:46:40','newBackground','1','2','2');
 // putModule('test', '2', '2', '32222123', '2', '2', '222', '32', '3223', '32232323', '1', '111', '11', '11', '11', '11', '11', '11', '11', '211212', '1211221', '211212', '2121', '2112', '1');
 // newEtablissement('Lycée Malherbe',1,1);
 
@@ -88,8 +88,52 @@ $arrayALL=[
     ],
     "dateReadyToWork" => '2022-02-01'
 ];
+
+$objJson = '
+        {"emplacements":
+        [
+            {"id_emplacement":"1","departement":"Calvados","cp":"14000"},
+            {"id_emplacement":"2","departement":"Calvados","cp":"14000"}
+        ],
+        "dateReadyToWork": "2022-02-02  ",
+        "contrats":
+        [
+            {"id_typecontrat":"1"},       
+            {"id_typecontrat":"2"},       
+            {"id_typecontrat":"3"}      
+        ],
+        "diplomes":
+        [
+            {"id_diplome":"1"},       
+            {"id_diplome":"2"}      
+
+        ],
+        "niveauDiplomes": "4",
+        "competences":
+        [
+            {"id_competence":"1"},
+            {"id_competence":"2"},
+            {"id_competence":"3"}
+        ],
+        "softskills":
+        [
+            {"id_softskill":"1"},
+            {"id_softskill":"2"},
+            {"id_softskill":"3"}
+        ],
+        "id_metier": "1",
+        "langues":
+        [
+            {"id_langue":"1"},
+            {"id_langue":"2"},
+            {"id_langue":"3"}
+        ]
+    }';
+$objetDecode2 = json_decode($objJson, true) ; 
+debug($objetDecode2) ;
+
 echo'<br>';
 echo'<br>';
 echo'<br>';
-debug(rechercheCv($arrayALL, true ,true, false, true, true, true, true));
+debug(rechercheCv($objJson, true ,true, true , true, true, true, true));
 echo'<br>';
