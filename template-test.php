@@ -8,7 +8,7 @@ require_once('inc/functions/request/selectCreationCv.php');
 require_once('inc/functions/request/insertCv.php');
 require_once('inc/functions/request/insert.php');
 require_once('inc/functions/toolbox.php');
-
+putNewDiplome('4', '12', '2', '2022-02-24 16:13:20.000000', '2022-02-24 16:13:20.000000', 'test envoie 12');  
 // putNewCvDiplome(11,2,3,'2021-02-24');
 // putNewCvDiplome(5,2,3,'2020-02-24','2022-02-24','test description cv 5');
 // putNewCvDiplome("2","10","4",'2020-02-24');

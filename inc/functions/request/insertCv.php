@@ -111,31 +111,31 @@ function putNewCvCompetence($idCv,  $idCompetence , $niveau = '1', $description 
     $query->bindValue(':description', $description);
     $query->execute();
 }
-// non fonctionnelle
-function putNewCvDiplome($idCv, $idEtablisement, $idDiplome, $dateDebut, $dateFin = '', $description =''):void
+
+function putNewDiplome($idEtablisement,$idCv, $idDiplome, $dateDebut, $dateFin, $description):void
 {
     global $pdo;
-    //
-    $idCv = cleanXssAjax($idCv);
+    
     $idEtablisement = cleanXssAjax($idEtablisement);
+    $idCv           = cleanXssAjax($idCv);
     $idDiplome      = cleanXssAjax($idDiplome);
     $dateDebut      = cleanXssAjax($dateDebut);
     $dateFin        = cleanXssAjax($dateFin);
     $description    = cleanXssAjax($description);
 
-    $dateFin        = (!empty($dateFin)) ? $dateFin : '';
-    $description = (!empty($description)) ? ucfirst(strtolower($description)) : '';
-    $sql = 'INSERT INTO `nfj_cv_diplome` ( `id_cv_dcv`, `id_etablisement_dcv`, `id_diplome_dcv`, `date_debut_dcv`, `date_fin_dcv`, `description_dcv`) 
-    VALUES (:idCv, :idEtablisement, :idDiplome, :$dateDebut, :dateFin, :description);';
+    $dateDebut      = (!empty($dateDebut)) ? $dateDebut : NULL;
+    $dateFin        = (!empty($dateFin)) ? $dateFin : NULL;
+    $description    = (!empty($description)) ? ucfirst(strtolower($description)) : NULL;
+    
+    $sql = 'INSERT INTO `nfj_cv_diplome` (`id_etablisement_dcv`, `id_cv_dcv`, `id_diplome_dcv`, `date_debut_dcv`, `date_fin_dcv`, `description_dcv`) 
+    VALUES (:   , :idCv, :idDiplome, :dateDebut, :dateFin, :description);';
     $query    = $pdo->prepare($sql);
-
+    $query->bindValue(':description', $description);
     $query->bindValue(':idCv', $idCv);
-    $query->bindValue(':idEtablisement', $idEtablisement);
     $query->bindValue(':idDiplome', $idDiplome);
     $query->bindValue(':dateDebut', $dateDebut);
     $query->bindValue(':dateFin', $dateFin);
     $query->bindValue(':description', $description);
-
     $query->execute();
 }
 
