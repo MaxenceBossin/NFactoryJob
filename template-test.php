@@ -9,7 +9,7 @@ require_once('inc/functions/request/insertCv.php');
 require_once('inc/functions/request/insert.php');
 require_once('inc/functions/toolbox.php');
 // putNewCvLangue(8,1,5);
-
+// putNewCompetence(12,1,3,'toto');
 // putNewEmplacementTravailCv(5,3);
 // putNewEmplacementTravailCv(5,5,'2022-03-18');
 // newEmplacement('departementTest','villetest','cptes');

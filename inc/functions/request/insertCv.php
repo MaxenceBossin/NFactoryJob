@@ -94,3 +94,20 @@ function putNewSoftskill( $idCv, $idSoftskill, string $description = ''):void
     $query->bindValue(':description', $description);
     $query->execute();
 }
+
+function putNewCompetence($idCv,  $idCompetence , $niveau = '1', $description = ''):void
+{
+    global $pdo;
+    $idCv         = cleanXssAjax($idCv);
+    $idCompetence = cleanXssAjax($idCompetence);
+    $niveau       = cleanXssAjax($niveau);
+    $description  = cleanXssAjax($description);
+    $description = (!empty($description)) ? ucfirst(strtolower($description)) : NULL;
+    $sql      = 'INSERT INTO `nfj_cv_competences` ( `id_cv_fk`, `id_competence_fk`, `created_at`, `niveau`, `description`) VALUES ( :idCv, :idCompetence, NULL, :niveau, :description);';
+    $query    = $pdo->prepare($sql);
+    $query->bindValue(':idCv', $idCv);
+    $query->bindValue(':idCompetence', $idCompetence);
+    $query->bindValue(':niveau', $niveau);
+    $query->bindValue(':description', $description);
+    $query->execute();
+}
