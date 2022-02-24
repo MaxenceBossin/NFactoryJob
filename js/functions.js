@@ -6,6 +6,8 @@ function ajax(name, fichierPhp, data = {}){
         url: fichierPhp,
         data: data,
         success: function(response){
+            console.log(name);
+            console.log(response);
             on_ajax_response(name, JSON.parse(response));
         },
         error: function(){
@@ -167,10 +169,10 @@ function create_input(name, showName = '', parent = null, type = "text", values 
     else if(type === 'colorpicker'){
         // évent géré dans editor-funcs.js => on_color_update
         if(values.length > 0){
-            input = $('<input type="text" value="'+values[0]+'" />');
+            input = $('<input type="text" data-coloris value="'+values[0]+'" />');
         }
         else{
-            input = $('<input type="text" value="#FFFFFF" />');
+            input = $('<input type="text" data-coloris value="#FFFFFF" />');
         }
     }
     else if(type === "slider"){
@@ -261,9 +263,6 @@ function create_input(name, showName = '', parent = null, type = "text", values 
         }
         input_wrapper.append($('<span id="'+_sliderSpanNam+'">'+_value+_type+'</span>'));
     }
-    else if(type === "colorpicker"){
-        input_wrapper.append($('<div id="picker-'+_fID+'"></div>'));
-    }
     else if(type === 'autocomplete'){
         input_wrapper.append($('<div id="autocomplete-for-' + _fID + '" class="autocomplete"></div>'));
     }
@@ -274,10 +273,6 @@ function create_input(name, showName = '', parent = null, type = "text", values 
 
     if(parent !== null){
         parent.append(input_wrapper);
-    }
-
-    if(type === 'colorpicker'){
-        $('#picker-' + _fID).farbtastic($('#' +_fID));
     }
 
     if(type === 'checkbox'){
@@ -362,6 +357,10 @@ function on_ajax_get_autocomplete_data(input_id, data){
                         _input_target.val($(this).text());
                         _input_target.attr('data-fromautocompletion', '1');
                         _autocomplete_target.css("display", "none");
+
+                        if(PAGE_NAME === 'template-dashboard.php'){
+                            refresh_dashboard();
+                        }
                     });
                     _autocomplete.append(_autocomplete_item);
                 }

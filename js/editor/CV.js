@@ -24,4 +24,13 @@ class CV{
 
         document.title = 'CV - ' + CV.title;
     }
+
+    static getJson(){
+        let data = {
+            'title': CV.title,
+            'color': CV.color
+        };
+
+        return data;
+    }
 }
