@@ -94,7 +94,7 @@ elseif(strtolower(get_the_title()) === 'refreshdashboard'){
     }
 
     if($isRecruteur){
-        $cvs = testCv(stripslashes($data));
+        $cvs = rechercheCv(stripslashes($data));
         die(json_encode($cvs));
     }
     else{

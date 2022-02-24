@@ -332,21 +332,6 @@ function rechercheCvOld ($datas, bool $competences = false, bool $contrats = fal
 
 }
 
-function testCv($datas){
-    global $pdo;
-    // l'objet JSON transfomé en tableau PHP
-    $datas = json_decode($datas, true) ;
-    $joinCompetences = '';
-    $andCompetence   = '';
-    // liste des compétences
-    if(!empty($datas['competences'])){
-        echo 'ok';
-    }
-    echo 'ko';
-
-    return [];
-}
-
 function rechercheCv ($datas){
     global $pdo;
     // l'objet JSON transfomé en tableau PHP
@@ -475,7 +460,6 @@ function rechercheCv ($datas){
     $andDiplomes
     $andEmplacement
     ";
-    echo $sql;
     $query = $pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();
