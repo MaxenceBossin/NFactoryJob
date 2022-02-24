@@ -86,6 +86,42 @@ $objJson = '
         "dateReadyToWork": "2022-02-02  ",
         "contrats":
         [
+  
+        ],
+        "diplomes":
+        [
+     
+
+        ],
+        "niveauDiplomes": "4",
+        "competences":
+        [
+
+        ],
+        "softskills":
+        [
+            {"id_softskill":"1"},
+            {"id_softskill":"2"},
+            {"id_softskill":"3"}
+        ],
+        "metiers":{},
+        "langues":
+        [
+            {"id_langue":"1"},
+            {"id_langue":"2"},
+            {"id_langue":"3"}
+        ]
+    }';
+
+    $objJsonFin = '
+        {"emplacements":
+        [
+            {"id_emplacement":"1","departement":"Calvados","cp":"14000"},
+            {"id_emplacement":"2","departement":"Calvados","cp":"14000"}
+        ],
+        "dateReadyToWork": "2022-02-02  ",
+        "contrats":
+        [
             {"id_typecontrat":"1"},       
             {"id_typecontrat":"2"},       
             {"id_typecontrat":"3"}      
@@ -123,5 +159,5 @@ debug($objetDecode2) ;
 echo'<br>';
 echo'<br>';
 echo'<br>';
-debug(rechercheCv($objJson, true ,true, true , true, true, true, true));
+debug(rechercheCv($objJsonFin));
 echo'<br>';
