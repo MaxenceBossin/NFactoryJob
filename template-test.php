@@ -11,8 +11,8 @@ require_once('inc/functions/toolbox.php');
 
 // putNewCvDiplome(11,2,3,'2021-02-24');
 // putNewCvDiplome(5,2,3,'2020-02-24','2022-02-24','test description cv 5');
-putNewCvDiplome(2,10,4,'2020-02-24');
-
+// putNewCvDiplome("2","10","4",'2020-02-24');
+// putNewCvPost('description test','2020-02-24','2021-02-24','11','5','2','1');
 echo " OK: recup cv user ";
 // debug(getCvFromUser(1));
 echo'<br>';

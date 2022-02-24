@@ -111,7 +111,7 @@ function putNewCvCompetence($idCv,  $idCompetence , $niveau = '1', $description 
     $query->bindValue(':description', $description);
     $query->execute();
 }
-
+// non fonctionnelle
 function putNewCvDiplome($idCv, $idEtablisement, $idDiplome, $dateDebut, $dateFin = '', $description =''):void
 {
     global $pdo;
@@ -123,16 +123,47 @@ function putNewCvDiplome($idCv, $idEtablisement, $idDiplome, $dateDebut, $dateFi
     $dateFin        = cleanXssAjax($dateFin);
     $description    = cleanXssAjax($description);
 
-    $dateFin        = (!empty($dateFin)) ? $dateFin : NULL;
-    $description = (!empty($description)) ? ucfirst(strtolower($description)) : NULL;
-    $sql = 'INSERT INTO `nfj_cv_diplome` ( `id_cv_dcv`, `id_etablisement_dcv`, `id_diplome_dcv`, `date_debut_dcv`, `date_fin_dcv`, `description_dcv`) VALUES (:idCv, :idEtablisement, :idDiplome, :$dateDebut, :dateFin, :description);';
-    echo $sql;
+    $dateFin        = (!empty($dateFin)) ? $dateFin : '';
+    $description = (!empty($description)) ? ucfirst(strtolower($description)) : '';
+    $sql = 'INSERT INTO `nfj_cv_diplome` ( `id_cv_dcv`, `id_etablisement_dcv`, `id_diplome_dcv`, `date_debut_dcv`, `date_fin_dcv`, `description_dcv`) 
+    VALUES (:idCv, :idEtablisement, :idDiplome, :$dateDebut, :dateFin, :description);';
     $query    = $pdo->prepare($sql);
+
     $query->bindValue(':idCv', $idCv);
     $query->bindValue(':idEtablisement', $idEtablisement);
     $query->bindValue(':idDiplome', $idDiplome);
     $query->bindValue(':dateDebut', $dateDebut);
     $query->bindValue(':dateFin', $dateFin);
     $query->bindValue(':description', $description);
+
     $query->execute();
+}
+
+function putNewCvPost($description, $dateDebut, $dateFin, $idCv, $idEtablisement, $idTypeContrat, $idMetier)
+{
+    global $pdo;
+
+    $description     = cleanXssAjax($description);
+    $dateDebut       = cleanXssAjax($dateDebut);
+    $dateFin         = cleanXssAjax($dateFin);
+    $idCv            = cleanXssAjax($idCv);
+    $idEtablisement  = cleanXssAjax($idEtablisement);
+    $idEtablisement  = cleanXssAjax($idEtablisement);
+    $idTypeContrat   = cleanXssAjax($idTypeContrat);
+    $idMetier        = cleanXssAjax($idMetier);
+
+    $sql = 'INSERT INTO `nfj_postes` ( `description_poste`, `date_debut_poste`, `date_fin_poste`, `id_cv_poste`, `id_etablissement_poste`, `id_typecontrat_poste`, `id_metier_poste`) 
+    VALUES ( :description, :dateDebut, :dateFin, :idCv, :idEtablisement, :idTypeContrat, :idMetier);';
+    $query    = $pdo->prepare($sql);
+    
+    $query->bindValue(':description', $description);
+    $query->bindValue(':dateDebut', $dateDebut);
+    $query->bindValue(':dateFin', $dateFin);
+    $query->bindValue(':idCv', $idCv);
+    $query->bindValue(':idEtablisement', $idEtablisement);
+    $query->bindValue(':idTypeContrat', $idTypeContrat);
+    $query->bindValue(':idMetier', $idMetier);
+
+    $query->execute();
+
 }
