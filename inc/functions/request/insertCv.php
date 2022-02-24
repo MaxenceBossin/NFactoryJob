@@ -167,3 +167,14 @@ function putNewCvPost($description, $dateDebut, $dateFin, $idCv, $idEtablisement
     $query->execute();
 
 }
+
+function insertAll($datas){
+    $datas = json_decode(strip_tags($datas), true);
+
+    if(!empty($datas['competences'])){
+
+    }
+    if(!empty($datas['langues'])){
+
+    }
+}

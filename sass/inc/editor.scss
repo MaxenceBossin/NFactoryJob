@@ -412,6 +412,18 @@
   }
 }
 
+#quit-preview{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .5rem;
+  align-items: center;
+  align-content: center;
+  button{
+    width: max-content;
+    font-size: 1.2rem;
+  }
+}
+
 #preview-infos{
   position: fixed;
   top: 0;
