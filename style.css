@@ -1608,6 +1608,22 @@ FORM - INPUT SLIDER
   width: 100%;
 }
 
+/* cgu  */
+#cgu {
+  padding: 3rem 0;
+}
+@media (max-width: 1200px) {
+  #cgu {
+    padding: 1rem;
+  }
+}
+#cgu strong {
+  font-size: 1rem;
+}
+#cgu h2 {
+  margin: 1rem 0;
+}
+
 #footer-map .wrap_footer {
   display: flex;
   flex-flow: row nowrap;

@@ -1,0 +1,13 @@
+#cgu{
+    padding: 3rem 0;
+    @include breakpoints(underWrap){
+        padding:1rem;
+    }
+    strong{
+        font-size: 1rem;
+
+    }
+    h2{
+        margin: 1rem 0;
+    }
+}
