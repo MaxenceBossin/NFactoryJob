@@ -31,6 +31,7 @@ $( document ).ready(function() {
     ajax('all_icons', THEME_URL + 'ajax/editor/get_icons.php', {});
     ajax('all_fonts', THEME_URL + 'ajax/editor/get_google_fonts.php', {});
     api_load_all();
+    ajax('cv_load', SITE_URL + 'api/cvLoad/?idcv=' + CV_ID, {});
 });
 
 btn_onglet_general.on('click', function(){
@@ -69,7 +70,13 @@ $(document).on('mousedown', function(e){
                 $('body').addClass('noselect');
             }
             $('body').css("cursor", "move");
+            const width = $(e.target).parent().parent().css("width");
+            const height = $(e.target).parent().parent().css("height");
             drag_module = $(e.target).parent().parent();
+            drag_module.css("position", 'fixed');
+            drag_module.css("width", width);
+            drag_module.css("height", height);
+            drag_module.css("z-index", "20");
         }
     }
 });
@@ -123,6 +130,7 @@ $(document).on('mouseup', function(e){
                 }
             }
         }
+        drag_module.css("z-index", "2");
         drag_module.css("position", "relative");
         drag_module.css("top", "0");
         drag_module.css("left", "0");

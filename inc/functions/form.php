@@ -14,6 +14,9 @@ function mailValidation($errors,$value,$key){
 function cleanXss($key){
     return trim(strip_tags($_POST[$key]));
 }
+function cleanXssAjax($key){
+    return trim(strip_tags($key));
+}
 
 function viewError($errors,$key){
     if(!empty($errors[$key])) {

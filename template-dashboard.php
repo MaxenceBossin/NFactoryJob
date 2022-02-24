@@ -1,6 +1,12 @@
 <?php
 /** Template Name: Dashboard **/
 
+// permet la connexion pdo
+require_once "config.php";
+require_once('inc/functions/request/pdo.php');
+require_once('inc/functions/request/selectRecruteur.php');
+require_once('inc/functions/toolbox.php');
+
 if(!is_user_logged_in()){
     header('Location: ' . get_site_url());
     die();
@@ -16,14 +22,6 @@ get_header();
     <div class="all-cv">
         <div class="search"><!-- généré en js --></div>
         <table id="search-table">
-            <thead>
-            <tr>
-                <th>CV</th>
-                <th>Informations</th>
-                <th>Ajouté le</th>
-                <th></th>
-            </tr>
-            </thead>
             <tbody><!-- généré en js -->
             <!-- <tr>
                 <td>1</td>

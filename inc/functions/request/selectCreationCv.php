@@ -53,7 +53,7 @@ function getEtablissement():array
     $query->execute();
     return $query->fetchAll();
 }
-//OK: getTypeSecteur
+//OK: getTypeSecteur = Metiers
 
 function getTypeMetier():array
 {
@@ -81,6 +81,8 @@ function getTypeDiplome():array
     $query->execute();
     return $query->fetchAll();
 }
+
+
 //OK: getTypeContrat
 function getTypeContrat():array
 {

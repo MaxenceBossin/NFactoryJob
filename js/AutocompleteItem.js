@@ -19,6 +19,15 @@ function get_good_autocomplete_data(inputID, writeValue = ''){
     return _items;
 }
 
+function get_autocomplete_item_by_valname(valname){
+    for(let i=0;i<autocomplete_items.length;i++){
+        if(autocomplete_items[i] !== null && autocomplete_items[i].getShowName() === valname){
+            return autocomplete_items[i];
+        }
+    }
+    return null;
+}
+
 function get_autocomplete_item_by_id(id){
     for(let i=0;i<autocomplete_items.length;i++){
         if(autocomplete_items[i] !== null && autocomplete_items[i].getItemID() === id){
