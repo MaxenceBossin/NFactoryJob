@@ -25,7 +25,7 @@ string $version ='',$fkIdUser='', $fkIdMetier=''):void
 }
 // requete sur les jointures après la création d'un CV
 
-function putNewCVHobie(int $idCV, int $idLoisir, string $description = ''):void
+function putNewCVHobie( $idCV,  $idLoisir, string $description = ''):void
 {
     global $pdo;
     $idCv        = cleanXssAjax($idCV);
@@ -41,7 +41,7 @@ function putNewCVHobie(int $idCV, int $idLoisir, string $description = ''):void
     $query->execute();
 }
 
-function putNewRechecheContrat(int $idCV, int $typecontrat):void
+function putNewRechecheContrat( $idCV, $typecontrat):void
 {
     global $pdo;
     $idCv           = cleanXssAjax($idCV);
@@ -53,10 +53,10 @@ function putNewRechecheContrat(int $idCV, int $typecontrat):void
     $query->execute();
 }
 
-function putNewEmplacementTravailCv(int $idCv, int $idEmplacement, $readyToWorkAt = ''):void
+function putNewEmplacementTravailCv($idCv, $idEmplacement, $readyToWorkAt = ''):void
 {
     global $pdo;
-    $idCv           = cleanXssAjax($idCv);
+    $idCv             = cleanXssAjax($idCv);
     $idEmplacement    = cleanXssAjax($idEmplacement);
     $readyToWorkAt    = cleanXssAjax($readyToWorkAt);
     $readyToWorkAt = (!empty($readyToWorkAt)) ? $readyToWorkAt : NULL;
@@ -65,5 +65,19 @@ function putNewEmplacementTravailCv(int $idCv, int $idEmplacement, $readyToWorkA
     $query->bindValue(':idCv', $idCv);
     $query->bindValue(':idEmplacement', $idEmplacement);
     $query->bindValue(':readyToWorkAt', $readyToWorkAt);
+    $query->execute();
+}
+
+function putNewCvLangue( $idCv, int $idLangue , $niveau = '1'):void
+{
+    global $pdo;
+    $idCv     = cleanXssAjax($idCv);
+    $idLangue = cleanXssAjax($idLangue);
+    $niveau   = cleanXssAjax($niveau);
+    $sql      = 'INSERT INTO `nfj_cv_langue` ( `id_cv_fk`, `id_langue_fk`, `niveau`) VALUES ( :idCv, :idLangue, :niveau);';
+    $query    = $pdo->prepare($sql);
+    $query->bindValue(':idCv', $idCv);
+    $query->bindValue(':idLangue', $idLangue);
+    $query->bindValue(':niveau', $niveau);
     $query->execute();
 }

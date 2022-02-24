@@ -8,10 +8,10 @@ require_once('inc/functions/request/selectCreationCv.php');
 require_once('inc/functions/request/insertCv.php');
 require_once('inc/functions/request/insert.php');
 require_once('inc/functions/toolbox.php');
+// putNewCvLangue(8,1,5);
 
-
-putNewEmplacementTravailCv(5,3);
-putNewEmplacementTravailCv(5,5,'2022-03-18');
+// putNewEmplacementTravailCv(5,3);
+// putNewEmplacementTravailCv(5,5,'2022-03-18');
 // newEmplacement('departementTest','villetest','cptes');
 // putModule('nameModule',1,2,'showNameModule',1,
 // 2,'colormodule', 'fontColorModule', 'separatorColorModule', 'dataModule',
