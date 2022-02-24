@@ -245,6 +245,14 @@ Première chose au niveau de "**Saisissez le titre**" vous allez pouvoir noté "
 
 ![Image lecture](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/createpage.PNG)  
 
+Pour le bon fonctionnement du site vous allez devoir repêter plusieur fois cette étape pour crée les pages suivantes :  
+
+. Inscription (modele de page : inscription)  
+. Connexion (modele de page : connexion)  
+. Editor (modele de page : editor)  
+. Dashboard (modele de page : dashboard)  
+. logout (modele de page : lougout)  
+
 Après cette étape, nous allons mettre la page que nous venons de créer en page principale. Pour cela, je vous laisse aller au niveau de l'onglet "**Réglages**" puis dans "**Lecture**".
 
 Ce paramètre va dire au site quelle page afficher en premier pour cela il va falloir cliquez sur le bouton "**Une page statique**" et choisir comme 'Page d'accueil' la page "**HomePage**" comme indiqué ci dessous :  
