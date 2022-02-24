@@ -5,6 +5,7 @@ require_once "config.php";
 require_once('inc/functions/request/pdo.php');
 require_once('inc/functions/request/selectRecruteur.php');
 require_once('inc/functions/request/selectCreationCv.php');
+require_once('inc/functions/request/insertCv.php');
 require_once('inc/functions/request/insert.php');
 require_once('inc/functions/toolbox.php');
 
@@ -20,9 +21,9 @@ require_once('inc/functions/toolbox.php');
 // newSoftSkill('orGanisé');
 // newDiplome('test',2,2);
 // newMetier('UX designer');   
-
+putNewCv('newCv','2022-02-15 16:46:40','newBackground','1','2','2');
 // putModule('test', '2', '2', '32222123', '2', '2', '222', '32', '3223', '32232323', '1', '111', '11', '11', '11', '11', '11', '11', '11', '211212', '1211221', '211212', '2121', '2112', '1');
-
+// newEtablissement('Lycée Malherbe',1,1);
 
 echo " OK: recup cv user ";
 // debug(getCvFromUser(1));

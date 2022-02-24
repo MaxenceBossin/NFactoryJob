@@ -121,7 +121,17 @@ function newDiplome(string $libelle, int $fkTypeDiplome, int $fkTypeSecteur):voi
     $query->bindValue(':fkTypeSecteur', $fkTypeSecteur);
     $query->execute();
 }
-
-// new diplome
-
-//prend les clef étrangère (bdd sécu PHP à faire)
+function newEtablissement(string $nom, int $fkTypeEtablissement, int $fkEmplacement):void
+{
+    global $pdo;
+    $nom = cleanXssAjax($nom);
+    $nom = ucfirst(strtolower($nom));
+    $fkTypeDiplome = cleanXssAjax($fkTypeEtablissement);
+    $fkTypeSecteur = cleanXssAjax($fkEmplacement);
+    $sql = 'INSERT INTO `nfj_etablissement` ( `nom_etablissement`, `id_typeEtablissement`, `id_emplacement_etablissement`)  VALUES (:nom, :fkTypeEtablissement, :fkEmplacement);';
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':nom', $nom);
+    $query->bindValue(':fkTypeEtablissement', $fkTypeEtablissement);
+    $query->bindValue(':fkEmplacement', $fkEmplacement);
+    $query->execute();
+}
