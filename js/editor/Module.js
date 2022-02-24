@@ -469,7 +469,7 @@ class Module{
                     if(this.font.length > 0){
                         p.css("font-family", this.font);
                     }
-                    add_module_item_param(this, moduleItem, 'langues', key, 'niveau', 'Ajouter un niveau', 'text', false);
+                    add_module_item_param(this, moduleItem, 'langues', key, 'niveau', 'Ajouter un niveau', 'slider', false, [1, 1, 5]);
                     module_items.append(moduleItem);
                 });
             }
@@ -489,7 +489,7 @@ class Module{
                         p.css("font-family", this.font);
                     }
                     add_module_item_param(this, moduleItem, 'competences', key, 'description', 'Ajouter une description', 'text', false);
-                    add_module_item_param(this, moduleItem, 'competences', key, 'niveau', 'Ajouter un niveau', 'text', false);
+                    add_module_item_param(this, moduleItem, 'competences', key, 'niveau', 'Ajouter un niveau', 'slider', false, [1, 1, 5]);
                     module_items.append(moduleItem);
                 });
             }
@@ -510,7 +510,7 @@ class Module{
                     }
                     add_module_item_param(this, moduleItem, 'formations', key, 'description', 'Ajouter une description', 'text', false);
                     add_module_item_param(this, moduleItem, 'formations', key, 'secteur', 'Ajouter un secteur', 'autocomplete', false);
-                    add_module_item_param(this, moduleItem, 'formations', key, 'niveau', 'Ajouter un niveau', 'autocomplete', false);
+                    add_module_item_param(this, moduleItem, 'formations', key, 'niveau', 'Ajouter un niveau', 'slider', false, [1, 1, 5]);
                     add_module_item_param(this, moduleItem, 'formations', key, 'etablissement', 'Ajouter un établissement', 'autocomplete', false);
                     module_items.append(moduleItem);
                 });

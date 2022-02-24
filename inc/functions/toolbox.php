@@ -124,9 +124,16 @@ function get_backcolor_by_role(){
     return "rgb(176, 214, 248)";
 }
 
+function get_text_color_by_role(){
+    if(is_recruteur()){
+        return "#2d2d2d";
+    }
+    return "white";
+}
+
 function get_color_by_role(){
     if(is_recruteur()){
-        return "#f67631";
+        return "#D6430A";
     }
     return "rgb(12, 100, 166)";
 }

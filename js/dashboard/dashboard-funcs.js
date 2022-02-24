@@ -13,7 +13,7 @@ function refresh_dashboard(){
         data = add_field(data, 'metiers', 'typemetier');
         data = add_field(data, 'emplacements', 'emplacement', false);
         data = add_field(data, 'contrats', 'typecontrat', false);
-        data = add_field(data, 'diplomes', 'typediplome', false);
+        //data = add_field(data, 'diplomes', 'typediplome', false);
         data = add_field(data, 'competences', 'hard-skills', false);
         data = add_field(data, 'softskills', 'soft-skills', false);
         data = add_field(data, 'langues', 'langues', false);
@@ -62,8 +62,8 @@ function generate_filters_form(){
     create_input('emplacement', 'Emplacement', parent, 'autocomplete', _items, '', '', true);
     _items = autocomplete_item_load_from_json(api_data.contrat, 'intitule_type_contrat', 'typecontrat');
     create_input('typecontrat', 'Type de contrat', parent, 'autocomplete', _items, '', '', true);
-    _items = autocomplete_item_load_from_json(api_data.diplomes, '', '');
-    create_input('typediplome', 'Type de diplôme', parent, 'autocomplete', _items).on('input', function(){ refresh_dashboard(); });
+    //_items = autocomplete_item_load_from_json(api_data.diplomes, '', '');
+    //create_input('typediplome', 'Type de diplôme', parent, 'autocomplete', _items).on('input', function(){ refresh_dashboard(); });
     _items = autocomplete_item_load_from_json(api_data.competences, 'libelle', 'hard-skills');
     create_input('hard-skills', 'Hard skills', parent, 'autocomplete', _items, '', '', true);
     _items = autocomplete_item_load_from_json(api_data.softskills, 'libelle_softskill', 'soft-skills');
