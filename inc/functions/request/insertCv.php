@@ -3,7 +3,7 @@
 // On récupère ensuite l'ID du CV nouvellement créer 
 // et ensuite on va pouvoir l'insérer dans les tables PIVOT
 function putNewCv(string $libelle,string $createdAt, string  $backgroundColor = '#FFF',
-string $version ='',$fkIdUser='', $fkIdMetier=''):void
+string $version ='',$fkIdUser='', $fkIdMetier='')
 {
     global $pdo;
     $libelle = cleanXssAjax($libelle);
