@@ -24,55 +24,74 @@ function on_ajax_response(name, json){
         cv_save(json);
     }
 
+    else if(name === 'cv_save_module'){
+        cv_save_module(json);
+    }
+
     else if(name === 'cv_load'){
         cv_load(json);
     }
 }
 
+function cv_save_module(json){
+    if(json.hasOwnProperty('idbdd') && json.hasOwnProperty('idmodule')){
+        const _module = get_module_by_ID(parseInt(json.idmodule));
+        if(_module !== null){
+            _module.setModuleBDDID(parseInt(json.idbdd));
+        }
+    }
+}
+
 function cv_load(json){
+    let idx = 0;
 
     json.forEach(function(_m){
 
-        const _mod = create_module(parseInt(_m.colone_module), _m.name_module, parseInt(_m.width_module), parseInt(_m.line_module));
+        if(idx > 0) {
+            const _mod = create_module(parseInt(_m.colone_module), _m.name_module, parseInt(_m.width_module), parseInt(_m.line_module), true);
 
-        _mod.setBorderLeft(parseInt(_m.border_left_module));
-        _mod.setBorderRight(parseInt(_m.border_right_module));
-        _mod.setBorderTop(parseInt(_m.border_top_module));
-        _mod.setBorderBottom(parseInt(_m.border_bottom_module));
-        _mod.setBorderRadius(parseInt(_m.border_radius_module));
-        _mod.setModuleID(parseInt(_m.colone_module));
-        _mod.setColor(_m.color_module);
-        _mod.setModuleBDDID(_m.id_module);
-        const _updatedData = _m.data_module.replace(/\\/g, '');
-        console.log(_updatedData);
-        _mod.updateData(JSON.parse(_updatedData));
-        _mod.setFontColor(_m.font_color_module);
-        _mod.setFont(_m.font_module);
-        load_font(_m.font_module);
-        _mod.setIcon(_m.icon_module);
-        _mod.setIconSize(parseInt(_m.icon_size_module));
-        _mod.setIconRadius(parseInt(_m.icon_radius_module));
-        _mod.setModeAffichage(parseInt(_m.modeAffichage_module));
-        _mod.setModuleShownName(_m.show_name_module);
-        _mod.setProfilePic(_m.profil_picture_module);
-        _mod.setSeparatorColor(_m.separator_color_module);
-        _mod.setSeparatorRadius(parseInt(_m.separator_radius_module));
-        _mod.setSeparatorSize(parseInt(_m.separator_size_module));
-        _mod.setShowTitle((_m.show_title_module === '1'));
+            _mod.setBorderLeft(parseInt(_m.border_left_module));
+            _mod.setBorderRight(parseInt(_m.border_right_module));
+            _mod.setBorderTop(parseInt(_m.border_top_module));
+            _mod.setBorderBottom(parseInt(_m.border_bottom_module));
+            _mod.setBorderRadius(parseInt(_m.border_radius_module));
+            _mod.setModuleID(parseInt(_m.colone_module));
+            _mod.setColor(_m.color_module);
+            _mod.setModuleBDDID(_m.id_module);
+            const _updatedData = _m.data_module.replace(/\\/g, '');
+            _mod.updateData(JSON.parse(_updatedData));
+            _mod.setFontColor(_m.font_color_module);
+            if(_m.font_module.length > 0){
+                load_font(_m.font_module);
+            }
+            _mod.setFont(_m.font_module);
+            _mod.setIcon(_m.icon_module);
+            _mod.setIconSize(parseInt(_m.icon_size_module));
+            _mod.setIconRadius(parseInt(_m.icon_radius_module));
+            _mod.setModeAffichage(parseInt(_m.modeAffichage_module));
+            _mod.setModuleShownName(_m.show_name_module);
+            _mod.setProfilePic(_m.profil_picture_module);
+            _mod.setSeparatorColor(_m.separator_color_module);
+            _mod.setSeparatorRadius(parseInt(_m.separator_radius_module));
+            _mod.setSeparatorSize(parseInt(_m.separator_size_module));
+            _mod.setShowTitle((_m.show_title_module === '1'));
 
-        _mod.refresh();
+            _mod.refresh();
+        }
+        else{
+            CV.setTitle(_m.intitule);
+            CV.setColor(_m.background_color);
+            CV.refresh();
+        }
+        idx++;
     });
+
+    if(!READONLY){
+        open_onglet('general');
+    }
 }
 
 function cv_save(json){
-
-    // recup id module aussi (colone)
-    if(json.hasOwnProperty('idbdd')){
-     //json.idbdd
-    }
-
-    // Ici dans le json je dois pouvoir récupérer les IDBDD que je n'ai pas et les associer à mes modules
-
     on_save_end();
 }
 

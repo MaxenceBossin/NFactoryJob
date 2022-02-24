@@ -20,7 +20,9 @@ function refresh_dashboard(){
         data = add_field(data, 'langues', 'langues', false);
         data = add_field(data, 'dateReadyToWork', 'date');
 
-        ajax('dashboard_refresh', SITE_URL + 'api/refreshDashboard/?alldata=' + JSON.stringify(data), {});
+        ajax('dashboard_refresh', SITE_URL + 'api/refreshDashboard', {
+            data: JSON.stringify(data)
+        });
     }, 500);
 }
 
