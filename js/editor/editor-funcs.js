@@ -423,6 +423,11 @@ function close_save_notif(){
 }
 
 function editor_request_save() {
+
+    if(READONLY){
+        return;
+    }
+
     if (save_request != null) {
         clearTimeout(save_request);
     }
@@ -475,6 +480,10 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
 }
 
 function do_save(){
+
+    if(READONLY){
+        return;
+    }
 
     for(let i=0;i<modules_el.length;i++){
         if(modules_el[i] !== null){

@@ -27,7 +27,12 @@ if(!empty($_GET['id'])){
             }
         }
         else{
-            $canEdit = false;
+            if(intval($CV['id_user']) === 0){
+                $canEdit = true;
+            }
+            else{
+                $canEdit = false;
+            }
         }
     }
     else{
