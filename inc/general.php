@@ -43,7 +43,7 @@ function nfactoryjob_scripts() {
 	wp_style_add_data( 'nfactoryjob-style', 'rtl', 'replace' );
 
     if(is_page_template('template-editor.php')){
-        wp_enqueue_style( 'farbtastic', get_template_directory_uri() . '/js/editor/plugins/farbtastic/farbtastic.css', array(), _S_VERSION);
+        wp_enqueue_style( 'coloris', 'https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css', array(), _S_VERSION);
     }
 
     wp_deregister_script('jquery');
@@ -68,7 +68,7 @@ function nfactoryjob_scripts() {
 
     if(is_page_template('template-editor.php')){
         wp_enqueue_script( 'html2pdf', 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js', array(), _S_VERSION, true );
-        wp_enqueue_script( 'farbtastic', get_template_directory_uri() . '/js/editor/plugins/farbtastic/farbtastic.js', array(), _S_VERSION, true );
+        wp_enqueue_script( 'coloris','https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'module-class', get_template_directory_uri() . '/js/editor/Module.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'cv-class', get_template_directory_uri() . '/js/editor/CV.js', array(), _S_VERSION, true );
         wp_enqueue_script( 'line-class', get_template_directory_uri() . '/js/editor/Line.js', array(), _S_VERSION, true );

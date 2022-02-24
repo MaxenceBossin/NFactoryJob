@@ -197,7 +197,7 @@ function getCVByEmplacement($idEmplacement, $dateReadyToWork = 0){
 // Pour le premier tour de boucle on fait un AND( pour envelopper la partie ciblé
 // en suite on fait un AND pour lié les partie entres elles
 
-function rechercheCv (array $datas, bool $competences = false, bool $contrats = false, bool $metiers = false ,bool $langues = false, bool $softskills = false, bool $diplomes = false, bool $emplacements = false){
+function rechercheCv ($datas, bool $competences = false, bool $contrats = false, bool $metiers = false ,bool $langues = false, bool $softskills = false, bool $diplomes = false, bool $emplacements = false){
     global $pdo;
     $joinCompetences = '';
     $andCompetence   = '';
@@ -304,7 +304,7 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
         }
     }
     $sql = "
-    SELECT DISTINCT `id_cv` ,`intitule` ,`version`
+    SELECT DISTINCT `id_cv`, `intitule`, `version`, `created_at`, `modified_at`
     FROM `nfj_cv` 
     $joinCompetences
     $joinContrats
@@ -323,12 +323,19 @@ function rechercheCv (array $datas, bool $competences = false, bool $contrats = 
     $andDiplomes
     $andEmplacement
     ";
-    echo $sql;
-    echo'<br>';
-    echo'<br>';
     $query = $pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();
 
 }
 
+// ajouts
+function getCV(int $idCv):array
+{
+    global $pdo;
+    $sql = "SELECT * FROM `nfj_cv` WHERE `id_cv` = :idCV";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':idCV',$idCv);
+    $query->execute();
+    return $query->fetch();
+}

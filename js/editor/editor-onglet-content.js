@@ -85,38 +85,7 @@ function refresh_general_content(){
     }
 
     const previewBtn = $('<button class="btn green">Prévisualiser</button>').on('click', function(){
-        if(generating_pdf){
-            return;
-        }
-        generating_pdf = true;
-        preview_mode = true;
-        const preview = $('#preview-infos');
-        $('#preview-infos .content').empty();
-        preview.css("display", "block");
-        append_preview('Prévisualisation de', false, true);
-        setTimeout(function(){
-            preview_save = $('#cv .wrap_cv .modules').clone();
-            const element = preview_save.clone();
-            $('#cv .wrap_cv .modules').remove();
-            element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
-                $(this).remove();
-            });
-            element.find('.module.selected').each(function() {
-                $(this).removeClass('selected');
-            });
-            $('#cv .wrap_cv').append(element);
-            append_preview('Prévisualisation générée', true);
-            $('#save-notif').css("display", "none");
-            $('#onglet_editor').css("display", "none");
-            quit_preview.css("bottom", "10px");
-            setTimeout(function(){
-                generating_pdf = false;
-                preview.fadeOut('fast', function(){
-                    preview.css("display", "none");
-                });
-            }, 800);
-        }, 800);
-
+        start_preview(true);
     });
     content_general.append(previewBtn);
 
@@ -231,8 +200,6 @@ function refresh_module_content(){
         });
     }
 
-    let _input;
-
     create_input('showtitle', 'Afficher le titre', content_module, 'checkbox', [selected_module.getShowTitle()]).on('input', function(){
         const checked = $(this).prop('checked');
         selected_module.setShowTitle(checked);
@@ -274,15 +241,13 @@ function refresh_module_content(){
         });
     }
 
-    _input = create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]);
-    _input.on('input change', function(){
+    create_input('back_module_' + selected_module.getModuleID(), 'Couleur de fond du module', content_module, 'colorpicker', [selected_module.getColor()]).on('input change', function(){
         selected_module.setColor($(this).val());
         selected_module.refresh();
         editor_request_save();
     });
 
-    _input = create_input('fontcolor_module_' + selected_module.getModuleID(), 'Couleur du texte du module', content_module, 'colorpicker', [selected_module.getFontColor()]);
-    _input.on('input change', function(){
+    create_input('fontcolor_module_' + selected_module.getModuleID(), 'Couleur du texte du module', content_module, 'colorpicker', [selected_module.getFontColor()]).on('input change', function(){
         selected_module.setFontColor($(this).val());
         selected_module.refresh();
         editor_request_save();
@@ -300,8 +265,7 @@ function refresh_module_content(){
         editor_request_save();
     });
 
-    _input = create_input('separator_module_' + selected_module.getModuleID(), 'Couleur du séparateur', content_module, 'colorpicker', [selected_module.getSeparatorColor()]);
-    _input.on('input change', function(){
+    create_input('separator_module_' + selected_module.getModuleID(), 'Couleur du séparateur', content_module, 'colorpicker', [selected_module.getSeparatorColor()]).on('input change', function(){
         selected_module.setSeparatorColor($(this).val());
         selected_module.refresh();
         editor_request_save();
@@ -337,7 +301,7 @@ function refresh_module_content(){
         editor_request_save();
     });
 
-    _input = create_input('mode-affichage', 'Mode d\'affichage', content_module, 'select', ['Vertical', 'Horizontal']).on('input', function(){
+    let inputAffichage = create_input('mode-affichage', 'Mode d\'affichage', content_module, 'select', ['Vertical', 'Horizontal']).on('input', function(){
         let _idx = $(this).prop('selectedIndex');
         if(_idx == 0){
             $(this).prop('selectedIndex', 1);
@@ -347,7 +311,7 @@ function refresh_module_content(){
         selected_module.refresh();
         editor_request_save();
     });
-    set_selectinput_index(_input, selected_module.getModeAffichage() + 1);
+    set_selectinput_index(inputAffichage, selected_module.getModeAffichage() + 1);
 
     let _polices = [];
     for(let i=0;i<fonts.length;i++){
@@ -432,4 +396,47 @@ function load_font(fontName){
     link.rel = "stylesheet";
 
     document.getElementsByTagName( "head" )[0].appendChild( link );
+}
+
+function start_preview(canEdit){
+    if(generating_pdf){
+        return;
+    }
+
+    if(!canEdit){
+        quit_preview.empty();
+        const p = $('<p>Lecture seule</p>');
+        p.css("color", "white");
+        quit_preview.append(p);
+        quit_preview.css("background-color", "rgb(12, 100, 166)");
+    }
+
+    generating_pdf = true;
+    preview_mode = true;
+    const preview = $('#preview-infos');
+    $('#preview-infos .content').empty();
+    preview.css("display", "block");
+    append_preview('Prévisualisation de', false, true);
+    setTimeout(function(){
+        preview_save = $('#cv .wrap_cv .modules').clone();
+        const element = preview_save.clone();
+        $('#cv .wrap_cv .modules').remove();
+        element.find('.draggable, .module.add, #add-line, .add-item, form, .line-title').each(function() {
+            $(this).remove();
+        });
+        element.find('.module.selected').each(function() {
+            $(this).removeClass('selected');
+        });
+        $('#cv .wrap_cv').append(element);
+        append_preview('Prévisualisation générée', true);
+        $('#save-notif').css("display", "none");
+        $('#onglet_editor').css("display", "none");
+        quit_preview.css("bottom", "10px");
+        setTimeout(function(){
+            generating_pdf = false;
+            preview.fadeOut('fast', function(){
+                preview.css("display", "none");
+            });
+        }, 800);
+    }, 800);
 }
