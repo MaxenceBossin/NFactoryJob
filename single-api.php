@@ -104,9 +104,6 @@ elseif(strtolower(get_the_title()) === 'refreshdashboard'){
 }
 
 elseif(strtolower(get_the_title()) === 'cvsave'){
-    if(empty($_POST['color'])){
-        die('no data');
-    }
     $color = trim(strip_tags($_POST['color']));
     $title = trim(strip_tags($_POST['title']));
     $id_cv = trim(strip_tags($_POST['idcv']));

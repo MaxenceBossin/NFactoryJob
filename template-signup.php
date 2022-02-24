@@ -85,9 +85,6 @@ get_header();
 
                 </form>
             </div>
-            <div class="box_img">
-                <?php the_post_thumbnail('signup')?>
-            </div>
         </div>
     </div>    
 </section>

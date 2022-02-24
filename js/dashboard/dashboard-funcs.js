@@ -2,12 +2,11 @@
 let refreshDahboardTimeout = null;
 
 function refresh_dashboard(){
-
-    if(refreshDahboardTimeout !== null){
+    if (refreshDahboardTimeout !== null) {
         clearTimeout(refreshDahboardTimeout);
     }
 
-    refreshDahboardTimeout = setTimeout(function(){
+    refreshDahboardTimeout = setTimeout(function () {
 
         let data = {};
 
@@ -24,6 +23,11 @@ function refresh_dashboard(){
             data: JSON.stringify(data)
         });
     }, 500);
+
+    if(!RECRUTEUR) {
+        $('#dashboard .filters').css("display", "none");
+        $('#dashboard .all-cv').css("width", "100%");
+    }
 }
 
 function add_field(data, dataKey, fieldID, unique = true){

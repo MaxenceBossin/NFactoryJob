@@ -1,6 +1,7 @@
 
 #connexion{
     padding-top: 1rem;
+    font-size: 1.6rem;
     .success{
         color: green;
     }
@@ -12,7 +13,9 @@
         h2{
             margin-left: 3rem;
             margin-bottom: 1rem;
-            font-size: $sizeH1;
+            font-size: 3rem;
+            font-weight: 300;
+            color: black;
         }
         .box{
             display: flex;
@@ -40,20 +43,30 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: rgba($color: #7c7c7c, $alpha: .3);
-            border-radius: 15px;
+            background-color: rgba(0,0,0,.1);
+            border-radius: 10px;
             padding: 2rem;
             margin-left: 3%;
             margin-right: 3%;
+            width: 100%;
+            label{
+                font-weight: 300;
+                font-size: 1.6rem;
+                color: rgba(0,0,0,.7);
+            }
             input{
                 padding-left: .5rem;
+                width: 50%;
+                @include breakpoints(tablettebig){
+                    width: 100%;
+                }
             }
             input[type=submit]{
                 border: none;
                 border-radius: 5px;
                 background-color: $mainColor;
                 color: $colorwhite;
-                padding: .6rem;
+                padding: 1rem;
                 cursor: pointer;
                 font-size: 1.4rem;
                 margin: .8rem auto;
@@ -63,16 +76,27 @@
                 font-size: 1.4rem;
             }
         }
+        .form-button{
+            width: 100%;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+        }
         .form-example{
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             input{
                 border-radius: 5px;
+                width: 50%;
                 height: 40px;
                 border: none;
                 margin-top: 1rem;
                 margin-bottom: 1.6rem;
+                @include breakpoints(tablettebig){
+                    width: 100%;
+                }
                 @include boxShadow($colorblack)
             }
             label{

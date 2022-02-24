@@ -367,7 +367,7 @@ function create_line(_num = -1){
     if(_num <= 0){
         _num = get_new_available_line_num();
     }
-    console.log('Création de la line ' + _num);
+
     const lineElement = $('<section id="line-'+_num+'" class="module-line"><span class="line-title">Section '+ _num +'</span></section>');
     modules.append(lineElement);
     let _line = new Line(_num);

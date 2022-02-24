@@ -97,8 +97,9 @@ function cv_save(json){
 
 function dashboard_refresh(json){
     dashboard_body.empty();
-
+    let datafound = false;
     for (const [key, value] of Object.entries(json)) {
+        datafound = true;
         const item = $('<tr></tr>');
         item.append($('<td>'+value.intitule+'</td>'));
         const infos = $('<td></td>');
@@ -118,5 +119,21 @@ function dashboard_refresh(json){
             window.location.href = SITE_URL + '/editor?id=' + value.id_cv;
         });
         dashboard_body.append(item);
+    }
+
+    if(!datafound){
+        if(RECRUTEUR){
+            const item = $('<tr></tr>');
+            item.append($('<td>Aucun CV trouvé</td><td>Veuillez élargir votre recherche</td>'));
+            dashboard_body.append(item);
+        }
+        else{
+            const item = $('<tr></tr>');
+            item.append($('<td>Aucun CV trouvé</td><td>Cliquez ici pour créer votre premier CV !</td>'));
+            item.on('click', function(){
+                window.location.href = SITE_URL + '/editor';
+            });
+            dashboard_body.append(item);
+        }
     }
 }
