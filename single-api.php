@@ -82,13 +82,11 @@ elseif(get_the_title() === 'getCVByEmplacement'){
 
 elseif(strtolower(get_the_title()) === 'refreshdashboard'){
 
-    if(empty($_GET['alldata'])){
+    if(empty($_POST['data'])){
         die('no data');
     }
 
-    $alldata = $_GET['alldata'];
-    $d = str_replace("\\", "", $alldata);
-    $manage = json_decode($d, true);
+    $data = trim(strip_tags($_POST['data']));
     $isRecruteur = is_recruteur();
 
     if(!is_user_logged_in()){
@@ -96,8 +94,8 @@ elseif(strtolower(get_the_title()) === 'refreshdashboard'){
     }
 
     if($isRecruteur){
-        $cvs = rechercheCv($manage);
-        echo json_encode($cvs);
+        $cvs = testCv(stripslashes($data));
+        die(json_encode($cvs));
     }
     else{
         $userid = get_current_user_id();
@@ -165,10 +163,13 @@ elseif(strtolower(get_the_title()) === 'cvsavemodule'){
     else{
         $newid = putModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $idcv);
 
-        die(json_encode(['idbdd' => $newid]));
+        die(json_encode([
+            'idbdd' => $newid,
+            'idmodule' => $moduleid
+        ]));
     }
 
-    die(json_encode([]));
+    die(json_encode(['bddid' => $bddid]));
 }
 
 elseif(strtolower(get_the_title()) === 'cvload'){
@@ -177,13 +178,17 @@ elseif(strtolower(get_the_title()) === 'cvload'){
     }
     $id_cv = intval($_GET['idcv']);
 
+    $sql = " SELECT * FROM nfj_cv WHERE id_cv = :id_cv";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':id_cv',$id_cv);
+    $query->execute();
+    $cvdata = $query->fetchAll();
+
     $sql = " SELECT * FROM nfj_modules WHERE module_id_cv_FK = :id_cv ORDER BY line_module, colone_module";
     $query = $pdo->prepare($sql);
     $query->bindValue(':id_cv',$id_cv);
     $query->execute();
-    $ar = $query->fetchAll();
-    if(empty($ar)){
-        die(json_encode([]));
-    }
-    die(json_encode($ar));
+    $modules = $query->fetchAll();
+    $merge = array_merge($cvdata, $modules);
+    die(json_encode($merge));
 }

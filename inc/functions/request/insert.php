@@ -7,7 +7,18 @@ int $borderRightModule, int $borderLeftModule, int $borderRadiusModule, int $mod
 string $fontModule, string $profilPictureModule, int $iconSizeModule, int $iconRadiusModule, int $moduleIdCv_FK )
 {
     global $pdo;
-    $sql = "INSERT INTO `nfj_modules` 
+
+    $sql = "SELECT count(id_module) FROM nfj_modules WHERE name_module = :namemodule AND line_module = :line AND colone_module = :colonne AND module_id_cv_FK = :idcv";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':namemodule', $nameModule);
+    $query->bindValue(':line', $lineModule);
+    $query->bindValue(':colonne', $coloneModule);
+    $query->bindValue(':idcv', $moduleIdCv_FK);
+    $query->execute();
+    $nb = $query->fetchColumn();
+
+    if($nb == 0) {
+        $sql = "INSERT INTO `nfj_modules` 
     (
     `name_module`, `colone_module`, `show_name_module`, `line_module`, 
     `width_module`, `color_module`, `font_color_module`,  `separator_color_module`,  `data_module`, 
@@ -20,38 +31,40 @@ string $fontModule, string $profilPictureModule, int $iconSizeModule, int $iconR
     :showTitleModule,:separatorSizeModule, :separatorRadiusModule, :borderTopModule, :borderBottomModule, 
     :borderRightModule, :borderLeftModule, :borderRadiusModule, :modeAffichageModule, :iconModule,
     :fontModule, :profilPictureModule, :iconSizeModule, :iconRadiusModule, :moduleIdCv_FK)";
-    $query = $pdo->prepare($sql);
-    $query->bindValue(':nameModule', $nameModule);
-    $query->bindValue(':coloneModule', $coloneModule, PDO::PARAM_INT);
-    $query->bindValue(':showNameModule', $showNameModule);
-    $query->bindValue(':lineModule', $lineModule, PDO::PARAM_INT);
-    $query->bindValue(':widthModule', $widthModule, PDO::PARAM_INT);
-    $query->bindValue(':colormodule', $colormodule);
-    $query->bindValue(':fontColorModule', $fontColorModule);
-    $query->bindValue(':separatorColorModule', $separatorColorModule);
-    $query->bindValue(':dataModule', $dataModule);
-    $query->bindValue(':showTitleModule', $showTitleModule, PDO::PARAM_INT);
-    $query->bindValue(':separatorSizeModule', $separatorSizeModule, PDO::PARAM_INT);
-    $query->bindValue(':separatorRadiusModule', $separatorRadiusModule, PDO::PARAM_INT);
-    $query->bindValue(':borderTopModule', $borderTopModule, PDO::PARAM_INT);
-    $query->bindValue(':borderBottomModule', $borderBottomModule, PDO::PARAM_INT);
-    $query->bindValue(':borderRightModule', $borderRightModule, PDO::PARAM_INT);
-    $query->bindValue(':borderLeftModule', $borderLeftModule, PDO::PARAM_INT);
-    $query->bindValue(':borderRadiusModule', $borderRadiusModule, PDO::PARAM_INT);
-    $query->bindValue(':modeAffichageModule', $modeAffichageModule, PDO::PARAM_INT);
-    $query->bindValue(':iconModule', $iconModule);
-    $query->bindValue(':fontModule', $fontModule);
-    $query->bindValue(':profilPictureModule', $profilPictureModule);
-    $query->bindValue(':iconSizeModule', $iconSizeModule, PDO::PARAM_INT);
-    $query->bindValue(':iconRadiusModule', $iconRadiusModule, PDO::PARAM_INT);
-    $query->bindValue(':moduleIdCv_FK', $moduleIdCv_FK, PDO::PARAM_INT);
-    $query->execute();
+        $query = $pdo->prepare($sql);
+        $query->bindValue(':nameModule', $nameModule);
+        $query->bindValue(':coloneModule', $coloneModule, PDO::PARAM_INT);
+        $query->bindValue(':showNameModule', $showNameModule);
+        $query->bindValue(':lineModule', $lineModule, PDO::PARAM_INT);
+        $query->bindValue(':widthModule', $widthModule, PDO::PARAM_INT);
+        $query->bindValue(':colormodule', $colormodule);
+        $query->bindValue(':fontColorModule', $fontColorModule);
+        $query->bindValue(':separatorColorModule', $separatorColorModule);
+        $query->bindValue(':dataModule', $dataModule);
+        $query->bindValue(':showTitleModule', $showTitleModule, PDO::PARAM_INT);
+        $query->bindValue(':separatorSizeModule', $separatorSizeModule, PDO::PARAM_INT);
+        $query->bindValue(':separatorRadiusModule', $separatorRadiusModule, PDO::PARAM_INT);
+        $query->bindValue(':borderTopModule', $borderTopModule, PDO::PARAM_INT);
+        $query->bindValue(':borderBottomModule', $borderBottomModule, PDO::PARAM_INT);
+        $query->bindValue(':borderRightModule', $borderRightModule, PDO::PARAM_INT);
+        $query->bindValue(':borderLeftModule', $borderLeftModule, PDO::PARAM_INT);
+        $query->bindValue(':borderRadiusModule', $borderRadiusModule, PDO::PARAM_INT);
+        $query->bindValue(':modeAffichageModule', $modeAffichageModule, PDO::PARAM_INT);
+        $query->bindValue(':iconModule', $iconModule);
+        $query->bindValue(':fontModule', $fontModule);
+        $query->bindValue(':profilPictureModule', $profilPictureModule);
+        $query->bindValue(':iconSizeModule', $iconSizeModule, PDO::PARAM_INT);
+        $query->bindValue(':iconRadiusModule', $iconRadiusModule, PDO::PARAM_INT);
+        $query->bindValue(':moduleIdCv_FK', $moduleIdCv_FK, PDO::PARAM_INT);
+        $query->execute();
 
-    $sql = "SELECT id_module FROM nfj_modules WHERE id_module = (SELECT LAST_INSERT_ID());";
-    $query = $pdo->prepare($sql);
-    $query->execute();
-    $idModule = $query->fetchColumn();
-    return intval($idModule);
+        $sql = "SELECT id_module FROM nfj_modules WHERE id_module = (SELECT LAST_INSERT_ID());";
+        $query = $pdo->prepare($sql);
+        $query->execute();
+        $idModule = $query->fetchColumn();
+        return intval($idModule);
+    }
+    return 0;
 }
 
 function updateModule(string $nameModule, int $coloneModule, string $showNameModule, int $lineModule,

@@ -378,6 +378,10 @@ function create_line(_num = -1){
 
 function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
 
+    if(moduleName.length === 0){
+        return;
+    }
+
     if(_lineNum === -1 && get_last_line() !== null){
         _lineNum = get_last_line().getLineNum();
     }

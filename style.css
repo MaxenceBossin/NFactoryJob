@@ -460,6 +460,7 @@ textarea {
   color: #5e80c9;
   cursor: pointer;
   width: max-content;
+  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 #cv .wrap_cv .modules .add-item.pad-1 {
   padding-left: 1rem;
@@ -585,13 +586,16 @@ textarea {
   gap: 0.5rem;
   transition: all 0.35s;
 }
-#cv form input:not([type=range]):not([type=checkbox]), #cv form select, #onglet_editor .content input:not([type=range]):not([type=checkbox]), #onglet_editor .content select {
+#cv form input:not([type=range]):not([type=checkbox]), #cv form select, #cv form textarea, #onglet_editor .content input:not([type=range]):not([type=checkbox]), #onglet_editor .content select, #onglet_editor .content textarea {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   background-color: #d0d4dc;
   border: none;
   border-radius: 5px;
   padding: 0.5rem;
   width: 100%;
+}
+#cv form textarea, #onglet_editor .content textarea {
+  min-height: 150px;
 }
 #cv form input[type=submit], #onglet_editor .content input[type=submit] {
   cursor: pointer;

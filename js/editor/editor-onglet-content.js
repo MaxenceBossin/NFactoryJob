@@ -25,17 +25,17 @@ function refresh_general_content(){
             foundLine = true;
             const tr = $('<tr></tr>');
             let td = $('<td></td>');
-            const delete_line = $('<i data-section="'+lines_el[i].getLineNum()+'" class="fa-solid fa-trash"></i>').on('click', function(){
+/*            const delete_line = $('<i data-section="'+lines_el[i].getLineNum()+'" class="fa-solid fa-trash"></i>').on('click', function(){
                 const lineID = $(this).attr('data-section');
                 const _line = get_line_by_num(parseInt(lineID));
                 if(_line !== null){
                     destroy_section(_line);
                 }
-            });
+            });*/
             td.append($('<p>Section '+lines_el[i].getLineNum()+'</p>'));
-            if(lines_el[i].getLineNum() > 1 && lines_el[i].countModules() > 0){
+          /*  if(lines_el[i].getLineNum() > 1 && lines_el[i].countModules() > 0){
                 td.append(delete_line);
-            }
+            }*/
             tr.append(td);
             td = $('<td></td>');
             const _modules = lines_el[i].getModules();
