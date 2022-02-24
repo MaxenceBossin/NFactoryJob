@@ -80,7 +80,7 @@ function putNewCvLangue( $idCv,  $idLangue , $niveau = '1'):void
     $query->bindValue(':niveau', $niveau);
     $query->execute();
 }
-function putNewSoftskill( $idCv, $idSoftskill, string $description = ''):void
+function putNewCvSoftskill( $idCv, $idSoftskill, string $description = ''):void
 {
     global $pdo;
     $idCv     = cleanXssAjax($idCv);
@@ -95,7 +95,7 @@ function putNewSoftskill( $idCv, $idSoftskill, string $description = ''):void
     $query->execute();
 }
 
-function putNewCompetence($idCv,  $idCompetence , $niveau = '1', $description = ''):void
+function putNewCvCompetence($idCv,  $idCompetence , $niveau = '1', $description = ''):void
 {
     global $pdo;
     $idCv         = cleanXssAjax($idCv);
@@ -108,6 +108,31 @@ function putNewCompetence($idCv,  $idCompetence , $niveau = '1', $description = 
     $query->bindValue(':idCv', $idCv);
     $query->bindValue(':idCompetence', $idCompetence);
     $query->bindValue(':niveau', $niveau);
+    $query->bindValue(':description', $description);
+    $query->execute();
+}
+
+function putNewCvDiplome($idCv, $idEtablisement, $idDiplome, $dateDebut, $dateFin = '', $description =''):void
+{
+    global $pdo;
+    //
+    $idCv = cleanXssAjax($idCv);
+    $idEtablisement = cleanXssAjax($idEtablisement);
+    $idDiplome      = cleanXssAjax($idDiplome);
+    $dateDebut      = cleanXssAjax($dateDebut);
+    $dateFin        = cleanXssAjax($dateFin);
+    $description    = cleanXssAjax($description);
+
+    $dateFin        = (!empty($dateFin)) ? $dateFin : NULL;
+    $description = (!empty($description)) ? ucfirst(strtolower($description)) : NULL;
+    $sql = 'INSERT INTO `nfj_cv_diplome` ( `id_cv_dcv`, `id_etablisement_dcv`, `id_diplome_dcv`, `date_debut_dcv`, `date_fin_dcv`, `description_dcv`) VALUES (:idCv, :idEtablisement, :idDiplome, :$dateDebut, :dateFin, :description);';
+    echo $sql;
+    $query    = $pdo->prepare($sql);
+    $query->bindValue(':idCv', $idCv);
+    $query->bindValue(':idEtablisement', $idEtablisement);
+    $query->bindValue(':idDiplome', $idDiplome);
+    $query->bindValue(':dateDebut', $dateDebut);
+    $query->bindValue(':dateFin', $dateFin);
     $query->bindValue(':description', $description);
     $query->execute();
 }

@@ -8,29 +8,11 @@ require_once('inc/functions/request/selectCreationCv.php');
 require_once('inc/functions/request/insertCv.php');
 require_once('inc/functions/request/insert.php');
 require_once('inc/functions/toolbox.php');
-// putNewCvLangue(8,1,5);
-// putNewCompetence(12,1,3,'toto');
-// putNewEmplacementTravailCv(5,3);
-// putNewEmplacementTravailCv(5,5,'2022-03-18');
-// newEmplacement('departementTest','villetest','cptes');
-// putModule('nameModule',1,2,'showNameModule',1,
-// 2,'colormodule', 'fontColorModule', 'separatorColorModule', 'dataModule',
-// 1,2,3,4,5,
-// 6,7,8,9,'iconModule',
-// 'fontModule','profilPictureModule',3,2,1);
-// putNewCVHobie(2,2,'Test appel Fonction');
-// newLangue('C');
-// newCompetence('C#');
-// newSoftSkill('orGanisé');
-// newDiplome('test',2,2);
-// newMetier('UX designer');   
-// putNewCv('newCv','2022-02-15 16:46:40','newBackground','1','2','2');
-// putModule('test', '2', '2', '32222123', '2', '2', '222', '32', '3223', '32232323', '1', '111', '11', '11', '11', '11', '11', '11', '11', '211212', '1211221', '211212', '2121', '2112', '1');
-// newEtablissement('Lycée Malherbe',1,1);
-// putNewRechecheContrat(2,3); 
 
-putNewSoftskill('10','1','je peux rester concentre en toutes circonstances');
-putNewSoftskill('11','1');
+// putNewCvDiplome(11,2,3,'2021-02-24');
+// putNewCvDiplome(5,2,3,'2020-02-24','2022-02-24','test description cv 5');
+putNewCvDiplome(2,10,4,'2020-02-24');
+
 echo " OK: recup cv user ";
 // debug(getCvFromUser(1));
 echo'<br>';
