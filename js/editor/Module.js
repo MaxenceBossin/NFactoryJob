@@ -32,6 +32,18 @@ class Module{
         this.iconRadius = 0;
     }
 
+    setModuleID(id){
+        this.moduleID = id;
+    }
+
+    getFont(){
+        return this.font;
+    }
+
+    getIcon(){
+        return this.icon;
+    }
+
     getJson(){
         let data = {
             'name': this.moduleName,
