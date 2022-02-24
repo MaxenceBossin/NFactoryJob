@@ -11,25 +11,25 @@
 
 Une agence de recrutement cherche à moderniser sa lecture de CV.
 
-Avant, les candidats devaient envoyer des CV manuscrits à l'agence ou bien des PDF en ligne par mail.
+Avant, les candidats devaient envoyer des CV manuscrits à l'agence ou bien des PDFs en ligne par mail.
 
 Elle desire numériser son processus pour qu'un utilisateur puisse directement saisir son CV en ligne.  
-Une fois le CV créé par l'utilsateur (connecté ou non) les recruteurs du cabinet pourront le générer en PDF.  
-L'utilisateur pourra également le générer en PDF pour ces besoins personnels.
+Une fois le CV créé par l'utilsateur (connecté ou non), les recruteurs du cabinet pourront le générer en PDF.  
+L'utilisateur pourra également le générer en PDF pour ses besoins personnels.
 
 ## Réponse au besoin
 
 ### Compte
 
-Nous avons créé un site WEB via **WORDPRESS**
+Nous avons créé un site web via **WORDPRESS**
 
 Il y a trois rôles d'utlisateur :
 
 - Administrateur => Gestion des comptes via l'interface de wordpress
-- Recruteur => Possiblité de trier les CV correspondant au besoin des entreprises | possibilité de télécharger les CV en PDF
-- Chercheur d'emploi => Possibilité de s'enregister pour garder en mémoire ces informations | créer un CV
+- Recruteur => Possibilité de trier les CV correspondant au besoin des entreprises | possibilité de télécharger les CV en PDF
+- Chercheur d'emploi => Possibilité de s'enregister pour garder en mémoire ses informations | créer un CV
 
-### Technologies Utilisés
+### Technologies Utilisées
 
 ### **Backend**
 
@@ -43,7 +43,7 @@ Il y a trois rôles d'utlisateur :
 
 #### **Système de gestion de base de données**
 
-- **PhpMyAdmin** est une application Web de gestion pour les systèmes de gestion de base de donnée
+- **PhpMyAdmin** est une application Web de gestion pour les systèmes de gestion de base de données
 
 - **UML** de notre base de données
 
@@ -58,11 +58,11 @@ Il y a trois rôles d'utlisateur :
 ### **Installation de XAMPP, simule un serveur en local sur windows**
 
 Installation de Xampp (téléchargement de la version correspondant à votre système d'exploitation) : https://www.apachefriends.org/fr/index.html  
-Ensuite Allumer XAMMP cliquer sur RUN pour Apache et MySql
+Ensuite allumer XAMMP, cliquer sur RUN pour Apache et MySql
 
 ![Image XAMP](https://github.com/MaxenceBossin/NFactoryJob/blob/Maxence/imageReadMe/XAMP.PNG)
 
-Pour WINDOW :
+Pour WINDOWS :
 Une fois l'installation fini un dossier xampp s'est créé à l'endroit où vous l'avez installé.
 Normalement, il se situe sur votre disque C à l'emplacement : C:\xampp\htdocs
 
@@ -81,11 +81,11 @@ Il faut descendre un peu et cliquer sur le bouton "Télecharger WordPress 5.9"
 
 ![Image Installation de WordPress](https://github.com/MaxenceBossin/NFactoryJob/blob/dev/imageReadMe/wordpressInstallation.PNG)
 
-Vous allez ensuite telercharger un dossiers au format _ZIP_  
-Ouvrez le zip qu'on vient de telercharger  
-Si vous n'avez pas de quoi décomprésser un fichier ZIP vous pouvez installer WINRAR (gratuit) : https://www.win-rar.com/start.html?&L=10
+Vous allez ensuite télécharger un dossier au format _ZIP_  
+Ouvrez le zip que l'on vient de télécharger  
+Si vous n'avez pas de quoi décompresser un fichier ZIP, vous pouvez installer WINRAR (gratuit) : https://www.win-rar.com/start.html?&L=10
 
-Ensuite vous devez décomprésser le fichier dans votre dossier **htdocs**
+Ensuite vous devez décompresser le fichier dans votre dossier **htdocs**
 
 ### **Installation de WORDPRESS**
 
@@ -108,7 +108,7 @@ Ensuite cliquer sur `code` une petite fenêtre va s'ouvrir.
 
 ### **Installation du thème _NFactoryJob_**
 
-Rendez-vous dans votre explorateur de fichier et allez là ou vous voulez créer votre site.  
+Rendez-vous dans votre explorateur de fichier et allez là où vous voulez créer votre site.  
 Après cette étape nous allons commencer l'installation de **WORDPRESS** :
 
 ### **Installation de Wordpress :**
@@ -119,7 +119,7 @@ En premier lieu, nous allons installer les fichiers de wordpress dans le dossier
 Pour cela vous allez devoir ouvrir via (WinRar ou 7Zip) l'archive que vous avez téléchargé tout à l'heure.
 
 Dans cette archive vous allez trouver un fichier **"wordpress"**.  
- Ce fichier contient tout ce que le site à besoin pour fonctionner.
+ Ce fichier contient tout ce que le site a besoin pour fonctionner.
 
 Maintenant, il va falloir mettre le dossier dans le dossier de votre site.  
 Pour cela vous allez copier le dossier dans l'archive et le copier dans le dossier de votre site.
@@ -138,12 +138,23 @@ Pas de panique on vous aide :
 Tout d'abord, il va falloir marquer "`cd`" puis le chemin vers votre dossier racine du site, ce qui donne dans votre invite de commandes :
 
 ![Image lien vers theme](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lientheme.PNG)
+<<<<<<< HEAD
+=======
+  
+Une fois cette étape faites, vous allez pouvoir cloner le thème : pour cela toujours dans l'invite de commande vous allez devoir marquer :  
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 Une fois cette étape faite, vous allez pouvoir cloner le thème : pour cela toujours dans l'invite de commande vous allez devoir marquer :
 
 ![Image lien pour git clone](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/liengitclone.PNG)
 
+<<<<<<< HEAD
 Une fois tous les étapes exécutées le thème est installé.
+=======
+Une fois tous les étapes exécutées, le thème est installé.
+ 
+#### **Via ZIP :**  
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 #### **Via ZIP :**
 
@@ -156,13 +167,13 @@ Une fois dans ce dossier vous allez retrouver :
 
 ![Image dossierthemebase](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/dossiertheme.PNG)
 
-Ensuite, comme pour le fichier wordpress vous allez devoir ouvrir l'archive ou ce trouve le thème et glisser le thème avec les autres thèmes par défaut de wordpress.
+Ensuite, comme pour le fichier wordpress vous allez devoir ouvrir l'archive où se trouve le thème et glisser le thème avec les autres thèmes par défaut de wordpress.
 
 Ce qui doit donner :
 
 ![Image dossierthememodif](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/dossierthememodif.PNG)
 
-Une fois tous les étapes exécutées le thème est installé.
+Une fois tous les étapes exécutées, le thème est installé.
 
 ### **Mise en place de la BDD**
 
@@ -170,18 +181,30 @@ Pour la mise en place de la BDD vous allez devoir retrouner sur XAMPP et appuyez
 
 ![Image lancementMySQL](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lancementMySQL.PNG)
 
+<<<<<<< HEAD
 Vous allez avoir une page de "**phpMyAdmin**" qui s'est donc ouverte :
 
 Je vais donc maintenant vous expliquez comment créé une base de données pour wordpress :
+=======
+Vous allez avoir une page de "**phpMyAdmin**" qui s'est donc ouverte :  
+  
+Je vais donc maintenant vous expliquer comment créer une base de données pour wordpress :
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 ### **Création d'une base de données**
 
 - Première étape : vous allez devoir appuyer sur le bouton "**Nouvelle base de données**" sur la gauche du site.
 
 - Seconde étape : vous allez devoir créer la base de données :  
+<<<<<<< HEAD
   (Attention au nom de votre base de données, il faut éviter tous ce qui est espace, majuscule, accent).  
   Vous marquez par exemple le nom de votre site en remplaçant donc les espaces par des "\_".  
   Puis vous appuyer sur le bouton "Créer".
+=======
+(Attention au nom de votre base de données, il faut éviter tous ce qui est espace, majuscule, accent).  
+Vous marquez par exemple le nom de votre site en remplaçant donc les espaces par des "_".  
+Puis vous appuyez sur le bouton "Créer".  
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 ![Image nombasededonne](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/nombase.PNG)
 
@@ -215,11 +238,15 @@ Pour les utilisateurs d'ordinateur sur IOS donc sur **MAC** l'identifiant est le
 
 ![Image installateurwpbddmac](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/instalwpbbdmac.PNG)
 
+<<<<<<< HEAD
 L'Adresse de la base de données ne doit pas être changé et pour finir le préfixe des tables doit être changé par "**nfj\_**" le site à étais pensé avec ce prefix de table si celui la n'est pas bien rentré cela peux causer des bugs sur le site.
 
 Une fois ses informations inscrites vous pouvez passez à la prochaine étape :
 
 Pour cette étape vous allez simplement devoir enregistrer le nom du site, vos identifiants et un mot de passe :
+=======
+L'adresse de la base de données ne doit pas être changée et pour finir le préfixe des tables doit être changé par "**nfj_**" le site a été pensé avec ce préfixe de table si celui la n'est pas bien rentré cela peut causer des bugs sur le site.
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 Attention au mot de passe que vous mettez.  
 Bien mettre un mot de passe dont vous pouvez vous rappeler mais qui reste assez complexe pour éviter que n'importe qui vienne sur la partie admin de votre site !
@@ -229,10 +256,20 @@ Bien mettre un mot de passe dont vous pouvez vous rappeler mais qui reste assez 
 ### **Installation du thème _NFactoryJob_**
 
 Bien! Vous êtes maintenant dans la partie administateur du site.  
-Avant toute chose nous allons choisir le bon thème pour notre site pour cela rien de plus simple.  
+Avant toute chose nous allons choisir le bon thème pour notre site, pour cela rien de plus simple.  
 Il vous suffit de cliquer sur "Apparence" à droite de votre écran.  
+<<<<<<< HEAD
 Une fois cela fait 4 thèmes s'offrent à vous mais nous allons prendre celui qui nous interesse c'est à dire le thème NfactoryJob.  
 Pour l'activer, il suffit de passer votre curseur sur le thème et de cliquez sur "Activer".
+=======
+Une fois cela fait 4 thèmes s'offrent à vous mais nous allons prendre celui qui nous intéresse c'est-à-dire le thème NfactoryJob.  
+Pour l'activer, il suffit de passer votre curseur sur le thème et de cliquer sur "Activer".  
+  
+### **Configuration du thème _NFactoryJob_** 
+Une fois cette étape faites, nous allons faire une partie assez simple qui va faire en sorte que le site fonctionne bien, pour cela rendez-vous dans l'onglet "Réglages" puis "Permaliens".  
+  
+Vous allez donc devoir cliquer sur le bouton à gauche de "Titre de la publication" comme sur l'exemple ci dessous :  
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 ### **Configuration du thème _NFactoryJob_**
 
@@ -243,16 +280,26 @@ Vous allez donc devoir cliquer sur le bouton à gauche de "Titre de la publicati
 ![Image permalien](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/permalien.PNG)
 
 N'oubliez pas d'enregistrer les modifications et maintenant je vous laisse aller dans l'onglet "**Pages**".
+<<<<<<< HEAD
 
 Une fois dans cet onglet, deux pages par défaut seront déjà présentes mais elle ne nous interesse pas.  
+=======
+  
+Une fois dans cet onglet, deux pages par défaut seront déjà présentes mais elles ne nous intéressent pas.  
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 Nous allons donc créer notre page principale.  
 Pour cela en haut de la page vous allez devoir cliquez sur "Ajouter".
 
 Une fois sur cette page vous allez pouvoir donc suivre certaines étapes pour la création de la page.  
+<<<<<<< HEAD
 Première chose au niveau de "**Saisissez le titre**" vous allez pouvoir noté "**_HomePage_**" puis sur la droite de la page dans le petit menu dans la catégorie "**Modèle**" sélectionnez le modèle de page "**_HomePage_**" puis vous pouvez publier votre page avec le bouton en haut à droite du site.
+=======
+Première chose au niveau de "**Saisissez le titre**" vous allez pouvoir noter "***HomePage***" puis sur la droite de la page dans le petit menu dans la catégorie "**Modèle**" sélectionnez le modèle de page "***HomePage***" puis vous pouvez publier votre page avec le bouton en haut à droite du site.  
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 ![Image lecture](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/createpage.PNG)
 
+<<<<<<< HEAD
 Pour le bon fonctionnement du site vous allez devoir repêter plusieur fois cette étape pour crée les pages suivantes :
 
 . Inscription (modele de page : inscription)  
@@ -264,16 +311,30 @@ Pour le bon fonctionnement du site vous allez devoir repêter plusieur fois cett
 Après cette étape, nous allons mettre la page que nous venons de créer en page principale. Pour cela, je vous laisse aller au niveau de l'onglet "**Réglages**" puis dans "**Lecture**".
 
 Ce paramètre va dire au site quelle page afficher en premier pour cela il va falloir cliquez sur le bouton "**Une page statique**" et choisir comme 'Page d'accueil' la page "**HomePage**" comme indiqué ci dessous :
+=======
+Pour le bon fonctionnement du site vous allez devoir repêter plusieurs fois cette étape pour créer les pages suivantes :  
+
+. Inscription (modèle de page : inscription)  
+. Connexion (modèle de page : connexion)  
+. Editor (modèle de page : editor)  
+. Dashboard (modèle de page : dashboard)  
+. logout (modèle de page : logout)  
+
+Après cette étape, nous allons mettre la page que nous venons de créer en page principale. Pour cela, je vous laisse aller au niveau de l'onglet "**Réglages**" puis dans "**Lecture**".
+
+Ce paramètre va dire au site quelle page afficher en premier pour cela il va falloir cliquer sur le bouton "**Une page statique**" et choisir comme 'Page d'accueil' la page "**HomePage**" comme indiqué ci dessous :  
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 ![Image lecture](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/lecture.PNG)  
 Encore une fois n'oubliez pas d'enregistrer les modifications.
 
 ### **Comment passer un compte en recruteur**
 
-## **Information complémentaire**
+## **Informations complémentaires**
 
 ### **Enlever les thèmes qui nous servent à rien**
 
+<<<<<<< HEAD
 Dans cette étapes je vais vous expliquer comment enlever dans nos fichier les thèmes qui nous servent à rien et garder une interface admin propore.
 
 Pour cela rendez-vous dans le dossier thèmes de votre site qui se trouve pour rappel dans le dossier "wordpress\wp-content\themes"  
@@ -284,11 +345,24 @@ Pour notre site seul le dossier "**NFactoryJob**" nous interesse donc les trois 
 ![Image supprtheme](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/supprtheme.PNG)
 
 Une fois la manipulation faite votre fichier thème devrais resembler à l'exemple ci-dessus.
+=======
+Dans cette étape je vais vous expliquer comment enlever dans nos fichiers les thèmes qui nous servent à rien et garder une interface admin propre.  
+  
+Pour cela rendez-vous dans le dossier thèmes de votre site qui se trouve pour rappel dans le dossier "wordpress\wp-content\themes"  
+Une fois dans ce dossier nous allons donc enlever les thèmes qui ne sont pas utiles pour votre site :  
+Avant la manipulation nous retrouvont donc 4 dossiers et un fichier "index"  .
+Pour notre site seul le dossier "**NFactoryJob**" nous intéresse donc les trois autres fichiers nous allons pouvoir les supprimer mais attention à ne pas supprimer le fichier "index" il est important pour le fonctionnement du site.
+
+![Image supprtheme](https://github.com/MaxenceBossin/NFactoryJob/blob/Romain/imageReadMe/supprtheme.PNG)  
+  
+Une fois la manipulation faites votre fichier thème devrait resembler à l'exemple ci-dessus.  
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 ### **Mettre une images en avant**
 
 Pour ce site, certaines pages donc la page inscription et la page connexion utilisent le fonctionnement de l'image mise en avant nous allons donc voir comment faire cela :
 
+<<<<<<< HEAD
 Pour mettre une image en avant rendez-vous en premier lieux dans l'espace administrateur puis dans l'onglet "Médias".
 
 Dans cette onglet vous allez pouvoir ajouter l'image que vous voulez mettre en avant pour cela cliquer sur le bouton "Ajouter" puis sélectionnez l'image que vous voulais dans vos fichiers.
@@ -296,6 +370,15 @@ Dans cette onglet vous allez pouvoir ajouter l'image que vous voulez mettre en a
 Une fois cette étapes faites rendez-vous dans l'éditeur de la page _inscription_ qui se trouve dans l'onglet "Pages".
 
 Une fois dans l'onglet page vous n'avez plus qu'a cliquer sur la page que vous voulez modifier. Dans cette exemple nous allons modifier la page _inscription_.
+=======
+Pour mettre une image en avant rendez-vous en premier lieu dans l'espace administrateur puis dans l'onglet "Médias".  
+
+Dans cette onglet vous allez pouvoir ajouter l'image que vous voulez mettre en avant pour cela cliquer sur le bouton "Ajouter" puis sélectionnez l'image que vous voulez dans vos fichiers.  
+
+Une fois cette étape faites rendez-vous dans l'éditeur de la page *inscription* qui se trouve dans l'onglet "Pages".  
+
+Une fois dans l'onglet page vous n'avez plus qu'à cliquer sur la page que vous voulez modifier. Dans cette exemple nous allons modifier la page *inscription*. 
+>>>>>>> 5bc59a9da034baada98822669f43f1b710f67d77
 
 Une fois dans l'éditeur mettre une image en avant est simple, sur la droite de l'éditeur vous avez un menu, cherchez "**Image mise en avant**" puis cliquez dessus puis sur "**Definir l'image mise en avant**", choisissez l'une des images dans votre Médiathèque une fois fait vous pouvez cliquer sur Définir l'image mise en avant en bas à droite et voila votre image est mise en avant. Maintenant vous pouvez faire la même chose pour la page _connexion_.
 

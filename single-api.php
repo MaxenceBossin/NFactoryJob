@@ -154,6 +154,8 @@ elseif(strtolower(get_the_title()) === 'cvsavemodule'){
     $idcv = intval(trim(strip_tags($_POST['idcv'])));
     $bddid = intval(trim(strip_tags($_POST['bddid'])));
 
+    insertAll($data);
+
     if($bddid !== -1){
         updateModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $bddid);
     }

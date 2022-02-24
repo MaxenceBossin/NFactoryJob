@@ -650,6 +650,18 @@ textarea {
   opacity: 0.8;
 }
 
+#quit-preview {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  align-items: center;
+  align-content: center;
+}
+#quit-preview button {
+  width: max-content;
+  font-size: 1.2rem;
+}
+
 #preview-infos {
   position: fixed;
   top: 0;
@@ -1137,6 +1149,7 @@ FORM - INPUT SLIDER
 #header .wrap {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: "Quicksand", sans-serif;
   padding: 1.5rem;
 }
@@ -1293,7 +1306,7 @@ FORM - INPUT SLIDER
 #home .wrap_home:nth-child(2n) {
   flex-flow: row-reverse nowrap;
   background-color: rgba(21, 65, 119, 0.6);
-  color: white;
+  color: #2d2d2d;
 }
 @media (max-width: 700px) {
   #home .wrap_home:nth-child(2n) {
@@ -1595,6 +1608,7 @@ FORM - INPUT SLIDER
   flex-flow: column nowrap;
   align-items: center;
   align-content: center;
+  justify-content: center;
 }
 
 .field {
@@ -1603,6 +1617,7 @@ FORM - INPUT SLIDER
   gap: 0.5rem;
   align-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 0.3rem;
   width: 100%;
