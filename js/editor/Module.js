@@ -14,7 +14,7 @@ class Module{
         this.color = "#FFFFFF";
         this.fontColor = "#000000";
         this.separatorColor = "#000000";
-        this.data = [];
+        this.data = {};
 
         this.show_title = true;
         this.separator_size = 0;
@@ -30,6 +30,27 @@ class Module{
         this.profilePic = '';
         this.iconSize = 100;
         this.iconRadius = 0;
+        this.moduleBDDID = -1;
+    }
+
+    setModuleBDDID(id){
+        this.moduleBDDID = id;
+    }
+
+    getModuleBDDID(){
+        return this.moduleBDDID;
+    }
+
+    setModuleID(id){
+        this.moduleID = id;
+    }
+
+    getFont(){
+        return this.font;
+    }
+
+    getIcon(){
+        return this.icon;
     }
 
     getJson(){

@@ -123,6 +123,7 @@ $(document).on('mouseup', function(e){
                         actualModuleSection.removeModule(actualModule);
                         _section.addModule(actualModule);
                         actualModule.setLine(_section);
+                        actualModule.setModuleID(get_new_available_module_id());
                         drag_module.appendTo($("#line-" + _section.getLineNum()));
                         refresh_onglets_menu();
                         place_add_module();

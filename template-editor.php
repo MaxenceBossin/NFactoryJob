@@ -19,7 +19,7 @@ if(!empty($_GET['id'])){
 
     if(!empty($CV)){
         if(is_user_logged_in()){
-            if(get_current_user_id() === $CV['id_user']){
+            if(get_current_user_id() === intval($CV['id_user'])){
                 $canEdit = true;
             }
             else{
@@ -31,9 +31,34 @@ if(!empty($_GET['id'])){
         }
     }
     else{
-        $canEdit = true;
-        $idCv = 0;
+        $canEdit = false;
     }
+}
+
+if($idCv <= 0){
+    $userid = 0;
+    if(is_user_logged_in()){
+        $userid = get_current_user_id();
+    }
+    $version = '1';
+    $sql = 'INSERT INTO `nfj_cv` (`intitule`, `version`, `created_at`, `modified_at`, `id_user`, `background_color`)
+    VALUES ( :libelle, :version, NOW(), NOW(), :fkIdUser, :backgroundColor);';
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':libelle', 'Mon premier CV');
+    $query->bindValue(':version', $version);
+    $query->bindValue(':backgroundColor', '');
+    $query->bindValue(':fkIdUser', $userid);
+    $query->execute();
+
+    $sql = "SELECT id_cv FROM nfj_cv WHERE id_cv = (SELECT LAST_INSERT_ID());";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $idCv = intval($query->fetchColumn());
+
+    if($idCv > 0){
+        header('Location: ' . get_permalink() . '?id=' . $idCv);
+    }
+    die();
 }
 
 get_header();
@@ -72,13 +97,6 @@ echo "<script>const SIGNUP_URL = '".get_page_url('template-signup')."';</script>
 if(is_user_logged_in()){echo "<script>const LOGGED = 1;</script>";}
 else{echo "<script>const LOGGED = 0;</script>";}
 
-if($idCv <= 0){
-    $sql = "SELECT MAX(id_cv) FROM nfj_cv";
-    $query = $pdo->prepare($sql);
-    $query->execute();
-    $maxid = intval($query->fetchColumn()) + 1;
-    $idCv = $maxid;
-}
 echo "<script>const CV_ID = ".$idCv.";</script>";
 
 if($canEdit){

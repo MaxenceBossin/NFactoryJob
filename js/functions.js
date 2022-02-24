@@ -6,7 +6,7 @@ function ajax(name, fichierPhp, data = {}){
         url: fichierPhp,
         data: data,
         success: function(response){
-            if(name.includes('cv_')){
+            if(name.includes('cv_load')){
                 console.log(name);
                 console.log(response);
             }
