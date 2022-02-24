@@ -1,6 +1,6 @@
 class Module{
     constructor(moduleID, moduleName, moduleShownName = '') {
-        this.moduleID = moduleID;
+        this.setModuleID(moduleID);
         this.moduleName = moduleName;
         if(moduleShownName.length === 0){
             this.moduleShownName = moduleName;
@@ -42,6 +42,9 @@ class Module{
     }
 
     setModuleID(id){
+        if($('#module-' + this.moduleID).length){
+            $('#module-' + this.moduleID).attr('id', 'module-' + id);
+        }
         this.moduleID = id;
     }
 

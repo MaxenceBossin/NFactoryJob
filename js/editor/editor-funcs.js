@@ -367,7 +367,7 @@ function create_line(_num = -1){
     if(_num <= 0){
         _num = get_new_available_line_num();
     }
-
+    console.log('Création de la line ' + _num);
     const lineElement = $('<section id="line-'+_num+'" class="module-line"><span class="line-title">Section '+ _num +'</span></section>');
     modules.append(lineElement);
     let _line = new Line(_num);
@@ -376,7 +376,7 @@ function create_line(_num = -1){
     return _line;
 }
 
-function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
+function create_module(moduleID, moduleName, _width = 50, _lineNum = -1, fromLoad = false){
 
     if(moduleName.length === 0){
         return;
@@ -392,8 +392,13 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
     modules_el.push(_module);
 
     let _line = get_line_by_num(_lineNum);
-    if(_line === null || _line.countModules() + 1 > Line.IDEAL_NB_MODULES){
-        _line = create_line();
+    if(_line === null || (_line.countModules() + 1 > Line.IDEAL_NB_MODULES && !fromLoad)){
+        if(fromLoad){
+            _line = create_line(_lineNum);
+        }
+        else{
+            _line = create_line();
+        }
         _line.getDOMElement().append(module);
     }
     else{

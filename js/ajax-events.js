@@ -48,7 +48,7 @@ function cv_load(json){
     json.forEach(function(_m){
 
         if(idx > 0) {
-            const _mod = create_module(parseInt(_m.colone_module), _m.name_module, parseInt(_m.width_module), parseInt(_m.line_module));
+            const _mod = create_module(parseInt(_m.colone_module), _m.name_module, parseInt(_m.width_module), parseInt(_m.line_module), true);
 
             _mod.setBorderLeft(parseInt(_m.border_left_module));
             _mod.setBorderRight(parseInt(_m.border_right_module));
