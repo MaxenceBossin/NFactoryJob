@@ -31,8 +31,7 @@ function putNewCVHobie( $idCV,  $idLoisir, string $description = ''):void
     $idCv        = cleanXssAjax($idCV);
     $idLoisir    = cleanXssAjax($idLoisir);
     $description = cleanXssAjax($description);
-    $description = (!empty($description)) ? $description : NULL;
-    $description = ucfirst(strtolower($description));
+    $description = (!empty($description)) ? ucfirst(strtolower($description)) : NULL;
     $sql = 'INSERT INTO `nfj_hobbies` ( `description_hobby`, `id_cv_hobby`, `id_loisir_hobby`) VALUES ( :description, :idCV, :idLoisir);';
     $query = $pdo->prepare($sql);
     $query->bindValue(':idCV', $idCV);
@@ -68,7 +67,7 @@ function putNewEmplacementTravailCv($idCv, $idEmplacement, $readyToWorkAt = ''):
     $query->execute();
 }
 
-function putNewCvLangue( $idCv, int $idLangue , $niveau = '1'):void
+function putNewCvLangue( $idCv,  $idLangue , $niveau = '1'):void
 {
     global $pdo;
     $idCv     = cleanXssAjax($idCv);
@@ -79,5 +78,19 @@ function putNewCvLangue( $idCv, int $idLangue , $niveau = '1'):void
     $query->bindValue(':idCv', $idCv);
     $query->bindValue(':idLangue', $idLangue);
     $query->bindValue(':niveau', $niveau);
+    $query->execute();
+}
+function putNewSoftskill( $idCv, $idSoftskill, string $description = ''):void
+{
+    global $pdo;
+    $idCv     = cleanXssAjax($idCv);
+    $idSoftskill = cleanXssAjax($idSoftskill);
+    $description = cleanXssAjax($description);
+    $description = (!empty($description)) ? ucfirst(strtolower($description)) : NULL;
+    $sql      = 'INSERT INTO `nfj_cv_softskill` (`id_cv_fk`, `id_softskill_fk`, `description_softskill`) VALUES ( :idCv, :idSoftskill, :description);';
+    $query    = $pdo->prepare($sql);
+    $query->bindValue(':idCv', $idCv);
+    $query->bindValue(':idSoftskill', $idSoftskill);
+    $query->bindValue(':description', $description);
     $query->execute();
 }

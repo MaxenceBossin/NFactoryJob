@@ -28,6 +28,9 @@ require_once('inc/functions/toolbox.php');
 // putModule('test', '2', '2', '32222123', '2', '2', '222', '32', '3223', '32232323', '1', '111', '11', '11', '11', '11', '11', '11', '11', '211212', '1211221', '211212', '2121', '2112', '1');
 // newEtablissement('Lycée Malherbe',1,1);
 // putNewRechecheContrat(2,3); 
+
+putNewSoftskill('10','1','je peux rester concentre en toutes circonstances');
+putNewSoftskill('11','1');
 echo " OK: recup cv user ";
 // debug(getCvFromUser(1));
 echo'<br>';
