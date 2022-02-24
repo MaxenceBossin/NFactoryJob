@@ -9,6 +9,9 @@ require_once('inc/functions/request/insertCv.php');
 require_once('inc/functions/request/insert.php');
 require_once('inc/functions/toolbox.php');
 
+
+putNewEmplacementTravailCv(5,3);
+putNewEmplacementTravailCv(5,5,'2022-03-18');
 // newEmplacement('departementTest','villetest','cptes');
 // putModule('nameModule',1,2,'showNameModule',1,
 // 2,'colormodule', 'fontColorModule', 'separatorColorModule', 'dataModule',

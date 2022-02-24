@@ -31,6 +31,7 @@ function putNewCVHobie(int $idCV, int $idLoisir, string $description = ''):void
     $idCv        = cleanXssAjax($idCV);
     $idLoisir    = cleanXssAjax($idLoisir);
     $description = cleanXssAjax($description);
+    $description = (!empty($description)) ? $description : NULL;
     $description = ucfirst(strtolower($description));
     $sql = 'INSERT INTO `nfj_hobbies` ( `description_hobby`, `id_cv_hobby`, `id_loisir_hobby`) VALUES ( :description, :idCV, :idLoisir);';
     $query = $pdo->prepare($sql);
@@ -49,5 +50,20 @@ function putNewRechecheContrat(int $idCV, int $typecontrat):void
     $query = $pdo->prepare($sql);
     $query->bindValue(':idCV', $idCV);
     $query->bindValue(':typecontrat', $typecontrat);
+    $query->execute();
+}
+
+function putNewEmplacementTravailCv(int $idCv, int $idEmplacement, $readyToWorkAt = ''):void
+{
+    global $pdo;
+    $idCv           = cleanXssAjax($idCv);
+    $idEmplacement    = cleanXssAjax($idEmplacement);
+    $readyToWorkAt    = cleanXssAjax($readyToWorkAt);
+    $readyToWorkAt = (!empty($readyToWorkAt)) ? $readyToWorkAt : NULL;
+    $sql ='INSERT INTO `nfj_cv_emplacement` (`id_cv_fk`, `id_emplacement_fk`, `readyToWorkAt`) VALUES ( :idCv, :idEmplacement, :readyToWorkAt);';
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':idCv', $idCv);
+    $query->bindValue(':idEmplacement', $idEmplacement);
+    $query->bindValue(':readyToWorkAt', $readyToWorkAt);
     $query->execute();
 }
