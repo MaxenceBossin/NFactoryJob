@@ -306,7 +306,7 @@ function rechercheCv ($datas, bool $competences = false, bool $contrats = false,
         }
     }
     $sql = "
-    SELECT DISTINCT `id_cv`, `intitule`, `version`, `created_at`, `modified_at`
+    SELECT DISTINCT `nfj_cv`.`id_cv`,`nfj_cv`. `intitule`, `nfj_cv`.`version`,`nfj_cv`.`created_at`,`nfj_cv`.`modified_at`
     FROM `nfj_cv` 
     $joinCompetences
     $joinContrats
@@ -325,6 +325,7 @@ function rechercheCv ($datas, bool $competences = false, bool $contrats = false,
     $andDiplomes
     $andEmplacement
     ";
+    echo $sql;
     $query = $pdo->prepare($sql);
     $query->execute();
     return $query->fetchAll();

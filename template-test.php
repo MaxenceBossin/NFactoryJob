@@ -15,7 +15,7 @@ require_once('inc/functions/toolbox.php');
 // 1,2,3,4,5,
 // 6,7,8,9,'iconModule',
 // 'fontModule','profilPictureModule',3,2,1);
-
+// putNewCVHobie(2,2,'Test appel Fonction');
 // newLangue('C');
 // newCompetence('C#');
 // newSoftSkill('orGanisé');
@@ -24,7 +24,7 @@ require_once('inc/functions/toolbox.php');
 // putNewCv('newCv','2022-02-15 16:46:40','newBackground','1','2','2');
 // putModule('test', '2', '2', '32222123', '2', '2', '222', '32', '3223', '32232323', '1', '111', '11', '11', '11', '11', '11', '11', '11', '211212', '1211221', '211212', '2121', '2112', '1');
 // newEtablissement('Lycée Malherbe',1,1);
-
+// putNewRechecheContrat(2,3); 
 echo " OK: recup cv user ";
 // debug(getCvFromUser(1));
 echo'<br>';
