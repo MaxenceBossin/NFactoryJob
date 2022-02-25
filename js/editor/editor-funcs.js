@@ -56,6 +56,11 @@ function destroy_module(_module){
         return;
     }
 
+    const moduleBDDID = _module.getModuleBDDID();
+    ajax('cv_destroy_module', SITE_URL + 'api/cvdeletemodule', {
+        bddid: moduleBDDID
+    });
+
     if(selected_module !== null && selected_module.getModuleID() === _module.getModuleID()){
         unselect_module();
     }
@@ -371,7 +376,11 @@ function create_line(_num = -1){
     return _line;
 }
 
-function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
+function create_module(moduleID, moduleName, _width = 50, _lineNum = -1, fromLoad = false){
+
+    if(moduleName.length === 0){
+        return;
+    }
 
     if(_lineNum === -1 && get_last_line() !== null){
         _lineNum = get_last_line().getLineNum();
@@ -383,8 +392,13 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
     modules_el.push(_module);
 
     let _line = get_line_by_num(_lineNum);
-    if(_line === null || _line.countModules() + 1 > Line.IDEAL_NB_MODULES){
-        _line = create_line();
+    if(_line === null || (_line.countModules() + 1 > Line.IDEAL_NB_MODULES && !fromLoad)){
+        if(fromLoad){
+            _line = create_line(_lineNum);
+        }
+        else{
+            _line = create_line();
+        }
         _line.getDOMElement().append(module);
     }
     else{
@@ -409,6 +423,11 @@ function close_save_notif(){
 }
 
 function editor_request_save() {
+
+    if(READONLY){
+        return;
+    }
+
     if (save_request != null) {
         clearTimeout(save_request);
     }
@@ -455,27 +474,62 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
             });
             moduleItem.append(span);
         } else {
-            moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            if(type.toLowerCase() === 'slider'){
+                moduleItem.append($('<p class="desc">'+paramName+' ' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            }
+            else{
+                moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            }
         }
     }
 }
 
 function do_save(){
 
-    let CVdata = CV.getJson();
-    let Modulesdata = [];
+    if(READONLY){
+        return;
+    }
 
     for(let i=0;i<modules_el.length;i++){
         if(modules_el[i] !== null){
-            Modulesdata.push(modules_el[i].getJson());
+
+            ajax('cv_save_module', SITE_URL + 'api/cvSaveModule', {
+                moduleid: modules_el[i].getModuleID(),
+                name: modules_el[i].getModuleName(),
+                showName: modules_el[i].getModuleShownName(),
+                line: modules_el[i].getLine().getLineNum(),
+                width: modules_el[i].getLargeur(),
+                color: modules_el[i].getColor(),
+                fontColor: modules_el[i].getFontColor(),
+                separatorColor: modules_el[i].getSeparatorColor(),
+                data: JSON.stringify(modules_el[i].getData()),
+                showTitle: + modules_el[i].getShowTitle(),
+                separatorSize: modules_el[i].getSeparatorSize(),
+                separatorRadius: modules_el[i].getSeparatorRadius(),
+                borderTop: modules_el[i].getBorderTop(),
+                borderBottom: modules_el[i].getBorderBottom(),
+                borderRight: modules_el[i].getBorderRight(),
+                borderLeft: modules_el[i].getBorderLeft(),
+                borderRadius: modules_el[i].getBorderRadius(),
+                modeAffichage: modules_el[i].getModeAffichage(),
+                icon: modules_el[i].getIcon(),
+                font: modules_el[i].getFont(),
+                profilePic: modules_el[i].getProfilePic(),
+                iconSize: modules_el[i].getIconSize(),
+                iconRadius: modules_el[i].getIconRadius(),
+                bddid: modules_el[i].getModuleBDDID(),
+                idcv: CV_ID
+            });
         }
     }
 
-    let global = {CVdata, Modulesdata};
-    console.log('save');
-    console.log(global);
-
-    ajax('cv_save', SITE_URL + 'api/cvSave/?alldata=' + JSON.stringify(global), {});
+    setTimeout(function(){
+        ajax('cv_save', SITE_URL + 'api/cvSave', {
+            title: CV.getTitle(),
+            color: CV.getColor(),
+            idcv : CV_ID
+        });
+    }, 1000);
 }
 
 function on_save_end(){

@@ -38,6 +38,8 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* dashboard  */
 @import "inc/dashboard";
 
+
+
 @import "header_footer/header";
 /*ajout des sections ici*/
 
@@ -48,5 +50,7 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 @import "section/inscription";
 // Globals
 @import "inc/globals";
+/* cgu  */
+@import "section/cgu";
 
 @import "header_footer/footer";

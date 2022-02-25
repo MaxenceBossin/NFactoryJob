@@ -25,17 +25,17 @@ function refresh_general_content(){
             foundLine = true;
             const tr = $('<tr></tr>');
             let td = $('<td></td>');
-            const delete_line = $('<i data-section="'+lines_el[i].getLineNum()+'" class="fa-solid fa-trash"></i>').on('click', function(){
+/*            const delete_line = $('<i data-section="'+lines_el[i].getLineNum()+'" class="fa-solid fa-trash"></i>').on('click', function(){
                 const lineID = $(this).attr('data-section');
                 const _line = get_line_by_num(parseInt(lineID));
                 if(_line !== null){
                     destroy_section(_line);
                 }
-            });
+            });*/
             td.append($('<p>Section '+lines_el[i].getLineNum()+'</p>'));
-            if(lines_el[i].getLineNum() > 1 && lines_el[i].countModules() > 0){
+          /*  if(lines_el[i].getLineNum() > 1 && lines_el[i].countModules() > 0){
                 td.append(delete_line);
-            }
+            }*/
             tr.append(td);
             td = $('<td></td>');
             const _modules = lines_el[i].getModules();
@@ -408,6 +408,26 @@ function start_preview(canEdit){
         const p = $('<p>Lecture seule</p>');
         p.css("color", "white");
         quit_preview.append(p);
+        const button = $('<button>Télécharger en pdf</button>').on('click', function(){
+            let filename = CV.getTitle().replace(/[^a-z0-9]/gi, '_').toLowerCase() + '.pdf';
+            let options = {
+                filename:     filename,
+                image:        { type: 'jpg', quality: 0.95 },
+                jsPDF:        { unit: 'in', format: 'A4', orientation: 'portrait' },
+                html2canvas: {
+                    dpi: 300,
+                    letterRendering: true,
+                    useCORS: true
+                }
+            };
+            html2pdf().set(options).from(document.getElementById('cv')).save();
+        });
+        button.css("color", "rgb(12, 100, 166)");
+        button.css("background-color", "white");
+        button.css("border-radius", "5px");
+        button.css("border", "none");
+        quit_preview.append(p);
+        quit_preview.append(button);
         quit_preview.css("background-color", "rgb(12, 100, 166)");
     }
 

@@ -1,6 +1,6 @@
 class Module{
     constructor(moduleID, moduleName, moduleShownName = '') {
-        this.moduleID = moduleID;
+        this.setModuleID(moduleID);
         this.moduleName = moduleName;
         if(moduleShownName.length === 0){
             this.moduleShownName = moduleName;
@@ -14,7 +14,7 @@ class Module{
         this.color = "#FFFFFF";
         this.fontColor = "#000000";
         this.separatorColor = "#000000";
-        this.data = [];
+        this.data = {};
 
         this.show_title = true;
         this.separator_size = 0;
@@ -30,6 +30,30 @@ class Module{
         this.profilePic = '';
         this.iconSize = 100;
         this.iconRadius = 0;
+        this.moduleBDDID = -1;
+    }
+
+    setModuleBDDID(id){
+        this.moduleBDDID = id;
+    }
+
+    getModuleBDDID(){
+        return this.moduleBDDID;
+    }
+
+    setModuleID(id){
+        if($('#module-' + this.moduleID).length){
+            $('#module-' + this.moduleID).attr('id', 'module-' + id);
+        }
+        this.moduleID = id;
+    }
+
+    getFont(){
+        return this.font;
+    }
+
+    getIcon(){
+        return this.icon;
     }
 
     getJson(){
@@ -340,7 +364,7 @@ class Module{
 
         // Modules personnalisé
         else if(this.moduleName === 'Module personnalisé'){
-            this.generate_onemodule_item(module_items, 'contenu', 'Ajouter un contenu', 'textarea');
+            this.generate_onemodule_item(module_items, 'contenu', 'Ajouter un contenu', 'text');
         }
 
         // Module Contact
@@ -407,9 +431,9 @@ class Module{
                     const moduleItem = $('<div class="module-item"></div>');
                     moduleItem.append($('<p class="module-item-head-title">'+key+'</p>'));
                     add_module_item_param(this, moduleItem, 'expro', key, 'description', 'Ajouter une description', 'text', false);
-                    add_module_item_param(this, moduleItem, 'expro', key, 'description', 'Ajouter un établissement', 'text', false);
-                    add_module_item_param(this, moduleItem, 'expro', key, 'description', 'Ajouter une date de début', 'text', false);
-                    add_module_item_param(this, moduleItem, 'expro', key, 'description', 'Ajouter une date de fin', 'text', false);
+                    add_module_item_param(this, moduleItem, 'expro', key, 'etablissement', 'Ajouter un établissement', 'text', false);
+                    add_module_item_param(this, moduleItem, 'expro', key, 'date_debut', 'Ajouter une date de début', 'text', false);
+                    add_module_item_param(this, moduleItem, 'expro', key, 'date_fin', 'Ajouter une date de fin', 'text', false);
                     module_items.append(moduleItem);
                 });
             }
@@ -445,7 +469,7 @@ class Module{
                     if(this.font.length > 0){
                         p.css("font-family", this.font);
                     }
-                    add_module_item_param(this, moduleItem, 'langues', key, 'niveau', 'Ajouter un niveau', 'text', false);
+                    add_module_item_param(this, moduleItem, 'langues', key, 'niveau', 'Ajouter un niveau', 'slider', false, [1, 1, 5]);
                     module_items.append(moduleItem);
                 });
             }
@@ -465,7 +489,7 @@ class Module{
                         p.css("font-family", this.font);
                     }
                     add_module_item_param(this, moduleItem, 'competences', key, 'description', 'Ajouter une description', 'text', false);
-                    add_module_item_param(this, moduleItem, 'competences', key, 'niveau', 'Ajouter un niveau', 'text', false);
+                    add_module_item_param(this, moduleItem, 'competences', key, 'niveau', 'Ajouter un niveau', 'slider', false, [1, 1, 5]);
                     module_items.append(moduleItem);
                 });
             }
@@ -486,7 +510,7 @@ class Module{
                     }
                     add_module_item_param(this, moduleItem, 'formations', key, 'description', 'Ajouter une description', 'text', false);
                     add_module_item_param(this, moduleItem, 'formations', key, 'secteur', 'Ajouter un secteur', 'autocomplete', false);
-                    add_module_item_param(this, moduleItem, 'formations', key, 'niveau', 'Ajouter un niveau', 'autocomplete', false);
+                    add_module_item_param(this, moduleItem, 'formations', key, 'niveau', 'Ajouter un niveau', 'slider', false, [1, 1, 5]);
                     add_module_item_param(this, moduleItem, 'formations', key, 'etablissement', 'Ajouter un établissement', 'autocomplete', false);
                     module_items.append(moduleItem);
                 });

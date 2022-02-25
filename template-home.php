@@ -14,7 +14,7 @@ get_header();
         </div>
     </div>
     <div class="wrap_home <?php if(is_recruteur()){echo 'oranged';} ?>">
-        <div class="home-item">
+        <div class="home-item" style="color: <?= get_text_color_by_role(); ?>;">
             <h2>Une équipe dynamique et à l'écoute</h2>
             <p>NFactoryJob est constitué d'une équipe dynamique, toujours à la recherche de nouvelles opportunités correspondantes à votre profil !</p>
         </div>

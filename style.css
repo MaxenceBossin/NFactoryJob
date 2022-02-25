@@ -460,6 +460,7 @@ textarea {
   color: #5e80c9;
   cursor: pointer;
   width: max-content;
+  padding: 0.5rem 0.5rem 0.5rem 0;
 }
 #cv .wrap_cv .modules .add-item.pad-1 {
   padding-left: 1rem;
@@ -585,13 +586,16 @@ textarea {
   gap: 0.5rem;
   transition: all 0.35s;
 }
-#cv form input:not([type=range]):not([type=checkbox]), #cv form select, #onglet_editor .content input:not([type=range]):not([type=checkbox]), #onglet_editor .content select {
+#cv form input:not([type=range]):not([type=checkbox]), #cv form select, #cv form textarea, #onglet_editor .content input:not([type=range]):not([type=checkbox]), #onglet_editor .content select, #onglet_editor .content textarea {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   background-color: #d0d4dc;
   border: none;
   border-radius: 5px;
   padding: 0.5rem;
   width: 100%;
+}
+#cv form textarea, #onglet_editor .content textarea {
+  min-height: 150px;
 }
 #cv form input[type=submit], #onglet_editor .content input[type=submit] {
   cursor: pointer;
@@ -644,6 +648,18 @@ textarea {
 }
 #save-notif button:hover, #quit-preview button:hover {
   opacity: 0.8;
+}
+
+#quit-preview {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 0.5rem;
+  align-items: center;
+  align-content: center;
+}
+#quit-preview button {
+  width: max-content;
+  font-size: 1.2rem;
 }
 
 #preview-infos {
@@ -1133,6 +1149,7 @@ FORM - INPUT SLIDER
 #header .wrap {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-family: "Quicksand", sans-serif;
   padding: 1.5rem;
 }
@@ -1289,7 +1306,7 @@ FORM - INPUT SLIDER
 #home .wrap_home:nth-child(2n) {
   flex-flow: row-reverse nowrap;
   background-color: rgba(21, 65, 119, 0.6);
-  color: white;
+  color: #2d2d2d;
 }
 @media (max-width: 700px) {
   #home .wrap_home:nth-child(2n) {
@@ -1324,6 +1341,7 @@ FORM - INPUT SLIDER
 
 #connexion {
   padding-top: 1rem;
+  font-size: 1.6rem;
 }
 #connexion .success {
   color: green;
@@ -1337,7 +1355,9 @@ FORM - INPUT SLIDER
 #connexion .wrap h2 {
   margin-left: 3rem;
   margin-bottom: 1rem;
-  font-size: 2rem;
+  font-size: 3rem;
+  font-weight: 300;
+  color: black;
 }
 #connexion .wrap .box {
   display: flex;
@@ -1369,21 +1389,33 @@ FORM - INPUT SLIDER
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(124, 124, 124, 0.3);
-  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   padding: 2rem;
   margin-left: 3%;
   margin-right: 3%;
+  width: 100%;
+}
+#connexion .wrap .form label {
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.7);
 }
 #connexion .wrap .form input {
   padding-left: 0.5rem;
+  width: 50%;
+}
+@media (max-width: 700px) {
+  #connexion .wrap .form input {
+    width: 100%;
+  }
 }
 #connexion .wrap .form input[type=submit] {
   border: none;
   border-radius: 5px;
   background-color: #0c64a6;
   color: white;
-  padding: 0.6rem;
+  padding: 1rem;
   cursor: pointer;
   font-size: 1.4rem;
   margin: 0.8rem auto;
@@ -1392,18 +1424,31 @@ FORM - INPUT SLIDER
   color: #0c64a6;
   font-size: 1.4rem;
 }
+#connexion .wrap .form-button {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
 #connexion .wrap .form-example {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 #connexion .wrap .form-example input {
   border-radius: 5px;
+  width: 50%;
   height: 40px;
   border: none;
   margin-top: 1rem;
   margin-bottom: 1.6rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 3px 6px, rgba(0, 0, 0, 0.25) 0px 3px 6px;
+}
+@media (max-width: 700px) {
+  #connexion .wrap .form-example input {
+    width: 100%;
+  }
 }
 #connexion .wrap .form-example label {
   font-size: 1.6rem;
@@ -1411,6 +1456,8 @@ FORM - INPUT SLIDER
 
 #signup {
   padding-top: 1rem;
+  font-size: 1.6rem;
+  color: rgba(0, 0, 0, 0.7);
 }
 #signup .error {
   color: red;
@@ -1419,13 +1466,21 @@ FORM - INPUT SLIDER
   padding: 1rem;
 }
 #signup .wrap .account {
-  font-size: 2rem;
   padding-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 300;
+  color: black;
 }
 #signup .wrap .form {
   font-size: 1.3rem;
 }
+#signup .wrap label {
+  font-weight: 300;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.6rem;
+}
 #signup .wrap .box {
+  padding: 1rem;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -1440,8 +1495,8 @@ FORM - INPUT SLIDER
   }
 }
 #signup .wrap .box .box_text {
-  padding: 1rem;
-  width: 48%;
+  padding: 2rem;
+  width: 100%;
   background-color: rgba(124, 124, 124, 0.3);
   align-items: center;
   display: flex;
@@ -1538,13 +1593,12 @@ FORM - INPUT SLIDER
   justify-content: center;
   color: #0c64a6;
 }
-#signup .wrap .box .box_img {
-  width: 48%;
+#signup input {
+  width: 50%;
 }
 @media (max-width: 700px) {
-  #signup .wrap .box .box_img {
-    display: none;
-    width: 0;
+  #signup input {
+    width: 100%;
   }
 }
 
@@ -1554,6 +1608,7 @@ FORM - INPUT SLIDER
   flex-flow: column nowrap;
   align-items: center;
   align-content: center;
+  justify-content: center;
 }
 
 .field {
@@ -1562,9 +1617,26 @@ FORM - INPUT SLIDER
   gap: 0.5rem;
   align-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 0.3rem;
   width: 100%;
+}
+
+/* cgu  */
+#cgu {
+  padding: 3rem 0;
+}
+@media (max-width: 1200px) {
+  #cgu {
+    padding: 1rem;
+  }
+}
+#cgu strong {
+  font-size: 1rem;
+}
+#cgu h2 {
+  margin: 1rem 0;
 }
 
 #footer-map .wrap_footer {

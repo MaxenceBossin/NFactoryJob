@@ -1,6 +1,10 @@
 <?php
 /*Template Name: Inscription*/
 
+require_once "config.php";
+require_once('inc/functions/request/pdo.php');
+require_once('inc/functions/toolbox.php');
+
 if(is_user_logged_in()){
     header('Location: ' . path('dashboard'));
     die();
@@ -21,6 +25,16 @@ if(!empty($_POST['submitted'])) {
     }
     if($pass !== $pass2){
         $errors['password'] = 'Veuillez renseigner deux mots de passe identiques';
+    }
+
+    $sql = "SELECT count(ID) FROM nfj_users WHERE user_email = :email";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':email', $email);
+    $query->execute();
+    $nb = $query->fetchColumn();
+
+    if($nb > 0){
+        $errors['email'] = 'Cette adresse mail est déjà utilisée';
     }
 
     if(count($errors) == 0){
@@ -84,9 +98,6 @@ get_header();
                     </div>
 
                 </form>
-            </div>
-            <div class="box_img">
-                <?php the_post_thumbnail('signup')?>
             </div>
         </div>
     </div>    

@@ -89,6 +89,7 @@ $(document).on('mouseup', function(e){
 
     if(drag_module !== null){
         const over_element = $(e.target);
+
         if(over_element !== undefined && (over_element.hasClass('module') || over_element.hasClass('module-line'))){
             let _section = null;
             // Module
@@ -107,7 +108,7 @@ $(document).on('mouseup', function(e){
                 }
             }
             // Section
-            if(over_element.hasClass('module-line') && over_element.attr('id') !== 'add-line'){
+            if(_section === null && over_element.hasClass('module-line') && over_element.attr('id') !== 'add-line'){
                 const _line = get_line_by_num(parseInt(over_element.attr('id').split('-')[1]));
                 if(_line !== null){
                     _section = _line;
@@ -119,13 +120,14 @@ $(document).on('mouseup', function(e){
                 if(actualModule !== null){
                     const actualModuleSection = actualModule.getLine();
                     if(actualModuleSection !== null){
-
                         actualModuleSection.removeModule(actualModule);
                         _section.addModule(actualModule);
                         actualModule.setLine(_section);
+                        actualModule.setModuleID(get_new_available_module_id());
                         drag_module.appendTo($("#line-" + _section.getLineNum()));
                         refresh_onglets_menu();
                         place_add_module();
+                        editor_request_save();
                     }
                 }
             }
@@ -134,6 +136,11 @@ $(document).on('mouseup', function(e){
         drag_module.css("position", "relative");
         drag_module.css("top", "0");
         drag_module.css("left", "0");
+        const targettedModule = get_module_by_ID(parseInt(drag_module.attr('id').split('-')[1]));
+        if(targettedModule !== null){
+            drag_module.css("width", targettedModule.getLargeur() + '%');
+            drag_module.css("height", 'auto');
+        }
     }
     drag_module = null;
 });

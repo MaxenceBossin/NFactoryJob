@@ -4,7 +4,9 @@ require_once "config.php";
 require_once('inc/functions/request/pdo.php');
 require_once('inc/functions/request/selectRecruteur.php');
 require_once('inc/functions/request/selectCreationCv.php');
-// appel des apis URL 
+require_once('inc/functions/request/insert.php');
+require_once('inc/functions/request/insertCv.php');
+// appel des apis URL
 // -> 
 
 if(get_the_title() === 'getLangues'){
@@ -78,15 +80,13 @@ elseif(get_the_title() === 'getCVByEmplacement'){
     echo arrayJson(getCVByLangue($langue));
 }
 
-elseif(get_the_title() === 'refreshDashboard'){
+elseif(strtolower(get_the_title()) === 'refreshdashboard'){
 
-    if(empty($_GET['alldata'])){
+    if(empty($_POST['data'])){
         die('no data');
     }
 
-    $alldata = $_GET['alldata'];
-    $d = str_replace("\\", "", $alldata);
-    $manage = json_decode($d, true);
+    $data = trim(strip_tags($_POST['data']));
     $isRecruteur = is_recruteur();
 
     if(!is_user_logged_in()){
@@ -94,8 +94,8 @@ elseif(get_the_title() === 'refreshDashboard'){
     }
 
     if($isRecruteur){
-        $cvs = rechercheCv($manage);
-        echo json_encode($cvs);
+        $cvs = rechercheCv(stripslashes($data));
+        die(json_encode($cvs));
     }
     else{
         $userid = get_current_user_id();
@@ -103,21 +103,91 @@ elseif(get_the_title() === 'refreshDashboard'){
     }
 }
 
-elseif(get_the_title() === 'CvSave'){
-    if(empty($_GET['alldata'])){
-        die('no data');
-    }
-    $alldata = $_GET['alldata'];
-    $d = str_replace("\\", "", $alldata);
-    $manage = json_decode($d, true);
-    die('ok');
+elseif(strtolower(get_the_title()) === 'cvsave'){
+    $color = trim(strip_tags($_POST['color']));
+    $title = trim(strip_tags($_POST['title']));
+    $id_cv = trim(strip_tags($_POST['idcv']));
+    $sql = "UPDATE nfj_cv SET intitule = :intitule, background_color = :backcol WHERE id_cv = :idcv";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':intitule',$title);
+    $query->bindValue(':backcol',$color);
+    $query->bindValue(':idcv',$id_cv);
+    $query->execute();
+
+    die(json_encode([]));
 }
 
-elseif(get_the_title() === 'CvLoad'){
+elseif(strtolower(get_the_title()) === 'cvdeletemodule'){
+    $bddid = intval(trim(strip_tags($_POST['bddid'])));
+    $sql = "DELETE FROM nfj_modules WHERE id_module = :bddid";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':bddid',$bddid);
+    $query->execute();
+    die(json_encode([]));
+}
+
+elseif(strtolower(get_the_title()) === 'cvsavemodule'){
+
+    $name = trim(strip_tags($_POST['name']));
+    $moduleid = intval(trim(strip_tags($_POST['moduleid'])));
+    $showname = trim(strip_tags($_POST['showName']));
+    $line = intval(trim(strip_tags($_POST['line'])));
+    $width = intval(trim(strip_tags($_POST['width'])));
+    $color = trim(strip_tags($_POST['color']));
+    $fontColor = trim(strip_tags($_POST['fontColor']));
+    $separatorColor = trim(strip_tags($_POST['separatorColor']));
+    $data = trim(strip_tags($_POST['data']));
+    $showTitle = intval(trim(strip_tags($_POST['showTitle'])));
+    $separatorSize = intval(trim(strip_tags($_POST['separatorSize'])));
+    $separatorRadius = intval(trim(strip_tags($_POST['separatorRadius'])));
+    $borderTop = intval(trim(strip_tags($_POST['borderTop'])));
+    $borderBottom = intval(trim(strip_tags($_POST['borderBottom'])));
+    $borderRight = intval(trim(strip_tags($_POST['borderRight'])));
+    $borderLeft = intval(trim(strip_tags($_POST['borderLeft'])));
+    $borderRadius = intval(trim(strip_tags($_POST['borderRadius'])));
+    $modeAffichage = intval(trim(strip_tags($_POST['modeAffichage'])));
+    $icon = trim(strip_tags($_POST['icon']));
+    $font = trim(strip_tags($_POST['font']));
+    $profilePic = trim(strip_tags($_POST['profilePic']));
+    $iconSize = intval(trim(strip_tags($_POST['iconSize'])));
+    $iconRadius = intval(trim(strip_tags($_POST['iconRadius'])));
+    $idcv = intval(trim(strip_tags($_POST['idcv'])));
+    $bddid = intval(trim(strip_tags($_POST['bddid'])));
+
+    insertAll($data);
+
+    if($bddid !== -1){
+        updateModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $bddid);
+    }
+    else{
+        $newid = putModule($name, $moduleid, $showname, $line, $width, $color, $fontColor, $separatorColor, $data, $showTitle, $separatorSize, $separatorRadius, $borderTop, $borderBottom, $borderRight, $borderLeft, $borderRadius, $modeAffichage, $icon, $font, $profilePic, $iconSize, $iconRadius, $idcv);
+
+        die(json_encode([
+            'idbdd' => $newid,
+            'idmodule' => $moduleid
+        ]));
+    }
+
+    die(json_encode(['bddid' => $bddid]));
+}
+
+elseif(strtolower(get_the_title()) === 'cvload'){
     if(empty($_GET['idcv'])){
         die('no cv id');
     }
     $id_cv = intval($_GET['idcv']);
 
-    die('ok');
+    $sql = " SELECT * FROM nfj_cv WHERE id_cv = :id_cv";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':id_cv',$id_cv);
+    $query->execute();
+    $cvdata = $query->fetchAll();
+
+    $sql = " SELECT * FROM nfj_modules WHERE module_id_cv_FK = :id_cv ORDER BY line_module, colone_module";
+    $query = $pdo->prepare($sql);
+    $query->bindValue(':id_cv',$id_cv);
+    $query->execute();
+    $modules = $query->fetchAll();
+    $merge = array_merge($cvdata, $modules);
+    die(json_encode($merge));
 }
