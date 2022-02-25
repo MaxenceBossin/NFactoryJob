@@ -25,8 +25,28 @@ get_header();
     <div class="wrap_home centered">
         <div class="home-item">
             <h2>N'attendez plus<br /></h2>
-            <a href="<?=  path('inscription'); ?>"><button class="home-btn green">Créer un compte</button></a>
-            <a href="<?=  path('editor'); ?>"><button class="home-btn blue">Découvrir l'éditeur</button></a>
+
+            <?php
+            if(is_user_logged_in()){
+                if(is_recruteur()){
+                    ?>
+                    <a href="<?=  path('dashboard'); ?>"><button style="background-color: <?= get_color_by_role(); ?>" class="home-btn blue">Accéder à la CVthèque</button></a>
+                        <?php
+                }
+                else{
+                    ?>
+                    <a href="<?=  path('dashboard'); ?>"><button class="home-btn blue">Accéder à mes CV</button></a>
+                        <?php
+                }
+                ?>
+                    <?php
+            }
+            else{
+                ?>
+                <a href="<?=  path('inscription'); ?>"><button class="home-btn blue">Créer un compte</button></a>
+                    <?php
+            }
+            ?>
         </div>
     </div>
 </section>
