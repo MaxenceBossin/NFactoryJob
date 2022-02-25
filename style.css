@@ -125,11 +125,16 @@ textarea {
   color: rgba(0, 0, 0, 0.4);
 }
 #errorpage .btn {
+  cursor: pointer;
   padding: 1rem;
   border-radius: 5px;
   border: none;
   color: white;
+  transition: all 0.25s;
   background-color: #0c64a6;
+}
+#errorpage .btn:hover {
+  opacity: 0.8;
 }
 
 .wrap {

@@ -76,10 +76,15 @@ textarea{
         color: rgba(0,0,0,.4);
     }
     .btn{
+        cursor: pointer;
         padding: 1rem;
         border-radius: 5px;
         border: none;
         color: white;
+        transition: all .25s;
         background-color: rgb(12, 100, 166);
+        &:hover{
+            opacity: .8;
+        }
     }
 }
