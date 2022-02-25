@@ -1346,6 +1346,10 @@ FORM - INPUT SLIDER
 #connexion .success {
   color: green;
 }
+#connexion .error {
+  color: red;
+  font-size: 1rem;
+}
 #connexion strong {
   font-size: 1rem;
 }
