@@ -2,34 +2,34 @@
 /* Template Name: HomePage */
 get_header();
 ?>
-<div class="wrap_home">
-    <section id="image">
-        <?php $metas = get_post_meta(get_the_ID());?>
-        <?php the_post_thumbnail('full')?>
-    </section>
-    <section id="doubleBox">
-        <div id="candidat">
-            <h2>Candidat</h2>
-            <p><i class="fa-regular fa-clipboard"></i> Des recruteurs qui s'occupe de vos CV !</p>
-            <a href="" id="create">Créer un CV</a>
+<section id="home" style="background-color: <?= get_backcolor_by_role(); ?>;">
+    <div class="wrap_home">
+        <div class="home-item">
+            <h2>Construisez votre CV et développez votre visibilité</h2>
+            <p>Découvrez notre éditeur pour personnaliser votre CV et gagnez en visibilité auprès des recruteurs !</p>
+            <a href="<?=  path('editor'); ?>"><button style="background-color: <?= get_color_by_role(); ?>" class="home-btn blue">Découvrir l'éditeur</button></a>
         </div>
-        <div id="recruteur">
-            <h2>Recruteur</h2>
-            <p><i class="fa-regular fa-clipboard"></i> Une façon plus simple de geres vos CV reçu</p>
-            <a href="" id="consulter">Consulter les CV</a>
+        <div class="home-item">
+            <img src="<?= get_template_directory_uri(); ?>/asset/img/gif_editor.gif" alt="éditeur" />
         </div>
-    </section>
-    <section id="lastCv">
-        <h1>Derniers CV ajoutés</h1>
-        <div id="lesCv">
-            <i class="fa-solid fa-circle-chevron-left"></i>
-            <div id="cv"><img src="<?= get_template_directory_uri().'/asset/img/example.jpg' ?>"></div>
-            <div id="cv"><img src="<?= get_template_directory_uri().'/asset/img/example.jpg' ?>"></div>
-            <div id="cv"><img src="<?= get_template_directory_uri().'/asset/img/example.jpg' ?>"></div>
-            <div id="cv"><img src="<?= get_template_directory_uri().'/asset/img/example.jpg' ?>"></div>
-            <i class="fa-solid fa-circle-chevron-right"></i>
+    </div>
+    <div class="wrap_home <?php if(is_recruteur()){echo 'oranged';} ?>">
+        <div class="home-item" style="color: <?= get_text_color_by_role(); ?>;">
+            <h2>Une équipe dynamique et à l'écoute</h2>
+            <p>NFactoryJob est constitué d'une équipe dynamique, toujours à la recherche de nouvelles opportunités correspondantes à votre profil !</p>
         </div>
-    </section>
-</div>
+        <div class="home-item">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/OlHEe_55kyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="wrap_home centered">
+        <div class="home-item">
+            <h2>N'attendez plus<br /></h2>
+            <a href="<?=  path('inscription'); ?>"><button class="home-btn green">Créer un compte</button></a>
+            <a href="<?=  path('editor'); ?>"><button class="home-btn blue">Découvrir l'éditeur</button></a>
+        </div>
+    </div>
+</section>
+
 <?php
 get_footer();

@@ -3,7 +3,7 @@
 get_header();
 ?>
 
-<section id="mentionslegales">
+<section id="cgu">
     <div class="wrap">
         <h2>1. Présentation du site internet.</h2>
         <div class="ml-text">
@@ -52,7 +52,7 @@ get_header();
             <li>Pour mener des enquêtes de satisfaction facultatives sur NFactoryJob : adresse email.</li>
             <li>Pour mener des campagnes de communication (sms, mail) : numéro de téléphone, adresse email</li>
         </ul>
-        
+
         <p>NFactoryJob ne commercialise pas vos données personnelles qui sont donc uniquement utilisées par nécessité ou à des fins statistiques et d’analyses.</p>
 
         <h3>7.3 Droit d’accès, de rectification et d’opposition</h3>

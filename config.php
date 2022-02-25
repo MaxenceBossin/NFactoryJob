@@ -8,4 +8,4 @@ require_once('inc/functions/toolbox.php');
 $bdd      ='nfactoryjob';
 $serveur  ='localhost';
 $username = 'root';
-$password = 'root';
+$password = '';

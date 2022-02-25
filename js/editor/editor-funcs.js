@@ -56,6 +56,11 @@ function destroy_module(_module){
         return;
     }
 
+    const moduleBDDID = _module.getModuleBDDID();
+    ajax('cv_destroy_module', SITE_URL + 'api/cvdeletemodule', {
+        bddid: moduleBDDID
+    });
+
     if(selected_module !== null && selected_module.getModuleID() === _module.getModuleID()){
         unselect_module();
     }
@@ -163,12 +168,16 @@ function get_selected_menu_onglet(){
 }
 
 function close_onglet(){
-    onglet.css("right", "-35vw");
+    onglet.css("right", "-" + onglet.css('width'));
     onglet_opened = false;
     btn_i.fadeOut('fast', function(){
         btn_i.attr('class', 'fa-solid fa-arrow-left');
         btn_i.fadeIn('fast');
     });
+    content_module.empty();
+    content_general.empty();
+    content_general.css("display", "none");
+    content_module.css("display", "none");
 }
 
 function unselect_module(){
@@ -209,7 +218,6 @@ function place_add_module(deploy_last_module = false){
     }
 
     if(!$('.module-line').length){
-        console.log('create_line0');
         create_line();
     }
 
@@ -223,7 +231,6 @@ function place_add_module(deploy_last_module = false){
                 if(!$(this).hasClass('generated')){
                     $(this).addClass('generated');
                     generate_add_cv_module($(this));
-                    close_onglet();
                 }
             });
 
@@ -235,7 +242,6 @@ function place_add_module(deploy_last_module = false){
     if(deploy_last_module && last_module !== null){
         last_module.addClass('generated');
         generate_add_cv_module(last_module);
-        close_onglet();
     }
 
     const last_line = get_last_line();
@@ -275,6 +281,33 @@ function on_color_update(el){
             editor_request_save();
         }
     }
+    else if(el.attr('id').startsWith('fontcolor_module_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setFontColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
+    else if(el.attr('id').startsWith('separator_module_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setSeparatorColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
+    else if(el.attr('id').startsWith('border_col_')){
+        let _data = el.attr('id').split('_');
+        const _module = get_module_by_ID(parseInt(_data[2]));
+        if(_module != null){
+            _module.setBordersColor(el.val());
+            _module.refresh();
+            editor_request_save();
+        }
+    }
 
     if(el.attr('id') === 'back-color'){
         CV.setColor(el.val());
@@ -298,12 +331,12 @@ function generate_add_cv_module(parent){
             ['Expériences personnelles', true],
             ['Expériences professionnelles', true],
             ['Formations', true],
-            ['Icône (inactif)', false],
+            ['Icône', false],
             ['Informations', true],
             ['Langues', true],
             ['Loisirs', true],
             ['Module personnalisé', false],
-            ['Photo de profil (inactif)', false]
+            ['Image', false]
         ];
         let fItems = [];
         let found = false;
@@ -343,27 +376,29 @@ function create_line(_num = -1){
     return _line;
 }
 
-function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
+function create_module(moduleID, moduleName, _width = 50, _lineNum = -1, fromLoad = false){
+
+    if(moduleName.length === 0){
+        return;
+    }
 
     if(_lineNum === -1 && get_last_line() !== null){
         _lineNum = get_last_line().getLineNum();
     }
 
-    const module = $('<div id="module-'+moduleID+'" class="module"></div>').on('click', function() {
-        const _module = get_module_by_ID(get_module_element_id($(this)));
-        if (_module !== null) {
-            select_module(_module);
-            refresh_onglets_menu();
-        }
-    });
+    const module = $('<div id="module-'+moduleID+'" class="module"></div>');
 
     let _module = new Module(moduleID, moduleName);
     modules_el.push(_module);
 
     let _line = get_line_by_num(_lineNum);
-    if(_line === null || _line.countModules() + 1 > Line.IDEAL_NB_MODULES){
-        console.log('create_line1');
-        _line = create_line();
+    if(_line === null || (_line.countModules() + 1 > Line.IDEAL_NB_MODULES && !fromLoad)){
+        if(fromLoad){
+            _line = create_line(_lineNum);
+        }
+        else{
+            _line = create_line();
+        }
         _line.getDOMElement().append(module);
     }
     else{
@@ -371,7 +406,7 @@ function create_module(moduleID, moduleName, _width = 50, _lineNum = -1){
     }
     _line.addModule(_module);
     _module.setLine(_line);
-    _module.setWidth(_width);
+    _module.setLargeur(_width);
     _module.refresh();
     place_add_module();
     return _module;
@@ -388,6 +423,11 @@ function close_save_notif(){
 }
 
 function editor_request_save() {
+
+    if(READONLY){
+        return;
+    }
+
     if (save_request != null) {
         clearTimeout(save_request);
     }
@@ -398,14 +438,8 @@ function editor_request_save() {
             save_notif_text.empty();
             save_notif_text.text('Sauvegarde en cours ...');
             save_request = setTimeout(function () {
-                save_notif_text.text('Sauvegarde effectuée');
-                const i = $('<i class="fa-solid fa-check"></i>');
-                save_notif_text.append(i);
-                i.fadeOut('fast');
-                i.fadeIn('fast');
-                save_en_cours = false;
-                close_save_notif();
-            }, 1000);
+                do_save();
+            }, 300);
         }, 500);
     }, 1000);
 }
@@ -427,7 +461,9 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
     let _moduleData = module.getData();
     if(_moduleData.hasOwnProperty(paramCategory)) {
         if (!_moduleData[paramCategory].hasOwnProperty(paramItem) || !_moduleData[paramCategory][paramItem].hasOwnProperty(paramName) || _moduleData[paramCategory][paramItem][paramName].length === 0) {
-            const add_param = $('<span class="add-item pad-1">+ ' + showText + '</span>').on('click', function () {
+            const span = $('<span class="add-item pad-1">+ ' + showText + '</span>');
+            span.unbind('click');
+            span.on('click', function () {
                 const _form = create_form('module_item_add_' + paramCategory + '_' + paramName);
                 create_input(paramName, showText, _form, type, _data);
                 build_form(_form, 'Ajouter', [paramItem], removable_form);
@@ -436,9 +472,72 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
                     $(this).remove();
                 }
             });
-            moduleItem.append(add_param);
+            moduleItem.append(span);
         } else {
-            moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            if(type.toLowerCase() === 'slider'){
+                moduleItem.append($('<p class="desc">'+paramName+' ' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            }
+            else{
+                moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            }
         }
     }
+}
+
+function do_save(){
+
+    if(READONLY){
+        return;
+    }
+
+    for(let i=0;i<modules_el.length;i++){
+        if(modules_el[i] !== null){
+
+            ajax('cv_save_module', SITE_URL + 'api/cvSaveModule', {
+                moduleid: modules_el[i].getModuleID(),
+                name: modules_el[i].getModuleName(),
+                showName: modules_el[i].getModuleShownName(),
+                line: modules_el[i].getLine().getLineNum(),
+                width: modules_el[i].getLargeur(),
+                color: modules_el[i].getColor(),
+                fontColor: modules_el[i].getFontColor(),
+                separatorColor: modules_el[i].getSeparatorColor(),
+                data: JSON.stringify(modules_el[i].getData()),
+                showTitle: + modules_el[i].getShowTitle(),
+                separatorSize: modules_el[i].getSeparatorSize(),
+                separatorRadius: modules_el[i].getSeparatorRadius(),
+                borderTop: modules_el[i].getBorderTop(),
+                borderBottom: modules_el[i].getBorderBottom(),
+                borderRight: modules_el[i].getBorderRight(),
+                borderLeft: modules_el[i].getBorderLeft(),
+                borderRadius: modules_el[i].getBorderRadius(),
+                modeAffichage: modules_el[i].getModeAffichage(),
+                icon: modules_el[i].getIcon(),
+                font: modules_el[i].getFont(),
+                profilePic: modules_el[i].getProfilePic(),
+                iconSize: modules_el[i].getIconSize(),
+                iconRadius: modules_el[i].getIconRadius(),
+                bddid: modules_el[i].getModuleBDDID(),
+                idcv: CV_ID
+            });
+        }
+    }
+
+    setTimeout(function(){
+        ajax('cv_save', SITE_URL + 'api/cvSave', {
+            title: CV.getTitle(),
+            color: CV.getColor(),
+            idcv : CV_ID
+        });
+    }, 1000);
+}
+
+function on_save_end(){
+    save_notif_text.text('Sauvegarde effectuée');
+    const i = $('<i class="fa-solid fa-check"></i>');
+    save_notif_text.append(i);
+    i.fadeOut('fast');
+    i.fadeIn('fast');
+    save_en_cours = false;
+    close_save_notif();
 }

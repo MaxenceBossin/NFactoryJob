@@ -1,30 +1,143 @@
+
+
 #signup{
+    padding-top: 1rem;
+    font-size: 1.6rem;
+    .error{
+        color: red;
+    }
+    color: rgba(0,0,0,.7);
     .wrap{
+        padding: 1rem;
         .account{
-            font-size: 2rem;
             padding-bottom: 1rem;
+            font-size: 3rem;
+            font-weight: 300;
+            color: black;
         }
-        div.box{
-            background-color: #E3E3E3;
-            text-align: center;
+        .form{
+            font-size: 1.3rem;
+        }
+        label{
+            font-weight: 300;
+            color: rgba(0,0,0,.7);
+            font-size: 1.6rem;
+        }
+        .box{
+            padding: 1rem;
             display: flex;
-            border-radius: 10px;
-        }
-            .box_text{
-                padding: 3rem;
-                p{
-                    margin-bottom: 1rem;
-                }
+            flex-flow: row nowrap;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            gap: 1rem;
+            @include breakpoints(tablettebig){
+                gap: 0;
             }
+            width: 100%;
+            .box_text{
+                padding: 2rem;
+                width: 100%;
+                @include breakpoints(tablettebig){
+                    width: 100%;
+                    text-align: center;
+                }
+                background-color: rgba($color: #7c7c7c, $alpha: .3);
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                border-radius: 10px;
+                #vous{
+                    display: flex;
+                    justify-content: center;
+                }
+                .box_text{
+                    padding: 3rem;
+                }
                 .checkbox_cr{
                     display: flex;
-                    .candidat{
-                        margin-right: 1.5rem;
+                    justify-content: center;
+                    margin-left: 3rem;
+                    label{
+                        margin-right: 3rem;
+                    }
+                    input{
+                        margin-top: 1.2%;
                     }
                 }
+                #mail{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
                     input{
-                        margin-bottom: 1rem;
-                        padding: 0.5rem 2rem;
+                        border-radius: 5px;
+                        height: 40px;
+                        border: none;
+                        margin-top: 1rem;
+                        margin-bottom: 1.6rem;
+                        @include boxShadow($colorblack)
                     }
+                }
+                #mdp{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    input{
+                        border-radius: 5px;
+                        height: 40px;
+                        border: none;
+                        margin-top: 1rem;
+                        margin-bottom: 1.6rem;
+                        @include boxShadow($colorblack);
+                    }
+                }
+                #cmdp{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    input{
+                        border-radius: 5px;
+                        height: 40px;
+                        border: none;
+                        margin-top: 1rem;
+                        margin-bottom: 1.6rem;
+                        @include boxShadow($colorblack)
+                    }
+                }
+                input{
+                    margin-bottom: 1rem;
+                    padding: 0.5rem 2rem;
+                }
+                input[type=submit]{
+                    border: none;
+                    border-radius: 5px;
+                    background-color: $mainColor;
+                    color: $colorwhite;
+                    padding: .6rem;
+                    font-size: 1.4rem;
+                    margin: .8rem auto;
+                }
+                #cgu a{
+                    color : $mainColor;
+                }
+                #possede{
+                    display: flex;
+                    flex-flow: column nowrap;
+                    align-content: center;
+                    align-items: center;
+                }
+                #possede a{
+                    display: flex;
+                    justify-content: center;
+                    color : $mainColor;
+                }
+            }
+        }
+    }
+    input{
+        width: 50%;
+        @include breakpoints(tablettebig){
+            width: 100%;
+        }
     }
 }

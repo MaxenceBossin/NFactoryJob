@@ -31,7 +31,15 @@ function module_item_add(formName, form, data, secondary_infos){
     const _module = get_selected_module();
     if(_module != null){
         let _data = _module.getData();
+
+        if(!_data.hasOwnProperty(_parts[3])){
+            _data[_parts[3]] = {};
+        }
+        if(!_data[_parts[3]].hasOwnProperty(secondary_infos[0])) {
+            _data[_parts[3]][secondary_infos[0]] = {};
+        }
         _data[_parts[3]][secondary_infos[0]][_parts[4]] = data[_parts[4]];
+
         _module.updateData(_data);
     }
 }
@@ -42,19 +50,13 @@ function module_add_category(formName, form, data){
     if(_module !== null){
         const _data = _module.getData();
 
-        if(!_data.hasOwnProperty(_parts[3])){
-            _data[_parts[3]] = [];
+        if(!_data.hasOwnProperty(_parts[3])) {
+            _data[_parts[3]] = {};
+        }
+        if(!_data[_parts[3]].hasOwnProperty(data[_parts[3]])) {
+            _data[_parts[3]][data[_parts[3]]] = {};
         }
 
-        if(_parts[3] === data[_parts[3]]){
-            _data[_parts[3]] = [];
-        }
-        else{
-            if(!_data.hasOwnProperty(_parts[3][data[_parts[3]]])){
-                _data[_parts[3]][data[_parts[3]]] = [];
-            }
-            _data[_parts[3]][data[_parts[3]]] = [];
-        }
         _module.updateData(_data);
     }
 }
@@ -75,9 +77,29 @@ function editor_add_cv_module(form, data, secondary_infos){
     editor_request_save();
 }
 
+/** Global **/
+
 function form_error(form, field, error){
     const span_error = form.find('span#error-' + field);
     if(span_error !== undefined){
         span_error.text(error);
     }
 }
+
+function input_error(field, error){
+    const span_error = $('span#error-' + field);
+    if(span_error.length){
+        span_error.text(error);
+    }
+}
+
+$(document).on('click', function(e) {
+    const element = $(e.target);
+    if(element.length){
+        if(!element.hasClass('input_wrapper') && !element.hasClass('autocomplete') && !element.hasClass('autocomplete-item')){
+            $('.autocomplete').each(function(){
+                $(this).css("display", "none");
+            });
+        }
+    }
+});

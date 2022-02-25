@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 function assetImg() {
     return  get_template_directory_uri().'/asset/img/';
@@ -66,4 +67,77 @@ function metaTitle(string $data): string {
         return '<title>document</title>';
     }
     
+}
+
+
+function showJson($data)
+{
+    header("Content-type: application/db-projects");
+    $json = json_encode($data, JSON_PRETTY_PRINT);
+    if ($json) {
+        die($json);
+    } else {
+        die('error in db-projects encoding');
+    }
+}
+
+function get_page_url($template_name)
+{
+    $pages = get_posts([
+        'post_type' => 'page',
+        'post_status' => 'publish',
+        'meta_query' => [
+            [
+                'key' => '_wp_page_template',
+                'value' => $template_name.'.php',
+                'compare' => '='
+            ]
+        ]
+    ]);
+    if(!empty($pages))
+    {
+        foreach($pages as $pages__value)
+        {
+            return get_permalink($pages__value->ID);
+        }
+    }
+    return get_bloginfo('url');
+}
+
+function arrayJson(array $requestResult): string
+{
+    return (json_encode($requestResult, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+}
+
+function is_recruteur() {
+    $user = wp_get_current_user();
+    if ( in_array( 'recruteur', (array) $user->roles ) || in_array( 'administrator', (array) $user->roles ) ) {
+        return true;
+    }
+    return false;
+}
+
+function get_backcolor_by_role(){
+    if(is_recruteur()){
+        return "#fad5b4";
+    }
+    return "rgb(176, 214, 248)";
+}
+
+function get_text_color_by_role(){
+    if(is_recruteur()){
+        return "#2d2d2d";
+    }
+    return "white";
+}
+
+function get_color_by_role(){
+    if(is_recruteur()){
+        return "#D6430A";
+    }
+    return "rgb(12, 100, 166)";
+}
+
+function get_good_logo(){
+    echo '<a href="'.get_site_url().'" class="main-title"><span style="color: '.get_color_by_role().';">N</span>Factory<span style="color: '.get_color_by_role().';">Job</span></a>';
 }

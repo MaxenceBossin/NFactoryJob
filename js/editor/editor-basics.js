@@ -7,6 +7,7 @@ const btn_onglet_general = $('#onglet_editor #btn-onglet-general');
 const btn_onglet_module = $('#onglet_editor #btn-onglet-module');
 const save_notif = $('#save-notif');
 const save_notif_text = $('#save-notif p');
+const quit_preview = $('#quit-preview');
 
 let modules_el = [];
 let lines_el = [];
@@ -17,13 +18,20 @@ let currentMousePos = { x: -1, y: -1 };
 let lastDragMousePos = null;
 
 let generating_pdf = false;
+let preview_save = null;
+let preview_mode = false;
+
+let icons = [];
+let fonts = [];
 
 // Todo
 
 $( document ).ready(function() {
-    open_onglet();
-    close_save_notif();
-    place_add_module();
+    show_loading();
+    ajax('all_icons', THEME_URL + 'ajax/editor/get_icons.php', {});
+    ajax('all_fonts', THEME_URL + 'ajax/editor/get_google_fonts.php', {});
+    api_load_all();
+    ajax('cv_load', SITE_URL + 'api/cvLoad/?idcv=' + CV_ID, {});
 });
 
 btn_onglet_general.on('click', function(){
@@ -62,7 +70,13 @@ $(document).on('mousedown', function(e){
                 $('body').addClass('noselect');
             }
             $('body').css("cursor", "move");
+            const width = $(e.target).parent().parent().css("width");
+            const height = $(e.target).parent().parent().css("height");
             drag_module = $(e.target).parent().parent();
+            drag_module.css("position", 'fixed');
+            drag_module.css("width", width);
+            drag_module.css("height", height);
+            drag_module.css("z-index", "20");
         }
     }
 });
@@ -75,6 +89,7 @@ $(document).on('mouseup', function(e){
 
     if(drag_module !== null){
         const over_element = $(e.target);
+
         if(over_element !== undefined && (over_element.hasClass('module') || over_element.hasClass('module-line'))){
             let _section = null;
             // Module
@@ -93,7 +108,7 @@ $(document).on('mouseup', function(e){
                 }
             }
             // Section
-            if(over_element.hasClass('module-line') && over_element.attr('id') !== 'add-line'){
+            if(_section === null && over_element.hasClass('module-line') && over_element.attr('id') !== 'add-line'){
                 const _line = get_line_by_num(parseInt(over_element.attr('id').split('-')[1]));
                 if(_line !== null){
                     _section = _line;
@@ -105,20 +120,54 @@ $(document).on('mouseup', function(e){
                 if(actualModule !== null){
                     const actualModuleSection = actualModule.getLine();
                     if(actualModuleSection !== null){
-
                         actualModuleSection.removeModule(actualModule);
                         _section.addModule(actualModule);
                         actualModule.setLine(_section);
+                        actualModule.setModuleID(get_new_available_module_id());
                         drag_module.appendTo($("#line-" + _section.getLineNum()));
                         refresh_onglets_menu();
                         place_add_module();
+                        editor_request_save();
                     }
                 }
             }
         }
+        drag_module.css("z-index", "2");
         drag_module.css("position", "relative");
         drag_module.css("top", "0");
         drag_module.css("left", "0");
+        const targettedModule = get_module_by_ID(parseInt(drag_module.attr('id').split('-')[1]));
+        if(targettedModule !== null){
+            drag_module.css("width", targettedModule.getLargeur() + '%');
+            drag_module.css("height", 'auto');
+        }
     }
     drag_module = null;
 });
+
+$('#quit-preview button').on('click', function(){
+    if(preview_mode && preview_save !== null){
+        const preview = $('#preview-infos');
+        $('#preview-infos .content').empty();
+        preview.css("display", "block");
+        append_preview('Mise à jour de l\'éditeur');
+        $('#cv .wrap_cv .modules').remove();
+        $('#cv .wrap_cv').append(preview_save);
+        setTimeout(function(){
+            $('#save-notif').css("display", "block");
+            $('#onglet_editor').css("display", "block");
+            quit_preview.css("bottom", "-100px");
+            append_preview('Mise à jour terminée', true);
+            setTimeout(function(){
+                previewMode = false;
+                refresh_all_modules();
+                modules = $('#cv .modules');
+                place_add_module();
+                generating_pdf = false;
+                preview.fadeOut('fast', function(){
+                    preview.css("display", "none");
+                });
+            }, 1000);
+        }, 1500);
+    }
+})
