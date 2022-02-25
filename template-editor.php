@@ -62,8 +62,9 @@ if($idCv <= 0){
 
     if($idCv > 0){
         header('Location: ' . get_permalink() . '?id=' . $idCv);
+        die('redirection vers CV ' . $idCv);
     }
-    die();
+    die('cannot create new CV');
 }
 
 get_header();

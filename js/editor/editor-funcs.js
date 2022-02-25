@@ -474,7 +474,12 @@ function add_module_item_param(module, moduleItem, paramCategory, paramItem, par
             });
             moduleItem.append(span);
         } else {
-            moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            if(type.toLowerCase() === 'slider'){
+                moduleItem.append($('<p class="desc">'+paramName+' ' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            }
+            else{
+                moduleItem.append($('<p class="desc">' + _moduleData[paramCategory][paramItem][paramName] + '</p>'));
+            }
         }
     }
 }
