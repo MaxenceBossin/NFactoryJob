@@ -10,15 +10,9 @@
 get_header();
 ?>
 <section id="errorpage">
-    <div class="message-box">
-        <h1>404</h1>
-        <p>Page not found</p>
-        <div class="buttons-con">
-            <div class="action-link-wrap">
-                <a class="link-button link-back-button">Back</a>
-            </div>
-        </div>
-    </div>
+    <h1>404</h1>
+    <p>La page demandée n'existe pas</p>
+    <a href="<?= get_site_url(); ?>"><button class="btn blue">Retour à l'accueil</button></a>
 
 </section>
 <?php

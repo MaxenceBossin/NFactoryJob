@@ -60,3 +60,26 @@ textarea{
 .none{
     visibility: hidden;
 }
+
+#errorpage{
+    padding: 1rem;
+    display: flex;
+    width: 100%;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 1rem;
+    h1{
+        font-size: 10rem;
+        font-weight: 300;
+        color: rgba(0,0,0,.4);
+    }
+    .btn{
+        padding: 1rem;
+        border-radius: 5px;
+        border: none;
+        color: white;
+        background-color: rgb(12, 100, 166);
+    }
+}
