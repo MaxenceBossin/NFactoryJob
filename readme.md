@@ -251,7 +251,9 @@ Pour le bon fonctionnement du site vous allez devoir repêter plusieur fois cett
 . Connexion (modele de page : connexion)  
 . Editor (modele de page : editor)  
 . Dashboard (modele de page : dashboard)  
-. logout (modele de page : lougout)  
+. Logout (modele de page : lougout)
+. API (modele de page : API)
+. 404 (modele de page : 404)
 
 Après cette étape, nous allons mettre la page que nous venons de créer en page principale. Pour cela, je vous laisse aller au niveau de l'onglet "**Réglages**" puis dans "**Lecture**".
 
