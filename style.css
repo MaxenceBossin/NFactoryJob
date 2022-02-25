@@ -1222,6 +1222,7 @@ FORM - INPUT SLIDER
   }
 }
 #header .wrap nav ul .mobile {
+  z-index: 20;
   position: fixed;
   opacity: 0;
   background-color: white;
