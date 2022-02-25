@@ -60,12 +60,12 @@ get_header();
                     <div class="form-example">
                         <label for="name">Adresse mail</label>
                         <input type="email "name="email" id="email" value="<?= recupInputValue('email')?>" required>
-                        <span class="error"><? if(!empty($errors['email'])){ echo $errors['email']; } ?></span>
+                        <span class="error"><?php if(!empty($errors['email'])){ echo $errors['email']; } ?></span>
                     </div>
                     <div class="form-example">
                         <label for="email">Mot de passe</label>
                         <input type="password" name="password" id="password" value="<?= recupInputValue('password')?>" required>
-                        <span class="error"><? if(!empty($errors['password'])){ echo $errors['password']; } ?></span>
+                        <span class="error"><?php if(!empty($errors['password'])){ echo $errors['password']; } ?></span>
                     </div>
                     <div class="form-button">
                         <input id="submitted" name="submitted" type="submit" value="Se connecter">
