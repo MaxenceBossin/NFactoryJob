@@ -33,7 +33,7 @@ $recruteur = false;
 		<?= get_good_logo(); ?>
 		<nav>
 			<ul>
-				<li class="desktop"><a href="<?= path('home'); ?>" class="log"><i style="color: <?= get_color_by_role(); ?>" class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
+				<li class="desktop"><a href="<?= path(''); ?>" class="log"><i style="color: <?= get_color_by_role(); ?>" class="fa-solid fa-house"></i> <span>Accueil</span></a></li>
                 <?php
                 if(is_user_logged_in()){
                     if(is_recruteur()){
