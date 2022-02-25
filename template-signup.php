@@ -73,19 +73,19 @@ get_header();
                     <div id="mail">
                         <label for="email">Adresse mail</label>
                         <input type="email "name="email" id="email" placeholder="contact@nfactoryjob.com" required>
-                        <span class="error"><? if(!empty($errors['email'])){ echo $errors['email']; } ?></span>
+                        <span class="error"><?php if(!empty($errors['email'])){ echo $errors['email']; } ?></span>
                     </div>
 
                     <div id="mdp">
                         <label for="mdp">Mot de passe</label>
                         <input type="password" name="password" id="password" placeholder="**********" required>
-                        <span class="error"><? if(!empty($errors['password'])){ echo $errors['password']; } ?></span>
+                        <span class="error"><?php if(!empty($errors['password'])){ echo $errors['password']; } ?></span>
                     </div>
 
                     <div id="cmdp">
                         <label for="cmdp">Confirmation du mot de passe</label>
                         <input type="password" name="password2" id="password2" placeholder="**********" required>
-                        <span class="error"><? if(!empty($errors['password2'])){ echo $errors['password2']; } ?></span>
+                        <span class="error"><?php if(!empty($errors['password2'])){ echo $errors['password2']; } ?></span>
                     </div>
 
                     <div id="cgu">
