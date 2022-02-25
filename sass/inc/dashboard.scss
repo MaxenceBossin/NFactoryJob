@@ -100,6 +100,9 @@
       flex-flow: row nowrap;
       align-content: center;
       align-items: center;
+      @include breakpoints(phone){
+        flex-flow: column nowrap;
+      }
       padding: .5rem;
       td:first-child{
         font-size: 1.5rem;
@@ -109,6 +112,12 @@
         padding: .5rem;
         display: flex;
         flex-flow: row wrap;
+        @include breakpoints(phone){
+          align-content: center;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
         gap: .5rem;
         min-width: 45%;
         p{

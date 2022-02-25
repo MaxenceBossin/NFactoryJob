@@ -951,6 +951,11 @@ FORM - INPUT SLIDER
   align-items: center;
   padding: 0.5rem;
 }
+@media (max-width: 480px) {
+  #dashboard table tbody tr {
+    flex-flow: column nowrap;
+  }
+}
 #dashboard table tbody tr td:first-child {
   font-size: 1.5rem;
   font-weight: 300;
@@ -961,6 +966,14 @@ FORM - INPUT SLIDER
   flex-flow: row wrap;
   gap: 0.5rem;
   min-width: 45%;
+}
+@media (max-width: 480px) {
+  #dashboard table tbody tr td {
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
 }
 #dashboard table tbody tr td p {
   background-color: white;
@@ -1221,6 +1234,7 @@ FORM - INPUT SLIDER
   display: none;
   width: 75vw;
   flex-flow: column nowrap;
+  justify-content: center;
   align-items: center;
   align-content: center;
   text-align: center;
